@@ -33,7 +33,7 @@ XXX
 
 ## In Class Demo and Exercises
 
-* [Demonstration](Intro/Demo_IR_MOose_Wolves)
+* [Demonstration](Intro/Demo_IR_Moose_Wolves.html)
 
 ----
 
@@ -42,3 +42,7 @@ XXX
 * Exercises I
 
 ----
+
+## Resources
+
+* ggplot2 documentation
