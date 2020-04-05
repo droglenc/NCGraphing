@@ -1,6 +1,6 @@
 ---
 title: "Introduction to ggplot2"
-author: "Derek Ogle, April 2020"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -15,10 +15,13 @@ output:
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=6,fig.height=6,out.width="100%",message=FALSE,warning=FALSE,comment="",cache=FALSE,fig.retina=3)
+knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 library(flipbookr)
 library(tidyverse)
 options(width=120,show.signif.stars=FALSE)
+splitPerc <- 50
+leftAssign <- TRUE
 ```
 
 
@@ -118,7 +121,7 @@ p <- ggplot(data=irmw,
 <<baseplot1>>
 ```
 
-`r chunk_reveal("baseplot1",break_type=1,left_assign=TRUE)`
+`r chunk_reveal("baseplot1",break_type=1,left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -164,15 +167,15 @@ p <- ggplot(data=irmw,
 
 ---
 
-`r chunk_reveal("scat_yr",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scat_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("line_yr",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("line_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("bar_yr",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("bar_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -184,7 +187,7 @@ p <- ggplot(data=irmw,
   geom_rug()
 ```
 
-`r chunk_reveal("scatline_yr",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -228,11 +231,11 @@ p <- ggplot(data=irmw,
 ```
 ---
 
-`r chunk_reveal("scatline_yr2a",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr2a",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr2b",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr2b",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -251,7 +254,7 @@ p <- ggplot(data=irmw,
 
 ---
 
-`r chunk_reveal("scatline_yr3a",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr3a",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -271,7 +274,7 @@ p <- ggplot(data=irmw,
 
 ---
 
-`r chunk_reveal("scatline_yr3b",break_type="auto",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr3b",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -307,15 +310,15 @@ p <- ggplot(data=irmw,
 
 ---
 
-`r chunk_reveal("scatline_yr3c",break_type="user",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr3c",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr3d",break_type="user",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr3d",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr3e",break_type="user",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr3e",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -355,7 +358,7 @@ p <- ggplot(data=irmw,
 
 ---
 
-`r chunk_reveal("scatline_yr4a",break_type="user",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr4a",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -408,15 +411,15 @@ p + #BREAK
 
 ---
 
-`r chunk_reveal("scatline_yr5a",break_type="user",left_assign=TRUE)`
+`r chunk_reveal("scatline_yr5a",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr5b",break_type="user")`
+`r chunk_reveal("scatline_yr5b",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr5c",break_type="user")`
+`r chunk_reveal("scatline_yr5c",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 

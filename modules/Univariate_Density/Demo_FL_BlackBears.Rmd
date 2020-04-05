@@ -21,6 +21,8 @@ library(flipbookr)
 library(tidyverse)
 library(patchwork)
 options(width=120,show.signif.stars=FALSE)
+splitPerc <- 50
+leftAssign <- TRUE
 ```
 
 
@@ -130,7 +132,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   theme_bw()
 ```
 
-`r chunk_reveal("hist1",break_type="auto",left_assign=TRUE,split=50)`
+`r chunk_reveal("hist1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -153,7 +155,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   theme_bw()
 ```
 
-`r chunk_reveal("hist2",break_type="non_seq",left_assign=TRUE,split=50)`
+`r chunk_reveal("hist2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 ```{r hist3, include=FALSE}
@@ -169,7 +171,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
         panel.grid.minor.x=element_blank())  
 ```
 
-`r chunk_reveal("hist3",break_type="user",left_assign=TRUE,split=50)`
+`r chunk_reveal("hist3",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -191,7 +193,7 @@ p <- ggplot(data=flbb,mapping=aes(
         panel.grid.minor.x=element_blank())
 ```
 
-`r chunk_reveal("histsplit1",break_type="non_seq",left_assign=TRUE,split=50)`
+`r chunk_reveal("histsplit1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -214,7 +216,7 @@ p <- ggplot(data=flbb,
 h2 <- p # for boxplots later
 ```
 
-`r chunk_reveal("histsplit2",break_type="user",left_assign=TRUE,split=50)`
+`r chunk_reveal("histsplit2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 
 ---
@@ -267,7 +269,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
         panel.grid.minor.x=element_blank())
 ```
 
-`r chunk_reveal("density1",break_type="non_seq",left_assign=TRUE,split=50)`
+`r chunk_reveal("density1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -293,7 +295,7 @@ p <- ggplot(data=flbb, mapping=aes(
         panel.grid.minor.x=element_blank())
 ```
 
-`r chunk_reveal("densitysplit1",break_type="non_seq",left_assign=TRUE,split=50)`
+`r chunk_reveal("densitysplit1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 
 ---
@@ -340,7 +342,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
   theme(legend.position="none")
 ```
 
-`r chunk_reveal("boxplot1",break_type="auto",left_assign=TRUE,split=50)`
+`r chunk_reveal("boxplot1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -355,7 +357,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
   coord_flip()
 ```
 
-`r chunk_reveal("boxplot2",break_type="auto",left_assign=TRUE,split=50)`
+`r chunk_reveal("boxplot2",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 
 
@@ -414,7 +416,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
   coord_flip()
 ```
 
-`r chunk_reveal("violin2",break_type="user",left_assign=TRUE,split=50)`
+`r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
