@@ -23,13 +23,67 @@ class: center, middle, inverse, title-slide
 
 
 
+# What is ggplot2?
+
+- A package for making graphics in R.
+  - R is now one of the most used programs for data analysis.
+  - `ggplots` is one of most used packages in R for data visualization.
+
+--
+- Originally based on Leland Wilkinson's *The Grammar of Graphics*.
+
+--
+- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
+
+--
+- Graphics can be informative, impactful, and elegant.
+
+---
+
+# Examples in the Wild 1
+
+.center[
+&lt;img src="Ex_ggplot2_1.jpg" width="600px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf"&gt;Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 2
+
+.center[
+&lt;img src="Ex_ggplot2_2.jpg" width="700px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519"&gt;Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 3
+
+.center[
+&lt;img src="Ex_ggplot2_3.jpg" width="500px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/"&gt;538.com&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 4
+
+.center[
+&lt;img src="Ex_ggplot2_4.jpg" width="800px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://www.ft.com/coronavirus-latest"&gt;Financial Times&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
 # Background
 
 - Estimated counts of Gray Wolf (*Canis lupus*) and Moose (*Alces alces*) from Isle Royale.
 
-
+.center[
 &lt;img src="wolves_moose.jpg" width="500px" /&gt;
 &lt;font size="1"&gt;Credit: &lt;a href="https://www.mtu.edu/news/stories/2012/march/wolf-population-isle-royale-drops-lowest-has-ever-been.html"&gt;Michigan Technological University&lt;/a&gt;&lt;/font&gt;
+]
 
 ---
 
@@ -143,7 +197,7 @@ p &lt;- ggplot(data=irmw,
 
 
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -193,7 +247,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -211,7 +265,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scat_yr_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -232,7 +286,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -250,7 +304,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/line_yr_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -271,7 +325,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -289,7 +343,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/bar_yr_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -312,7 +366,7 @@ p
 
 
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -330,7 +384,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -349,7 +403,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -369,7 +423,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr_auto_3_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -422,7 +476,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -440,7 +494,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr2a_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -459,7 +513,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr2a_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -481,7 +535,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -499,7 +553,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr2b_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -518,7 +572,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr2b_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -549,7 +603,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -568,7 +622,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3a_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -588,7 +642,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3a_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -621,7 +675,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -640,7 +694,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3b_auto_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -660,7 +714,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3b_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -698,7 +752,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -717,7 +771,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3c_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -739,7 +793,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -758,7 +812,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3d_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -780,7 +834,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -799,7 +853,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr3e_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -846,7 +900,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -866,7 +920,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr4a_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -888,7 +942,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr4a_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -913,7 +967,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr4a_user_3_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -974,7 +1028,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -1000,7 +1054,7 @@ p
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr5a_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -1029,7 +1083,7 @@ p
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -1038,13 +1092,19 @@ count: false
 
 ```r
 * p
+ 
+NA
 ```
 ]]
 .column[.content[
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr5b_user_1_output-1.png" width="100%" /&gt;
+
+```
+[1] NA
+```
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -1054,15 +1114,21 @@ count: false
 ```r
  p +  
 * theme_minimal()
+ 
+NA
 ```
 ]]
 .column[.content[
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr5b_user_2_output-1.png" width="100%" /&gt;
+
+```
+[1] NA
+```
 ]]
 
 ---
 
-class: split-40
+class: split-50
 count: false
  
 
@@ -1071,13 +1137,19 @@ count: false
 
 ```r
 *p 
+ 
+NA
 ```
 ]]
 .column[.content[
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr5c_user_1_output-1.png" width="100%" /&gt;
+
+```
+[1] NA
+```
 ]]
 ---
-class: split-40
+class: split-50
 count: false
  
 
@@ -1087,10 +1159,16 @@ count: false
 ```r
 p +  
 * theme_bw()
+ 
+NA
 ```
 ]]
 .column[.content[
 &lt;img src="Demo_IR_Moose_Wolves_files/figure-html/scatline_yr5c_user_2_output-1.png" width="100%" /&gt;
+
+```
+[1] NA
+```
 ]]
 
 ---
