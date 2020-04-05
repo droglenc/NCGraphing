@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Linear Regression
+title: Introduction
 css: /css/modules.css
 ---
 
@@ -31,15 +31,10 @@ XXX
 
 ----
 
-## In Class Demo and Exercises
+## Demonstration and Exercises
 
 * [Demonstration](Intro/Demo_IR_Moose_Wolves.html)
-
-----
-
-## After Class Work
-
-* Exercises I
+* [Exercises -- Loons](Intro/CE_Loons)
 
 ----
 
