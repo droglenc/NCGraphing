@@ -4,7 +4,7 @@ title: Learning Modules
 ---
 
 1. [Introduction to ggplot2](Intro)
-1. [Histograms, Boxplots, *et al.*]()
+1. [Histograms, Boxplots, *et al.*](Univariate_Density)
 1. [Scatterplots and Smoothers]()
 1. [Bar Charts]()
 1. [Tidy Data]()
