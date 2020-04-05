@@ -7,6 +7,7 @@ title: Learning Modules
 1. [Histograms, Boxplots, *et al.*]()
 1. [Scatterplots and Smoothers]()
 1. [Bar Charts]()
+1. [Tidy Data]()
 1. [Titles, Text, and Annotations]()
 1. [Colors and Typography]()
 1. [Facets]()
