@@ -477,11 +477,11 @@ p + #BREAK
 
 ---
 
-`r chunk_reveal("scatline_yr5b",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr5b",break_type="user",split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr5c",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr5c",break_type="user",split=splitPerc)`
 
 ---
 
