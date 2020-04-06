@@ -12,7 +12,7 @@ css: /css/syllabus.css
 </ul>
 
 <figure>
-  <img src="../img/DataDance.jpeg" alt="Data Dance">
+  <img src="../img/DataDance.jpeg" alt="Data Dance" width="400">
   <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffelicious</a></span></figcaption>
 </figure>
 
