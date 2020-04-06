@@ -9,7 +9,8 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="loon.jpg" alt="Common Loon" class="img-right"> Dr. Jim Paruk studied the morphology of Common Loons (<em>Gavia immer</em>), primarily their bills, from a wide variety of locations in North America. These data are in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv">Loon1.csv</a>, with information about these data in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt">this metadata file</a>. Download these data (from the link in the previous sentence), load them into R, and examine their structure. [<em>How load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).</em>]</p>
+<p><img src="loon.jpg" alt="Common Loon" class="img-right"> Dr. Jim Paruk studied the morphology of Common Loons (<em>Gavia immer</em>), primarily their bills, from a wide variety of locations in North America. These data are in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv">Loon1.csv</a>, with information about these data in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt">this metadata file</a>. These data are loaded into R and their structure examined below.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Also, don’t forget to load the <code>ggplot2</code> package.</p>
 <p> </p>
 </div>
 <div id="tarsus-length-vs.-bill-length-1" class="section level2">
@@ -46,6 +47,13 @@ css: "/css/modules.css"
 <h2>Tarsus Length vs. Bill Length 5</h2>
 <p>Modify your plot from “Tarsus Length vs Bill Length 2” to use three <em>divergent</em> colors for the different regions that are <em>colorlind-safe</em> and <em>printer-friendly</em>. See the [color brewer website]) or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
 <p><img src="CE_Loons_files/figure-html/Loons_TB5-1.png" width="576" /></p>
+<hr />
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 

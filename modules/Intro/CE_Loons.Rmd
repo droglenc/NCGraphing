@@ -14,24 +14,27 @@ output:
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 modHTML(file.path(here::here(),"modules/Intro/CE_Loons"))
 ```
-
 ```{r echo=FALSE}
-#dn <- here::here()
-#source(file.path(dn,"rhelpers/knitr_setup.R"))
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
-library(ggplot2)
 ```
 
 ----
 
 ## Background
 <img src="loon.jpg" alt="Common Loon" class="img-right">
-Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). Download these data (from the link in the previous sentence), load them into R, and examine their structure. [*How load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).*]
+Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). These data are loaded into R and their structure examined below.[^loaddata]
 
-```{r echo=FALSE, results='hide'}
+```{r results='hide'}
 loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 str(loon)
 ```
+
+Also, don't forget to load the `ggplot2` package.
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ggplot2)
+```
+
 
 &nbsp;
 
@@ -115,3 +118,6 @@ tb5 <- tb2 +
 tb5
 ```
 
+----
+
+[^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
