@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Exercise -- Temperature
+title: Exercise - Temperature
 author: Derek H. Ogle
 css: "/css/modules.css"
 output:
