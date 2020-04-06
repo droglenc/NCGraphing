@@ -34,7 +34,8 @@ XXX
 ## Demonstration and Exercises
 
 * [Demonstration](Intro/Demo_IR_Moose_Wolves.html)
-* [Exercises -- Loons](Intro/CE_Loons)
+* [Exercise -- Global Temperatures](Intro/CE_Temperature)
+* [Exercise -- Loons](Intro/CE_Loons)
 
 ----
 

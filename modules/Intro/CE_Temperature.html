@@ -1,0 +1,77 @@
+---
+layout: page
+title: Exercise -- Temperature
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><img src="loon.jpg" alt="Common Loon" class="img-right"> The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their <a href="https://www.ncdc.noaa.gov/cag/global/time-series">Climate at a Glance website</a>. Their defaut settings show the <em>global</em> temperature anomaly (difference from a long-term average) for <em>February</em>. These data can be downloaded from their website with the following code.</p>
+<pre class="r"><code>gt &lt;- read.csv(&quot;https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv&quot;,skip=4)</code></pre>
+</div>
+<div id="annual-temperatue-anomaly-1" class="section level2">
+<h2>Annual Temperatue Anomaly 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Temperature_files/figure-html/Temperture_1-1.png" width="480" /></p>
+</div>
+<div id="annual-temperatue-anomaly-2" class="section level2">
+<h2>Annual Temperatue Anomaly 2</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Temperature_files/figure-html/Temperature_2-1.png" width="480" /></p>
+</div>
+<div id="bonus-annual-temperatue-anomaly-3" class="section level2">
+<h2>BONUS – Annual Temperatue Anomaly 3</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Temperature_files/figure-html/Temperature_3-1.png" width="480" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

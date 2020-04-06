@@ -22,8 +22,14 @@ Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily 
 
 
 
-## Bill Length vs. Tarsus Length
+## Tarsus Length vs. Bill Length
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-<img src="CE_Loons_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="CE_Loons_files/figure-html/Loons_TB-1.png" width="480" />
+
+
+## Weight vs Tarsus Length
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: The graphic at [the bottom of this page](https://ggplot2.tidyverse.org/reference/scale_shape.html#examples) might be useful.*]
+
+<img src="CE_Loons_files/figure-html/Loons_WT-1.png" width="480" />
 

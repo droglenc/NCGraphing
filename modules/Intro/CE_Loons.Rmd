@@ -15,10 +15,10 @@ source(file.path(here::here(),"rhelpers/rhelpers.R"))
 modHTML(file.path(here::here(),"modules/Intro/CE_Loons"))
 ```
 
-```{r echo=FALSE, results='hide', message=FALSE}
-dn <- here::here()
-source(file.path(dn,"rhelpers/knitr_setup.R"))
-knitr::opts_knit$set(fig.width=5,fig.height=5,fig.retina=3)
+```{r echo=FALSE}
+#dn <- here::here()
+#source(file.path(dn,"rhelpers/knitr_setup.R"))
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ```
 
 ----
@@ -33,15 +33,28 @@ str(loon)
 ```
 
 
-## Bill Length vs. Tarsus Length
+## Tarsus Length vs. Bill Length
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r echo=FALSE}
-bl <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus)) +
+```{r Loons_TB}
+tb <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus)) +
   geom_point(size=2) +
   scale_x_continuous(name="Bill Length (mm)") +
   scale_y_continuous(name="Tarsus Length (mm)") +
   theme_bw()
-bl
+tb
+```
+
+
+## Weight vs Tarsus Length
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: The graphic at [the bottom of this page](https://ggplot2.tidyverse.org/reference/scale_shape.html#examples) might be useful.*]
+
+```{r Loons_WT}
+wt <- ggplot(data=loon,mapping=aes(x=tarsus,y=weight)) +
+  geom_point(size=5,color="red",shape=18,alpha=0.5) +
+  scale_x_continuous(name="Tarsus Length (mm)") +
+  scale_y_continuous(name="Weight (g)") +
+  theme_bw()
+wt
 ```
 
