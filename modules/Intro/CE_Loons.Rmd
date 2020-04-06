@@ -33,7 +33,7 @@ loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1
 str(loon)
 ```
 
-&nnbsp;
+&nbsp;
 
 ## Tarsus Length vs. Bill Length 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
@@ -66,7 +66,7 @@ wt
 ## Tarsus Length vs. Bill Length 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB2}
+```{r Loons_TB2, fig.width=6}
 tb2 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=region)) +
   geom_point(size=3) +
   scale_x_continuous(name="Bill Length (mm)") +
@@ -80,7 +80,7 @@ tb2
 ## Tarsus Length vs. Bill Length 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB3}
+```{r Loons_TB3, fig.width=6}
 tb3 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=weight)) +
   geom_point(size=3) +
   scale_x_continuous(name="Bill Length (mm)") +
@@ -94,7 +94,7 @@ tb3
 ## Tarsus Length vs. Bill Length 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB4}
+```{r Loons_TB4, fig.width=6}
 tb4 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,
                                     color=region,shape=sex)) +
   geom_point(size=3) +
@@ -109,7 +109,7 @@ tb4
 ## Tarsus Length vs. Bill Length 5
 Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorlind-safe* and *printer-friendly*. See the [color brewer website]) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
-```{r Loons_TB5}
+```{r Loons_TB5, fig.width=6}
 tb5 <- tb2 +
   scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9"))
 tb5
