@@ -5,23 +5,20 @@ subtitle:
 css: /css/syllabus.css
 ---
 
-<SCRIPT SRC="../js/grader.js"></SCRIPT>
-
 <div class="BigQuestions">
 <ul>
-  <li>How do we learn from raw data?</li>
-  <li>How does statistics further science?</li>
-  <li>How do I not get fooled by other people's numbers?</li>
+  <li>How should I present my data?</li>
+  <li>How do I make that graph?</li>
 </ul>
 
 <figure>
-  <img src="../img/phd012010s.gif" alt="News Media Polls">
-  <figcaption><span style="font-size:50%;">From <a href="http://phdcomics.com/comics/archive.php?comicid=1271" target="_blank">phdcomics.com</a></span></figcaption>
+  <img src="../img/DataDance.jpeg" alt="Data Dance">
+  <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffelicious</a></span></figcaption>
 </figure>
 
 <br>
 
-What you learn in this <strong>Statistical Concepts and Analysis</strong> course will help you answer these questions.
+What you learn in this <strong>Communicating Ideas with Great Graphics in R</strong> course will help you answer these questions.
 
 <p style="margin-bottom:2cm;"></p>
 
@@ -47,13 +44,13 @@ Student will use the “grammar of graphics” to create elegant and engaging gr
 <img class="img-right" src="../img/outcomes.jpg" alt="Outcomes">
 In this course, you will have the opportunity to:
 
-1. Understand the foundational principles of the "grammar of graphis";
-1. Use the grammar of graphics to construct traditional graphics such as histograms, barplots, scatterplots, line plots, and time series plots;
-1. Use "aesthetics", "scales", "annotations", and "facets" to modify traditional graphics to display multiple levels of information;
-1. Understand how colors and typography affect the audiences appreciation of graphical information;
-1. Construct composites of multiple graphs to illustrate a complete narrative with data.
-1. Become proficient with using the ggplot2 package in the R environment to construct elegant and informative graphs.
-1. Understand the importance of "tidy data" with respect to the "grammar of graphics."
+1. Understand the foundational principles of the "grammar of graphics";
+1. Use the grammar of graphics to construct traditional graphs such as histograms, barplots, scatterplots, line plots, and time series plots;
+1. Use "aesthetics", "scales", "annotations", and "facets" to modify traditional graphs to display multiple levels of information;
+1. Understand how colors and typography affect the audience's appreciation of graphs;
+1. Construct composites of multiple graphs to illustrate a complete narrative with data;
+1. Become proficient with using the ggplot2 package in the R environment to construct elegant and informative graphs;
+1. Understand the importance of "tidy data" with respect to the "grammar of graphics"; and
 1. Use some R functions to create "tidy data" from "untidy data."
 
 While this course does not fulfill any requirements in the [General Education Program](https://my.northland.edu/faculty/fac-academic-programs/) it does support the "[c]ommunicate mathematical information ... visually ..." outcome.
