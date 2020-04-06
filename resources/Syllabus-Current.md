@@ -6,17 +6,17 @@ css: /css/syllabus.css
 ---
 
 <div class="BigQuestions">
+<figure>
+  <img src="../img/DataDance.jpeg" alt="Data Dance" width="400">
+  <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffeelicious</a></span></figcaption>
+</figure>
+
+<br>
+
 <ul>
   <li>How should I present my data?</li>
   <li>How do I make that graph?</li>
 </ul>
-
-<figure>
-  <img src="../img/DataDance.jpeg" alt="Data Dance" width="400">
-  <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffelicious</a></span></figcaption>
-</figure>
-
-<br>
 
 What you learn in this <strong>Communicating Ideas with Great Graphics in R</strong> course will help you answer these questions.
 
