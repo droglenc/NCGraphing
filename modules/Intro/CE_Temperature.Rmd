@@ -19,12 +19,13 @@ modHTML(file.path(here::here(),"modules/Intro/CE_Temperature"))
 #dn <- here::here()
 #source(file.path(dn,"rhelpers/knitr_setup.R"))
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
+library(ggplot2)
 ```
 
 ----
 
 ## Background
-<img src="loon.jpg" alt="Common Loon" class="img-right">
+<img src="MeltingGlacier.jpg" alt="Melting" class="img-right">
 The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their defaut settings show the *global* temperature anomaly (difference from a long-term average) for *February*. These data can be downloaded from their website with the following code.
 
 ```{r echo=-2, results='hide'}
@@ -32,6 +33,7 @@ gt <- read.csv("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocea
 str(gt)
 ```
 
+&nbsp;
 
 ## Annual Temperatue Anomaly 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
@@ -46,27 +48,50 @@ ft1 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
 ft1
 ```
 
+&nbsp;
 
 ## Annual Temperatue Anomaly 2
-Construct `ggplot2` code to match the graph below (as closely as you can).
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy and then modify the code you constructed from above.*]
 
-```{r Temperature_2}
+```{r Temperture_2}
 ft2 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
-  geom_bar(stat="identity",fill="blue") +
-  scale_x_continuous(name="Year") +
+  geom_point(size=2,color="red",alpha=0.5) +
+  geom_line(size=1.25) +
+  scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
   theme_bw()
 ft2
 ```
 
+&nbsp;
 
-## BONUS -- Annual Temperatue Anomaly 3
+## Annual Temperatue Anomaly 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_3}
+ft3 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
+  geom_bar(stat="identity",fill="blue") +
+  scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
+  scale_y_continuous(name="February Temperature Anomaly (C)") +
+  theme_bw()
+ft3
+```
+
+&nbsp;
+
+## BONUS -- Annual Temperatue Anomaly 4
+Perform an internet search to determine how to add a solid black horizontal line at 0 to each of the graphs above (see the line in the graph in the next section).
+
+&nbsp;
+
+## BONUS -- Annual Temperatue Anomaly 5
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Temperature_5}
 ft3 <- ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value>0)) +
   geom_bar(stat="identity",color="black") +
-  scale_x_continuous(name="Year") +
+  geom_hline(yintercept=0) +
+  scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
   scale_fill_manual(values=c("blue4","red4")) +
   theme_bw() +
