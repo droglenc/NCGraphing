@@ -28,6 +28,8 @@ XXX
 
 ## Preparation for Class
 
+* 
+* [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e) ... just skim-read, don't worry about specifics.
 
 ----
 
