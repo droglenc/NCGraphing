@@ -49,4 +49,6 @@ XXX
   * [Color Pallette Generator](https://mycolor.space/?hex=%23C25EB0&sub=1): Generates a color palette from one user-provided color.
   * [Color Thief](https://lokeshdhakar.com/projects/color-thief/): Software to generate a palette from an image.
   * [Color Calculator](https://www.sessions.edu/color-calculator/): Generate color scheme by choosing base colors and a "harmony."
-
+* Typography
+  * [Butterick's Practical Typography](https://practicaltypography.com/): The classic book.
+  

@@ -28,7 +28,7 @@ XXX
 
 ## Preparation for Class
 
-* 
+* [Three Laws of Effective Visual Communication](https://graphicsprinciples.github.io/threelaws.html) ... watch the 4-min video.
 * [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e) ... just skim-read, don't worry about specifics.
 
 ----
