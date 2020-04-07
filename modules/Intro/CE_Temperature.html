@@ -9,7 +9,7 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="MeltingGlacier.jpg" alt="Melting" class="img-right"> The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their <a href="https://www.ncdc.noaa.gov/cag/global/time-series">Climate at a Glance website</a>. Their defaut settings show the <em>global</em> temperature anomaly (difference from a long-term average) for <em>February</em>. These data can be downloaded from their website with the following code.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p><img src="zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right"> The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their <a href="https://www.ncdc.noaa.gov/cag/global/time-series">Climate at a Glance website</a>. Their defaut settings show the <em>global</em> temperature anomaly (difference from a long-term average) for <em>February</em>. These data can be downloaded from their website with the following code.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <pre class="r"><code>gt &lt;- read.csv(&quot;https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv&quot;,skip=4)
 str(gt)</code></pre>
 <p>Also, don’t forget to load the <code>ggplot2</code> package.</p>

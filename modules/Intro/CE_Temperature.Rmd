@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r echo=FALSE, eval=FALSE}
-# Renders an appropriate HTML file for the webpage
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 modHTML(file.path(here::here(),"modules/Intro/CE_Temperature"))
 ```
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ----
 
 ## Background
-<img src="MeltingGlacier.jpg" alt="Melting" class="img-right">
+<img src="zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right">
 The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their defaut settings show the *global* temperature anomaly (difference from a long-term average) for *February*. These data can be downloaded from their website with the following code.[^loaddata]
 
 ```{r echo=TRUE, results='hide'}

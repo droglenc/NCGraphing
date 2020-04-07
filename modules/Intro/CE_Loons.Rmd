@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r echo=FALSE, eval=FALSE}
-# Renders an appropriate HTML file for the webpage
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 modHTML(file.path(here::here(),"modules/Intro/CE_Loons"))
 ```
