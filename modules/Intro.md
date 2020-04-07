@@ -30,14 +30,18 @@ XXX
 
 * [Three Laws of Effective Visual Communication](https://graphicsprinciples.github.io/threelaws.html) ... watch the 4-min video.
 * [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e) ... just skim-read, don't worry about specifics.
+* [Introduction to ggplot2](https://youtu.be/h29g21z0a68?t=1095) ... this will give an overview of the idea behind ggplot2. It is a bit "chatty" so don't feel like you have to watch it. If you do, watch from the 18:15 mark to the 40:30 mark.
 
 ----
 
 ## Demonstration and Exercises
 
 * [Demonstration](Intro/Demo_IR_Moose_Wolves.html)
-* [Exercise -- Global Temperatures](Intro/CE_Temperature)
-* [Exercise -- Loons](Intro/CE_Loons)
+* [Exercise 1 -- Global Temperatures](Intro/CE_Temperature)
+* Exercise 2
+  * [Loons](Intro/CE_Loons)
+  * [Walleye](Intro/CE_Walleye)
+  * [Quarterbacks](Intro/CE_Quarterbacks)
 
 ----
 

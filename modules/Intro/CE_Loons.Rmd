@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ----
 
 ## Background
-<img src="loon.jpg" alt="Common Loon" class="img-right">
+<img src="zimgs/loon.jpg" alt="Common Loon" class="img-right">
 Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). These data are loaded into R and their structure examined below.[^loaddata]
 
 ```{r echo=TRUE, results='hide'}
