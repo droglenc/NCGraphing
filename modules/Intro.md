@@ -17,7 +17,7 @@ XXX
 <p>After completing this module, you should be able to ...</p>
 
 <ol>
-  <li>Describe the purposes of regression.</li>
+  <li>XXX.</li>
 </ol>
       </div>
     </div>

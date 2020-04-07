@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Univariate Density Plots
+title: Facets
 css: /css/modules.css
 ---
 

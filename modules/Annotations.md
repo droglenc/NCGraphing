@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Univariate Density Plots
+title: Titles, Text, and Annotations
 css: /css/modules.css
 ---
 
