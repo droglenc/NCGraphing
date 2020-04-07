@@ -12,7 +12,10 @@ output:
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
-modHTML(file.path(here::here(),"modules/Intro/CE_Temperature"))
+fnm <- "CE_Temperature"
+modHTML(file.path(here::here(),"modules/Intro",fnm))
+FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
@@ -40,7 +43,7 @@ library(ggplot2)
 ## Annual Temperatue Anomaly 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Temperture_1}
+```{r Temperature_1}
 ft1 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
   geom_point(size=2) +
   geom_line() +
@@ -55,7 +58,7 @@ ft1
 ## Annual Temperatue Anomaly 2
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy and then modify the code you constructed from above.*]
 
-```{r Temperture_2}
+```{r Temperature_2}
 ft2 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
   geom_point(size=2,color="red",alpha=0.5) +
   geom_line(size=1.25) +
@@ -102,3 +105,4 @@ ft3
 ```
 
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+

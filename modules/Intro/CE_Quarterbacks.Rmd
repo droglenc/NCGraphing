@@ -11,8 +11,10 @@ output:
 
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
-source(file.path(here::here(),"rhelpers/rhelpers.R"))
-modHTML(file.path(here::here(),"modules/Intro/CE_Quarterbacks"))
+fnm <- "CE_Quarterbacks"
+modHTML(file.path(here::here(),"modules/Intro",fnm))
+FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
@@ -113,7 +115,7 @@ act4
 &nbsp;
 
 ## Passing Attempts vs Rushing Attempts 5
-Modify your plot from "## Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorlind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+Modify your plot from "Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorlind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
 ```{r QBS_act5, fig.width=6}
 act5 <- act2 +

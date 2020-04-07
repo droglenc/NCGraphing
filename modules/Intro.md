@@ -36,12 +36,16 @@ XXX
 
 ## Demonstration and Exercises
 
-* [Demonstration](Intro/Demo_IR_Moose_Wolves.html)
-* [Exercise 1 -- Global Temperatures](Intro/CE_Temperature)
-* Exercise 2
-  * [Loons](Intro/CE_Loons)
-  * [Walleye](Intro/CE_Walleye)
-  * [Quarterbacks](Intro/CE_Quarterbacks)
+<ul>
+  <li><a href="Intro/Demo_IR_Moose_Wolves.html">Demonstration</a>
+  <li><a href="Intro/CE_Temperature.html"></a><button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Temperature.R">R KEY</a></button></li>
+  <li>Exercise 2 (pick one)</li>
+  <ul>
+    <li><a href="Intro/CE_Loons.html">Loons</a><button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Loons.R">R KEY</a></button></li>
+    <li><a href="Intro/CE_Walleye">Walleye</a><button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Walleye.R">R KEY</a></button></li>
+    <li><a href="Intro/CE_Quarterbacks">Quartebacks</a><button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Quarterbacks.R">R KEY</a></button></li>
+  </ul>
+<ul>
 
 ----
 
@@ -51,4 +55,3 @@ XXX
 * [Introduction to ggplot2 at UCLA](https://stats.idre.ucla.edu/stat/data/intro_ggplot2_int/ggplot2_intro_interactive.html#(1)): A comprehensive introduction.
 * [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html) and [Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html) chapters in [R for Data Science](https://r4ds.had.co.nz/index.html): A short introduction to ggplot2.
 * [Beginning Tutorial at ggplot2tor](https://ggplot2tutor.com/beginner_tutorial/beginner_tutorial/): Introduction to ggplot2 including discussion of geoms, aethetitics, mappings, and scales.
-
