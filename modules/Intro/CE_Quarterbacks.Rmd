@@ -1,0 +1,124 @@
+---
+layout: page
+title: Exercise - Quarterbacks
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+modHTML(file.path(here::here(),"modules/Intro/CE_Quarterbacks"))
+```
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
+```
+
+----
+
+## Background
+<img src="zimgs/loon.jpg" alt="Common Loon" class="img-right">
+
+[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the `tidyverse` pacakge, which will load `ggplot2` along with a few other packages you will need access these data.
+
+```{r results="hide"}
+library(tidyverse)
+```
+
+Perform the following steps to load information for all quarterbacks from the 2019-20 seasons that were in the so-called "power 5 conferences."[^getdata]
+
+```{r echo=TRUE, results='hide'}
+qbs <- read.csv("Data_quarterbacks_2019.csv",stringsAsFactors=FALSE) %>%
+  filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
+  mutate(Conf=factor(Conf))
+str(qbs)
+```
+
+Here we will only use the following variables:
+
+&nbsp;
+
+## Passing Efficiency vs. Interceptions
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r QBS_risk}
+risk <- ggplot(data=qbs,mapping=aes(x=Int,y=Y_A)) +
+  geom_point(size=3) +
+  scale_x_continuous(name="Number of Interceptions") +
+  scale_y_continuous(name="Passing Yards per Passing Attempt") +
+  theme_bw()
+risk
+```
+
+&nbsp;
+
+## Passing Attempts vs Rushing Attempts 1
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: The graphic at [the bottom of this page](https://ggplot2.tidyverse.org/reference/scale_shape.html#examples) might be useful.*]
+
+```{r QBS_act}
+act <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att)) +
+  geom_point(size=3,shape=15,color="red3",alpha=0.5) +
+  scale_x_continuous(name="Rushing Attempts") +
+  scale_y_continuous(name="Passing Attempts") +
+  theme_bw()
+act
+```
+
+&nbsp;
+
+## Passing Attempts vs Rushing Attempts 2
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r QBS_act2, fig.width=6}
+act2 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Conf)) +
+  geom_point(size=3) +
+  scale_x_continuous(name="Rushing Attempts") +
+  scale_y_continuous(name="Passing Attempts") +
+  theme_bw()
+act2
+```
+
+&nbsp;
+
+## Passing Attempts vs Rushing Attempts 3
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r QBS_act3, fig.width=6}
+act3 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Pct)) +
+  geom_point(size=3) +
+  scale_x_continuous(name="Rushing Attempts") +
+  scale_y_continuous(name="Passing Attempts") +
+  theme_bw()
+act3
+```
+
+&nbsp;
+
+## Passing Attempts vs Rushing Attempts 4
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r QBS_act4, fig.width=6}
+act4 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Conf,shape=Conf)) +
+  geom_point(size=3) +
+  scale_x_continuous(name="Rushing Attempts") +
+  scale_y_continuous(name="Passing Attempts") +
+  theme_bw()
+act4
+```
+
+&nbsp;
+
+## Passing Attempts vs Rushing Attempts 5
+Modify your plot from "## Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorlind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+
+```{r QBS_act5, fig.width=6}
+act5 <- act2 +
+  scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442"))
+act5
+```
+
+[^getdata]: These data were obtained from https://www.sports-reference.com/ with the following steps: 1) Select "CFB" in the list of sports in the gray box near the top of the page; 2) Select "Years" in the list of items in teh gray box near the top of the page; 3) Select "2019" in the list of years; 4) Hover over "Stats" in the gray box near the middle of the page and select "Passing" from the items that will appear; 5) Hover over the "Share & more" item just above the top-right side of the table of statistics and select "Get Table as a CSV"; and 6) copy CSV result to a text file, delete the first line, and slighly modify the variable names.

@@ -1,0 +1,110 @@
+---
+layout: page
+title: Exercise - Quarterbacks
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><img src="zimgs/loon.jpg" alt="Common Loon" class="img-right"></p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> pacakge, which will load <code>ggplot2</code> along with a few other packages you will need access these data.</p>
+<p>Perform the following steps to load information for all quarterbacks from the 2019-20 seasons that were in the so-called “power 5 conferences.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre class="r"><code>qbs &lt;- read.csv(&quot;Data_quarterbacks_2019.csv&quot;,stringsAsFactors=FALSE) %&gt;%
+  filter(Conf %in% c(&quot;ACC&quot;,&quot;Big 12&quot;,&quot;Big Ten&quot;,&quot;Pac-12&quot;,&quot;SEC&quot;)) %&gt;%
+  mutate(Conf=factor(Conf))
+str(qbs)</code></pre>
+<p>Here we will only use the following variables:</p>
+<p> </p>
+</div>
+<div id="passing-efficiency-vs.-interceptions" class="section level2">
+<h2>Passing Efficiency vs. Interceptions</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_risk-1.png" width="480" /></p>
+<p> </p>
+</div>
+<div id="passing-attempts-vs-rushing-attempts-1" class="section level2">
+<h2>Passing Attempts vs Rushing Attempts 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: The graphic at <a href="https://ggplot2.tidyverse.org/reference/scale_shape.html#examples">the bottom of this page</a> might be useful.</em>]</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_act-1.png" width="480" /></p>
+<p> </p>
+</div>
+<div id="passing-attempts-vs-rushing-attempts-2" class="section level2">
+<h2>Passing Attempts vs Rushing Attempts 2</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_act2-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="passing-attempts-vs-rushing-attempts-3" class="section level2">
+<h2>Passing Attempts vs Rushing Attempts 3</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_act3-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="passing-attempts-vs-rushing-attempts-4" class="section level2">
+<h2>Passing Attempts vs Rushing Attempts 4</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_act4-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="passing-attempts-vs-rushing-attempts-5" class="section level2">
+<h2>Passing Attempts vs Rushing Attempts 5</h2>
+<p>Modify your plot from “## Passing Attempts vs Rushing Attempts 2” to use five <em>divergent</em> colors for the different conferences that are <em>colorlind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
+<p><img src="CE_Quarterbacks_files/figure-html/QBS_act5-1.png" width="576" /></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These data were obtained from <a href="https://www.sports-reference.com/" class="uri">https://www.sports-reference.com/</a> with the following steps: 1) Select “CFB” in the list of sports in the gray box near the top of the page; 2) Select “Years” in the list of items in teh gray box near the top of the page; 3) Select “2019” in the list of years; 4) Hover over “Stats” in the gray box near the middle of the page and select “Passing” from the items that will appear; 5) Hover over the “Share &amp; more” item just above the top-right side of the table of statistics and select “Get Table as a CSV”; and 6) copy CSV result to a text file, delete the first line, and slighly modify the variable names.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

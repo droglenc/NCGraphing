@@ -110,7 +110,7 @@ tb4
 &nbsp;
 
 ## Tarsus Length vs. Bill Length 5
-Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorlind-safe* and *printer-friendly*. See the [color brewer website]) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorlind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
 ```{r Loons_TB5, fig.width=6}
 tb5 <- tb2 +
