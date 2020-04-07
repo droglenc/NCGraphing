@@ -118,6 +118,4 @@ tb5 <- tb2 +
 tb5
 ```
 
-----
-
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
