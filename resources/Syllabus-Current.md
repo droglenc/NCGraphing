@@ -74,10 +74,6 @@ I am committed to your doing well in this course and see it as my responsibility
 
 &nbsp;
 
-&nbsp;
-
-&nbsp;
-
 ### Accommodations
 I want to create an inclusive and accessible learning environment for those of you that have a condition (e.g., attention, learning, vision, hearing, mental, physical, or other health-related concern) that may require special accommodations. *If you have already established accommodations* with the Office of Accessibility Resources (OAR), please communicate your approved accommodations to me as soon as possible so that we can discuss your needs in this course. If you have a condition that requires accommodations but *you have not yet established services* through OAR, then you should contact Jennifer Newago as soon as possible (Ponzio 230, x1387, or <a href="mailto:accomodations@northland.edu">accomodations@northland.edu</a>). It is the policy and practice of Northland College to create inclusive and accessible learning environments consistent with federal and state law. <a href="https://my.northland.edu/life/be-healthy/accommodations/">More information is available here.</a>
 
@@ -85,10 +81,24 @@ I want to create an inclusive and accessible learning environment for those of y
 <img class="img-right" src="../img/alert.jpg">
 As you adjust to college, you may benefit from working with a professional on your organization, motivation, and stress level. If I observe you struggling with the course early in the term then I may file an "Academic Alert" about you. If this happens, you will receive an e-mail from me that explains steps you can take to improve your performance in the course. Our Academic Success Coordinator, Gina Kirsten, will receive the alert and will likely also reach out to you to set up a time to further discuss ways to improve in the course. **Academic Alerts are not punitive**, they are simply an attempt to help you get back on track in this course as soon as possible.
 
+### Words of Encouragement
+I *promise* you can succeed in this class.[^encouragement]
+
+Learning R can be difficult at first—it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
+
+> It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
+
+Even experienced programmers find themselves banging their heads against seemingly intractable errors. If you find yourself taking way too long hitting your head against a wall and not understanding, take a break, talk to classmates, e-mail me, etc.
+
+<img src="../img/horst_error_tweet.png">
+
+<img src="../img/gator_error.jpg">
+
+
 ----
 
 ## Grading
-<img class="img-right" src="../img/grading.jpg">
+<img class="img-right" src="../img/grading.png">
 An overall grade will be computed from your performance on daily exercises (75%) and final project (25%), which are both described below.
 
 ### Exercises
@@ -154,18 +164,7 @@ If you feel that you are spending too much time on some exercises or preparation
 
 ### Classroom Conduct and Academic Integrity
 <img class="img-right" src="../img/cell-cheat.jpg" alt="Conduct and Integrity">
-My intent is to create a classroom environment where solid learning of statistics can occur. One part of this environment is a well-organized course structure built upon relevant learning resources and interesting realistic exercises. Another part is my availability to assist you in learning from these resources and exercises. A third part is your conduct within the classroom. My expectations of you are that you will fully engage in the course (see above) and be respectful of all others in the class. At a minimum, I expect you to adhere to the following behaviors:
-
-* Please arrive to class on time. If you arrive late, then take the first available seat as quietly as possible. If you need to leave early, then please sit near the exit.
-* Please attend the entire class period. Leaving class early defeats the purpose of the class period, does not take advantage of resources (i.e., the professor) that can significantly help your learning, and does not build statistical stamina. Please take care of your personal needs (e.g., using the restroom) before class so that you can stay focused for the entire class period.
-* Please turn your computer on immediately so that you can promptly begin the daily preparation check.
-* Please limit computer use to class work.
-* Please **do not use your own computer** during class unless you clear it with me at the beginning of the semester.
-* Please turn off and store out-of-sight cell phones and other electronic devices.
-* Please **do not listen to music** (or otherwise wear ear buds) during class.
-* Please do not have side discussions while I or others are speaking to the entire class.
-*	Please do not sleep in class -- this is rude and distracting to others.
-* Please do not use disrespectful language when addressing others.
+XXX
 
 Finally, note that the [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
 
@@ -182,3 +181,5 @@ Finally, note that the [College's Academic Integrity Statement & Policy](https:/
 [^2]: General advice for how much time should be spent outside of class for each hour inside of class can be found, among many, [here](https://www.collegeparentcentral.com/2010/02/is-your-college-student-investing-enough-time-studying/){:target="_blank"}, [here](http://classroom.synonym.com/ratio-studying-class-time-college-1075.html){:target="_blank"}, [here](https://www.usu.edu/asc/studysmart/pdf/estimating_study_hours.pdf){:target="_blank"}, and [here](http://collegelife.about.com/od/academiclife/f/How-Much-Time-Should-I-Spend-Studying-In-College.htm){:target="_blank"}.
 
 [^DistractionAids]: Also see the following resources for other apps that may help you eliminate distractions from your devices ... [here](https://georgehalachev.com/2019/01/15/7-apps-that-will-help-you-beat-procrastination/){:target="_blank"}, [here](https://www.careercontessa.com/advice/best-apps-chronic-procrastinator/){:target="_blank"}, [here](https://highschoolhints.com/6-apps-that-will-stop-your-procrastinating/){:target="_blank"}, or [here](https://remotebliss.com/procrastination-apps/){:target="_blank"}.
+
+[^encouragement]: This is largely from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
