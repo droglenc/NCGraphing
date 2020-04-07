@@ -82,9 +82,7 @@ I want to create an inclusive and accessible learning environment for those of y
 As you adjust to college, you may benefit from working with a professional on your organization, motivation, and stress level. If I observe you struggling with the course early in the term then I may file an "Academic Alert" about you. If this happens, you will receive an e-mail from me that explains steps you can take to improve your performance in the course. Our Academic Success Coordinator, Gina Kirsten, will receive the alert and will likely also reach out to you to set up a time to further discuss ways to improve in the course. **Academic Alerts are not punitive**, they are simply an attempt to help you get back on track in this course as soon as possible.
 
 ### Words of Encouragement
-I *promise* you can succeed in this class.[^encouragement]
-
-Learning R can be difficult at first—it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
+I *promise* you can succeed in this class.[^encouragement] Learning R can be difficult at first—it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
 
 > It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
@@ -92,17 +90,16 @@ Even experienced programmers find themselves banging their heads against seeming
 
 <img src="../img/horst_error_tweet.png">
 
-<img src="../img/gator_error.jpg">
+<img src="../img/gator_error.jpg" width="400">
 
 
 ----
 
 ## Grading
-<img class="img-right" src="../img/grading.png">
+<img class="img-right" src="../img/grading.jpg">
 An overall grade will be computed from your performance on daily exercises (75%) and final project (25%), which are both described below.
 
 ### Exercises
-<img class="img-right" src="../img/homework.png">
 Each class period you will be required to turn in work on exercises assigned in the previous class period. Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your completion of the exercise.
 
 <div class="container-fluid">
@@ -133,7 +130,7 @@ The second part of the rubric is based on your correctness in performing the wor
 
 ### Final Project
 
-
+XXX
 
 
 #### Note About Incomplete Grades
@@ -141,28 +138,7 @@ An incomplete grade will be given ONLY in extreme circumstances that are beyond 
 
 ----
 
-## Expectations
-
-### Ownership of Learning
-<img class="img-right" src="../img/student-reflection-and-ownership_orig.png" alt="Ownership of Learning">
-This course is designed in a way that you will have to actively, rather than passively, engage in the course content. In this way, it may differ from some of your other courses. In particular, in this course you will need to:
-
-* Interact with the course material on a near daily basis (i.e., you will not be able to ignore the class for several days).
-* Multi-task material from multiple modules (i.e., you may be finishing exercises for one module while preparing for class on another module).
-* Prepare for some course content on your own prior to class. See [Preparation Checks](#preparation-checks) section above and [Work Outside of Class](#work-outside-of-class) section below.
-* Assess your own performance on daily exercises by comparing your answers to an answer key (which will also contain hints related to common mistakes).
-* Do more than what is required to be turned in for a grade (i.e., you will likely need more practice than the few exercises that are turned in for a grade; thus, more exercises are provided in most modules).
-* Ask for help from me (the professor) both during and outside of class. See [Assistance](#assistance) section above.
-* Maintain focus for an extended period of time (1.5 h for each class, 2 h for quizzes).
-
-### Work Outside of Class
-<img class="img-right" src="../img/studying.jpg" alt="Studying Hours">
-As a general rule-of-thumb[^2], you are expected to spend 2-3 hours of time outside of class for each hour in class. This course meets for 4.5 hours per week and, thus, you should dedicate between 9 and 13.5 hours of time outside of class preparing for class, completing review and class exercises, and studying for quizzes. **The work required for this course can be completed within this expected amount of time, if that time is without distraction**. If monitoring your phone/device is distracting you from getting your work done then you may consider the aid of apps (e.g., [Forest](https://www.forestapp.cc/)) designed to reduce distractions from devices.[^DistractionAids]  
-
-If you feel that you are spending too much time on some exercises or preparations because you are "stuck," then start your work earlier so that you can stop (and do other things) and make plans to see [me](#instructor--derek-ogle) or the [tutors](#tutors) for help.
-
-
-### Classroom Conduct and Academic Integrity
+## Classroom Conduct and Academic Integrity
 <img class="img-right" src="../img/cell-cheat.jpg" alt="Conduct and Integrity">
 XXX
 
