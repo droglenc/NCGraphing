@@ -12,3 +12,6 @@ title: Resources
 1. Use RStudio on your personal computer
   * Install R -- [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html){:target="_blank"} / [Mac OS](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html){:target="_blank"} / [ChromeBook](FAQ/FAQs/ChromeBook){:target="_blank"}
   * Install RStudio -- [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html){:target="_blank"} / [Mac OS](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html){:target="_blank"} / [ChromeBook](FAQ/FAQs/ChromeBook){:target="_blank"}
+
+## General ggplot Resources
+* [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html): Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
