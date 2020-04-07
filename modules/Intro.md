@@ -38,12 +38,12 @@ XXX
 
 <ul>
   <li><a href="Intro/Demo_IR_Moose_Wolves.html">Demonstration</a></li>
-  <li><a href="Intro/CE_Temperature.html">Exercise - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Temperature.R">R KEY</a></button></li>
+  <li><a href="Intro/CE_Temperature.html">Exercise - Global Temperatures</a> <button type="button" class="btn btn-info btn-sm btn-space"><a href="Intro/CE_Temperature.R">R KEY</a></button></li>
   <li>Exercise 2 (pick one)</li>
   <ul>
-    <li><a href="Intro/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Loons.R">R KEY</a></button></li>
-    <li><a href="Intro/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Walleye.R">R KEY</a></button></li>
-    <li><a href="Intro/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Quarterbacks.R">R KEY</a></button></li>
+    <li><a href="Intro/CE_Loons.html">Loons</a> <button type="button" class="btn btn-info btn-sm btn-space"><a href="Intro/CE_Loons.R">R KEY</a></button></li>
+    <li><a href="Intro/CE_Walleye">Walleye</a> <button type="button" class="btn btn-info btn-sm btn-space"><a href="Intro/CE_Walleye.R">R KEY</a></button></li>
+    <li><a href="Intro/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-info btn-sm btn-space"><a href="Intro/CE_Quarterbacks.R">R KEY</a></button></li>
   </ul>
 </ul>
 
