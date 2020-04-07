@@ -88,9 +88,9 @@ I *promise* you can succeed in this class.[^encouragement] Learning R can be dif
 
 Even experienced programmers find themselves banging their heads against seemingly intractable errors. If you find yourself taking way too long hitting your head against a wall and not understanding, take a break, talk to classmates, e-mail me, etc.
 
-<img src="../img/horst_error_tweet.png">
+<img src="../img/horst_error_tweet.png" width="400">
 
-<img src="../img/gator_error.jpg" width="400">
+<img src="../img/gator_error.jpg" width="500">
 
 
 ----
