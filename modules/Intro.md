@@ -38,7 +38,7 @@ XXX
 
 <ul>
   <li><a href="Intro/Lecture_MooseWolves.html">Lecture</a></li> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_MooseWolves.R">Script</a></button></li>
-  <li><a href="Intro/Demo_Sales.html">Demonstration</a></li>
+  <li><a href="Intro/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li><a href="Intro/CE_Temperature.html">Exercise - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Temperature.R">Key</a></button></li>
   <li>Exercise 2 (pick one)</li>
   <ul>
