@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ## Background
 <img src="zimgs/qb.jpg" alt="Quarterback" class="img-right">
 
-[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the `tidyverse` pacakge, which will load `ggplot2` along with a few other packages you will need access these data.
+[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the `tidyverse` pacakge, which will load `ggplot2` along with a few other packages you will need to access these data.
 
 ```{r echo=TRUE, results="hide"}
 library(tidyverse)
@@ -42,6 +42,13 @@ str(qbs)
 ```
 
 Here we will only use the following variables:
+
+* `Conf`: Conference team played in.
+* `Int`: Total number of interceptions.
+* `Y_A`: Number of yards per passing attempt.
+* `Att`: Number of attempted passes.
+* `Ratt`: Number of attempted rushes (i.e., runs).
+* `Pct`: Percentage of attempted passes that were completed.
 
 &nbsp;
 

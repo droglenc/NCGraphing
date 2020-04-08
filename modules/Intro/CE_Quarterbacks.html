@@ -10,7 +10,7 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
-<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> pacakge, which will load <code>ggplot2</code> along with a few other packages you will need access these data.</p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> pacakge, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>Perform the following steps to load information <a href="Data_quarterbacks_2019.csv">in this file</a> for all quarterbacks from the 2019-20 seasons that were in the so-called “power 5 conferences.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <pre class="r"><code>qbs &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/Intro/Data_quarterbacks_2019.csv&quot;,
@@ -19,6 +19,14 @@ css: "/css/modules.css"
   mutate(Conf=factor(Conf))
 str(qbs)</code></pre>
 <p>Here we will only use the following variables:</p>
+<ul>
+<li><code>Conf</code>: Conference team played in.</li>
+<li><code>Int</code>: Total number of interceptions.</li>
+<li><code>Y_A</code>: Number of yards per passing attempt.</li>
+<li><code>Att</code>: Number of attempted passes.</li>
+<li><code>Ratt</code>: Number of attempted rushes (i.e., runs).</li>
+<li><code>Pct</code>: Percentage of attempted passes that were completed.</li>
+</ul>
 <p> </p>
 </div>
 <div id="passing-efficiency-vs.-interceptions" class="section level2">
