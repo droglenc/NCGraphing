@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to ggplot2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Derek Ogle, April 2020" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to ggplot2
+### Derek Ogle, April 2020
+
+---
+
+
+
+
+
+
+
+
+# What is ggplot2?
+
+- A package for making graphics in R.
+  - R is now one of the most used programs for data analysis.
+  - `ggplots` is one of most used packages in R for data visualization.
+
+--
+- Originally based on Leland Wilkinson's *The Grammar of Graphics*.
+
+--
+- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
+
+--
+- Graphics can be informative, impactful, and elegant.
+
+---
+
+# Examples in the Wild 1
+
+.center[
+&lt;img src="zimgs/Ex_ggplot2_1.JPG" width="600px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf"&gt;Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 2
+
+.center[
+&lt;img src="zimgs/Ex_ggplot2_2.JPG" width="700px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519"&gt;Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 3
+
+.center[
+&lt;img src="zimgs/Ex_ggplot2_3.JPG" width="500px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/"&gt;538.com&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Examples in the Wild 4
+
+.center[
+&lt;img src="zimgs/Ex_ggplot2_4.JPG" width="800px" /&gt;
+&lt;font size="1"&gt;From &lt;a href="https://www.ft.com/coronavirus-latest"&gt;Financial Times&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Background
+
+- Estimated counts of Gray Wolf (*Canis lupus*) and Moose (*Alces alces*) from Isle Royale.
+
+.center[
+&lt;img src="zimgs/wolves_moose.jpg" width="500px" /&gt;
+&lt;font size="1"&gt;Credit: &lt;a href="https://www.mtu.edu/news/stories/2012/march/wolf-population-isle-royale-drops-lowest-has-ever-been.html"&gt;Michigan Technological University&lt;/a&gt;&lt;/font&gt;
+]
+
+---
+
+# Background
+
+- Downloaded 'Data_wolves_moose_Isle_Royale_June2019.xlsx' Excel file from [Wolves &amp; Moose of Isle Royale](https://isleroyalewolf.org/data/data/home.html).
+
+--
+- Data in '1. population level data' sheet of Excel data file loaded into `irmw` data.frame.
+  - Skipped first line of sheet because it had unneeded headers.
+
+
+```r
+fn &lt;- "Data_wolves_moose_Isle_Royale_June2019.xlsx"
+irmw &lt;- readxl::read_excel(fn,sheet="1. population level data",skip=1)
+```
+
+
+---
+
+# Background
+
+- Selected only five variables.
+- Renamed two variables with space in names (and long).
+- Changed categorical data from numbers to words and converted to a factor.
+
+
+```r
+irmw %&lt;&gt;%
+  select(year,wolves,moose,`Jan-Feb (temp, F)`,
+         `ice bridges (0=none, 1 = present)`) %&gt;%
+  rename(winter_temp=`Jan-Feb (temp, F)`,
+         ice_bridges=`ice bridges (0=none, 1 = present)`) %&gt;%
+  mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
+         ice_bridges=factor(ice_bridges))
+head(irmw)
+```
+
+```
+# A tibble: 6 x 5
+   year wolves moose winter_temp ice_bridges
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;      
+1  1959     20  538.        1.4  no         
+2  1960     22  564.        8.45 no         
+3  1961     22  572.        9.75 yes        
+4  1962     23  579.        2.15 yes        
+5  1963     20  596.       -0.35 yes        
+6  1964     26  620.       12.4  no         
+```
+
+---
+
+# Background
+
+
+```r
+head(irmw)
+```
+
+```
+# A tibble: 6 x 5
+   year wolves moose winter_temp ice_bridges
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;      
+1  1959     20  538.        1.4  no         
+2  1960     22  564.        8.45 no         
+3  1961     22  572.        9.75 yes        
+4  1962     23  579.        2.15 yes        
+5  1963     20  596.       -0.35 yes        
+6  1964     26  620.       12.4  no         
+```
+
+- Variables are:
+  - **year**: Calendar year of observation.
+  - **wolves**: Estimated number of wolves present that year.
+  - **moose**: Estimated number of moose present that year.
+  - **winter_temp**: Mean January-February temperature (&lt;sup&gt;o&lt;/sup&gt;F).
+  - **ice_bridges**: Whether or not an ice bridge formed to the mainland.
+
+---
+
+# ggplot Initial Requirements
+
+
+```r
+p &lt;- ggplot(data=irmw,
+            mapping=aes(x=year,y=wolves))
+```
+
+- ggplots begin with `ggplot()`.
+
+--
+  - *Usually* has `data=` that declares a *global* data.frame for use.
+
+--
+  - *Usually* has `mapping=` that declares how 'aesthetics' are mapped to 'variables'.
+
+--
+    - Aesthetics are wrapped in `aes()` and *usually* require variables mapped to `x` and `y`.
+
+
+--
+- Result is assigned to an object (here `p`).
+
+--
+  - Items ('layers') can be added to this base plot.
+
+--
+  - Plot will not be shown until object is run (i.e., type `p`).
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves))  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/baseplot1_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Geometric Objects
+
+- Called 'geoms' for short.
+
+--
+- Declare the geometric object or shape that should be plotted.
+
+--
+- A 'layer' that is 'added' to the base plot with `+`.
+
+--
+- Functions are like `geom_XXXX()`.
+
+--
+- Some common 'geoms' are:
+  - `geom_point()`: Shows data as points (think *scatterplot*).
+  - `geom_line()`: Shows data as a connected line (think *line plot*).
+  - `geom_boxplot()`: shows data as a boxplot.
+  - `geom_bar()`: Shows data as a vertical bar (think *bar chart*).
+  - `geom_histogram()`: Show data as a histogram.
+  - `geom_rug()`: Shows values as 'ticks' along the axis.
+
+
+
+
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scat_yr_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_point()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scat_yr_auto_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/line_yr_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/line_yr_auto_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/bar_yr_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_bar(stat="identity")
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/bar_yr_auto_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_point()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point() +  
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr_auto_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point() +  
+  geom_line() +  
+* geom_rug()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr_auto_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Aesthetics
+
+- Visual properties of geoms on the graph.
+
+--
+- Commonly used aesthetics are:
+  - `x=`: positioning along x-axis.
+  - `y=`: positioning along y-axis.
+  - `color=`: color of objects; for two-dimensional objects (e.g., bars, some points), the color of the object’s outline (compare to `fill=` below). [[see this](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)]
+  - `fill=`: fill color of objects
+  - `linetype=`: how lines should be drawn (`"solid"`, `"dashed"`, `"dotted"`, etc.)
+  - `shape=`: shape of markers in scatter plots. [[see this](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)].
+  - `size=`: how large objects appear.
+  - `alpha=`: transparency of objects (value between 0 [fully transparent] and 1 [fully opaque]).
+
+--
+- Which aesthetics are required and allowed vary by geom.
+
+---
+
+# Aesthetics
+
+- Aesthetics can be **set** for all data within each 'geom'.
+
+
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_point(color="darkred",size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point(color="darkred",size=3) +  
+* geom_line(size=1.5,linetype="dashed")
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2b_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+* geom_line(size=1.5,linetype="dashed")
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2b_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line(size=1.5,linetype="dashed") +  
+* geom_point(color="darkred",size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2b_auto_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Aesthetics
+
+- Aesthetics can be **set** for all data within each 'geom'.
+- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves,
+*                       color="darkred"))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves,  
+                        color="darkred")) +  
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves,  
+                        color="darkred")) +  
+  geom_line() +  
+* geom_point(size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Aesthetics
+
+- Aesthetics can be **set** for all data within each 'geom'.
+- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
+- Aesthetics can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves,
+*                       color=ice_bridges))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3b_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves,  
+                        color=ice_bridges)) +  
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3b_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves,  
+                        color=ice_bridges)) +  
+  geom_line() +  
+* geom_point(size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3b_auto_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Aesthetics
+
+- Aesthetics can be **set** for all data within each 'geom'.
+- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
+- Aesthetics can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
+- Aesthetics can be **mapped** to **a variable** for a specific 'geom' with `aes()` in the `geom_XXXX()`.
+
+
+
+
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves)) +
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3c_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+* geom_point(aes(color=ice_bridges),size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3c_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves)) +
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3d_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+* geom_point(aes(color=winter_temp),size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3d_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves)) +
+* geom_line()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3e_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+* geom_point(aes(color=winter_temp,
+*                shape=ice_bridges),
+*            size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3e_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Scales
+
+- Scales define how values of the aesthetic are mapped to values of the data; e.g.,
+  - Defines colors used for each group.
+  - Defines shapes of points used for each group.
+  - Defines characteristics of axes (e.g., labels, breaks, limits).
+
+--
+- All scales have sensible defaults; but you may want to change.
+
+--
+- Scale functions are of form `scale_`*`aesthetic`*`_`*`suffix`*.
+  - *`aesthetic`* is an aesthetic name (e.g., `color`, `shape`, `x`).
+  - *`suffix`* is the functionality of the scale (e.g., `manual`, `discrete`).
+
+--
+- Basic functionality introduced here, more details in subsequent modules.
+
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves)) +
+* geom_line() +
+* geom_point(aes(color=ice_bridges),size=3)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr4a_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+  geom_point(aes(color=ice_bridges),size=3) +  
+* scale_color_manual(values=c("blue","red"),
+*                    name="Ice Bridge?")
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr4a_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+  geom_point(aes(color=ice_bridges),size=3) +  
+  scale_color_manual(values=c("blue","red"),  
+                     name="Ice Bridge?") +  
+* scale_x_continuous(name="Year",
+*                    breaks=seq(1960,2020,5),
+*                    minor_breaks=seq(1959,2019,1))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr4a_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+  geom_point(aes(color=ice_bridges),size=3) +  
+  scale_color_manual(values=c("blue","red"),  
+                     name="Ice Bridge?") +  
+  scale_x_continuous(name="Year",  
+                     breaks=seq(1960,2020,5),  
+                     minor_breaks=seq(1959,2019,1)) +  
+* scale_y_continuous(name="Estimated Number of Wolves",
+*                    breaks=seq(0,50,5),
+*                    minor_breaks=NULL)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr4a_user_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Themes
+
+- A theme controls elements of the graph note related to data; e.g.,
+  - Background color.
+  - Size of font.
+  - Gridlines.
+
+--
+- Each of these elements can be individually modified.
+
+--
+- Entire themes can be created and saved for continual use.
+
+--
+- We will revisit details of themes in a later module.
+
+--
+- However, common themes exist; e.g.,
+  - `theme_bw()`
+  - `theme_gray()`
+  - `theme_minimal()`
+  - `theme_classic()`
+
+
+
+
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw,
+*           mapping=aes(x=year,y=wolves)) +
+* geom_line() +
+* geom_point(aes(color=ice_bridges),size=3) +
+* scale_color_manual(values=c("blue","red"),
+*                    name="Ice Bridge?") +
+* scale_x_continuous(name="Year",
+*                    breaks=seq(1960,2020,5)) +
+* scale_y_continuous(name="Estimated Number of Wolves",
+*                    breaks=seq(0,50,5))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5a_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_line() +  
+  geom_point(aes(color=ice_bridges),size=3) +  
+  scale_color_manual(values=c("blue","red"),  
+                     name="Ice Bridge?") +  
+  scale_x_continuous(name="Year",  
+                     breaks=seq(1960,2020,5)) +  
+  scale_y_continuous(name="Estimated Number of Wolves",  
+                     breaks=seq(0,50,5)) +  
+* theme_classic()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5a_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+* p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5b_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ p +  
+* theme_minimal()
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5b_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p 
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5c_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+* theme_bw()
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5c_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 60%}
+.remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

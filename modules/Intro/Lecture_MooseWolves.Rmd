@@ -12,7 +12,7 @@ output:
       countIncrementalSlides: false
 ---
 
-```{r purler, eval=FALSE}
+```{r purler, eval=FALSE, echo=FALSE}
 ## Use Knit button to make actual slides.
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_MooseWolves"
