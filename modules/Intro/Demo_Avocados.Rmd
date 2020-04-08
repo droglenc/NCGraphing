@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Demo - Sales
+title: Demo - Avocados
 author: Derek H. Ogle
 css: "/css/modules.css"
 output:
@@ -44,7 +44,7 @@ str(avoc)
 ## Example 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r avoc1, fig.width=6}
+```{r avoc1, fig.width=6.5}
 avoc1 <- ggplot(data=avoc,mapping=aes(x=AveragePrice,y=Total.Bags,
                                       color=year,shape=type)) +
   geom_point(size=3,alpha=0.75) +
