@@ -44,7 +44,7 @@ str(avoc)
 ## Example 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r avoc1}
+```{r avoc1, fig.width=6}
 avoc1 <- ggplot(data=avoc,mapping=aes(x=AveragePrice,y=Total.Bags,
                                       color=year,shape=type)) +
   geom_point(size=3,alpha=0.5) +
