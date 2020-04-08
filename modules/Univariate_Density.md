@@ -35,6 +35,16 @@ XXX
 
 * [Demonstration](Univariate_Density/Demo_FL_BlackBears.html)
 
+<ul>
+  <li><a href="Intro/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_BlackBears.R">Script</a></button></li>
+  <li><a href="Intro/Demo_XXX.html">Demonstration - XXX</a></li>
+  <li><a href="Intro/CE_XXX.html">Exercise - XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_XXX.R">Key</a></button></li>
+  <li>Exercise 2 (pick one)</li>
+  <ul>
+    <li><a href="Intro/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_XXX.R">Key</a></button></li>
+  </ul>
+</ul>
+
 ----
 
 ## Resources

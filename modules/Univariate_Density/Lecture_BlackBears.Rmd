@@ -12,11 +12,17 @@ output:
       countIncrementalSlides: false
 ---
 
-
+```{r purler, eval=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_BlackBears"
+FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+                       "include_graphics","options","splitPerc","leftAssign"))
+```
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
+knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,message=FALSE,warning=FALSE,comment="",cache=FALSE)
 library(flipbookr)
 library(tidyverse)
 library(patchwork)
@@ -24,7 +30,6 @@ options(width=120,show.signif.stars=FALSE)
 splitPerc <- 50
 leftAssign <- TRUE
 ```
-
 
 # Background
 
@@ -34,7 +39,7 @@ leftAssign <- TRUE
 
 .center[
 ```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("blackbear.jpg")
+knitr::include_graphics("zimgs/blackbear.jpg")
 ```
 <font size="1">Credit: <a href="https://news.illinois.edu/view/6367/803074">University of Illinois</a></font>
 ]

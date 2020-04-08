@@ -13,6 +13,7 @@ output:
 ---
 
 ```{r purler, eval=FALSE}
+## Use Knit button to make actual slides.
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_MooseWolves"
 FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
