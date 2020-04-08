@@ -44,13 +44,13 @@ Student will use the “grammar of graphics” to create elegant and engaging gr
 <img class="img-right" src="../img/outcomes.jpg" alt="Outcomes">
 In this course, you will have the opportunity to:
 
-1. Understand the foundational principles of the "grammar of graphics";
+1. Describe the foundational principles of the "grammar of graphics";
 1. Use the grammar of graphics to construct traditional graphs such as histograms, barplots, scatterplots, line plots, and time series plots;
 1. Use "aesthetics", "scales", "annotations", and "facets" to modify traditional graphs to display multiple levels of information;
-1. Understand how colors and typography affect the audience's appreciation of graphs;
+1. Explain how colors and typography affect the audience's appreciation of graphs;
 1. Construct composites of multiple graphs to illustrate a complete narrative with data;
 1. Become proficient with using the ggplot2 package in the R environment to construct elegant and informative graphs;
-1. Understand the importance of "tidy data" with respect to the "grammar of graphics"; and
+1. Explain the importance of "tidy data" with respect to the "grammar of graphics"; and
 1. Use some R functions to create "tidy data" from "untidy data."
 
 While this course does not fulfill any requirements in the [General Education Program](https://my.northland.edu/faculty/fac-academic-programs/) it does support the "[c]ommunicate mathematical information ... visually ..." outcome.
