@@ -28,12 +28,12 @@ XXX
 
 ## Preparation for Class
 
+* Recall or develop a *basic* understanding of a histogram ([one resource](https://www.youtube.com/watch?v=YLPDPglvePY)).
+* Recall or develop a *basic* understanding of a boxplot ([one possible resource](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51)) [*only 'What is a Boxplot' example*].
 
 ----
 
 ## Demonstration and Exercises
-
-* [Demonstration](Univariate_Density/Demo_FL_BlackBears.html)
 
 <ul>
   <li><a href="Intro/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_BlackBears.R">Script</a></button></li>
