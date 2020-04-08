@@ -1,6 +1,7 @@
 library(tidyverse)
 
-qbs <- read.csv("Data_quarterbacks_2019.csv",stringsAsFactors=FALSE) %>%
+qbs <- read.csv("https://derekogle.com/NCGraphing/modules/Intro/Data_quarterbacks_2019.csv",
+                stringsAsFactors=FALSE) %>%
   filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
   mutate(Conf=factor(Conf))
 str(qbs)
@@ -45,4 +46,4 @@ act5 <- act2 +
 act5
 
 
-# Script created at 2020-04-07 18:22:34
+# Script created at 2020-04-08 07:33:04
