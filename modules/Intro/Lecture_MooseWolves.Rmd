@@ -12,9 +12,17 @@ output:
       countIncrementalSlides: false
 ---
 
+```{r purler, eval=FALSE}
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_MooseWolves"
+FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+                       "include_graphics","options","splitPerc","leftAssign"))
+```
+
+
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
+knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,message=FALSE,warning=FALSE,comment="",cache=FALSE)
 library(flipbookr)
 library(tidyverse)
 options(width=120,show.signif.stars=FALSE)
