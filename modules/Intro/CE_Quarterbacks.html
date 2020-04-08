@@ -10,7 +10,7 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
-<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> pacakge, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>Perform the following steps to load information <a href="Data_quarterbacks_2019.csv">in this file</a> for all quarterbacks from the 2019-20 seasons that were in the so-called “power 5 conferences.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <pre class="r"><code>qbs &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/Intro/Data_quarterbacks_2019.csv&quot;,
@@ -61,13 +61,13 @@ str(qbs)</code></pre>
 </div>
 <div id="passing-attempts-vs-rushing-attempts-5" class="section level2">
 <h2>Passing Attempts vs Rushing Attempts 5</h2>
-<p>Modify your plot from “Passing Attempts vs Rushing Attempts 2” to use five <em>divergent</em> colors for the different conferences that are <em>colorlind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
+<p>Modify your plot from “Passing Attempts vs Rushing Attempts 2” to use five <em>divergent</em> colors for the different conferences that are <em>colorblind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
 <p><img src="CE_Quarterbacks_files/figure-html/QBS_act5-1.png" width="576" /></p>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>These data were obtained from <a href="https://www.sports-reference.com/" class="uri">https://www.sports-reference.com/</a> with the following steps: 1) Select “CFB” in the list of sports in the gray box near the top of the page; 2) Select “Years” in the list of items in teh gray box near the top of the page; 3) Select “2019” in the list of years; 4) Hover over “Stats” in the gray box near the middle of the page and select “Passing” from the items that will appear; 5) Hover over the “Share &amp; more” item just above the top-right side of the table of statistics and select “Get Table as a CSV”; and 6) copy CSV result to a text file, delete the first line, and slighly modify the variable names.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>These data were obtained from <a href="https://www.sports-reference.com/" class="uri">https://www.sports-reference.com/</a> with the following steps: 1) Select “CFB” in the list of sports in the gray box near the top of the page; 2) Select “Years” in the list of items in the gray box near the top of the page; 3) Select “2019” in the list of years; 4) Hover over “Stats” in the gray box near the middle of the page and select “Passing” from the items that will appear; 5) Hover over the “Share &amp; more” item just above the top-right side of the table of statistics and select “Get Table as a CSV”; and 6) copy CSV result to a text file, delete the first line, and slightly modify the variable names.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

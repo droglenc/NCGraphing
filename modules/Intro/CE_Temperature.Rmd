@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 
 ## Background
 <img src="zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right">
-The National Oceanic and Atmpospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their defaut settings show the *global* temperature anomaly (difference from a long-term average) for *February*. These data can be downloaded from their website with the following code.[^loaddata]
+The National Oceanic and Atmospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their default settings show the *global* temperature anomaly (difference from a long-term average) for *February*. These data can be downloaded from their website with the following code.[^loaddata]
 
 ```{r echo=TRUE, results='hide'}
 gt <- read.csv("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv",skip=4)

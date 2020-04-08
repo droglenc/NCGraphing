@@ -1,0 +1,111 @@
+---
+layout: page
+title: Exercise - Walleye
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><img src="zimgs/Walleye.jpg" alt="Walleye" class="img-right"> Lake Erie is world-renowned for its Walleye [<em>Sander vitreus</em>] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in <a href="https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv">this file</a> from the fishR webpage. <a href="http://derekogle.com/fishR/data/data-html/WalleyeErie2.html">Metadata for this file is here</a>. Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>For this exercise, we will reduce the data set to only those fish captured in 2003 and change the location codes from numbers to words.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre class="r"><code>wae &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv&quot;) %&gt;%
+  filter(year==2003) %&gt;%
+  mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
+                             to=c(&quot;Toledo-Huron&quot;,&quot;Huron-Fairport&quot;,&quot;Fairport-Conneaut&quot;)),
+         loc=factor(loc))
+str(wae)</code></pre>
+<p> </p>
+</div>
+<div id="total-length-vs-age-1" class="section level2">
+<h2>Total Length vs Age 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa1-1.png" width="480" /></p>
+<p> </p>
+</div>
+<div id="weight-vs-total-length" class="section level2">
+<h2>Weight vs Total Length</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: The graphic at <a href="https://ggplot2.tidyverse.org/reference/scale_shape.html#examples">the bottom of this page</a> might be useful.</em>]</p>
+<p><img src="CE_Walleye_files/figure-html/wae_lw-1.png" width="480" /></p>
+<p> </p>
+</div>
+<div id="total-length-vs-age-2" class="section level2">
+<h2>Total Length vs Age 2</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa2-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="total-length-vs-age-3" class="section level2">
+<h2>Total Length vs Age 3</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa3-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="total-length-vs-age-4" class="section level2">
+<h2>Total Length vs Age 4</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Walleye_files/figure-html/laa4-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="total-length-vs-age-5" class="section level2">
+<h2>Total Length vs Age 5</h2>
+<p>Modify your plot from “Total Length vs Age 2” to use three <em>divergent</em> colors for the different locations that are <em>colorblind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
+<p><img src="CE_Walleye_files/figure-html/QBS_act5-1.png" width="576" /></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
