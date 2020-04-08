@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 
 [sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the `tidyverse` pacakge, which will load `ggplot2` along with a few other packages you will need access these data.
 
-```{r results="hide"}
+```{r echo=TRUE, results="hide"}
 library(tidyverse)
 ```
 
