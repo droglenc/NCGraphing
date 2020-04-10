@@ -61,7 +61,7 @@ avoc1
 ## Example 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r avoc2, fig.width=6.5}
+```{r avoc2}
 avoc2 <- ggplot(data=avoc,mapping=aes(x=year,y=AveragePrice,fill=year)) +
   geom_violin(col="black",trim=FALSE) +
   scale_y_continuous(name="Average Price of An Avocados ($)",
