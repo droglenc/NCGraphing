@@ -1,7 +1,5 @@
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 
-library(knitr)
-
 loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 str(loon)
 
@@ -82,4 +80,4 @@ wt7 <- ggplot(data=loon,mapping=aes(y=sex,x=weight,color=sex,fill=sex)) +
 wt7
 
 
-# Script created at 2020-04-10 13:17:50
+# Script created at 2020-04-10 13:37:41

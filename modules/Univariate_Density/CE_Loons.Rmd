@@ -18,8 +18,7 @@ FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd"
            moreItems=c("source","setwd","fnm","opts_chunk"))
 ```
 ```{r echo=FALSE}
-library(knitr)
-opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5)
+knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="70%")
 ```
 
 ----
@@ -84,7 +83,7 @@ wt2
 ## Weight 3
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Loons_WT3}
+```{r Loons_WT3,fig.width=6.5}
 wt3 <- ggplot(data=loon,mapping=aes(x=weight,color=sex,fill=sex)) +
   geom_density(alpha=0.5) +
   scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
@@ -172,6 +171,7 @@ wt7
 This plot can also[^coord_flip] be produced from your "Loon Weight 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
 
 
+### Footnotes
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
 
 [^coord_flip]: Assuming that you did not do it this easier way the first time.
