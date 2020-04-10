@@ -40,7 +40,7 @@ XXX
   <li><a href="Univariate_Density/Demo_XXX.html">Demonstration - XXX</a></li>
   <li>Exercises (pick two)</li>
   <ul>
-    <li><a href="Univariate_Density/CE_Loon.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_Loon.R">Key</a></button></li>
+    <li><a href="Univariate_Density/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_Loons.R">Key</a></button></li>
     <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
     <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
     <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
