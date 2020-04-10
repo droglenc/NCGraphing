@@ -83,7 +83,7 @@ wt2
 ## Weight 3
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Loons_WT3,fig.width=6.5,out.width="60%"}
+```{r Loons_WT3,fig.width=6.5,out.width="75%"}
 wt3 <- ggplot(data=loon,mapping=aes(x=weight,color=sex,fill=sex)) +
   geom_density(alpha=0.5) +
   scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
