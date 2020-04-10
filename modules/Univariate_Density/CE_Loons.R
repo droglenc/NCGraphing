@@ -1,9 +1,5 @@
-# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
-
-loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
-str(loon)
-
 library(ggplot2)
+loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 
 wt1 <- ggplot(data=loon,mapping=aes(x=weight)) +
   geom_histogram(color="gray30",fill="gray70",
@@ -80,4 +76,4 @@ wt7 <- ggplot(data=loon,mapping=aes(y=sex,x=weight,color=sex,fill=sex)) +
 wt7
 
 
-# Script created at 2020-04-10 13:42:36
+# Script created at 2020-04-10 14:58:12

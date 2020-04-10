@@ -9,11 +9,8 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right"> Dr. Jim Paruk studied the morphology of Common Loons (<em>Gavia immer</em>), primarily their bills, from a wide variety of locations in North America. These data are in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv">Loon1.csv</a>, with information about these data in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt">this metadata file</a>. These data are loaded into R and their structure examined below.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<pre class="r"><code>loon &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv&quot;)
-str(loon)</code></pre>
-<p>Also, don’t forget to load the <code>ggplot2</code> package.</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
+<p><img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right"> This is the same data set <a href="../intro/CE_Loons.html">introduced here</a> (which include code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., <code>ggplot2</code> or <code>tidyverse</code>) loading portion of your script.</p>
+<p> </p>
 <p> </p>
 </div>
 <div id="weight-1" class="section level2">
@@ -58,7 +55,7 @@ str(loon)</code></pre>
 <h2>Weight 7</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: Copy your code from above and then modify.</em>]</p>
 <p><img src="CE_Loons_files/figure-html/Loons_WT7-1.png" width="60%" /></p>
-<p>This plot can also<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> be produced from your “Loon Weight 6” plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.</p>
+<p>This plot can also<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> be produced from your “Loon Weight 6” plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.</p>
 <div id="footnotes" class="section level3">
 <h3>Footnotes</h3>
 </div>
@@ -66,8 +63,7 @@ str(loon)</code></pre>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Assuming that you did not do it this easier way the first time.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Assuming that you did not do it this easier way the first time.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

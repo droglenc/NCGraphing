@@ -14,7 +14,7 @@ output:
 fnm <- "CE_Walleye"
 modHTML(file.path(here::here(),"modules/Intro",fnm))
 FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk"))
+           moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)

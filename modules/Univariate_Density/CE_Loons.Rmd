@@ -15,31 +15,24 @@ source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Loons"
 modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
 FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk"))
+           moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
+library(ggplot2)
+loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 ```
 
 ----
 
 ## Background
 <img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). These data are loaded into R and their structure examined below.[^loaddata]
-
-```{r echo=TRUE, results='hide'}
-loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
-str(loon)
-```
-
-Also, don't forget to load the `ggplot2` package.
-
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(ggplot2)
-```
-
+This is the same data set [introduced here](../intro/CE_Loons.html) (which include code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
 
 &nbsp;
+
+&nbsp;
+
 
 ## Weight 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
