@@ -271,6 +271,8 @@ class: inverse, center, middle
   - i.e., the relative distribution of *X*.
   - A smoothed representation of a histogram.
 - Constructed with `geom_density()`.
+  - Use `adjust=` to modify "smoothing effect."
+    - Smaller values = less smoothing.
 ]
 
 .pull-right[
@@ -327,6 +329,33 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 
 class: inverse, center, middle
 
+# Density Plot
+
+### Adjusting "Smoothness"
+
+---
+
+```{r density2, include=FALSE}
+p <- ggplot(data=flbb, mapping=aes(x=weight)) +
+  geom_density(color="gray30",fill="gray30",alpha=0.25,
+               adjust=0.25#BREAK2
+  ) +
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),
+                     expand=expansion(mult=c(0,0)),
+                     limits=c(0,250)) +
+  scale_y_continuous(name="Relative Density of Bears",
+                     expand=expansion(mult=c(0,0.05))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank(),
+        panel.grid.minor.x=element_blank())
+```
+
+`r chunk_reveal("density2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
 # Density Plot by Groups
 
 ---
@@ -374,13 +403,15 @@ class: inverse, center, middle
 
 .pull-right[
 ```{r boxplot_demo, echo=FALSE, fig.width=5.4, fig.height=8, out.width="100%"}
-b <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,color=sex,fill=sex)) +
+b <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   geom_boxplot(alpha=0.25) +
-  scale_x_continuous(name="Weight (kg)",
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   scale_color_manual(values=c("red3","blue3")) +
   scale_fill_manual(values=c("red3","blue3")) +
+  coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -397,16 +428,13 @@ class: inverse, center, middle
 ---
 
 ```{r boxplot1, include=FALSE}
-p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
-                                   color=sex,fill=sex)) +
-  geom_boxplot(alpha=0.25) +
-  scale_x_continuous(name="Weight (kg)",
+p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
+  geom_boxplot(fill="gray70") +
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
-  theme_bw() +
-  theme(legend.position="none")
+  theme_bw()
 ```
 
 `r chunk_reveal("boxplot1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
@@ -415,22 +443,27 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
 
 class: inverse, center, middle
 
-# Boxplot in Horizontal Orientation
+# Boxplot with Colors by Group
 
 ---
 
 ```{r boxplot2, include=FALSE}
-p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
-  geom_boxplot(fill="gray30",alpha=0.25) +
-  scale_x_continuous(name="Weight (kg)",
+p <- ggplot(data=flbb, mapping=aes(
+    x=sex,y=weight,
+    color=sex,fill=sex #BREAK2
+  )) +
+  geom_boxplot(alpha=0.25) +
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
+  scale_color_manual(values=c("red3","blue3")) +
+  scale_fill_manual(values=c("red3","blue3")) + #BREAK3
   theme_bw() +
-  theme(legend.position="none") +
-  coord_flip()
+  theme(legend.position="none") #BREAK4
 ```
 
-`r chunk_reveal("boxplot2",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("boxplot2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 
 ---
@@ -452,13 +485,15 @@ class: inverse, center, middle
 
 .pull-right[
 ```{r violin_demo, echo=FALSE, fig.width=5.4, fig.height=8, out.width="100%"}
-v <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,color=sex,fill=sex)) +
+v <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   geom_violin(alpha=0.25,trim=FALSE) +
-  scale_x_continuous(name="Weight (kg)",
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   scale_color_manual(values=c("red3","blue3")) +
   scale_fill_manual(values=c("red3","blue3")) +
+  coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -470,8 +505,8 @@ d2 <- ggplot(data=flbb, mapping=aes(x=weight,color=sex,fill=sex)) +
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) + #BREAK4
-  scale_fill_manual(values=c("red3","blue3")) + #BREAK5
+  scale_color_manual(values=c("red3","blue3")) +
+  scale_fill_manual(values=c("red3","blue3")) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -482,48 +517,40 @@ v / d2 & theme(legend.position="none")
 
 ---
 
-class: inverse, center, middle
-
-# Violin Plot in Horizontal Orientation
-
----
-
-```{r violin2, include=FALSE}
-p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
-  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) + #BREAK
-  scale_x_continuous(name="Weight (kg)",
+```{r violin1, include=FALSE}
+p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
+  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  theme_bw() +
-  theme(legend.position="none") + #BREAK
-  coord_flip()
+  theme_bw()
 ```
 
-`r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("violin1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
 class: inverse, center, middle
 
-# Violin Plot in Horizontal Orientation
+# Violin Plot
 
 ### With Individual Points
 
 ---
 
-```{r violin3, include=FALSE}
-p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
+```{r violin2, include=FALSE}
+p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
   geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
-  scale_x_continuous(name="Weight (kg)",
+  scale_x_discrete(name="Sex") +
+  scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  theme_bw() +
-  theme(legend.position="none") +
-  coord_flip() + #BREAK
-  geom_jitter(width=0,height=0.05)
+  theme_bw() + #BREAK
+  geom_jitter(width=0.05,height=0)
 ```
 
-`r chunk_reveal("violin3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 

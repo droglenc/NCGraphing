@@ -11,9 +11,10 @@ output:
 
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Loons"
-modHTML(file.path(here::here(),"modules/Intro",fnm))
-FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
+modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
+FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk"))
 ```
 ```{r echo=FALSE}
@@ -23,7 +24,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ----
 
 ## Background
-<img src="zimgs/loon.jpg" alt="Common Loon" class="img-right">
+<img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
 Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). These data are loaded into R and their structure examined below.[^loaddata]
 
 ```{r echo=TRUE, results='hide'}
@@ -40,84 +41,136 @@ library(ggplot2)
 
 &nbsp;
 
-## Tarsus Length vs. Bill Length 1
+## Weight 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB}
-tb <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus)) +
-  geom_point(size=3) +
-  scale_x_continuous(name="Bill Length (mm)") +
-  scale_y_continuous(name="Tarsus Length (mm)") +
-  theme_bw()
-tb
+```{r Loons_WT1}
+wt1 <- ggplot(data=loon,mapping=aes(x=weight)) +
+  geom_histogram(color="gray30",fill="gray70",
+             binwidth=250,boundary=0,closed="left") +
+  scale_x_continuous(name="Body Weight (g)",  
+    expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Frequency of Loons",breaks=seq(0,15,5),  
+    expand=expansion(mult=c(0,0.05))) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.minor.y=element_blank())
+wt1
+```
+
+"Play with" `binwidth=` in `geom_histogram()` to feel how this changes the plot. What value do you prefer?
+
+&nbsp;
+
+## Weight 2
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
+
+```{r Loons_WT2}
+wt2 <- ggplot(data=loon,mapping=aes(x=weight)) +
+  geom_density(color="gray30",fill="gray70",adjust=0.25) +
+  scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Loons",expand=expansion(mult=c(0,0.05))) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
+wt2
+```
+
+"Play with" `adjust=` in `geom_density()` to feel how this changes the plot. What value do you prefer?
+
+&nbsp;
+
+## Weight 3
+Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
+
+```{r Loons_WT3}
+wt3 <- ggplot(data=loon,mapping=aes(x=weight,color=sex,fill=sex)) +
+  geom_density(alpha=0.5) +
+  scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Loons",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
+wt3
 ```
 
 &nbsp;
 
-## Weight vs Tarsus Length
-Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: The graphic at [the bottom of this page](https://ggplot2.tidyverse.org/reference/scale_shape.html#examples) might be useful.*]
+## Weight 4
+Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_WT}
-wt <- ggplot(data=loon,mapping=aes(x=tarsus,y=weight)) +
-  geom_point(size=5,color="red",shape=18,alpha=0.5) +
-  scale_x_continuous(name="Tarsus Length (mm)") +
+```{r Loons_WT4}
+wt4 <- ggplot(data=loon,mapping=aes(x=sex,y=weight)) +
+  geom_boxplot(fill="wheat2") +
+  scale_x_discrete(name="Sex of Loon") +
   scale_y_continuous(name="Weight (g)") +
-  theme_bw()
-wt
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
+wt4
 ```
 
 &nbsp;
 
-## Tarsus Length vs. Bill Length 2
-Construct `ggplot2` code to match the graph below (as closely as you can).
+## Weight 5
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Loons_TB2, fig.width=6}
-tb2 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=region)) +
-  geom_point(size=3) +
-  scale_x_continuous(name="Bill Length (mm)") +
-  scale_y_continuous(name="Tarsus Length (mm)") +
-  theme_bw()
-tb2
+```{r Loons_WT5}
+wt5 <- ggplot(data=loon,mapping=aes(x=sex,y=weight)) +
+  geom_violin(fill="wheat2",trim=FALSE) +
+  scale_x_discrete(name="Sex of Loon") +
+  scale_y_continuous(name="Weight (g)") +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
+wt5
 ```
 
 &nbsp;
 
-## Tarsus Length vs. Bill Length 3
-Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB3, fig.width=6}
-tb3 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=weight)) +
-  geom_point(size=3) +
-  scale_x_continuous(name="Bill Length (mm)") +
-  scale_y_continuous(name="Tarsus Length (mm)") +
-  theme_bw()
-tb3
+## Weight 6
+Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*). [*HINT: Copy your code from above and then modify.*]
+
+```{r Loons_WT6}
+wt6 <- ggplot(data=loon,mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
+  geom_violin(trim=FALSE) +
+  scale_x_discrete(name="Sex of Loon") +
+  scale_y_continuous(name="Weight (g)") +
+  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
+  theme(legend.position="none")
+wt6
 ```
 
 &nbsp;
 
-## Tarsus Length vs. Bill Length 4
-Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB4, fig.width=6}
-tb4 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,
-                                    color=region,shape=sex)) +
-  geom_point(size=3) +
-  scale_x_continuous(name="Bill Length (mm)") +
-  scale_y_continuous(name="Tarsus Length (mm)") +
-  theme_bw()
-tb4
+## Weight 7
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
+
+```{r Loons_WT7}
+wt7 <- ggplot(data=loon,mapping=aes(y=sex,x=weight,color=sex,fill=sex)) +
+  geom_violin(trim=FALSE) +
+  scale_y_discrete(name="Sex of Loon") +
+  scale_x_continuous(name="Weight (g)") +
+  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
+  theme(legend.position="none")
+wt7
 ```
 
-&nbsp;
+This plot can also[^coord_flip] be produced from your "Loon Weight 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
 
-## Tarsus Length vs. Bill Length 5
-Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
-
-```{r Loons_TB5, fig.width=6}
-tb5 <- tb2 +
-  scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9"))
-tb5
-```
 
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+
+[^coord_flip]: Assuming that you did not do it this easier way the first time.

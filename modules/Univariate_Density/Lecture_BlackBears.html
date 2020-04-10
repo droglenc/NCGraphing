@@ -733,6 +733,8 @@ class: inverse, center, middle
   - i.e., the relative distribution of *X*.
   - A smoothed representation of a histogram.
 - Constructed with `geom_density()`.
+  - Use `adjust=` to modify "smoothing effect."
+    - Smaller values = less smoothing.
 ]
 
 .pull-right[
@@ -899,6 +901,73 @@ p
 ]]
 .column[.content[
 &lt;img src="Lecture_BlackBears_files/figure-html/density1_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Density Plot
+
+### Adjusting "Smoothness"
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
+  geom_density(color="gray30",fill="gray30",alpha=0.25,  
+  ) +  
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0)),  
+                     limits=c(0,250)) +  
+  scale_y_continuous(name="Relative Density of Bears",  
+                     expand=expansion(mult=c(0,0.05))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),  
+        panel.grid.minor.x=element_blank())  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/density2_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
+  geom_density(color="gray30",fill="gray30",alpha=0.25,  
+*              adjust=0.25
+  ) +  
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0)),  
+                     limits=c(0,250)) +  
+  scale_y_continuous(name="Relative Density of Bears",  
+                     expand=expansion(mult=c(0,0.05))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),  
+        panel.grid.minor.x=element_blank())  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/density2_non_seq_2_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -1103,8 +1172,7 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
-*                                  color=sex,fill=sex))
+*p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight))
  
 p
 ```
@@ -1121,9 +1189,8 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-* geom_boxplot(alpha=0.25)
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+* geom_boxplot(fill="gray70")
  
 p
 ```
@@ -1140,12 +1207,9 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-  geom_boxplot(alpha=0.25) +  
-* scale_x_continuous(name="Weight (kg)",
-*                    limits=c(0,250),breaks=seq(0,250,25),
-*                    expand=expansion(mult=c(0,0)))
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_boxplot(fill="gray70") +  
+* scale_x_discrete(name="Sex")
  
 p
 ```
@@ -1162,13 +1226,12 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-  geom_boxplot(alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-* scale_color_manual(values=c("red3","blue3"))
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_boxplot(fill="gray70") +  
+  scale_x_discrete(name="Sex") +  
+* scale_y_continuous(name="Weight (kg)",
+*                    limits=c(0,250),breaks=seq(0,250,25),
+*                    expand=expansion(mult=c(0,0)))
  
 p
 ```
@@ -1185,14 +1248,13 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-  geom_boxplot(alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_boxplot(fill="gray70") +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-* scale_fill_manual(values=c("red3","blue3"))
+* theme_bw()
  
 p
 ```
@@ -1200,63 +1262,12 @@ p
 .column[.content[
 &lt;img src="Lecture_BlackBears_files/figure-html/boxplot1_auto_5_output-1.png" width="100%" /&gt;
 ]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-  geom_boxplot(alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-  scale_fill_manual(values=c("red3","blue3")) +  
-* theme_bw()
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot1_auto_6_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex,  
-                                   color=sex,fill=sex)) +  
-  geom_boxplot(alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-  scale_fill_manual(values=c("red3","blue3")) +  
-  theme_bw() +  
-* theme(legend.position="none")
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot1_auto_7_output-1.png" width="100%" /&gt;
-]]
 
 ---
 
 class: inverse, center, middle
 
-# Boxplot in Horizontal Orientation
+# Boxplot with Colors by Group
 
 ---
 
@@ -1270,74 +1281,22 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex))
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_1_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-* geom_boxplot(fill="gray30",alpha=0.25)
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_2_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_boxplot(fill="gray30",alpha=0.25) +  
-* scale_x_continuous(name="Weight (kg)",
-*                    limits=c(0,250),breaks=seq(0,250,25),
-*                    expand=expansion(mult=c(0,0)))
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_3_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_boxplot(fill="gray30",alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
+p &lt;- ggplot(data=flbb, mapping=aes(  
+    x=sex,y=weight,  
+  )) +  
+  geom_boxplot(alpha=0.25) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-* theme_bw()
+  scale_color_manual(values=c("red3","blue3")) +  
+  theme_bw()   
  
 p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_4_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_1_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -1348,11 +1307,72 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_boxplot(fill="gray30",alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
+p &lt;- ggplot(data=flbb, mapping=aes(  
+    x=sex,y=weight,  
+*   color=sex,fill=sex
+  )) +  
+  geom_boxplot(alpha=0.25) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
+  scale_color_manual(values=c("red3","blue3")) +  
+  theme_bw()   
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(  
+    x=sex,y=weight,  
+    color=sex,fill=sex  
+  )) +  
+  geom_boxplot(alpha=0.25) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
+                     limits=c(0,250),breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0))) +  
+  scale_color_manual(values=c("red3","blue3")) +  
+* scale_fill_manual(values=c("red3","blue3")) +
+  theme_bw()   
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(  
+    x=sex,y=weight,  
+    color=sex,fill=sex  
+  )) +  
+  geom_boxplot(alpha=0.25) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
+                     limits=c(0,250),breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0))) +  
+  scale_color_manual(values=c("red3","blue3")) +  
+  scale_fill_manual(values=c("red3","blue3")) +  
   theme_bw() +  
 * theme(legend.position="none")
  
@@ -1360,31 +1380,7 @@ p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_5_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_boxplot(fill="gray30",alpha=0.25) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-  theme_bw() +  
-  theme(legend.position="none") +  
-* coord_flip()
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_auto_6_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_4_output-1.png" width="100%" /&gt;
 ]]
 
 
@@ -1411,9 +1407,114 @@ class: inverse, center, middle
 
 ---
 
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/violin1_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+* geom_violin(fill="gray30",alpha=0.25,trim=FALSE)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/violin1_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
+* scale_x_discrete(name="Sex")
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/violin1_auto_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
+  scale_x_discrete(name="Sex") +  
+* scale_y_continuous(name="Weight (kg)",
+*                    limits=c(0,250),breaks=seq(0,250,25),
+*                    expand=expansion(mult=c(0,0)))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/violin1_auto_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
+  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
+                     limits=c(0,250),breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0))) +  
+* theme_bw()
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/violin1_auto_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
 class: inverse, center, middle
 
-# Violin Plot in Horizontal Orientation
+# Violin Plot
+
+### With Individual Points
 
 ---
 
@@ -1427,8 +1528,13 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
-* geom_violin(fill="gray30",alpha=0.25,trim=FALSE)
+*p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
+* geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
+* scale_x_discrete(name="Sex") +
+* scale_y_continuous(name="Weight (kg)",
+*                    limits=c(0,250),breaks=seq(0,250,25),
+*                    expand=expansion(mult=c(0,0))) +
+* theme_bw()
  
 p
 ```
@@ -1445,104 +1551,20 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
+p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
   geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
-* scale_x_continuous(name="Weight (kg)",
-*                    limits=c(0,250),breaks=seq(0,250,25),
-*                    expand=expansion(mult=c(0,0))) +
-* theme_bw() +
-* theme(legend.position="none")
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
+                     limits=c(0,250),breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0))) +  
+  theme_bw() +  
+* geom_jitter(width=0.05,height=0)
  
 p
 ```
 ]]
 .column[.content[
 &lt;img src="Lecture_BlackBears_files/figure-html/violin2_user_2_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-  theme_bw() +  
-  theme(legend.position="none") +  
-* coord_flip()
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/violin2_user_3_output-1.png" width="100%" /&gt;
-]]
-
----
-
-class: inverse, center, middle
-
-# Violin Plot in Horizontal Orientation
-
-### With Individual Points
-
----
-
-
-
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-*p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
-* geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
-* scale_x_continuous(name="Weight (kg)",
-*                    limits=c(0,250),breaks=seq(0,250,25),
-*                    expand=expansion(mult=c(0,0))) +
-* theme_bw() +
-* theme(legend.position="none") +
-* coord_flip()
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/violin3_user_1_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +  
-  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +  
-  scale_x_continuous(name="Weight (kg)",  
-                     limits=c(0,250),breaks=seq(0,250,25),  
-                     expand=expansion(mult=c(0,0))) +  
-  theme_bw() +  
-  theme(legend.position="none") +  
-  coord_flip() +  
-* geom_jitter(width=0,height=0.05)
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/violin3_user_2_output-1.png" width="100%" /&gt;
 ]]
 
 ---
