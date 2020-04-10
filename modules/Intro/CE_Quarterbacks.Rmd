@@ -11,6 +11,7 @@ output:
 
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Quarterbacks"
 modHTML(file.path(here::here(),"modules/Intro",fnm))
 FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
@@ -23,7 +24,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ----
 
 ## Background
-<img src="zimgs/qb.jpg" alt="Quarterback" class="img-right">
+<img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
 
 [sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the `tidyverse` package, which will load `ggplot2` along with a few other packages you will need to access these data.
 
@@ -31,10 +32,10 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 library(tidyverse)
 ```
 
-Perform the following steps to load information [in this file](Data_quarterbacks_2019.csv) for all quarterbacks from the 2019-20 seasons that were in the so-called "power 5 conferences."[^getdata]
+Perform the following steps to load information [in this file](https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv) for all quarterbacks from the 2019-20 seasons that were in the so-called "power 5 conferences."[^getdata]
 
 ```{r echo=TRUE, results='hide'}
-qbs <- read.csv("https://derekogle.com/NCGraphing/modules/Intro/Data_quarterbacks_2019.csv",
+qbs <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv",
                 stringsAsFactors=FALSE) %>%
   filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
   mutate(Conf=factor(Conf))

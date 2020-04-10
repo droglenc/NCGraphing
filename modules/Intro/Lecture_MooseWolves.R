@@ -1,6 +1,6 @@
 library(tidyverse)
 
-fn <- "Data_wolves_moose_Isle_Royale_June2019.xlsx"
+fn <- "https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.xlsx"
 irmw <- readxl::read_excel(fn,sheet="1. population level data",skip=1)
 
 irmw %<>%

@@ -53,7 +53,7 @@ leftAssign <- TRUE
 
 .center[
 ```{r, echo=FALSE, out.width="600px"}
-knitr::include_graphics("zimgs/Ex_ggplot2_1.JPG")
+knitr::include_graphics("../zimgs/Ex_ggplot2_1.JPG")
 ```
 <font size="1">From <a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf">Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.</a></font>
 ]
@@ -64,7 +64,7 @@ knitr::include_graphics("zimgs/Ex_ggplot2_1.JPG")
 
 .center[
 ```{r, echo=FALSE, out.width="700px"}
-knitr::include_graphics("zimgs/Ex_ggplot2_2.JPG")
+knitr::include_graphics("../zimgs/Ex_ggplot2_2.JPG")
 ```
 <font size="1">From <a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519">Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470</a></font>
 ]
@@ -75,7 +75,7 @@ knitr::include_graphics("zimgs/Ex_ggplot2_2.JPG")
 
 .center[
 ```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("zimgs/Ex_ggplot2_3.JPG")
+knitr::include_graphics("../zimgs/Ex_ggplot2_3.JPG")
 ```
 <font size="1">From <a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/">538.com</a></font>
 ]
@@ -86,7 +86,7 @@ knitr::include_graphics("zimgs/Ex_ggplot2_3.JPG")
 
 .center[
 ```{r, echo=FALSE, out.width="800px"}
-knitr::include_graphics("zimgs/Ex_ggplot2_4.JPG")
+knitr::include_graphics("../zimgs/Ex_ggplot2_4.JPG")
 ```
 <font size="1">From <a href="https://www.ft.com/coronavirus-latest">Financial Times</a></font>
 ]
@@ -99,7 +99,7 @@ knitr::include_graphics("zimgs/Ex_ggplot2_4.JPG")
 
 .center[
 ```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("zimgs/wolves_moose.jpg")
+knitr::include_graphics("../zimgs/wolves_moose.jpg")
 ```
 <font size="1">Credit: <a href="https://www.mtu.edu/news/stories/2012/march/wolf-population-isle-royale-drops-lowest-has-ever-been.html">Michigan Technological University</a></font>
 ]
@@ -115,7 +115,7 @@ knitr::include_graphics("zimgs/wolves_moose.jpg")
   - Skipped first line of sheet because it had unneeded headers.
 
 ```{r load1}
-fn <- "Data_wolves_moose_Isle_Royale_June2019.xlsx"
+fn <- "https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.xlsx"
 irmw <- readxl::read_excel(fn,sheet="1. population level data",skip=1)
 ```
 

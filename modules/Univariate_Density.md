@@ -38,9 +38,11 @@ XXX
 <ul>
   <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears.R">Script</a></button></li>
   <li><a href="Univariate_Density/Demo_XXX.html">Demonstration - XXX</a></li>
-  <li><a href="Univariate_Density/CE_XXX.html">Exercise - XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
-  <li>Exercise 2 (pick one)</li>
+  <li>Exercises (pick two)</li>
   <ul>
+    <li><a href="Univariate_Density/CE_Loon.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_Loon.R">Key</a></button></li>
+    <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
+    <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
     <li><a href="Univariate_Density/CE_XXX.html">XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_XXX.R">Key</a></button></li>
   </ul>
 </ul>
