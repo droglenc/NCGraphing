@@ -44,7 +44,7 @@ class: center, middle, inverse, title-slide
 # Examples in the Wild 1
 
 .center[
-&lt;img src="zimgs/Ex_ggplot2_1.JPG" width="600px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_1.JPG" width="600px" /&gt;
 &lt;font size="1"&gt;From &lt;a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf"&gt;Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 # Examples in the Wild 2
 
 .center[
-&lt;img src="zimgs/Ex_ggplot2_2.JPG" width="700px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_2.JPG" width="700px" /&gt;
 &lt;font size="1"&gt;From &lt;a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519"&gt;Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -62,7 +62,7 @@ class: center, middle, inverse, title-slide
 # Examples in the Wild 3
 
 .center[
-&lt;img src="zimgs/Ex_ggplot2_3.JPG" width="500px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_3.JPG" width="500px" /&gt;
 &lt;font size="1"&gt;From &lt;a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/"&gt;538.com&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -71,7 +71,7 @@ class: center, middle, inverse, title-slide
 # Examples in the Wild 4
 
 .center[
-&lt;img src="zimgs/Ex_ggplot2_4.JPG" width="800px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_4.JPG" width="800px" /&gt;
 &lt;font size="1"&gt;From &lt;a href="https://www.ft.com/coronavirus-latest"&gt;Financial Times&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -82,7 +82,7 @@ class: center, middle, inverse, title-slide
 - Estimated counts of Gray Wolf (*Canis lupus*) and Moose (*Alces alces*) from Isle Royale.
 
 .center[
-&lt;img src="zimgs/wolves_moose.jpg" width="500px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/wolves_moose.jpg" width="500px" /&gt;
 &lt;font size="1"&gt;Credit: &lt;a href="https://www.mtu.edu/news/stories/2012/march/wolf-population-isle-royale-drops-lowest-has-ever-been.html"&gt;Michigan Technological University&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -90,16 +90,15 @@ class: center, middle, inverse, title-slide
 
 # Background
 
-- Downloaded 'Data_wolves_moose_Isle_Royale_June2019.xlsx' Excel file from [Wolves &amp; Moose of Isle Royale](https://isleroyalewolf.org/data/data/home.html).
+- Downloaded 'Data_wolves_moose_Isle_Royale_June2019.xlsx' Excel file from [Wolves &amp; Moose of Isle Royale](https://isleroyalewolf.org/data/data/home.html), deleted first row of the first sheet, and saved the first sheet as a CSV file.
 
 --
-- Data in '1. population level data' sheet of Excel data file loaded into `irmw` data.frame.
-  - Skipped first line of sheet because it had unneeded headers.
+- Loaded the data into the `irmw` object.
 
 
 ```r
-fn &lt;- "Data_wolves_moose_Isle_Royale_June2019.xlsx"
-irmw &lt;- readxl::read_excel(fn,sheet="1. population level data",skip=1)
+irmw &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
+                 na.strings=c("NA","N/A"))
 ```
 
 
@@ -114,25 +113,22 @@ irmw &lt;- readxl::read_excel(fn,sheet="1. population level data",skip=1)
 
 ```r
 irmw %&lt;&gt;%
-  select(year,wolves,moose,`Jan-Feb (temp, F)`,
-         `ice bridges (0=none, 1 = present)`) %&gt;%
-  rename(winter_temp=`Jan-Feb (temp, F)`,
-         ice_bridges=`ice bridges (0=none, 1 = present)`) %&gt;%
+  select(year,wolves,moose,Jan.Feb..temp..F.,ice.bridges..0.none..1...present.) %&gt;%
+  rename(winter_temp=Jan.Feb..temp..F.,
+         ice_bridges=ice.bridges..0.none..1...present.) %&gt;%
   mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
          ice_bridges=factor(ice_bridges))
 head(irmw)
 ```
 
 ```
-# A tibble: 6 x 5
-   year wolves moose winter_temp ice_bridges
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;      
-1  1959     20  538.        1.4  no         
-2  1960     22  564.        8.45 no         
-3  1961     22  572.        9.75 yes        
-4  1962     23  579.        2.15 yes        
-5  1963     20  596.       -0.35 yes        
-6  1964     26  620.       12.4  no         
+  year wolves moose winter_temp ice_bridges
+1 1959     20   538        1.40          no
+2 1960     22   564        8.45          no
+3 1961     22   572        9.75         yes
+4 1962     23   579        2.15         yes
+5 1963     20   596       -0.35         yes
+6 1964     26   620       12.40          no
 ```
 
 ---
@@ -145,15 +141,13 @@ head(irmw)
 ```
 
 ```
-# A tibble: 6 x 5
-   year wolves moose winter_temp ice_bridges
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;      
-1  1959     20  538.        1.4  no         
-2  1960     22  564.        8.45 no         
-3  1961     22  572.        9.75 yes        
-4  1962     23  579.        2.15 yes        
-5  1963     20  596.       -0.35 yes        
-6  1964     26  620.       12.4  no         
+  year wolves moose winter_temp ice_bridges
+1 1959     20   538        1.40          no
+2 1960     22   564        8.45          no
+3 1961     22   572        9.75         yes
+4 1962     23   579        2.15         yes
+5 1963     20   596       -0.35         yes
+6 1964     26   620       12.40          no
 ```
 
 - Variables are:
@@ -193,6 +187,12 @@ p &lt;- ggplot(data=irmw,
 
 --
   - Plot will not be shown until object is run (i.e., type `p`).
+
+---
+
+class: inverse, center, middle
+
+# Base ggplot2 Object
 
 ---
 
@@ -245,6 +245,13 @@ p
 
 
 
+
+
+---
+
+class: inverse, center, middle
+
+# Adding geoms to Base Object
 
 ---
 
@@ -467,9 +474,10 @@ p
 
 ---
 
-# Aesthetics
+class: inverse, center, middle
 
-- Aesthetics can be **set** for all data within each 'geom'.
+# Aesthetics
+### Can be **set** for all data within each 'geom'.
 
 
 
@@ -536,6 +544,12 @@ p
 
 ---
 
+class: inverse, center, middle
+
+# Order of geoms Becomes Apparent
+
+---
+
 class: split-50
 count: false
  
@@ -595,10 +609,10 @@ p
 
 ---
 
-# Aesthetics
+class: inverse, center, middle
 
-- Aesthetics can be **set** for all data within each 'geom'.
-- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
+# Aesthetics
+### Can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
 
 
 
@@ -666,11 +680,10 @@ p
 
 ---
 
-# Aesthetics
+class: inverse, center, middle
 
-- Aesthetics can be **set** for all data within each 'geom'.
-- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
-- Aesthetics can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
+# Aesthetics
+### Can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
 
 
 
@@ -738,12 +751,10 @@ p
 
 ---
 
-# Aesthetics
+class: inverse, center, middle
 
-- Aesthetics can be **set** for all data within each 'geom'.
-- Aesthetics can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
-- Aesthetics can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
-- Aesthetics can be **mapped** to **a variable** for a specific 'geom' with `aes()` in the `geom_XXXX()`.
+# Aesthetics
+### Can be **mapped** to **a variable** for a specific 'geom' with `aes()` in the `geom_XXXX()`.
 
 
 
@@ -899,6 +910,15 @@ p
 
 
 
+
+---
+
+class: inverse, center, middle
+
+# Using Scales to Change ...
+### Default Colors
+### Axis Names and Breaks
+
 ---
 
 class: split-50
@@ -958,7 +978,7 @@ p &lt;- ggplot(data=irmw,
   scale_color_manual(values=c("blue","red"),  
                      name="Ice Bridge?") +  
 * scale_x_continuous(name="Year",
-*                    breaks=seq(1960,2020,5),
+*                    breaks=seq(1960,2020,10),
 *                    minor_breaks=seq(1959,2019,1))
  
 p
@@ -983,7 +1003,7 @@ p &lt;- ggplot(data=irmw,
   scale_color_manual(values=c("blue","red"),  
                      name="Ice Bridge?") +  
   scale_x_continuous(name="Year",  
-                     breaks=seq(1960,2020,5),  
+                     breaks=seq(1960,2020,10),  
                      minor_breaks=seq(1959,2019,1)) +  
 * scale_y_continuous(name="Estimated Number of Wolves",
 *                    breaks=seq(0,50,5),

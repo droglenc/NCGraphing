@@ -1,13 +1,12 @@
 library(tidyverse)
 
-fn <- "https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.xlsx"
-irmw <- readxl::read_excel(fn,sheet="1. population level data",skip=1)
+irmw <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
+                 na.strings=c("NA","N/A"))
 
 irmw %<>%
-  select(year,wolves,moose,`Jan-Feb (temp, F)`,
-         `ice bridges (0=none, 1 = present)`) %>%
-  rename(winter_temp=`Jan-Feb (temp, F)`,
-         ice_bridges=`ice bridges (0=none, 1 = present)`) %>%
+  select(year,wolves,moose,Jan.Feb..temp..F.,ice.bridges..0.none..1...present.) %>%
+  rename(winter_temp=Jan.Feb..temp..F.,
+         ice_bridges=ice.bridges..0.none..1...present.) %>%
   mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
          ice_bridges=factor(ice_bridges))
 head(irmw)
