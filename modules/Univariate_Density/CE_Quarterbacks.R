@@ -83,4 +83,4 @@ PYds7 <- ggplot(data=qbs,mapping=aes(y=Conf,x=PYds,color=Conf,fill=Conf)) +
 PYds7
 
 
-# Script created at 2020-04-10 15:58:19
+# Script created at 2020-04-10 16:09:23
