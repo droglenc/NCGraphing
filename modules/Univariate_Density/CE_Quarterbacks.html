@@ -1,0 +1,284 @@
+---
+layout: page
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+<title>CE_Quarterbacks.utf8</title>
+
+<script src="zlibs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="zlibs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="zlibs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="zlibs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="zlibs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="zlibs/navigation-1.1/tabsets.js"></script>
+<link href="zlibs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="zlibs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="/css/modules.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right"> This is the same data set <a href="../intro/CE_Quarterbacks.html">introduced here</a> (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., <code>ggplot2</code> or <code>tidyverse</code>) loading portion of your script.</p>
+<p> </p>
+<p> </p>
+</div>
+<div id="total-passing-yards-1" class="section level2">
+<h2>Total Passing Yards 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds1-1.png" width="60%" /></p>
+<p>“Play with” <code>binwidth=</code> in <code>geom_histogram()</code> to feel how this changes the plot. What value do you prefer?</p>
+<p> </p>
+</div>
+<div id="total-passing-yards-2" class="section level2">
+<h2>Total Passing Yards 2</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: Copy your code from above and then modify.</em>]</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds2-1.png" width="60%" /></p>
+<p>“Play with” <code>adjust=</code> in <code>geom_density()</code> to feel how this changes the plot. What value do you prefer?</p>
+<p> </p>
+</div>
+<div id="total-passing-yards-3" class="section level2">
+<h2>Total Passing Yards 3</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can … <em>you don’t have to match my colors, but do use other than the default colors</em>).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds3-1.png" width="75%" /></p>
+<p> </p>
+</div>
+<div id="total-passing-yards-4" class="section level2">
+<h2>Total Passing Yards 4</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds4-1.png" width="60%" /></p>
+<p> </p>
+</div>
+<div id="total-passing-yards-5" class="section level2">
+<h2>Total Passing Yards 5</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: Copy your code from above and then modify.</em>]</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds5-1.png" width="60%" /></p>
+<p> </p>
+</div>
+<div id="total-passing-yards-6" class="section level2">
+<h2>Total Passing Yards 6</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can … <em>you don’t have to match my colors, but do use other than the default colors</em>). [<em>HINT: Copy your code from above and then modify.</em>]</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds6-1.png" width="60%" /></p>
+<p> </p>
+</div>
+<div id="total-passing-yards-7" class="section level2">
+<h2>Total Passing Yards 7</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: Copy your code from above and then modify.</em>]</p>
+<p><img src="CE_Quarterbacks_files/figure-html/Quarterbacks_PYds7-1.png" width="60%" /></p>
+<p>This plot can also<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> be produced from your “Quarterbacks Total Passing Yards 6” plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.</p>
+<div id="footnotes" class="section level3">
+<h3>Footnotes</h3>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Assuming that you did not do it this easier way the first time.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

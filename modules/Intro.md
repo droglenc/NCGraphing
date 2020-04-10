@@ -40,7 +40,7 @@ XXX
   <li><a href="Intro/Lecture_MooseWolves.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_MooseWolves.R">Script</a></button></li>
   <li><a href="Intro/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li><a href="Intro/CE_Temperature.html">Exercise - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Temperature.R">Key</a></button></li>
-  <li>Exercise 2 (pick one)</li>
+  <li>Analysis Exercise 2 (pick one)</li>
   <ul>
     <li><a href="Intro/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Loons.R">Key</a></button></li>
     <li><a href="Intro/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Walleye.R">Key</a></button></li>

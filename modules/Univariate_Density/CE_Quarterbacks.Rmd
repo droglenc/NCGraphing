@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Exercise - Walleye
+tiPYdse: Exercise - Walleye
 author: Derek H. Ogle
 css: "/css/modules.css"
 output:
@@ -12,7 +12,7 @@ output:
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
-fnm <- "CE_Walleye"
+fnm <- "CE_Quarterbacks"
 modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
 FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
@@ -20,154 +20,155 @@ FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd"
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
-wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
-  filter(year==2003) %>%
-  mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
-              to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
-         loc=factor(loc))
+qbs <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv",
+                stringsAsFactors=FALSE) %>%
+  filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
+  mutate(Conf=factor(Conf))
 ```
 
 ----
 
 ## Background
-<img src="../zimgs/walleye.jpg" alt="Walleye" class="img-right">
-This is the same data set [introduced here](../intro/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
+<img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
+This is the same data set [introduced here](../intro/CE_Quarterbacks.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
 
 &nbsp;
 
 &nbsp;
 
 
-## Total Length 1
+## Total Passing Yards 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Walleye_tl1}
-tl1 <- ggplot(data=wae,mapping=aes(x=tl)) +
+```{r Quarterbacks_PYds1}
+PYds1 <- ggplot(data=qbs,mapping=aes(x=PYds)) +
   geom_histogram(color="gray30",fill="gray70",
-             binwidth=10,boundary=0,closed="left") +
-  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
-    expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Frequency of Walleye",
+             binwidth=200,boundary=0,closed="left") +
+  scale_x_continuous(name="Total Passing Yards",breaks=seq(1000,6000,500),
+    limits=c(1000,6000),expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Frequency of Quarterbacks",
     expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.minor.y=element_blank())
-tl1
+PYds1
 ```
 
 "Play with" `binwidth=` in `geom_histogram()` to feel how this changes the plot. What value do you prefer?
 
 &nbsp;
 
-## Total Length 2
+## Total Passing Yards 2
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Walleye_tl2}
-tl2 <- ggplot(data=wae,mapping=aes(x=tl)) +
+```{r Quarterbacks_PYds2}
+PYds2 <- ggplot(data=qbs,mapping=aes(x=PYds)) +
   geom_density(color="gray30",fill="gray70",adjust=0.25) +
-  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
-                     expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Density of Walleye",expand=expansion(mult=c(0,0.05))) +
+  scale_x_continuous(name="Total Passing Yards (mm)",breaks=seq(1000,6000,500),
+                     limits=c(1000,6000),expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Quarterbacks",expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-tl2
+PYds2
 ```
 
 "Play with" `adjust=` in `geom_density()` to feel how this changes the plot. What value do you prefer?
 
 &nbsp;
 
-## Total Length 3
+## Total Passing Yards 3
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Walleye_tl3,fig.width=6.5,out.width="75%"}
-tl3 <- ggplot(data=wae,mapping=aes(x=tl,color=loc,fill=loc)) +
+```{r Quarterbacks_PYds3,fig.width=6.5,out.width="75%"}
+PYds3 <- ggplot(data=qbs,mapping=aes(x=PYds,color=Conf,fill=Conf)) +
   geom_density(alpha=0.5) +
-  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
-                     expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Density of Walleye",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(name="Location",values=c("#E69F00","#0072B2","#CC79A7")) +
-  scale_color_manual(name="Location",values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_continuous(name="Total Passing Yards (mm)",breaks=seq(1000,6000,500),
+                     limits=c(1000,6000),expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Quarterbacks",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Location",
+                    values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
+  scale_color_manual(name="Location",
+                     values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-tl3
+PYds3
 ```
 
 &nbsp;
 
-## Total Length 4
+## Total Passing Yards 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Walleye_tl4}
-tl4 <- ggplot(data=wae,mapping=aes(x=loc,y=tl)) +
+```{r Quarterbacks_PYds4}
+PYds4 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds)) +
   geom_boxplot(fill="lightsalmon") +
-  scale_x_discrete(name="Location of Capture") +
-  scale_y_continuous(name="Total Length (mm)") +
+  scale_x_discrete(name="Conference") +
+  scale_y_continuous(name="Total Passing Yards (mm)") +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-tl4
+PYds4
 ```
 
 &nbsp;
 
-## Total Length 5
+## Total Passing Yards 5
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Walleye_tl5}
-tl5 <- ggplot(data=wae,mapping=aes(x=loc,y=tl)) +
+```{r Quarterbacks_PYds5}
+PYds5 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds)) +
   geom_violin(fill="lightsalmon",trim=FALSE) +
-  scale_x_discrete(name="Location of Capture") +
-  scale_y_continuous(name="Total Length (mm)") +
+  scale_x_discrete(name="Conference") +
+  scale_y_continuous(name="Total Passing Yards (mm)") +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-tl5
+PYds5
 ```
 
 &nbsp;
 
 
-## Total Length 6
+## Total Passing Yards 6
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*). [*HINT: Copy your code from above and then modify.*]
 
-```{r Walleye_tl6}
-tl6 <- ggplot(data=wae,mapping=aes(x=loc,y=tl,color=loc,fill=loc)) +
+```{r Quarterbacks_PYds6}
+PYds6 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds,color=Conf,fill=Conf)) +
   geom_violin(trim=FALSE) +
-  scale_x_discrete(name="Location of Capture") +
-  scale_y_continuous(name="Total Length (mm)") +
-  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
-  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_discrete(name="Conference") +
+  scale_y_continuous(name="Total Passing Yards (mm)") +
+  scale_fill_manual(values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
+  scale_color_manual(values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
   theme(legend.position="none")
-tl6
+PYds6
 ```
 
 &nbsp;
 
 
-## Total Length 7
+## Total Passing Yards 7
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Walleye_tl7}
-tl7 <- ggplot(data=wae,mapping=aes(y=loc,x=tl,color=loc,fill=loc)) +
+```{r Quarterbacks_PYds7}
+PYds7 <- ggplot(data=qbs,mapping=aes(y=Conf,x=PYds,color=Conf,fill=Conf)) +
   geom_violin(trim=FALSE) +
-  scale_y_discrete(name="Location of Capture") +
-  scale_x_continuous(name="Total Length (mm)") +
-  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
-  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_y_discrete(name="Conference") +
+  scale_x_continuous(name="Total Passing Yards (mm)") +
+  scale_fill_manual(values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
+  scale_color_manual(values=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
   theme(legend.position="none")
-tl7
+PYds7
 ```
 
-This plot can also[^coord_flip] be produced from your "Walleye Total Length 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
+This plot can also[^coord_flip] be produced from your "Quarterbacks Total Passing Yards 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
 
 
 ### Footnotes
