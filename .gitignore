@@ -1,45 +1,7 @@
 ## Stuff that should not be public
-zzzOld/
-zzzOther/Final Exams/
-zzzOther/Exam_Questions/
-zzzOther/Stats_Content_Analysis_2015.xlsx
+zzzOther/Testing_Flipbook_Sandbox/
 Year_Specific/
-## Book materials that do not need to be in the repo
-book/cache/
-book/FBMatter/*.aux
-book/Figs/*.pdf
-book/Figs/zzzOld/
-book/*.synctex.gz
-book/IntroStats.tex
-book/IntroStats.pdf
-book/IntroStats.aux
-book/IntroStats.bbl
-book/IntroStats.brf
-book/IntroStats.idx
-book/IntroStats.ilg
-book/IntroStats.ind
-book/IntroStats.log
-book/IntroStats.maf
-book/IntroStats.mt*
-book/IntroStats.out
-book/IntroStats.toc
-book/IntroStats-concordance.tex
-book/pdftk.exe
-book/libiconv2.dll
-## Excercise materials that do not need to be in the repo
-modules/CE/1_CE_Keys/*_files
-modules/CE/1_CE_Keys/*.html
-## Lecture materials that do not need to be in the repo
 
-## Assessment materials that do not need to be in the repo
-zzzOther/assessment/*.aux
-zzzOther/assessment/*.csv
-zzzOther/assessment/*.log
-zzzOther/assessment/*.out
-zzzOther/assessment/*.synctex.gz
-zzzOther/assessment/*.tex
-zzzOther/assessment/*.xlsx
-zzzOther/assessment/Figs/*.pdf
 ## R History files
 .Rhistory
 .Rapp.history
