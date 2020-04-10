@@ -18,7 +18,8 @@ FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd"
            moreItems=c("source","setwd","fnm","opts_chunk"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5)
+library(knitr)
+opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5)
 ```
 
 ----
