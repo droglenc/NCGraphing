@@ -36,8 +36,6 @@ This is the same data set [introduced here](../Intro/CE_Quarterbacks.html) (whic
 
 &nbsp;
 
-&nbsp;
-
 ## Total Passing Yards 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
