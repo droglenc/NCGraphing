@@ -9,10 +9,10 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="zimgs/Walleye.jpg" alt="Walleye" class="img-right"> Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The <a href="https://derekogle.com/NCGraphing/modules/Intro/avocados.csv">data is here</a> (with <a href="https://www.kaggle.com/neuromusic/avocado-prices">metadata under “columns” at this site</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
+<p><img src="../zimgs/avocado.jpg" alt="Walleye" class="img-right"> Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The <a href="https://derekogle.com/NCGraphing/modules/zdata/avocados.csv">data is here</a> (with <a href="https://www.kaggle.com/neuromusic/avocado-prices">metadata under “columns” at this site</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>Their data are loaded below and, for this exercise, reduced to only results for the “GreatLakes” region. In addition the type and year were forced to be factor variables.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<pre class="r"><code>avoc &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/Intro/avocados.csv&quot;,
+<pre class="r"><code>avoc &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/zdata/avocados.csv&quot;,
                 stringsAsFactors=FALSE) %&gt;%
   filter(region==&quot;GreatLakes&quot;) %&gt;%
   mutate(type=factor(type),
