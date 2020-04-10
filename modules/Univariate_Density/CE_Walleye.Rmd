@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Exercise - Loons
+title: Exercise - Walleye
 author: Derek H. Ogle
 css: "/css/modules.css"
 output:
@@ -12,156 +12,162 @@ output:
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
-fnm <- "CE_Loons"
+fnm <- "CE_Walleye"
 modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
 FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
-library(ggplot2)
-loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
+library(tidyverse)
+wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
+  filter(year==2003) %>%
+  mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
+              to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
+         loc=factor(loc))
 ```
 
 ----
 
 ## Background
-<img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-This is the same data set [introduced here](../intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
+<img src="../zimgs/walleye.jpg" alt="Common Walleye" class="img-right">
+This is the same data set [introduced here](../intro/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
 
 &nbsp;
 
 &nbsp;
 
 
-## Weight 1
+## Total Length 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_WT1}
-wt1 <- ggplot(data=loon,mapping=aes(x=weight)) +
+```{r Walleye_tl1}
+tl1 <- ggplot(data=wae,mapping=aes(x=tl)) +
   geom_histogram(color="gray30",fill="gray70",
-             binwidth=250,boundary=0,closed="left") +
-  scale_x_continuous(name="Body Weight (g)",  
+             binwidth=10,boundary=0,closed="left") +
+  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
     expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Frequency of Loons",breaks=seq(0,15,5),  
+  scale_y_continuous(name="Frequency of Walleye",
     expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.minor.y=element_blank())
-wt1
+tl1
 ```
 
 "Play with" `binwidth=` in `geom_histogram()` to feel how this changes the plot. What value do you prefer?
 
 &nbsp;
 
-## Weight 2
+## Total Length 2
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Loons_WT2}
-wt2 <- ggplot(data=loon,mapping=aes(x=weight)) +
+```{r Walleye_tl2}
+tl2 <- ggplot(data=wae,mapping=aes(x=tl)) +
   geom_density(color="gray30",fill="gray70",adjust=0.25) +
-  scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Density of Loons",expand=expansion(mult=c(0,0.05))) +
+  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
+                     expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Walleye",expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-wt2
+tl2
 ```
 
 "Play with" `adjust=` in `geom_density()` to feel how this changes the plot. What value do you prefer?
 
 &nbsp;
 
-## Weight 3
+## Total Length 3
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Loons_WT3,fig.width=6.5,out.width="75%"}
-wt3 <- ggplot(data=loon,mapping=aes(x=weight,color=sex,fill=sex)) +
+```{r Walleye_tl3,fig.width=6.5,out.width="75%"}
+tl3 <- ggplot(data=wae,mapping=aes(x=tl,color=loc,fill=loc)) +
   geom_density(alpha=0.5) +
-  scale_x_continuous(name="Weight (g)",expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Density of Loons",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
-  scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_continuous(name="Total Length (mm)",breaks=seq(0,700,50),
+                     expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Density of Walleye",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Location",values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_color_manual(name="Location",values=c("#E69F00","#0072B2","#CC79A7")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-wt3
+tl3
 ```
 
 &nbsp;
 
-## Weight 4
+## Total Length 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_WT4}
-wt4 <- ggplot(data=loon,mapping=aes(x=sex,y=weight)) +
-  geom_boxplot(fill="wheat2") +
-  scale_x_discrete(name="Sex of Loon") +
-  scale_y_continuous(name="Weight (g)") +
+```{r Walleye_tl4}
+tl4 <- ggplot(data=wae,mapping=aes(x=loc,y=tl)) +
+  geom_boxplot(fill="lightsalmon") +
+  scale_x_discrete(name="Location of Capture") +
+  scale_y_continuous(name="Total Length (mm)") +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-wt4
+tl4
 ```
 
 &nbsp;
 
-## Weight 5
+## Total Length 5
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Loons_WT5}
-wt5 <- ggplot(data=loon,mapping=aes(x=sex,y=weight)) +
-  geom_violin(fill="wheat2",trim=FALSE) +
-  scale_x_discrete(name="Sex of Loon") +
-  scale_y_continuous(name="Weight (g)") +
+```{r Walleye_tl5}
+tl5 <- ggplot(data=wae,mapping=aes(x=loc,y=tl)) +
+  geom_violin(fill="lightsalmon",trim=FALSE) +
+  scale_x_discrete(name="Location of Capture") +
+  scale_y_continuous(name="Total Length (mm)") +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank())
-wt5
+tl5
 ```
 
 &nbsp;
 
 
-## Weight 6
+## Total Length 6
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*). [*HINT: Copy your code from above and then modify.*]
 
-```{r Loons_WT6}
-wt6 <- ggplot(data=loon,mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
+```{r Walleye_tl6}
+tl6 <- ggplot(data=wae,mapping=aes(x=loc,y=tl,color=loc,fill=loc)) +
   geom_violin(trim=FALSE) +
-  scale_x_discrete(name="Sex of Loon") +
-  scale_y_continuous(name="Weight (g)") +
+  scale_x_discrete(name="Location of Capture") +
+  scale_y_continuous(name="Total Length (mm)") +
   scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
   scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
   theme(legend.position="none")
-wt6
+tl6
 ```
 
 &nbsp;
 
 
-## Weight 7
+## Total Length 7
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
 
-```{r Loons_WT7}
-wt7 <- ggplot(data=loon,mapping=aes(y=sex,x=weight,color=sex,fill=sex)) +
+```{r Walleye_tl7}
+tl7 <- ggplot(data=wae,mapping=aes(y=loc,x=tl,color=loc,fill=loc)) +
   geom_violin(trim=FALSE) +
-  scale_y_discrete(name="Sex of Loon") +
-  scale_x_continuous(name="Weight (g)") +
+  scale_y_discrete(name="Location of Capture") +
+  scale_x_continuous(name="Total Length (mm)") +
   scale_fill_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
   scale_color_manual(values=c("#E69F00","#0072B2","#CC79A7")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),panel.grid.minor.y=element_blank()) +
   theme(legend.position="none")
-wt7
+tl7
 ```
 
-This plot can also[^coord_flip] be produced from your "Loon Weight 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
+This plot can also[^coord_flip] be produced from your "Walleye Total Length 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
 
 
 ### Footnotes

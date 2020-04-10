@@ -36,7 +36,7 @@ For this exercise, we will reduce the data set to only those fish captured in 20
 wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
   filter(year==2003) %>%
   mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
-                             to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
+              to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
          loc=factor(loc))
 str(wae)
 ```
