@@ -27,7 +27,7 @@ loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1
 
 ## Background
 <img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-This is the same data set [introduced here](../intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
+This is the same data set [introduced here](../Intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
 
 &nbsp;
 

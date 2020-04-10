@@ -76,4 +76,4 @@ wt7 <- ggplot(data=loon,mapping=aes(y=sex,x=weight,color=sex,fill=sex)) +
 wt7
 
 
-# Script created at 2020-04-10 15:21:06
+# Script created at 2020-04-10 15:58:34

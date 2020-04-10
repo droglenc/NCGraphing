@@ -30,8 +30,8 @@ wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-
 ----
 
 ## Background
-<img src="../zimgs/walleye.jpg" alt="Walleye" class="img-right">
-This is the same data set [introduced here](../intro/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
+<img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
+This is the same data set [introduced here](../Intro/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
 
 &nbsp;
 
