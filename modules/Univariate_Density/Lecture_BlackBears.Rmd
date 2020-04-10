@@ -39,7 +39,7 @@ leftAssign <- TRUE
 
 .center[
 ```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("zimgs/blackbear.jpg")
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/blackbear.jpg")
 ```
 <font size="1">Credit: <a href="https://news.illinois.edu/view/6367/803074">University of Illinois</a></font>
 ]
@@ -48,17 +48,17 @@ knitr::include_graphics("zimgs/blackbear.jpg")
 
 # Background
 
-- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003).
+- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as CSV file.
 
 --
-- Data in sheet 1 of Excel data file loaded into `flbb` data.frame.
+- Loaded data into `flbb` data.frame.
   - Renamed some variables to remove spaces and capitalization.
   - Changed sex labels and made `sex` a factor variable.
 
 ```{r load1}
-flbb <- readxl::read_excel("fwma-08-01-02_table s1.xls") %>%
-  rename(sex=SEX,age=`AGE (yr)`,length=`BODY LENGTH (cm)`,
-         weight=`BODY WEIGHT (kg)`,chest=`CHEST GIRTH (cm)`) %>%
+flbb <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/fwma-08-01-02_table s1.csv") %>%
+  rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
+         weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %>%
   mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),
          sex=factor(sex))
 ```
