@@ -128,6 +128,12 @@ h
 
 ---
 
+class: inverse, center, middle
+
+# A Mostly Default Histogram
+
+---
+
 ```{r hist1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram() +
@@ -138,6 +144,12 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 ```
 
 `r chunk_reveal("hist1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Histogram with Typical Modifications
 
 ---
 
@@ -163,6 +175,14 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 `r chunk_reveal("hist2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
+
+class: inverse, center, middle
+
+# Histogram with Typical Modifications
+
+### Finish by Removing Vertical Grids
+
+---
 ```{r hist3, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(color="gray30",fill="gray70",
@@ -177,6 +197,12 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 ```
 
 `r chunk_reveal("hist3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Stacked Histogram (Split by Groups)
 
 ---
 
@@ -202,6 +228,14 @@ p <- ggplot(data=flbb,mapping=aes(
 
 ---
 
+class: inverse, center, middle
+
+# Stacked Histogram (Split by Groups)
+
+### Modify the Default Colors
+
+---
+
 ```{r histsplit2, include=FALSE}
 p <- ggplot(data=flbb,
             mapping=aes(x=weight,color=sex,fill=sex)) +
@@ -223,6 +257,11 @@ h2 <- p # for boxplots later
 
 `r chunk_reveal("histsplit2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
+---
+
+class: inverse, center, middle
+
+# Density Plot
 
 ---
 
@@ -255,6 +294,14 @@ d / h
 
 ---
 
+class: inverse, center, middle
+
+# Density Plot
+
+### With Same Modifications as Histogram
+
+---
+
 ```{r density1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_density(
@@ -278,16 +325,19 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 
 ---
 
+class: inverse, center, middle
+
+# Density Plot by Groups
+
+---
+
 ```{r densitysplit1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(
   x=weight,
   color=sex, #BREAK2
   fill=sex #BREAK3
   )) +
-  geom_density(
-    alpha=0.25,
-    position="stack" #BREAK6
-  ) +
+  geom_density(alpha=0.25) +
   scale_x_continuous(name="Weight (kg)",
                      breaks=seq(0,250,25),limits=c(0,250),
                      expand=expansion(mult=c(0,0))) +
@@ -305,8 +355,14 @@ p <- ggplot(data=flbb, mapping=aes(
 
 ---
 
+class: inverse, center, middle
+
+# Boxplot
+
+---
+
 .pull-left[
-# Boxplots
+# Boxplot
 - Displays summary statistics that describe the distribution of the quantitative *X* variable.
   - "Box" is from 1st quartile (Q1) to 3rd quartile (Q3).
   - Line in box is median.
@@ -334,6 +390,12 @@ b / h2 & theme(legend.position="none")
 
 ---
 
+class: inverse, center, middle
+
+# Boxplot with Modifications
+
+---
+
 ```{r boxplot1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
                                    color=sex,fill=sex)) +
@@ -351,6 +413,12 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex,
 
 ---
 
+class: inverse, center, middle
+
+# Boxplot in Horizontal Orientation
+
+---
+
 ```{r boxplot2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
   geom_boxplot(fill="gray30",alpha=0.25) +
@@ -365,11 +433,16 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
 `r chunk_reveal("boxplot2",break_type="auto",left_assign=leftAssign,split=splitPerc)`
 
 
+---
+
+class: inverse, center, middle
+
+# Violin Plot
 
 ---
 
 .pull-left[
-# Violin Plots
+# Violin Plot
 - Displays density of the quantitative *X* variable.
 - Usually for comparing groups.
 - Constructed with `geom_violin()`.
@@ -409,10 +482,15 @@ v / d2 & theme(legend.position="none")
 
 ---
 
+class: inverse, center, middle
+
+# Violin Plot in Horizontal Orientation
+
+---
+
 ```{r violin2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
   geom_violin(fill="gray30",alpha=0.25,trim=FALSE) + #BREAK
-  geom_jitter(width=0,height=0.05) + #BREAK
   scale_x_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
@@ -425,8 +503,31 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
 
 ---
 
+class: inverse, center, middle
+
+# Violin Plot in Horizontal Orientation
+
+### With Individual Points
+
+---
+
+```{r violin3, include=FALSE}
+p <- ggplot(data=flbb, mapping=aes(x=weight,y=sex)) +
+  geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
+  scale_x_continuous(name="Weight (kg)",
+                     limits=c(0,250),breaks=seq(0,250,25),
+                     expand=expansion(mult=c(0,0))) +
+  theme_bw() +
+  theme(legend.position="none") +
+  coord_flip() + #BREAK
+  geom_jitter(width=0,height=0.05)
+```
+
+`r chunk_reveal("violin3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
 ```{css, eval= TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 60%}
 .remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
 ```
-

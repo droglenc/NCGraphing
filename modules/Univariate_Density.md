@@ -49,4 +49,5 @@ XXX
 
 ## Resources
 
-* 
+* [How to Make a Histogram in R with ggplot](https://www.youtube.com/watch?v=uWsYFqXGnoQ): YouTube video by thatRnerd.
+
