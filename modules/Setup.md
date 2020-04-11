@@ -48,6 +48,6 @@ XXX
 * E-Learning Platform
 * R & RStudio
 * Homework Formatting
-  * [Rmarkdown Template](setup/TEMPLATE.RMD) [*download and save to your computer*]
-  * Example ... [Rmarkdown](setup/HWFormatting_Example.Rmd), [HTML Result](setup/HWFormatting_Example.html)
+  * [Rmarkdown Template](Setup/TEMPLATE.RMD) [*download and save to your computer*]
+  * Example ... [Rmarkdown](Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html)
 * Final Project

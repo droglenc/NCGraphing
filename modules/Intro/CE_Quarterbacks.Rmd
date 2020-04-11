@@ -18,7 +18,7 @@ FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ```
 
 ----
@@ -84,7 +84,7 @@ act
 ## Passing Attempts vs Rushing Attempts 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r QBS_act2, fig.width=6}
+```{r QBS_act2, fig.width=6,out.width="75%"}
 act2 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Conf)) +
   geom_point(size=3) +
   scale_x_continuous(name="Rushing Attempts") +
@@ -98,7 +98,7 @@ act2
 ## Passing Attempts vs Rushing Attempts 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r QBS_act3, fig.width=6}
+```{r QBS_act3, fig.width=6,out.width="75%"}
 act3 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Pct)) +
   geom_point(size=3) +
   scale_x_continuous(name="Rushing Attempts") +
@@ -112,7 +112,7 @@ act3
 ## Passing Attempts vs Rushing Attempts 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r QBS_act4, fig.width=6}
+```{r QBS_act4, fig.width=6,out.width="75%"}
 act4 <- ggplot(data=qbs,mapping=aes(x=RAtt,y=Att,color=Conf,shape=Conf)) +
   geom_point(size=3) +
   scale_x_continuous(name="Rushing Attempts") +
@@ -126,7 +126,7 @@ act4
 ## Passing Attempts vs Rushing Attempts 5
 Modify your plot from "Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
-```{r QBS_act5, fig.width=6}
+```{r QBS_act5, fig.width=6,out.width="75%"}
 act5 <- act2 +
   scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442"))
 act5

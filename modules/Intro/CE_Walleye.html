@@ -15,7 +15,7 @@ css: "/css/modules.css"
 <pre class="r"><code>wae &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv&quot;) %&gt;%
   filter(year==2003) %&gt;%
   mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
-                             to=c(&quot;Toledo-Huron&quot;,&quot;Huron-Fairport&quot;,&quot;Fairport-Conneaut&quot;)),
+              to=c(&quot;Toledo-Huron&quot;,&quot;Huron-Fairport&quot;,&quot;Fairport-Conneaut&quot;)),
          loc=factor(loc))
 str(wae)</code></pre>
 <p> </p>
@@ -23,37 +23,37 @@ str(wae)</code></pre>
 <div id="total-length-vs-age-1" class="section level2">
 <h2>Total Length vs Age 1</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
-<p><img src="CE_Walleye_files/figure-html/wae_laa1-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa1-1.png" width="60%" /></p>
 <p> </p>
 </div>
 <div id="weight-vs-total-length" class="section level2">
 <h2>Weight vs Total Length</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can). [<em>HINT: The graphic at <a href="https://ggplot2.tidyverse.org/reference/scale_shape.html#examples">the bottom of this page</a> might be useful.</em>]</p>
-<p><img src="CE_Walleye_files/figure-html/wae_lw-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/wae_lw-1.png" width="60%" /></p>
 <p> </p>
 </div>
 <div id="total-length-vs-age-2" class="section level2">
 <h2>Total Length vs Age 2</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
-<p><img src="CE_Walleye_files/figure-html/wae_laa2-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa2-1.png" width="75%" /></p>
 <p> </p>
 </div>
 <div id="total-length-vs-age-3" class="section level2">
 <h2>Total Length vs Age 3</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
-<p><img src="CE_Walleye_files/figure-html/wae_laa3-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/wae_laa3-1.png" width="75%" /></p>
 <p> </p>
 </div>
 <div id="total-length-vs-age-4" class="section level2">
 <h2>Total Length vs Age 4</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
-<p><img src="CE_Walleye_files/figure-html/laa4-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/laa4-1.png" width="75%" /></p>
 <p> </p>
 </div>
 <div id="total-length-vs-age-5" class="section level2">
 <h2>Total Length vs Age 5</h2>
 <p>Modify your plot from “Total Length vs Age 2” to use three <em>divergent</em> colors for the different locations that are <em>colorblind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
-<p><img src="CE_Walleye_files/figure-html/QBS_act5-1.png" width="100%" /></p>
+<p><img src="CE_Walleye_files/figure-html/QBS_act5-1.png" width="75%" /></p>
 </div>
 <div class="footnotes">
 <hr />

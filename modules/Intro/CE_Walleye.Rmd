@@ -11,13 +11,14 @@ output:
 
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Walleye"
 modHTML(file.path(here::here(),"modules/Intro",fnm))
 FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ```
 
 ----
@@ -74,7 +75,7 @@ lw
 ## Total Length vs Age 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r wae_laa2, fig.width=6}
+```{r wae_laa2, fig.width=6,out.width="75%"}
 laa2 <- ggplot(data=wae,mapping=aes(x=age,y=tl,color=loc)) +
   geom_point(size=3,alpha=0.5) +
   scale_x_continuous(name="Otolith Age (years)") +
@@ -88,7 +89,7 @@ laa2
 ## Total Length vs Age 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r wae_laa3, fig.width=6}
+```{r wae_laa3, fig.width=6,out.width="75%"}
 laa3 <- ggplot(data=wae,mapping=aes(x=age,y=tl,color=w)) +
   geom_point(size=3,alpha=0.5) +
   scale_x_continuous(name="Otolith Age (years)") +
@@ -102,7 +103,7 @@ laa3
 ## Total Length vs Age 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r laa4, fig.width=6}
+```{r laa4, fig.width=6,out.width="75%"}
 laa4 <- ggplot(data=wae,mapping=aes(x=age,y=tl,color=sex,shape=loc)) +
   geom_point(size=3,alpha=0.5) +
   scale_x_continuous(name="Otolith Age (years)") +
@@ -116,7 +117,7 @@ laa4
 ## Total Length vs Age 5
 Modify your plot from "Total Length vs Age 2" to use three *divergent* colors for the different locations that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
-```{r QBS_act5, fig.width=6}
+```{r QBS_act5, fig.width=6,out.width="75%"}
 laa5 <- laa2 +
   scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9"))
 laa5

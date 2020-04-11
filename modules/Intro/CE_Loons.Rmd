@@ -18,7 +18,7 @@ FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ```
 
 ----
@@ -72,7 +72,7 @@ wt
 ## Tarsus Length vs. Bill Length 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB2, fig.width=6}
+```{r Loons_TB2, fig.width=6,out.width="75%"}
 tb2 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=region)) +
   geom_point(size=3) +
   scale_x_continuous(name="Bill Length (mm)") +
@@ -86,7 +86,7 @@ tb2
 ## Tarsus Length vs. Bill Length 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB3, fig.width=6}
+```{r Loons_TB3, fig.width=6,out.width="75%"}
 tb3 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,color=weight)) +
   geom_point(size=3) +
   scale_x_continuous(name="Bill Length (mm)") +
@@ -100,7 +100,7 @@ tb3
 ## Tarsus Length vs. Bill Length 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_TB4, fig.width=6}
+```{r Loons_TB4, fig.width=6,out.width="75%"}
 tb4 <- ggplot(data=loon,mapping=aes(x=bill.len,y=tarsus,
                                     color=region,shape=sex)) +
   geom_point(size=3) +
@@ -115,7 +115,7 @@ tb4
 ## Tarsus Length vs. Bill Length 5
 Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
 
-```{r Loons_TB5, fig.width=6}
+```{r Loons_TB5, fig.width=6,out.width="75%"}
 tb5 <- tb2 +
   scale_color_manual(values=c("#000000", "#E69F00", "#56B4E9"))
 tb5
