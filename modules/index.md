@@ -3,6 +3,7 @@ layout: page
 title: Learning Modules
 ---
 
+1. [Course Organization](Setup)
 1. [Introduction to ggplot2](Intro)
 1. [Histograms, Boxplots, *et al.*](Univariate_Density)
 1. [Bar Charts](Univariate_Groups)
