@@ -90,4 +90,4 @@ NGDHst4 <- ggplot(data=sum2,mapping=aes(x=state,y=perc,fill=ad_deer_hunting)) +
 NGDHst4
 
 
-# Script created at 2020-04-13 15:46:56
+# Script created at 2020-04-13 15:55:08

@@ -10,6 +10,20 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right"> Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning’s data was recorded in <a href="">StateOfWolf.csv</a>. The data are loaded below and reduced to many fewer variables and only those respondents that answer all of those questions to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year.</p>
+<pre class="r"><code>library(tidyverse)
+lvls_agree &lt;- c(&quot;Strongly Disagree&quot;,&quot;Disagree&quot;,&quot;Neutral&quot;,&quot;Agree&quot;,&quot;Strongly Agree&quot;)
+sow &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/zdata/StateOfWolf.csv&quot;) %&gt;%
+  select(state,hunt_deer,seen_wolf,part_deer,
+         ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %&gt;%
+  filter(complete.cases(.)) %&gt;%
+  mutate(part_deer=factor(part_deer,
+          levels=c(&quot;Stop Participating&quot;,&quot;Participate Less Frequently&quot;,
+                   &quot;Participate More Frequently&quot;,&quot;No Changes&quot;)),
+         ad_healthy_deer=factor(ad_healthy_deer,levels=lvls_agree),
+         ad_nowolves_deer=factor(ad_nowolves_deer,levels=lvls_agree),
+         ad_threaten_deer=factor(ad_threaten_deer,levels=lvls_agree),
+         ad_deer_hunting=factor(ad_deer_hunting,levels=lvls_agree)) %&gt;%
+  filter(hunt_deer==&quot;Yes&quot;)</code></pre>
 <p>The specific questions with respect to the variable names are as follows:</p>
 <ul>
 <li><code>state</code>: Resident’s state of residence.</li>
