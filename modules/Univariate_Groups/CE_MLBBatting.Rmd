@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ----
 
 ## Background
-<img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
+<img src="../zimgs/BattingAverage.jpg" alt="Batting Average" class="img-right">
 
 [sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for Major League Baseball (MLB) players during the 2019 season will be explored. Before loading these data, load the `tidyverse` package, which will load `ggplot2` along with a few other packages you will need to access these data.
 

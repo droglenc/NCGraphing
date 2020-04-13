@@ -80,4 +80,4 @@ lgage4 <- ggplot(data=sum2,mapping=aes(x=Lg,y=perc,fill=Age_grp)) +
 lgage4
 
 
-# Script created at 2020-04-13 09:20:49
+# Script created at 2020-04-13 09:41:20
