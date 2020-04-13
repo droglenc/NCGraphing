@@ -1,0 +1,122 @@
+---
+layout: page
+title: Exercise - MLB Batting
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for Major League Baseball (MLB) players during the 2019 season will be explored. Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>Perform the following steps to load information <a href="https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv">in this file</a> for all players from the 2019 season that had at least 200 at-bats (in one league) and were in the top 100 with respect to batting “average.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre class="r"><code>mlb &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv&quot;,
+                stringsAsFactors=FALSE) %&gt;%
+  select(Name,Age,Lg,G,AB,H,HR,RBI,BB,BA) %&gt;%
+  filter(Lg!=&quot;MLB&quot;,AB&gt;200) %&gt;%  # &gt;200 at-bats in one league
+  mutate(Lg=factor(Lg)) %&gt;%
+  top_n(n=100,wt=BA) %&gt;%        # players in top 100 by batting average
+  mutate(Age_grp=case_when(     # create age groups
+    Age &lt; 24 ~ &quot;&lt;24 yrs&quot;,
+    Age &lt; 30 ~ &quot;24-30 yrs&quot;,
+    TRUE ~ &quot;&gt;30 yrs&quot;),
+    Age_grp=factor(Age_grp,levels=c(&quot;&lt;24 yrs&quot;,&quot;24-30 yrs&quot;,&quot;&gt;30 yrs&quot;)))
+str(mlb)</code></pre>
+<p>Here we will only use the following variables:</p>
+<ul>
+<li><code>BA</code>: Batting average (as a proportion).</li>
+<li><code>Lg</code>: League competed in (<code>AL</code> or <code>NL</code>.</li>
+<li><code>Age_grp</code>: Age grouping (<code>&lt;24 yrs</code>, <code>24-30 yrs</code>, <code>&gt;30 yrs</code>).</li>
+</ul>
+<p> </p>
+</div>
+<div id="age-groups-1" class="section level2">
+<h2>Age Groups 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_MLBBatting_files/figure-html/ages-1.png" width="60%" /></p>
+<p> </p>
+</div>
+<div id="league-and-age-group-1" class="section level2">
+<h2>League and Age Group 1</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can … <em>you don’t have to match my colors, but do use other than the default colors</em>).</p>
+<p><img src="CE_MLBBatting_files/figure-html/MLB_LgAge1-1.png" width="75%" /></p>
+<p> </p>
+</div>
+<div id="league-and-age-group-2" class="section level2">
+<h2>League and Age Group 2</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_MLBBatting_files/figure-html/MLB_LgAge2-1.png" width="75%" /></p>
+<p> </p>
+</div>
+<div id="age-group-2" class="section level2">
+<h2>Age Group 2</h2>
+<p>Recreate the plot in the “Region 1” section but using summarized data (<em>i.e., summarize the data first and then use that to construct the plot</em>).</p>
+<p> </p>
+</div>
+<div id="league-and-age-group-3" class="section level2">
+<h2>League and Age Group 3</h2>
+<p>Recreate the plot in “League and Age Group 2” using summarized data. [<em>Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that</em>.]</p>
+<p> </p>
+</div>
+<div id="league-and-age-group-4" class="section level2">
+<h2>League and Age Group 4</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_MLBBatting_files/figure-html/MLB_LgAge4-1.png" width="75%" /></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These data were obtained from <a href="https://www.sports-reference.com/" class="uri">https://www.sports-reference.com/</a> with the following steps: 1) Select “Baseball” in the list of sports in the gray box near the top of the page; 2) Select “Seasons” in the list of items in the gray box near the top of the page; 3) Select “Batting” after “All Major Leagues” under “League Index”, 4) Select “2019” in the list of years; 5) Scroll down to “Player Standard Batting”; 6) hover over the “Share &amp; more” item just after “Player Standard Batting” above the table of statistics and select “Get Table as a CSV”; and 7) copy CSV result to a text file.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

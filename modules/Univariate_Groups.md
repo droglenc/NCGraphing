@@ -42,7 +42,7 @@ XXX
   <ul>
     <li><a href="Univariate_Groups/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Loons.R">Key</a></button></li>
     <li><a href="Univariate_Groups/CE_Walleye.html">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Walleye.R">Key</a></button></li>
-    <li><a href="Univariate_Groups/CE_XXX.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_XXX.R">Key</a></button></li>
+    <li><a href="Univariate_Groups/CE_MLBBatting.html">MLB Batting</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_MLB Batting.R">Key</a></button></li>
   </ul>
 </ul>
 
