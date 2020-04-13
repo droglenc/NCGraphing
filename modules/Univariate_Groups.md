@@ -40,8 +40,8 @@ XXX
   <li><a href="">Analysis Exercise I</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_XXX.R">Key</a></button></li>
   <li>Analysis Exercise II (pick one)</li>
   <ul>
-    <li><a href="Univariate_Groups/CE_XXX.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_XXX.R">Key</a></button></li>
-    <li><a href="Univariate_Groups/CE_XXX.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_XXX.R">Key</a></button></li>
+    <li><a href="Univariate_Groups/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Loons.R">Key</a></button></li>
+    <li><a href="Univariate_Groups/CE_Walleye.html">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Walleye.R">Key</a></button></li>
     <li><a href="Univariate_Groups/CE_XXX.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_XXX.R">Key</a></button></li>
   </ul>
 </ul>
