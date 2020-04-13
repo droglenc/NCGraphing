@@ -1,4 +1,4 @@
-library(dplyr)
+library(tidyverse)
 
 setwd("C:/aaaWork/Web/GitHub/NCGraphing/modules/zdata/")
 df <- readspss::read.spss("raw/Schanning_StateOfTheWolf.sav") %>%
@@ -138,5 +138,8 @@ attributes(df) <- NULL
 df <- as.data.frame(df)
 names(df) <- lup$new
 head(df)
+
+df <- df %>% 
+  mutate_if(is.factor,str_replace,pattern="Concerened",replacement="Concerned")
 
 write.csv(df,"StateOfWolf.csv",quote=TRUE,row.names=FALSE)
