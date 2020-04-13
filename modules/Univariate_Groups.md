@@ -50,4 +50,6 @@ XXX
 
 ## Resources
 
+* [ggplot2 barplots : Quick start guide - R software and data visualization](http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization)
+* [Cookbook for R](http://www.cookbook-r.com/Graphs/Bar_and_line_graphs_(ggplot2)/)
 * 
