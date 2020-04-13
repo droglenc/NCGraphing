@@ -20,124 +20,155 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
-library(tidyverse)
-sow <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/StateOfWolf.csv") %>%
-  select()
 ```
 
 ----
 
 ## Background
-<img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-This is the same data set [introduced here](../Intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `tidyverse`) loading portion of your script.
+<img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right">
+Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](). The data are loaded below and reduced to many fewer variables and only those respondents that answer all of those questions to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year.
 
-&nbsp;
+```{r}
+library(tidyverse)
+lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
+sow <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/StateOfWolf.csv") %>%
+  select(state,hunt_deer,seen_wolf,part_deer,
+         ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
+  filter(complete.cases(.)) %>%
+  mutate(part_deer=factor(part_deer,
+          levels=c("Stop Participating","Participate Less Frequently",
+                   "Participate More Frequently","No Changes")),
+         ad_healthy_deer=factor(ad_healthy_deer,levels=lvls_agree),
+         ad_nowolves_deer=factor(ad_nowolves_deer,levels=lvls_agree),
+         ad_threaten_deer=factor(ad_threaten_deer,levels=lvls_agree),
+         ad_deer_hunting=factor(ad_deer_hunting,levels=lvls_agree)) %>%
+  filter(hunt_deer=="Yes")
+```
 
-&nbsp;
+The specific questions with respect to the variable names are as follows:
+
+* `state`: Resident's state of residence.
+* `hunt_deer`: Whether or not the respondent hunted deer the previous year (should all be `Yes`).
+* `seen_wolf`: Whether or not the respondent has ever seen a wolf.
+* `part_deer`: Respondent's answer to the question "If I knew wolves lived where I participated in deer hunting, I would ['Stop Participating', 'Participate Less Frequently', 'Participate More Frequently', or make 'No Changes']."
+* `ad_healthy_deer`: Respondent's answer to the question "State your level of agreement with the statement 'Wolves help keep deer herds healthy by killing the sick and the weak animals'."
+* `ad_nowolves_deer`: Respondent's answer to the question "State your level of agreement with the statement 'I think the elimination of wolves from most of the United States has resulted in overabundant and unhealthy deer populations in many places'."
+* `ad_threaten_deer`: Respondent's answer to the question "State your level of agreement with the statement 'The state's wolf population threatens deer hunting opportunities'."
+* `ad_deer_hunting`: Respondent's answer to the question "State your level of agreement with the statement 'There is no way sportsmen can have good deer hunting if wolves live in the same area'."
 
 
-## Region 1
+## No Good Deer Hunting 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_Reg1}
-reg1 <- ggplot(data=loon,mapping=aes(x=region)) +
+```{r Wolves_NGDH1}
+ngdh1 <- ggplot(data=sow,mapping=aes(x=ad_deer_hunting)) +
   geom_bar(color="gray30",fill="wheat") +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Frequency of Loons",expand=expansion(mult=c(0,0.05))) +
+  scale_x_discrete(name="Level of Agreement") +
+  scale_y_continuous(name="Frequency of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-reg1
+ngdh1
 ```
 
 &nbsp;
 
-## Region and Sex 1
+## State and No Good Deer Hunting 1
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Loons_RegSex1, fig.width=6.5, out.width="75%"}
-regsex1 <- ggplot(data=loon,mapping=aes(x=region,fill=sex)) +
+```{r Wolves_NGDHState1, fig.width=6.5, out.width="75%"}
+NGDHst1 <- ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
   geom_bar(color="gray30",alpha=0.7) +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Frequency of Loons",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(name="Sex",values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Frequency of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",
+                    values=c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-regsex1
+NGDHst1
 ```
 
 &nbsp;
 
-## Region and Sex 2
+## State and No Good Deer Hunting 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_RegSex2, fig.width=6.5, out.width="75%"}
-regsex2 <- ggplot(data=loon,mapping=aes(x=region,fill=sex)) +
-  geom_bar(position="dodge",color="gray30",alpha=0.7) +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Frequency of Loons",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(name="Sex",values=c("#E69F00","#0072B2","#CC79A7")) +
+```{r Wolves_NGDHState2, fig.width=6.5, out.width="75%"}
+NGDHst2 <- ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
+  geom_bar(color="gray30",alpha=0.7) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Frequency of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",
+                    values=c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")) +
   coord_flip() +
-  theme_bw() +
+  theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-regsex2
+NGDHst2
 ```
 
 &nbsp;
 
-## Region 2
+## No Good Deer Hunting 2
 Recreate the plot in the "Region 1" section but using summarized data (*i.e., summarize the data first and then use that to construct the plot*).
 
-```{r Loons_Reg2, fig.show='hide'}
-sum1 <- loon %>%
-  group_by(region) %>%
+```{r Wolves_NGDH2}
+sum1 <- sow %>%
+  group_by(ad_deer_hunting) %>%
   summarize(freq=n()) %>%
   ungroup()
 
-reg1a <- ggplot(data=sum1,mapping=aes(x=region,y=freq)) +
+ngdh2 <- ggplot(data=sum1,mapping=aes(x=ad_deer_hunting,y=freq)) +
   geom_bar(stat="identity",color="gray30",fill="wheat") +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Frequency of Loons",expand=expansion(mult=c(0,0.05))) +
+  scale_x_discrete(name="Level of Agreement") +
+  scale_y_continuous(name="Frequency of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-reg1a
+ngdh2
 ```
 
 &nbsp;
 
-## Region and Sex 3
-Recreate the plot in "Region and Sex 2" using summarized data. [*Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that*.]
+## State and No Good Deer Hunting 3
+Recreate the plot in "State and No Good Deer Hunting 2" using summarized data. [*Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that*.]
 
-```{r Loons_RegSex3, fig.show='hide'}
-sum2 <- loon %>%
-  group_by(region,sex) %>%
+```{r Wolves_NGDHState3, fig.width=6.5, out.width="75%"}
+sum2 <- sow %>%
+  group_by(state,ad_deer_hunting) %>%
   summarize(freq=n()) %>%
   mutate(perc=freq/sum(freq)*100) %>%
   ungroup()
   
-regsex3 <- ggplot(data=sum2,mapping=aes(x=region,y=freq,fill=sex)) +
+NGDHst3 <- ggplot(data=sum2,mapping=aes(x=state,y=freq,fill=ad_deer_hunting)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Frequency of Loons",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(name="Sex",values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Frequency of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",
+                    values=c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")) +
   coord_flip() +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-regsex3
+NGDHst3
 ```
 
 &nbsp;
 
-## Region and Sex 4
+## State and No Good Deer Hunting 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_RegSex4, fig.width=6.5, out.width="75%"}
-regsex4 <- ggplot(data=sum2,mapping=aes(x=region,y=perc,fill=sex)) +
+```{r Wolves_NGDHState4, fig.width=6.5, out.width="75%"}
+NGDHst4 <- ggplot(data=sum2,mapping=aes(x=state,y=perc,fill=ad_deer_hunting)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
-  scale_x_discrete(name="Region of Capture") +
-  scale_y_continuous(name="Percentage of Loons",expand=expansion(mult=c(0,0.05))) +
-  scale_fill_manual(name="Sex",values=c("#E69F00","#0072B2","#CC79A7")) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Percent of Respondents",
+                     expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",
+                    values=c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")) +
   coord_flip() +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
-regsex4
+NGDHst4
 ```
