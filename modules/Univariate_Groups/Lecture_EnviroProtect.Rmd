@@ -38,9 +38,10 @@ leftAssign <- TRUE
   - Can be accessed from [NORC at the University of Chicago](https://gss.norc.org/)
 
 .center[
-```{r, echo=FALSE, out.width="500px"}
+```{r, echo=FALSE, out.width="400px"}
 knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/survey.jpg")
 ```
+]
 
 ---
 
@@ -53,19 +54,19 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/survey.j
 - [Data available here](https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv)
 
 .center[
-```{r, echo=FALSE, out.width="500px"}
+```{r, echo=FALSE, out.width="400px"}
 knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Driving.jpg")
 ```
+]
 
 ---
 
 # Background
 
 - Loaded data into `gss` data.frame.
-  - Removed "missing data."
   - Converted codes to questions.
-  - Converted all variables to factors, ordered levels where appropriate.
-
+  - Removed "missing data."
+ 
 ```{r load1}
 gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv",
                 na.strings=c("na","NA","-1","7","8","9","98","99")) %>%
@@ -77,9 +78,21 @@ gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.c
            to=c(NA_character_,"Very","Fairly","Neither","Not Very","Not At All")),
          GRNCON = plyr::mapvalues(GRNCON,from=0:5,
            to=c(NA_character_,"Not at All","Not Much","Neither","Somewhat","Very"))) %>%
-  filter(!is.na(GRNSOL),!is.na(GRNCON)) %>%
+  filter(!is.na(GRNSOL),!is.na(GRNCON))
+```
+
+---
+
+# Background
+
+- Loaded data into `gss` data.frame.
+  - Converted all variables to factors and ordered all levels.
+
+```{r load2}
+gss <- gss %>%
   mutate(SEX=factor(SEX),RACE=factor(RACE,levels=c("White","Black","Other")),
-         DEGREE=factor(DEGREE,levels=c("Less than HS","High School","Junior College","Bachelors","Graduate School")),
+         DEGREE=factor(DEGREE,levels=c("Less than HS","High School","Junior College",
+                                       "Bachelors","Graduate School")),
          GRNSOL = factor(GRNSOL,levels=c("Not At All","Not Very","Neither","Fairly","Very")),
          GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very")))
 ```
@@ -89,6 +102,8 @@ gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.c
 # Background
 
 ```{r}
+gss <- gss %>%
+  select(SEX,DEGREE,GRNSOL)
 head(gss)
 ```
 
@@ -356,6 +371,8 @@ class: inverse, center, middle
 
 # Stacked Percentages Plots
 
+---
+
 ```{r bar2b, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=SEX,y=perc,fill=GRNSOL)) + #BREAK
@@ -369,8 +386,6 @@ b <- ggplot(data=gss_sum3,
         panel.grid.minor.x=element_blank())
 ```
 
----
-
 `r chunk_reveal("bar2b",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
@@ -383,28 +398,23 @@ gss_sum3 <- gss %>%
   ungroup()
 ```
 
----
-
 `r chunk_reveal("sum2c",break_type=1,left_assign=leftAssign,split=splitPerc)`
 
 ---
-
 
 ```{r bar3c, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +
   geom_bar(stat="identity",color="gray30") + #BREAK
-  scale_x_discrete(name="Sex of Respondent") +
+  scale_x_discrete(name="Highest Degree Completed") +
   scale_y_continuous(name="Percentage of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
   scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank()) +
+        panel.grid.minor.x=element_blank()) + #BREAK
   coord_flip()
 ```
-
----
 
 `r chunk_reveal("bar3c",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
