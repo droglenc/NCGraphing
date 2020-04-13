@@ -33,7 +33,7 @@ XXX
 
 ## Demonstration and Exercises
 
-* [Demonstration](Univariate_Density/Demo_FL_BlackBears.html)
+* [Lecture](Univariate_Groups/Lecture_EnviroProtect.html)
 
 ----
 
