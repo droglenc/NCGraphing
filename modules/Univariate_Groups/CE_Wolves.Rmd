@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Exercise - Loons
+title: Exercise - Wolves
 author: Derek H. Ogle
 css: "/css/modules.css"
 output:
@@ -12,7 +12,7 @@ output:
 ```{r echo=FALSE, eval=FALSE}
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
-fnm <- "CE_Loons"
+fnm <- "CE_Wolves"
 dnm <- "modules/Univariate_Groups"
 modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
@@ -21,7 +21,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
-loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
+sow <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/StateOfWolf.csv")
 ```
 
 ----

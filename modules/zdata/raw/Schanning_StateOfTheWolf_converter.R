@@ -133,4 +133,4 @@ df <- as.data.frame(df)
 names(df) <- lup$new
 head(df)
 
-write.csv(df,"StateOfWolf.csv",quote=FALSE,row.names=FALSE)
+write.csv(df,"StateOfWolf.csv",quote=TRUE,row.names=FALSE)
