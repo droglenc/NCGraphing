@@ -5,6 +5,12 @@ df <- readspss::read.spss("raw/Schanning_StateOfTheWolf.sav") %>%
   select(-VAR00001,-VAR00002)
 lup <- read.csv("raw/Schanning_StateOfTheWOlf_LOOKUP.csv",stringsAsFactors=FALSE)
 
+df$state[df$state==""] <- NA_character_
+df$state <- factor(df$state)
+
+df$zip_code[df$zip_code==1] <- NA_real_
+df$zip_code <- factor(df$zip_code)
+
 df$v19[df$v19=="99"] <- NA_character_
 df$v19 <- factor(df$v19)
 
