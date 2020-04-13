@@ -53,7 +53,7 @@ reg1
 ## Region and Sex 1
 Construct `ggplot2` code to match the graph below (as closely as you can ... *you don't have to match my colors, but do use other than the default colors*).
 
-```{r Loons_RegSex1, fig.width=6.5}
+```{r Loons_RegSex1, fig.width=6.5, out.width="75%"}
 regsex1 <- ggplot(data=loon,mapping=aes(x=region,fill=sex)) +
   geom_bar(color="gray30",alpha=0.7) +
   scale_x_discrete(name="Region of Capture") +
@@ -69,7 +69,7 @@ regsex1
 ## Region and Sex 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_RegSex2, fig.width=6.5}
+```{r Loons_RegSex2, fig.width=6.5, out.width="75%"}
 regsex2 <- ggplot(data=loon,mapping=aes(x=region,fill=sex)) +
   geom_bar(position="dodge",color="gray30",alpha=0.7) +
   scale_x_discrete(name="Region of Capture") +
@@ -129,7 +129,7 @@ regsex3
 ## Region and Sex 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_RegSex4, fig.width=6.5}
+```{r Loons_RegSex4, fig.width=6.5, out.width="75%"}
 regsex4 <- ggplot(data=sum2,mapping=aes(x=region,y=perc,fill=sex)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="Region of Capture") +

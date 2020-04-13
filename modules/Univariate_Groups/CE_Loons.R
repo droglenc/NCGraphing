@@ -68,4 +68,4 @@ regsex4 <- ggplot(data=sum2,mapping=aes(x=region,y=perc,fill=sex)) +
 regsex4
 
 
-# Script created at 2020-04-13 07:53:47
+# Script created at 2020-04-13 08:33:06
