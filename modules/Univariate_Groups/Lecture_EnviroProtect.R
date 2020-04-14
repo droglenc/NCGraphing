@@ -1,77 +1,8 @@
----
-title: "Graphing Univariate Groups"
-author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    css: [default, hygge, ninjutsu]
-    nature:
-      ratio: 16:10
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
----
-
-```{r purler, eval=FALSE, echo=FALSE}
-## Use Knit button to make actual slides.
-## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
-fnm <- "Lecture_EnviroProtect"
-FSA::purl2(file.path(here::here(),"modules/Univariate_Groups",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork",
-                       "include_graphics","options","splitPerc","leftAssign"))
-```
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,message=FALSE,warning=FALSE,comment="",cache=FALSE)
-library(flipbookr)
 library(tidyverse)
 library(patchwork)
-options(width=120,show.signif.stars=FALSE)
-splitPerc <- 50
-leftAssign <- TRUE
-```
 
-# Background
-
-- The General Sociological Survey (GSS) gathers data on American society to monitor and explain trends in attitudes, behaviors, and attributes.
-  - Initiated in 1972.
-  - Can be accessed from [NORC at the University of Chicago](https://gss.norc.org/)
-
-.center[
-```{r, echo=FALSE, out.width="400px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/survey.jpg")
-```
-]
-
----
-
-# Background
-
-- Downloaded data on the following four characteristics or questions:
-  - Respondent's sex, race, and highest educational degree.
-  - "Generally speaking, how concerned are you about environmental issues?"
-  - "How willing would you be to accept cuts in your standard of living in order to protect the environment?"
-- [Data available here](https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv)
-
-.center[
-```{r, echo=FALSE, out.width="400px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Driving.jpg")
-```
-]
-
----
-
-# Background
-
-- Loaded data into `gss` data.frame.
-  - Converted codes to questions.
-  - Removed "missing data."
-
-```{r echo=FALSE}
 #!# Load and Prep Data
-```
 
-```{r load1}
 gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv",
                 na.strings=c("na","NA","-1","7","8","9","98","99")) %>%
   mutate(SEX=plyr::mapvalues(SEX,from=1:2,to=c("Male","Female")),
@@ -83,72 +14,26 @@ gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.c
          GRNCON = plyr::mapvalues(GRNCON,from=0:5,
            to=c(NA_character_,"Not at All","Not Much","Neither","Somewhat","Very"))) %>%
   filter(!is.na(GRNSOL),!is.na(GRNCON))
-```
 
----
-
-# Background
-
-- Loaded data into `gss` data.frame.
-  - Converted all variables to factors and ordered all levels.
-
-```{r echo=FALSE}
 #!# Controlling order of levels of factor variables (where order is important)
-```
 
-```{r load2}
 gss <- gss %>%
   mutate(SEX=factor(SEX),RACE=factor(RACE,levels=c("White","Black","Other")),
          DEGREE=factor(DEGREE,levels=c("Less than HS","High School","Junior College",
                                        "Bachelors","Graduate School")),
          GRNSOL = factor(GRNSOL,levels=c("Not At All","Not Very","Neither","Fairly","Very")),
          GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very")))
-```
 
----
-
-# Background
-
-```{r echo=FALSE}
 #!# Narrowing only to those variables of interest for the slides
-```
 
-```{r}
 gss <- gss %>%
   select(SEX,DEGREE,GRNSOL)
 head(gss)
-```
 
-- Variables used are:
-  - **SEX**: Sex of respondent (`Female` or `Male`).
-  - **DEGREE**: Respondent's highest completed degree.
-  - **GRNSOL**: Response to "willingness to cut standard of living" question.
-
---
-
-- Color palette used is:
-
-```{r echo=FALSE}
 #!# Declaring a color palette so I don't have to type this every time
-```
 
-```{r}
 clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
-```
 
----
-
-# Bar Chart
-
-.pull-left[
-- Displays the frequency of observations in levels of the categorical *X* variable.
-- Constructed with `geom_bar()`.
-  - `position=`: Controls position of bars with groups.
-  - `width=`: Width of bars.
-]
-
-.pull-right[
-```{r bar_demo, echo=FALSE}
 b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
   geom_bar(color="gray30",fill="gray70") +
   scale_x_discrete(name="Willingness to Pay") +
@@ -158,22 +43,9 @@ b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
 b
-```
-]
 
----
-
-class: inverse, center, middle
-
-# Bar Chart with Typical Modifications
-
----
-
-```{r echo=FALSE}
 #!# Bar Chart with Typical Modifications
-```
 
-```{r bar1, include=FALSE}
 b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
   geom_bar(color="gray30",fill="gray70") +
   scale_x_discrete(name="Willingness to Pay") +
@@ -182,26 +54,9 @@ b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
-
----
-
-class: inverse, center, middle
-
-# Stacked Bar Chart (by Groups)
-
-### Make sure "groups" on x-axis and "response" on y-axis
-
----
-
-```{r echo=FALSE}
 #!# Stacked Bar Chart (by Groups)
-```
 
-```{r bar2, include=FALSE}
 b <- ggplot(data=gss, mapping=aes(
   x=SEX,
   fill=GRNSOL #BREAK2
@@ -214,17 +69,9 @@ b <- ggplot(data=gss, mapping=aes(
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Stacked Bar Chart 2
-```
 
-```{r bar3, include=FALSE}
 b <- ggplot(data=gss, mapping=aes(
   x=DEGREE,
   fill=GRNSOL #BREAK2
@@ -237,23 +84,9 @@ b <- ggplot(data=gss, mapping=aes(
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar3",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Side-by-Side Bar Chart (by Group)
-
----
-
-```{r echo=FALSE}
 #!# Side-by-Side Bar Chart
-```
 
-```{r bar3a, include=FALSE}
 b <- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   geom_bar(
     color="gray30",
@@ -266,74 +99,18 @@ b <- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar3a",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Flipped Axes
-
-### Can sometimes help with long level names (though we will also handle this later)
-
----
-
-```{r echo=FALSE}
 #!# Flipping the Axes on the Side-by-Side Bar Chart
-```
 
-```{r bar3b, include=FALSE}
 b + #BREAK
   coord_flip()
-```
 
-`r chunk_reveal("bar3b",break_type="user",split=splitPerc)`
-
-
----
-
-class: inverse, center, middle
-
-# Bar Charts from Summarized Data
-
----
-
-# Bar Charts from Summarized Data
-- Data must be in "tidy format."
-  - Each row represents one data point.
-  - Each column represents one variable.
-
-
----
-
-class: inverse, center, middle
-
-# Summarizing Data
-### Univariate Counts
-
----
-
-```{r echo=FALSE}
 #!# Bar Chart from Summarized Counts (only one variable)
-```
 
-```{r sum1, include=FALSE}
 gss_sum1 <- gss %>%
   group_by(GRNSOL) %>%
   summarize(freq=n())
-```
 
-`r chunk_reveal("sum1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-# Bar Charts from Summarized Data
-- Constructed with `geom_bar()`, but using `stat="identity"`.
-  - Forces to use the actual value rather than "counting" as it had done previously.
-
-```{r bar1a, include=FALSE}
 b <- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) + #BREAK
   geom_bar(stat="identity",color="gray30",fill="gray70") + #BREAK
   scale_x_discrete(name="Willingness to Pay") +
@@ -342,37 +119,14 @@ b <- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) + #BREAK
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
----
-
-`r chunk_reveal("bar1a",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Summarizing Data
-### Bivariate Counts
-
----
-
-```{r echo=FALSE}
 #!# Bar Chart from Summarized Counts (two variables)
-```
 
-```{r sum2, include=FALSE}
 gss_sum2 <- gss %>%
   group_by(SEX,GRNSOL) %>%
   summarize(freq=n()) %>%
   ungroup()
-```
 
-`r chunk_reveal("sum2",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r bar2a, include=FALSE}
 b <- ggplot(data=gss_sum2,
             mapping=aes(x=SEX,y=freq,fill=GRNSOL)) + #BREAK
   geom_bar(stat="identity",color="gray30") + #BREAK
@@ -383,45 +137,15 @@ b <- ggplot(data=gss_sum2,
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar2a",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-# Advantage to Summarized Data?
-
-- Sometimes this is the only data you have.
-
---
-
-- You can easily turn the frequencies into percentages.
-
-```{r echo=FALSE}
 #!# Stacked Bar Chart of Percentages
-```
 
-```{r sum2b, include=FALSE}
 gss_sum3 <- gss %>%
   group_by(SEX,GRNSOL) %>%
   summarize(freq=n()) %>% #BREAK
   mutate(perc=freq/sum(freq)*100) %>% #BREAK
   ungroup() #BREAK
-```
 
----
-
-`r chunk_reveal("sum2b",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Stacked Percentages Plots
-
----
-
-```{r bar2b, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=SEX,y=perc,fill=GRNSOL)) + #BREAK
   geom_bar(stat="identity",color="gray30") + #BREAK
@@ -432,29 +156,15 @@ b <- ggplot(data=gss_sum3,
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
-```
 
-`r chunk_reveal("bar2b",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Stacked Bar Chart of Percentages 2
-```
 
-```{r sum2c, include=FALSE}
 gss_sum3 <- gss %>%
   group_by(DEGREE,GRNSOL) %>%
   summarize(freq=n()) %>%
   mutate(perc=freq/sum(freq)*100) %>%
   ungroup()
-```
 
-`r chunk_reveal("sum2c",break_type=1,left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r bar3c, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +
   geom_bar(stat="identity",color="gray30") + #BREAK
@@ -466,13 +176,6 @@ b <- ggplot(data=gss_sum3,
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank()) + #BREAK
   coord_flip()
-```
 
-`r chunk_reveal("bar3c",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
----
-
-```{css, eval= TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 60%}
-.remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
-```
+# Script created at 2020-04-14 11:45:59

@@ -53,7 +53,9 @@ class: center, middle, inverse, title-slide
 - Loaded data into `gss` data.frame.
   - Converted codes to questions.
   - Removed "missing data."
- 
+
+
+
 
 ```r
 gss &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv",
@@ -77,6 +79,8 @@ gss &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_201
   - Converted all variables to factors and ordered all levels.
 
 
+
+
 ```r
 gss &lt;- gss %&gt;%
   mutate(SEX=factor(SEX),RACE=factor(RACE,levels=c("White","Black","Other")),
@@ -89,6 +93,8 @@ gss &lt;- gss %&gt;%
 ---
 
 # Background
+
+
 
 
 ```r
@@ -117,6 +123,8 @@ head(gss)
 - Color palette used is:
 
 
+
+
 ```r
 clrs &lt;- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
 ```
@@ -143,6 +151,8 @@ class: inverse, center, middle
 # Bar Chart with Typical Modifications
 
 ---
+
+
 
 
 
@@ -280,6 +290,8 @@ class: inverse, center, middle
 
 
 
+
+
 class: split-50
 count: false
  
@@ -362,6 +374,8 @@ b
 ]]
 
 ---
+
+
 
 
 
@@ -456,6 +470,8 @@ class: inverse, center, middle
 
 
 
+
+
 class: split-50
 count: false
  
@@ -523,6 +539,8 @@ class: inverse, center, middle
 
 
 
+
+
 class: split-50
 count: false
  
@@ -577,6 +595,8 @@ class: inverse, center, middle
 ### Univariate Counts
 
 ---
+
+
 
 
 
@@ -2105,6 +2125,8 @@ class: inverse, center, middle
 ### Bivariate Counts
 
 ---
+
+
 
 
 
@@ -3676,6 +3698,8 @@ b
 
 
 
+
+
 ---
 
 class: split-50
@@ -3859,6 +3883,8 @@ b
 ]]
 
 ---
+
+
 
 
 

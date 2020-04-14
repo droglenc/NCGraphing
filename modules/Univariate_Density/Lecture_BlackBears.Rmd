@@ -17,7 +17,7 @@ output:
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_BlackBears"
 FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork",
                        "include_graphics","options","splitPerc","leftAssign"))
 ```
 
@@ -54,6 +54,10 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/blackbea
 - Loaded data into `flbb` data.frame.
   - Renamed some variables to remove spaces and capitalization.
   - Changed sex labels and made `sex` a factor variable.
+
+```{r echo=FALSE}
+#!# Load and Prep Data
+```
 
 ```{r load1}
 flbb <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/fwma-08-01-02_table s1.csv") %>%
@@ -134,6 +138,10 @@ class: inverse, center, middle
 
 ---
 
+```{r echo=FALSE}
+#!# A Mostly Default Histogram
+```
+
 ```{r hist1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram() +
@@ -152,6 +160,10 @@ class: inverse, center, middle
 # Histogram with Typical Modifications
 
 ---
+
+```{r echo=FALSE}
+#!# DEREK ... delete this in the script
+```
 
 ```{r hist2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
@@ -183,6 +195,11 @@ class: inverse, center, middle
 ### Finish by Removing Vertical Grids
 
 ---
+
+```{r echo=FALSE}
+#!# Histogram with Typical Modifications
+```
+
 ```{r hist3, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(color="gray30",fill="gray70",
@@ -205,6 +222,10 @@ class: inverse, center, middle
 # Stacked Histogram (Split by Groups)
 
 ---
+
+```{r echo=FALSE}
+#!# DEREK ... delete this for the script
+```
 
 ```{r histsplit1, include=FALSE}
 p <- ggplot(data=flbb,mapping=aes(
@@ -235,6 +256,10 @@ class: inverse, center, middle
 ### Modify the Default Colors
 
 ---
+
+```{r echo=FALSE}
+#!# Stacked Histogram with Modified Colors
+```
 
 ```{r histsplit2, include=FALSE}
 p <- ggplot(data=flbb,
@@ -304,6 +329,10 @@ class: inverse, center, middle
 
 ---
 
+```{r echo=FALSE}
+#!# Density Plot with Typical Modifications
+```
+
 ```{r density1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_density(
@@ -314,7 +343,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   scale_x_continuous(
     name="Weight (kg)",
     breaks=seq(0,250,25),expand=expansion(mult=c(0,0)),
-    limits=c(0,250), #BREAK5
+    limits=c(0,250) #BREAK5
   ) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
@@ -334,6 +363,10 @@ class: inverse, center, middle
 ### Adjusting "Smoothness"
 
 ---
+
+```{r echo=FALSE}
+#!# Density Plot ... Adjusting the Smoothness
+```
 
 ```{r density2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
@@ -359,6 +392,10 @@ class: inverse, center, middle
 # Density Plot by Groups
 
 ---
+
+```{r echo=FALSE}
+#!# Density Plots by Groups 
+```
 
 ```{r densitysplit1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(
@@ -423,9 +460,13 @@ b / h2 & theme(legend.position="none")
 
 class: inverse, center, middle
 
-# Boxplot with Modifications
+# Boxplot with Typical Modifications
 
 ---
+
+```{r echo=FALSE}
+#!# Boxplot with Typical Modifications
+```
 
 ```{r boxplot1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
@@ -446,6 +487,10 @@ class: inverse, center, middle
 # Boxplot with Colors by Group
 
 ---
+
+```{r echo=FALSE}
+#!# Boxplot with Colors by Group
+```
 
 ```{r boxplot2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(
@@ -517,6 +562,10 @@ v / d2 & theme(legend.position="none")
 
 ---
 
+```{r echo=FALSE}
+#!# Violin Plot with Typical Modifications
+```
+
 ```{r violin1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
   geom_violin(fill="gray30",alpha=0.25,trim=FALSE) +
@@ -538,6 +587,10 @@ class: inverse, center, middle
 ### With Individual Points
 
 ---
+
+```{r echo=FALSE}
+#!# Violin Plot with Individual Points
+```
 
 ```{r violin2, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +

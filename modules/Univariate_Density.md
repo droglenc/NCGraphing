@@ -36,7 +36,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears.R">Script</a></button></li>
+  <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears_DHO.R">Script</a></button></li>
   <li><a href="Univariate_Density/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li>Analysis Exercises (pick one)</li>
   <ul>

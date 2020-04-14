@@ -96,6 +96,8 @@ class: center, middle, inverse, title-slide
 - Loaded the data into the `irmw` object.
 
 
+
+
 ```r
 irmw &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
                  na.strings=c("NA","N/A"))
@@ -109,6 +111,8 @@ irmw &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_
 - Selected only five variables.
 - Renamed two variables with space in names (and long).
 - Changed categorical data from numbers to words and converted to a factor.
+
+
 
 
 ```r
@@ -162,6 +166,8 @@ head(irmw)
 # ggplot Initial Requirements
 
 
+
+
 ```r
 p &lt;- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves))
@@ -195,6 +201,8 @@ class: inverse, center, middle
 # Base ggplot2 Object
 
 ---
+
+
 
 
 
@@ -239,6 +247,8 @@ p
   - `geom_bar()`: Shows data as a vertical bar (think *bar chart*).
   - `geom_histogram()`: Show data as a histogram.
   - `geom_rug()`: Shows values as 'ticks' along the axis.
+
+
 
 
 
@@ -483,6 +493,10 @@ class: inverse, center, middle
 
 
 
+
+
+
+
 ---
 
 class: split-50
@@ -616,6 +630,8 @@ class: inverse, center, middle
 
 
 
+
+
 ---
 
 class: split-50
@@ -687,6 +703,8 @@ class: inverse, center, middle
 
 
 
+
+
 ---
 
 class: split-50
@@ -755,6 +773,8 @@ class: inverse, center, middle
 
 # Aesthetics
 ### Can be **mapped** to **a variable** for a specific 'geom' with `aes()` in the `geom_XXXX()`.
+
+
 
 
 
@@ -911,6 +931,7 @@ p
 
 
 
+
 ---
 
 class: inverse, center, middle
@@ -1040,6 +1061,8 @@ p
   - `theme_gray()`
   - `theme_minimal()`
   - `theme_classic()`
+
+
 
 
 

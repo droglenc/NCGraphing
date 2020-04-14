@@ -35,7 +35,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Univariate_Groups/Lecture_EnviroProtect.html">Lecture -- GSS</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/Lecture_EnviroProtect.R">Script</a></button></li>
+  <li><a href="Univariate_Groups/Lecture_EnviroProtect.html">Lecture -- GSS</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/Lecture_EnviroProtect_DHO.R">Script</a></button></li>
   <li><a href="Univariate_Groups/XXX.html">Demonstration - XXX</a></li>
   <li><a href="Univariate_Groups/CE_Wolves.html">Analysis Exercise I - Wolves </a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Wolves.R">Key</a></button></li>
   <li>Analysis Exercise II (pick one)</li>
