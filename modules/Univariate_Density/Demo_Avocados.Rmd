@@ -13,7 +13,8 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "Demo_Avocados"
-modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
+dnm <- "modules/Univariate_Density"
+modHTML(file.path(here::here(),dnm,fnm))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)

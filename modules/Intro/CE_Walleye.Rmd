@@ -13,9 +13,10 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Walleye"
-modHTML(file.path(here::here(),"modules/Intro",fnm))
-FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
+dnm <- "modules/Intro"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
@@ -25,7 +26,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 
 ## Background
 <img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
-Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in [this file](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) from the fishR webpage. [Metadata for this file is here](http://derekogle.com/fishR/data/data-html/WalleyeErie2.html). Before loading these data, load the `tidyverse` package, which will load `ggplot2` along with a few other packages you will need to access these data.
+Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in [this file](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) from the fishR webpage. [Metadata for this file is here](http://derekogle.com/fishR/data/data-html/WalleyeErie2.html). Before loading these data, load the `tidyverse` package.
 
 ```{r echo=TRUE, results="hide"}
 library(tidyverse)

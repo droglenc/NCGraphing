@@ -13,13 +13,14 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Loons"
-modHTML(file.path(here::here(),"modules/Univariate_Density",fnm))
-FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
+dnm <- "modules/Univariate_Density"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
-library(ggplot2)
+library(tidyverse)
 loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 ```
 
@@ -27,7 +28,7 @@ loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1
 
 ## Background
 <img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-This is the same data set [introduced here](../Intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `ggplot2` or `tidyverse`) loading portion of your script.
+This is the same data set [introduced here](../Intro/CE_Loons.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `tidyverse`) loading portion of your script.
 
 &nbsp;
 

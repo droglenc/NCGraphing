@@ -13,9 +13,10 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Loons"
-modHTML(file.path(here::here(),"modules/Intro",fnm))
-FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","CTRL-S"))
+dnm <- "modules/Intro"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
@@ -32,10 +33,10 @@ loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1
 str(loon)
 ```
 
-Also, don't forget to load the `ggplot2` package.
+Also, don't forget to load the `tidyverse` package.
 
 ```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(ggplot2)
+library(tidyverse)
 ```
 
 
