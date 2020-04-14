@@ -3,7 +3,7 @@ title: "Graphing Univariate Densities"
 author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
 output:
   xaringan::moon_reader:
-    lib_dir: libs
+    lib_dir: zlibs
     css: [default, hygge, ninjutsu]
     nature:
       ratio: 16:10

@@ -4,9 +4,9 @@
     <title>Graphing Univariate Densities</title>
     <meta charset="utf-8" />
     <meta name="author" content="Derek Ogle, April 2020" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -903,7 +903,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +
   scale_x_continuous(  
     name="Weight (kg)",  
     breaks=seq(0,250,25),expand=expansion(mult=c(0,0)),  
-*   limits=c(0,250),
+*   limits=c(0,250)
   ) +  
   scale_y_continuous(name="Relative Density of Bears",  
                      expand=expansion(mult=c(0,0.05))) +  
