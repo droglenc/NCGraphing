@@ -28,8 +28,21 @@ XXX
 
 ## Preparation for Class
 
-* Recall or develop a *basic* understanding of a histogram ([one resource](https://www.youtube.com/watch?v=YLPDPglvePY)).
-* Recall or develop a *basic* understanding of a boxplot ([one possible resource](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) ...*only through 'What is a Boxplot' example*).
+Develop (or recall) a *basic* understanding of each of the following graphs (use any of the resources under each graph).
+
+* **Histograms**
+  * [Histograms](https://www.data-to-viz.com/graph/histogram.html) ... *very short read.*
+  * [What's So Hard About Histograms?](https://tinlizzie.org/histograms/)
+  * [How Histograms Work](https://flowingdata.com/2017/06/07/how-histograms-work/)
+  * [What is a Histogram](https://www.youtube.com/watch?v=YLPDPglvePY)) ... *a short video*.
+  * [Histograms Explained](https://www.youtube.com/watch?v=sC7gjg9g3JU) ... *a longer video*.
+* **Density plots**
+  * [Density Plots](https://www.data-to-viz.com/graph/density.html) ... *very short read*.
+* **Boxplots**
+  * [Boxplots](https://www.data-to-viz.com/caveat/boxplot.html) ... *very short read up to "Adding jitter".*
+  * [Understanding Boxplots](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) ...*only through 'What is a Boxplot' example*).
+* **Violin Plots**
+  * [Violin Plots](https://www.data-to-viz.com/graph/violin.html) ... *very short read.*
 
 ----
 
@@ -51,4 +64,3 @@ XXX
 ## Resources
 
 * [How to Make a Histogram in R with ggplot](https://www.youtube.com/watch?v=uWsYFqXGnoQ): YouTube video by thatRnerd.
-
