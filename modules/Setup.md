@@ -51,5 +51,5 @@ XXX
 * Setting Up a Working Directory for the Class
 * Homework Formatting
   * [Rmarkdown Template](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd) [*download and save to your computer*]
-  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html), [Avocados Data]()
+  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html), [Avocados Data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/avocados.csv)
 * Final Project
