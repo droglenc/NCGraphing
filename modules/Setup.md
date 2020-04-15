@@ -29,8 +29,8 @@ XXX
 ## Preparation for Class
 
 * Peruse [Class Webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
-* Login to E-Learning Platform (myNorthland)
-* Setup Piazza (you should have gotten an invitation from me)
+* Login to [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
+* Setup Piazza (you should have gotten an invitation from me, but [can also sign up through this link](piazza.com/northland/spring2020/mth250))
 * Setup R & RStudio
   * On Your Computer
     * Install R ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html) [*note that current version is 3.6.3.*]
