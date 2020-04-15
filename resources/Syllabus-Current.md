@@ -65,20 +65,23 @@ This class will have lots of coding in R. Learning R can be difficult at first �
 
 > It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
-This cartoon illustrates what Hadley explains and how you may feel at some point this term.
+This cartoon illustrates what Hadley explains and how you may feel at some point this term.[^HorstCredit]
 
-<figure>
-  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-  <figcaption><span style="font-size:50%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">Allison Horst</a>.</span></figcaption>
-</figure>
+<img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
 
 If you find yourself in this situation follow the advice of Hadley above and Allison below.
 
 <img src="../img/horst_error_tweet.png" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
-In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can. I am here to help you and I **want** to help you learn the concepts and skills of this class.
+In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can.
 
-I *promise* you that you can succeed in this class, but you will need to ask a question at some point. Please don't hesitate to reach out for help.
+If you do e-mail me, please include the following items in your e-mail:
+
+1. A clear explanation of the problem, with as much detail as you can offer.
+1. Which data your are using. If you are using your own data then please attach the CSV file.
+1. An attachment of your R script so that, with your data, I can re-create your analyses.
+
+I am here to help you and I **want** to help you learn the concepts and skills of this class. I *promise* you that you can succeed in this class, especially if you reach out for help when you have questions or are stuck.
 
 &nbsp;
 
@@ -146,16 +149,10 @@ Finally, note that the [College's Academic Integrity Statement & Policy](https:/
 
 ### Footnotes
 
-[^help]: Quotes from [BurnishedChaos.com](https://burnishedchaos.com/quotes-about-asking-for-help/){:target="_blank"}.
-
 [^email]: While I am pretty open-minded and not much of a stickler when it comes to e-mail etiquette, some professors are. And it is always better to send an appropriate rather than an inappropriate e-mail. [Here](https://www.scribendi.com/advice/how_to_email_a_professor.en.html) and [here](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) are some good suggestions for e-mailing professors.
-
-[^1]: I believe the research (e.g., [here](http://www.medicaldaily.com/why-using-pen-and-paper-not-laptops-boosts-memory-writing-notes-helps-recall-concepts-ability-268770){:target="_blank"}, [here](http://www.pbs.org/wgbh/nova/next/body/taking-notes-by-hand-could-improve-memory-wt/){:target="_blank"}, and [here](http://www.lifehack.org/articles/featured/writing-and-remembering-why-we-remember-what-we-write.html){:target="_blank"}) that suggests that you are more likely to remember concepts if you hand-write those concepts down, rather than copy-and-pasting or typing the text.
-
-[^2]: General advice for how much time should be spent outside of class for each hour inside of class can be found, among many, [here](https://www.collegeparentcentral.com/2010/02/is-your-college-student-investing-enough-time-studying/){:target="_blank"}, [here](http://classroom.synonym.com/ratio-studying-class-time-college-1075.html){:target="_blank"}, [here](https://www.usu.edu/asc/studysmart/pdf/estimating_study_hours.pdf){:target="_blank"}, and [here](http://collegelife.about.com/od/academiclife/f/How-Much-Time-Should-I-Spend-Studying-In-College.htm){:target="_blank"}.
-
-[^DistractionAids]: Also see the following resources for other apps that may help you eliminate distractions from your devices ... [here](https://georgehalachev.com/2019/01/15/7-apps-that-will-help-you-beat-procrastination/){:target="_blank"}, [here](https://www.careercontessa.com/advice/best-apps-chronic-procrastinator/){:target="_blank"}, [here](https://highschoolhints.com/6-apps-that-will-stop-your-procrastinating/){:target="_blank"}, or [here](https://remotebliss.com/procrastination-apps/){:target="_blank"}.
 
 [^encouragement]: This is largely from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
 
 [^WickhamQuote]: This is from the last question in [this interview](https://r-posts.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/).
+
+[^HorstCredit]: This cartoon is from [Allison Horst](https://github.com/allisonhorst/stats-illustrations).
