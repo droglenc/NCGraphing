@@ -65,10 +65,10 @@ This class will have lots of coding in R. Learning R can be difficult at first �
 
 > It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
-This cartoon illustrates what Hadley explains and how you will likely feel at some point this term.
+This cartoon illustrates what Hadley explains and how you may feel at some point this term.
 
 <figure>
-  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
   <figcaption><span style="font-size:50%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">Allison Horst</a>.</span></figcaption>
 </figure>
 
@@ -96,7 +96,7 @@ As you adjust to college, you may benefit from working with a professional on yo
 An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
 
 ### Exercises
-Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For examle, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your MSWord document to XXX.
+Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For examle, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to XXX.
 
 Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
 
