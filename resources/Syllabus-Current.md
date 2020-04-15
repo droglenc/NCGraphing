@@ -55,13 +55,13 @@ This course will be delivered in a synchronous "on-line" format through the "onl
 
 I do understand during this "period of disruption" that you may miss an occasional class period. A video will be made of each synchronous meeting and will be available on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) to view asychronously (i.e., at other times). Also see the [Assistance](#assistance) section next for other ways to receive help with course material.
 
-During this period of remote instruction I can also set up "GoToMeetings" where we can "video chat." The major advantage of this is that you can share your screen with me (provided you have a webcam) so that I can see exactly what you are doing on your computer. This can be invaluable for troubleshooting code issues. To use this just sent me an e-mail with some preferred times and I will send you back an invitation to "meet" that will contain directions on how to do so.
+During this period of remote instruction I can also set up "GoToMeetings" where we can "video chat", which will allow you to share your computer screen with me (provided you have a webcam). This can be invaluable for troubleshooting code issues as I can see exactly what you are doing on your computer. To setup a "video chat" send me an e-mail with some preferred times and I will send you back an invitation to "meet" that will contain directions for how to do so.
 
 ----
 
 ## Assistance
 <img class="img-right" src="../img/help.jpg">
-This class will have lots of coding in R. Learning R can be difficult at first — it’s like learning a new language, just like Spanish, French, or Chinese.[^encouragement] Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
+This class will have lots of coding in R. Learning R can be difficult at first — it’s like learning a new language, just like Spanish, French, or Chinese.[^encouragement] Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:[^WickhamQuote]
 
 > It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
@@ -157,3 +157,5 @@ Finally, note that the [College's Academic Integrity Statement & Policy](https:/
 [^DistractionAids]: Also see the following resources for other apps that may help you eliminate distractions from your devices ... [here](https://georgehalachev.com/2019/01/15/7-apps-that-will-help-you-beat-procrastination/){:target="_blank"}, [here](https://www.careercontessa.com/advice/best-apps-chronic-procrastinator/){:target="_blank"}, [here](https://highschoolhints.com/6-apps-that-will-stop-your-procrastinating/){:target="_blank"}, or [here](https://remotebliss.com/procrastination-apps/){:target="_blank"}.
 
 [^encouragement]: This is largely from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
+
+[^WickhamQuote]: This is from the last question in [this interview](https://r-posts.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/).
