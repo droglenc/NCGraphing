@@ -1,7 +1,5 @@
 ---
-title: 
 layout: page
-subtitle: 
 css: /css/syllabus.css
 ---
 
