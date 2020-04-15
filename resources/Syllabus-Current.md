@@ -3,7 +3,7 @@ layout: page
 css: /css/syllabus.css
 ---
 
-## Communicating Ideas with Great Graphics in R
+<h1>Communicating Ideas with Great Graphics in R</h1>
 
 <p style="margin-bottom:0.5cm;"></p>
 <figure>
