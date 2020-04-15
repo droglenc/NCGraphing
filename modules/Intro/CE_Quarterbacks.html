@@ -10,10 +10,11 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
-<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. In this exercise, statistics for college quarterbacks from the 2019-20 season will be explored. Before loading these data, load the <code>tidyverse</code> package, which will load <code>ggplot2</code> along with a few other packages you will need to access these data.</p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into <a href="https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv">NCAAF19_QBS.csv</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Make sure to load <code>tidyverse</code>.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<p>Perform the following steps to load information <a href="https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv">in this file</a> for all quarterbacks from the 2019-20 seasons that were in the so-called “power 5 conferences.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<pre class="r"><code>qbs &lt;- read.csv(&quot;https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv&quot;,
+<p>Perform the following steps to load the data for all quarterbacks from the 2019-20 season,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> restrict the data to only those in the so-called “power 5 conferences” (i.e., <code>filter()</code>), and make sure that the <code>Conf</code>erence variable is a grouping variable (i.e., <code>factor()</code>).</p>
+<pre class="r"><code>#!# Set to your own working directory and have just your filename below.
+qbs &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv&quot;,
                 stringsAsFactors=FALSE) %&gt;%
   filter(Conf %in% c(&quot;ACC&quot;,&quot;Big 12&quot;,&quot;Big Ten&quot;,&quot;Pac-12&quot;,&quot;SEC&quot;)) %&gt;%
   mutate(Conf=factor(Conf))
@@ -68,6 +69,7 @@ str(qbs)</code></pre>
 <hr />
 <ol>
 <li id="fn1"><p>These data were obtained from <a href="https://www.sports-reference.com/" class="uri">https://www.sports-reference.com/</a> with the following steps: 1) Select “CFB” in the list of sports in the gray box near the top of the page; 2) Select “Years” in the list of items in the gray box near the top of the page; 3) Select “2019” in the list of years; 4) Hover over “Stats” in the gray box near the middle of the page and select “Passing” from the items that will appear; 5) Hover over the “Share &amp; more” item just above the top-right side of the table of statistics and select “Get Table as a CSV”; and 6) copy CSV result to a text file, delete the first line, and slightly modify the variable names.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

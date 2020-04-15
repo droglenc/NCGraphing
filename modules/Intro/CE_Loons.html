@@ -9,11 +9,12 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right"> Dr. Jim Paruk studied the morphology of Common Loons (<em>Gavia immer</em>), primarily their bills, from a wide variety of locations in North America. These data are in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv">Loon1.csv</a>, with information about these data in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt">this metadata file</a>. These data are loaded into R and their structure examined below.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<pre class="r"><code>loon &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv&quot;)
+<p><img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right"> Dr. Jim Paruk studied the morphology of Common Loons (<em>Gavia immer</em>), primarily their bills, from a wide variety of locations in North America. These data are in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv">Loon1.csv</a>, with information about these data in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt">this metadata file</a>. Make sure to load <code>tidyverse</code>.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>These data are then loaded into R and their structure examined below.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre class="r"><code>## #!# Set to your own working directory and have just your filename below.
+loon &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv&quot;)
 str(loon)</code></pre>
-<p>Also, don’t forget to load the <code>ggplot2</code> package.</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
 <p> </p>
 </div>
 <div id="tarsus-length-vs.-bill-length-1" class="section level2">

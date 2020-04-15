@@ -117,8 +117,9 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/wolves_m
 #!# Load and Prep Data
 ```
 
-```{r load1}
-irmw <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
+```{r load1, eval=-1}
+#!# Set to your own working directory and have just your filename below.
+irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
                  na.strings=c("NA","N/A"))
 ```
 

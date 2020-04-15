@@ -3,25 +3,9 @@ layout: page
 title: Data for MTH207
 ---
 
-## Data for Homework
-
-The following data files are used in the module readings or exercises.
-
-* avocados -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/avocados.csv), info
-* GSSENVIRON_2010 -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/GSSENVIRON_2010.csv), info
-* MLB19_Batting -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/MLB19_Batting.csv), info
-* NCAAF19_QBS -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/NCAAF19_QBS.csv), info
-* StateOfWolf -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/StateOfWolf.csv), info
-* Wolves_moose_Isle_Royale_June2019 -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/Wolves_moose_Isle_Royale_June2019.csv), info
-
-
-<br>
-
-----
-
 ## Possible Sources of Project Data
 
-The following sources may be useful for locating data for [your portfolio](Syllabus-Current#portfolio).
+The following sources may be useful for locating data for [your project](Syllabus-Current#project).
 
 * [LTER Data Portal](https://portal.lternet.edu/nis/home.jsp#): A comprehensive search engine for data from all NSF Long-Term Ecological Research sites.
     * [NTL-LTER](https://lter.limnology.wisc.edu/data): A variety of primarily aquatics-related datasets from the North Temperate Lakes Long-Term Ecological Research site in Northern Wisconsin.

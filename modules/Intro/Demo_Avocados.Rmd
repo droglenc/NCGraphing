@@ -24,17 +24,18 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 
 ## Background
 <img src="../zimgs/avocado.jpg" alt="Walleye" class="img-right">
-Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://derekogle.com/NCGraphing/modules/zdata/avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices).[^getdata] Before loading these data, load the `tidyverse` package, which will load `ggplot2` along with a few other packages you will need to access these data.
+Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices).[^getdata] Make sure to load `tidyverse`.
 
-```{r echo=TRUE, results="hide"}
+```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
-Their data are loaded below and, for this exercise, reduced to only results for the "GreatLakes" region. In addition the type and year were forced to be factor variables.[^loaddata]
+Their data are loaded below[^loaddata] and, for this exercise, reduced to only results for the "GreatLakes" region (i.e., `filter()`, and `type` and `year` are converted to groupings (ie., `factor()` withing `mutate()`).
 
 ```{r echo=TRUE, results='hide'}
-avoc <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/avocados.csv",
-                stringsAsFactors=FALSE) %>%
+#!# Set to your own working directory and have just your filename below.
+avoc <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv",
+                stringsAsFactors=FALSE,quote="") %>%
   filter(region=="GreatLakes") %>%
   mutate(type=factor(type),
          year=factor(year))

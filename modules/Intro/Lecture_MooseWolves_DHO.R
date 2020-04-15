@@ -1,8 +1,8 @@
 library(tidyverse)
 
 #!# Load and Prep Data
-irmw <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
-                 na.strings=c("NA","N/A"))
+#!# Set to your own working directory and have just your filename below.
+irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",na.strings=c("NA","N/A"))
 
 #!# Cleaning up messy names and reducing size of data.frame (for lecture only)
 irmw %<>%
