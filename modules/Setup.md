@@ -30,10 +30,11 @@ XXX
 
 * Peruse [Class Webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
 * Login to E-Learning Platform (myNorthland)
+* Setup Piazza (you should have gotten an invitation from me)
 * Setup R & RStudio
   * On Your Computer
     * Install R ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html) [*note that current version is 3.6.3.*]
-    * Install RStudio ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html) [*note that current versin is at least 1.2.5033*]
+    * Install RStudio ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html) [*note that current version is at least 1.2.5033*]
     * Install Tidyverse (*do one of the following*)
       * Type and run `install.packages("tidyverse")` in RStudio.
       * Type `tidyverse` in Step 3 of these [directions](http://derekogle.com/IFAR/supplements/installations/InstallPackagesRStudio.html).
