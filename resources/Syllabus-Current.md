@@ -99,7 +99,7 @@ As you adjust to college, you may benefit from working with a professional on yo
 An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
 
 ### Exercises
-Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For examle, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to XXX.
+Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to XXX.
 
 Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
 
@@ -122,7 +122,7 @@ The second part of the rubric is based on your correctness in performing the wor
     <tr class="info"><th>5 points</th><th>5-1 points</th><th>0 points</th></tr>
   </thead>
   <tbody>
-    <tr><td>All or nearly all parts of the exercise were correct.</td><td>Various amounts of the exercise were done correctly.</td><td>Very little of the exercise was done correctly.</td></tr>
+    <tr><td>All or nearly all parts of the exercise were correct.</td><td>Various amounts of the exercise were done incorrectly.</td><td>Very little of the exercise was done correctly.</td></tr>
   </tbody>
   </table>
 </div>
@@ -131,7 +131,20 @@ The second part of the rubric is based on your correctness in performing the wor
 
 ### Final Project
 
-XXX
+To demonstrate your ability to communicate ideas with effective graphics created in R, I am asking you to create two graphs, from any data that you choose, as a final project. The graphs do not have to be overly complicated but they also should be overly simple; you should strive to create a graph that elegantly demonstrates a "story" in the data. One of your two graphics should either be a composite of multiple graphics or a facet across groups. Your graphic should be formatted as with the homework exercises, but you should also include an introduction to the data and the question that you are exploring, a summary of what you observed in your graph, and a discussion of design choices that you made when making your graph (i.e., why did you choose that type of graph, those colors, that faceting, etc.).
+
+Items to be considered when grading your final project are:
+
+* How clearly defined the objective of or question explored by the graphic is.
+* How appropriate the graphic type is for the data and questions explored.
+* Are annotations (axis, legend, and titles) clear and appropriate.
+* Is the graph devoid of any extraneous items (i.e., do all parts of graphic have a purpose related to the objective or question)?
+* Colors and typography are appropriate and aesthetically pleasing.
+* Graph is devoid of typographical (spelling, capitalization, and grammatical) errors.
+* Is the question or topic generally interesting and creative?
+* Overall presentation ... is the graph pleasing to the eye?
+
+In addition to turning in your final graphs, you will "present" **one** of your graphs to the class. In this **5 minute** presentation you should briefly introduce your data and your interest in the data (i.e., why did you look at those data), present your final graph, and explain design choices that you made when constructing the graph.
 
 
 #### Note About Incomplete Grades
@@ -141,9 +154,9 @@ An incomplete grade will be given ONLY in extreme circumstances that are beyond 
 
 ## Classroom Conduct and Academic Integrity
 <img class="img-right" src="../img/cell-cheat.jpg" alt="Conduct and Integrity">
-XXX
+I hope that everyone in this class will feel comfortable express themselves, asking questions, and freely participatig in this online class. Thus, please treat each other with courtesy and respect, and refrain from offensive or inappropriate language during any part of the class. Please do not post non-course related or personal or non-academic material in the Piazza discussion forum or the class "chat" area during class. Issues related to just should be sent to me via my email.
 
-Finally, note that the [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
+Students are expected to submit work which is their own. Plagiarism or cheating will not be tolerated. If either is the case the student may have their grade for the assignment lowered or they may fail the course. The [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
 
 ----
 
