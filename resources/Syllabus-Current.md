@@ -61,24 +61,24 @@ I do understand during this "period of disruption" that you may miss an occasion
 
 ## Assistance
 <img class="img-right" src="../img/help.jpg">
-This class will have lots of coding in R. Learning R can be difficult at first — it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
+This class will have lots of coding in R. Learning R can be difficult at first — it’s like learning a new language, just like Spanish, French, or Chinese.[^encouragement] Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
 
 > It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
-Even experienced programmers can find themselves banging their heads against seemingly intractable errors.
+This cartoon illustrates what Hadley explains and how you will likely feel at some point this term.
 
 <figure>
   <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
-  <figcaption><span style="font-size:50%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">from Allison Horst</a></span></figcaption>
+  <figcaption><span style="font-size:70%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">from Allison Horst</a></span></figcaption>
 </figure>
 
-If you find yourself hitting your head against a wall and not understanding for more than a few minutes then take this experienced programmers advice:
+If you find yourself in this situation follow the advice of Hadley above and Allison below.
 
 <img src="../img/horst_error_tweet.png" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
-In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can. I am here to help you and I **want** to help you learn the concepts and skills of this class. Please don't hesitate to reach out for help.
+In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can. I am here to help you and I **want** to help you learn the concepts and skills of this class.
 
-I *promise* you that you can succeed in this class.[^encouragement]
+I *promise* you that you can succeed in this class, but you will need to ask a question at some point. Please don't hesitate to reach out for help.
 
 &nbsp;
 
@@ -93,10 +93,12 @@ As you adjust to college, you may benefit from working with a professional on yo
 
 ## Grading
 <img class="img-right" src="../img/grading.jpg">
-An overall grade will be computed from your performance on daily exercises (75%) and final project (25%), which are both described below.
+An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
 
 ### Exercises
-Each class period you will be required to turn in work on exercises assigned in the previous class period. Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your completion of the exercise.
+Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For examle, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your MSWord document to XXX.
+
+Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
 
 <div class="container-fluid">
   <table class="table table-bordered">
@@ -104,7 +106,7 @@ Each class period you will be required to turn in work on exercises assigned in 
     <tr class="info"><th>5 points</th><th>5-1 points</th><th>0 points</th></tr>
   </thead>
   <tbody>
-    <tr><td>All parts of the exercise were completed in full. All steps of the work (e.g., R code) were provided. Work was neat, orderly, and followed the desired format.</td><td>Some parts of the exercise were either not attempted or were incomplete. All work not shown. Work was not as neat and orderly as it should have been or did not follow the desired format.</td><td>Very little of the exercise was completed, most work not shown, was messy and unorganized, or did not follow the desired format.</td></tr>
+    <tr><td>All parts of the exercise were completed in full and followed the required homework format.</td><td>Some parts of the exercise were either not attempted or were incomplete. The required format was followed.</td><td>Very little of the exercise was completed or the required format was not followed.</td></tr>
   </tbody>
   </table>
 </div>
@@ -122,7 +124,7 @@ The second part of the rubric is based on your correctness in performing the wor
   </table>
 </div>
 
-**Exercises handed in late may still receive "completeness" points but cannot receive "correctness" points.**
+**Exercises handed in late may still receive "completeness" points but may not receive any "correctness" points.**
 
 ### Final Project
 
