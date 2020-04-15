@@ -21,6 +21,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
+#!# Set to your own working directory and have just your filename below.
 wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
   filter(year==2003) %>%
   mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
@@ -33,6 +34,7 @@ wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-
 ## Background
 <img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
 This is the same data set [introduced here](../Intro/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `tidyverse`) loading portion of your script.
+
 &nbsp;
 
 &nbsp;

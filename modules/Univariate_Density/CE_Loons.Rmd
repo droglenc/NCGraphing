@@ -21,6 +21,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
+#!# Set to your own working directory and have just your filename below.
 loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 ```
 
@@ -40,10 +41,8 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Loons_WT1}
 wt1 <- ggplot(data=loon,mapping=aes(x=weight)) +
-  geom_histogram(color="gray30",fill="gray70",
-             binwidth=250,boundary=0,closed="left") +
-  scale_x_continuous(name="Body Weight (g)",  
-    expand=expansion(mult=c(0,0))) +
+  geom_histogram(color="gray30",fill="gray70",binwidth=250,boundary=0,closed="left") +
+  scale_x_continuous(name="Body Weight (g)",expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Frequency of Loons",breaks=seq(0,15,5),  
     expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  

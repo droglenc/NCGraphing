@@ -21,6 +21,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
+#!# Set to your own working directory and have just your filename below.
 loon <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv")
 ```
 

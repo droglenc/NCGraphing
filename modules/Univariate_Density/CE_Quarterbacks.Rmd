@@ -21,7 +21,8 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 library(tidyverse)
-qbs <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_quarterbacks_2019.csv",
+#!# Set to your own working directory and have just your filename below.
+qbs <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv",
                 stringsAsFactors=FALSE) %>%
   filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
   mutate(Conf=factor(Conf))
@@ -42,12 +43,10 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Quarterbacks_PYds1}
 PYds1 <- ggplot(data=qbs,mapping=aes(x=PYds)) +
-  geom_histogram(color="gray30",fill="gray70",
-             binwidth=200,boundary=0,closed="left") +
+  geom_histogram(color="gray30",fill="gray70",binwidth=200,boundary=0,closed="left") +
   scale_x_continuous(name="Total Passing Yards",breaks=seq(1000,6000,500),
     limits=c(1000,6000),expand=expansion(mult=c(0,0))) +
-  scale_y_continuous(name="Frequency of Quarterbacks",
-    expand=expansion(mult=c(0,0.05))) +
+  scale_y_continuous(name="Frequency of Quarterbacks",expand=expansion(mult=c(0,0.05))) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
         panel.grid.minor.y=element_blank())

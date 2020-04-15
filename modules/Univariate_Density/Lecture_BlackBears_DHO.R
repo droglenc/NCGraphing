@@ -1,7 +1,7 @@
 library(tidyverse)
 
 #!# Load and Prep Data
-flbb <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/fwma-08-01-02_table s1.csv") %>%
+flbb <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv") %>%
   rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
          weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %>%
   mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),

@@ -37,7 +37,7 @@ class: center, middle, inverse, title-slide
 
 # Background
 
-- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as CSV file.
+- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as [this CSV file]("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv").
 
 --
 - Loaded data into `flbb` data.frame.
@@ -48,7 +48,8 @@ class: center, middle, inverse, title-slide
 
 
 ```r
-flbb &lt;- read.csv("https://derekogle.com/NCGraphing/modules/zdata/fwma-08-01-02_table s1.csv") %&gt;%
+#!# Set to your own working directory and have just your filename below.
+flbb &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv") %&gt;%
   rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
          weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %&gt;%
   mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),

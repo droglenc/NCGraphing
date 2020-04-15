@@ -26,12 +26,20 @@ knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 
 ## Background
 <img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right">
-Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](). The data are loaded below and reduced to many fewer variables and only those respondents that answer all of those questions to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year.
+Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv).
+
+Make sure to load `tidyverse`.
+
+```{r echo=TRUE, results="hide", message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+These data are loaded below and reduced to many fewer variables (i.e., `select()` and only those respondents that answered all of those questions (`complete.cases()` within `filter()`) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year (i.e., the last `filter()`). Several variales were converted to groupings with the levels controlled to a proper order (i.e., `levels=` within `factor()` within `mutate()`).
 
 ```{r echo=TRUE}
-library(tidyverse)
 lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
-sow <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/StateOfWolf.csv") %>%
+#!# Set to your own working directory and have just your filename below.
+sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
   select(state,hunt_deer,seen_wolf,part_deer,
          ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
   filter(complete.cases(.)) %>%

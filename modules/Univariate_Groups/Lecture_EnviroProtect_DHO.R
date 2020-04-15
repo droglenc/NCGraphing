@@ -1,7 +1,8 @@
 library(tidyverse)
 
 #!# Load and Prep Data
-gss <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/GSSENVIRO_2010.csv",
+#!# Set to your own working directory and have just your filename below.
+gss <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GSS_Enviro_2010.csv",
                 na.strings=c("na","NA","-1","7","8","9","98","99")) %>%
   mutate(SEX=plyr::mapvalues(SEX,from=1:2,to=c("Male","Female")),
          RACE=plyr::mapvalues(RACE,from=1:3,to=c("White","Black","Other")),

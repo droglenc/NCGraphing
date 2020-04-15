@@ -27,16 +27,17 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ## Background
 <img src="../zimgs/BattingAverage.jpg" alt="Batting Average" class="img-right">
 
-[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. In this exercise, statistics for Major League Baseball (MLB) players during the 2019 season will be explored. Before loading these data, load the `tidyverse` package, which will load `ggplot2` along with a few other packages you will need to access these data.
+[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are [in this file](https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv), will be explored in this exercise.[^getdata] Make sure to load `tidyverse`.
 
-```{r echo=TRUE, results="hide"}
+```{r echo=TRUE, results="hide", message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
-Perform the following steps to load information [in this file](https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv) for all players from the 2019 season that had at least 200 at-bats (in one league) and were in the top 100 with respect to batting "average."[^getdata]
+These data are loaded below and were restricted to only a few variables (i.e., `select()`), those players that had at least 200 at-bats in one league (i.e., `filter()`), and were in the top 100 with respect to batting "average" (i.e., `top_n()`). In addition, an age-group variable was created (i.e., `case_when()` within `mutate()`) and the `Lg` and `Age_grp` variables were converted to groupings (i.e., `factor()` within `mutate()`).
 
 ```{r echo=TRUE, results='hide'}
-mlb <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv",
+#!# Set to your own working directory and have just your filename below.
+mlb <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/MLB19_Batting.csv",
                 stringsAsFactors=FALSE) %>%
   select(Name,Age,Lg,G,AB,H,HR,RBI,BB,BA) %>%
   filter(Lg!="MLB",AB>200) %>%  # >200 at-bats in one league
