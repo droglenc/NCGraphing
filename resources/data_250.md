@@ -7,7 +7,12 @@ title: Data for MTH207
 
 The following data files are used in the module readings or exercises.
 
-* avocados -- [data](), info
+* avocados -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/avocados.csv), info
+* GSSENVIRON_2010 -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/GSSENVIRON_2010.csv), info
+* MLB19_Batting -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/MLB19_Batting.csv), info
+* NCAAF19_QBS -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/NCAAF19_QBS.csv), info
+* StateOfWolf -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/StateOfWolf.csv), info
+* Wolves_moose_Isle_Royale_June2019 -- [data](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/resources/data/Wolves_moose_Isle_Royale_June2019.csv), info
 
 
 <br>
