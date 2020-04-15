@@ -46,9 +46,9 @@ XXX
 
 * Introduction
 * [Syllabus & Expectations](../resources/Syllabus-Current)
-* E-Learning Platform
+* [mycourses.northland.edu]()
 * R & RStudio
 * Homework Formatting
-  * [Rmarkdown Template](Setup/TEMPLATE.R) [*download and save to your computer*]
-  * Example ... [Rmarkdown](Setup/HWFormatting_Example.R), [HTML Result](Setup/HWFormatting_Example.html)
+  * [Rmarkdown Template](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd) [*download and save to your computer*]
+  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html)
 * Final Project

@@ -25,7 +25,7 @@ library(tidyverse)
 ```{r data, echo=-1}
 ## Initially load data here
 avoc <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/avocados.csv",
-                stringsAsFactors=FALSE) %>%
+                stringsAsFactors=FALSE,quote="") %>%
   filter(region=="GreatLakes") %>%
   mutate(type=factor(type),
          year=factor(year))
