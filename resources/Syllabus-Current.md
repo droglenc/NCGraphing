@@ -68,8 +68,8 @@ This class will have lots of coding in R. Learning R can be difficult at first â
 This cartoon illustrates what Hadley explains and how you will likely feel at some point this term.
 
 <figure>
-  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
-  <figcaption><span style="font-size:70%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">from Allison Horst</a></span></figcaption>
+  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <figcaption><span style="font-size:50%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">Allison Horst</a>.</span></figcaption>
 </figure>
 
 If you find yourself in this situation follow the advice of Hadley above and Allison below.
