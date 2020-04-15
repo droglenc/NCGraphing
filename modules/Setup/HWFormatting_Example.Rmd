@@ -18,14 +18,14 @@ knitr::opts_chunk$set(echo=TRUE,fig.width=5,fig.height=5,comment="#R>")
 <!---- You can edit anything below here ---->
 
 # Packages and Data
-```{r packages, message=FALSE, warning=FALSE}
+```{r packages, eval=-1, message=FALSE, warning=FALSE}
+setwd("https://derekogle.com/NCGraphing/") ## Set this for your computer
 library(tidyverse)
 ```
 
 ```{r data, echo=-1}
 ## Initially load data here
-avoc <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/avocados.csv",
-                stringsAsFactors=FALSE,quote="") %>%
+avoc <- read.csv("avocados.csv",stringsAsFactors=FALSE,quote="") %>%
   filter(region=="GreatLakes") %>%
   mutate(type=factor(type),
          year=factor(year))

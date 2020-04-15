@@ -46,9 +46,10 @@ XXX
 
 * Introduction
 * [Syllabus & Expectations](../resources/Syllabus-Current)
-* [mycourses.northland.edu]()
+* [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
 * R & RStudio
+* Setting Up a Working Directory for the Class
 * Homework Formatting
   * [Rmarkdown Template](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd) [*download and save to your computer*]
-  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html)
+  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html), [Avocados Data]()
 * Final Project
