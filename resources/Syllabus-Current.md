@@ -51,11 +51,11 @@ While this course does not fulfill any requirements in the [General Education Pr
 
 ## Delivery
 <img class="img-right" src="../img/online.png" alt="Online Delivery">
-This course will be delivered in a synchronous "on-line" format throught the "online meeting app" on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) from 4-6pm on Monday, Wednesday, and Friday of May term. **You should make every effort to attend these online sessions as this will be the best opportunity to ask questions and get help from me and others in the class.**
+This course will be delivered in a synchronous "on-line" format through the "online meeting app" on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) from 4-6pm on Monday, Wednesday, and Friday of May term. **You should make every effort to attend these online sessions as this will be the best opportunity to ask questions and get help from me and others in the class.**
 
-I do understand during this "period of disruption" that you may miss an occasional class period. A video will be made of each synchronous meeting and will be available to view asychronously (i.e., at other times). Also see the [Assistance](#assistance) section next for other ways to receive help with course material.
+I do understand during this "period of disruption" that you may miss an occasional class period. A video will be made of each synchronous meeting and will be available on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) to view asychronously (i.e., at other times). Also see the [Assistance](#assistance) section next for other ways to receive help with course material.
 
-
+During this period of remote instruction I can also set up "GoToMeetings" where we can "video chat." The major advantage of this is that you can share your screen with me (provided you have a webcam) so that I can see exactly what you are doing on your computer. This can be invaluable for troubleshooting code issues. To use this just sent me an e-mail with some preferred times and I will send you back an invitation to "meet" that will contain directions on how to do so.
 
 ----
 
