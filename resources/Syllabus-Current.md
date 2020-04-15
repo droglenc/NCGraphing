@@ -5,13 +5,14 @@ subtitle:
 css: /css/syllabus.css
 ---
 
-<div text-align="center">
-<strong>Communicating Ideas with Great Graphics in R</strong>
+# Communicating Ideas with Great Graphics in R
+
+<p style="margin-bottom:0.5cm;"></p>
 <figure>
-  <img src="../img/DataDance.jpeg" alt="Data Dance" width="400">
-  <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffeelicious</a></span></figcaption>
+  <img src="../img/DataDance.jpeg" alt="Data Dance" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+  <figcaption><span style="font-size:30%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffeelicious</a></span></figcaption>
 </figure>
-</div>
+
 <p style="margin-bottom:2cm;"></p>
 
 
