@@ -7,11 +7,11 @@ css: /css/syllabus.css
 
 <p style="margin-bottom:0.5cm;"></p>
 <figure>
-  <img src="../img/DataDance.jpeg" alt="Data Dance" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+  <img src="../img/DataDance.jpeg" alt="Data Dance" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
   <figcaption><span style="font-size:50%;">From <a href="https://medium.com/the-coffeelicious/who-needs-computers-to-visualize-data-cartoon-d2c5a78d735f" target="_blank">The Coffeelicious</a></span></figcaption>
 </figure>
 
-<p style="margin-bottom:2cm;"></p>
+<p style="margin-bottom:1cm;"></p>
 
 
 ----
@@ -19,6 +19,7 @@ css: /css/syllabus.css
 ## Syllabus Contents
 
 * [Catalog Description](#catalog-description) and [Learning Outcomes](#learning-outcomes)
+* [Delivery](#delivery)
 * [Assistance](#assistance) -- [Instructor](#instructor--derek-ogle), [Accommodations](#accommodations), and [Academic Alerts](#academic-alerts)
 * [Grading](#grading) -- [Homework](#homework), [Final Project](#final-project)
 * [Expectations](#expectations) -- [Ownership of Learning](#ownership-of-learning), [Work Outside of Class](#work-outside-of-class), [Classroom Conduct and Academic Integrity](#classroom-conduct-and-academic-integrity)
@@ -48,19 +49,36 @@ While this course does not fulfill any requirements in the [General Education Pr
 
 ----
 
+## Delivery
+<img class="img-right" src="../img/online.png" alt="Online Delivery">
+This course will be delivered in a synchronous "on-line" format throught the "online meeting app" on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) from 4-6pm on Monday, Wednesday, and Friday of May term. **You should make every effort to attend these online sessions as this will be the best opportunity to ask questions and get help from me and others in the class.**
+
+I do understand during this "period of disruption" that you may miss an occasional class period. A video will be made of each synchronous meeting and will be available to view asychronously (i.e., at other times). Also see the [Assistance](#assistance) section next for other ways to receive help with course material.
+
+
+
+----
+
 ## Assistance
 <img class="img-right" src="../img/help.jpg">
-Sources for out-of-class assistance and opportunities for in-class accommodations are described further below. Please use these throughout the semester as appropriate.[^help]
+This class will have lots of coding in R. Learning R can be difficult at first — it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
 
-* *Questions don’t expose the lack of knowledge of the asker, but rather expose opportunities for clarification for the original communicator* - [Julia Steward Lowndes](https://blogs.scientificamerican.com/observations/open-software-means-kinder-science/)
-* *Never apologize for asking for what you need, if you don't ask - the answer will always be no.* - Rachel Wolchin
-* *Asking for other's guidance helps you see what you may not be able to see. It's always important to check your ego and ask for help.* - Ken Blanchard
-* *The only mistake you can make is not asking for help.* - Sandeep Jauhar
+> It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
 
+Even experienced programmers can find themselves banging their heads against seemingly intractable errors.
 
-### Instructor -- Derek Ogle
-<img class="img-right" src="../img/DerekOgle1.jpg">
-I am committed to your doing well in this course and see it as my responsibility to help you both in and out of the designated class period. I will be available often via e-mail and will regularly monitor the [Piazza Class Discussion Site](https://piazza.com/northland/spring2020/mth107/home){:target="_blank"} (where other students can also suggest answers to your questions). You may also send me [anonymous feedback, suggestions, or questions](https://www.surveymonkey.com/r/KC87PJW){:target="_blank"}.
+<figure>
+  <img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
+  <figcaption><span style="font-size:50%;">From <a href="https://github.com/allisonhorst/stats-illustrations" target="_blank">from Allison Horst</a></span></figcaption>
+</figure>
+
+If you find yourself hitting your head against a wall and not understanding for more than a few minutes then take this experienced programmers advice:
+
+<img src="../img/horst_error_tweet.png" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
+
+In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can. I am here to help you and I **want** to help you learn the concepts and skills of this class. Please don't hesitate to reach out for help.
+
+I *promise* you that you can succeed in this class.[^encouragement]
 
 &nbsp;
 
@@ -70,18 +88,6 @@ I want to create an inclusive and accessible learning environment for those of y
 ### Academic Alerts
 <img class="img-right" src="../img/alert.jpg">
 As you adjust to college, you may benefit from working with a professional on your organization, motivation, and stress level. If I observe you struggling with the course early in the term then I may file an "Academic Alert" about you. If this happens, you will receive an e-mail from me that explains steps you can take to improve your performance in the course. Our Academic Success Coordinator, Gina Kirsten, will receive the alert and will likely also reach out to you to set up a time to further discuss ways to improve in the course. **Academic Alerts are not punitive**, they are simply an attempt to help you get back on track in this course as soon as possible.
-
-### Words of Encouragement
-I *promise* you can succeed in this class.[^encouragement] Learning R can be difficult at first—it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham, chief data scientist at RStudio and author of ggplot2, said this:
-
-> It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
-
-Even experienced programmers find themselves banging their heads against seemingly intractable errors. If you find yourself taking way too long hitting your head against a wall and not understanding, take a break, talk to classmates, e-mail me, etc.
-
-<img src="../img/horst_error_tweet.png" width="400">
-
-<img src="../img/gator_error.jpg" width="500">
-
 
 ----
 
