@@ -33,14 +33,7 @@ XXX
 * Setup Piazza
   * You should have gotten an invitation from me, but you [can also sign up here](https://piazza.com/northland/spring2020/mth250).
   * Here is [a brief introduction](https://www.youtube.com/watch?v=j7I_T3p-NPE).
-* Setup R & RStudio
-  * On Your Computer
-    * Install R ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html) [*note that current version is 3.6.3.*]
-    * Install RStudio ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html) [*note that current version is at least 1.2.5033*]
-    * Install Tidyverse (*do one of the following*)
-      * Type and run `install.packages("tidyverse")` in RStudio.
-      * Type `tidyverse` in Step 3 of these [directions](http://derekogle.com/IFAR/supplements/installations/InstallPackagesRStudio.html).
-  * RStudio in the Cloud
+* [Setup R & RStudio](Setup/R_RStudio)
 
 ----
 
