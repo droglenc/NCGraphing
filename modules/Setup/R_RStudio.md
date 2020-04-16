@@ -12,15 +12,11 @@ Throughout this course we will use the R program to generate graphs. We will int
 * [What is RStudio (Part 1)?](https://www.youtube.com/watch?v=riONFzJdXcs){:target="_blank"} [*stop at 2:27*]
 * [What is RStudio (Part 2)?](https://www.youtube.com/watch?v=riONFzJdXcs){:target="_blank"} [*only from 3:16 to 4:13*]
 
+As you now know, both R and RStudio are free to use. You can install them on your own compute or your can use RStudio in a webpage. Directions for installing R, RStudio, and associated software on your own computed is described in the next section. If you want to use RStudio-in-the-Cloud (i.e., over a webpage) then skip to [this section](#rstudio-in-the-cloud)
+
 &nbsp;
 
-## Installing the Software and Packages
-
-<div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this entire section (and go <a href="#rstudio-in-the-cloud">here</a>) if you plan to use RStudio in the Cloud.
-</div>
-
-
+## R & RStudio for Your Own Computer
 #### R and Rstudio for Windows
 
 <div class="alert alert-info" role="alert">
@@ -48,7 +44,7 @@ To install RStudio on aMac, download the installer from [this link](https://rstu
 <i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using Windows or a Mac.
 </div>
 
-RStudio can be used on a ChromeBook but the setup is complicated. Some directions that may work for you are [here](https://community.rstudio.com/t/rstudio-desktop-on-a-chromebook-without-crouton-using-new-linux-beta-option/17393), [here](https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio), and [here](https://community.rstudio.com/t/rstudio-on-a-chromebook/2802). I am not a Chromebook user and this looks endlessly confusing to me.
+RStudio can be used on a ChromeBook but the setup is complicated. Some directions that may work for you are [here](https://community.rstudio.com/t/rstudio-desktop-on-a-chromebook-without-crouton-using-new-linux-beta-option/17393){:target="_blank"}, [here](https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio){:target="_blank"}, and [here](https://community.rstudio.com/t/rstudio-on-a-chromebook/2802){:target="_blank"}. I am not a Chromebook user and this looks endlessly confusing to me.
 
 It is possible, however, to use RStudio in “the cloud” through a web browser, which may be easier than installing on your ChromeBook -- see [further below](#rstudio-in-the-cloud).
 
@@ -87,6 +83,7 @@ I suggest changing the following default settings in RStudio for optimal efficie
     * Turn on (select) "Show syntax highlighting in console input".
   * Press "OK".
 
+&nbsp;
 
 ## RStudio in the Cloud
 
@@ -96,14 +93,17 @@ I suggest changing the following default settings in RStudio for optimal efficie
 
 Analyses with R and RStudio can be run on through a web browser on "the cloud", thus eliminating the need (and sometimes hassle) to install these softwares and the associated packages on your computer. Follow the directions below if you would like to try using R/RStudio in the cloud.
 
-## Creating an RStudio Cloud Account
-You must create a free RStudio Cloud account to use this service. Go to the [RStudio Cloud website](https://rstudio.cloud/) and select "Get Started." In the ensuing dialog box enter your e-mail adddress, a password, and your first and last names. Press "Sign up." In a subsequent screen you will be asked to provide a name for the account with prompts to use your first and last name. Just press "Create Account" here.
+You must create a free RStudio Cloud account to use this service. Go to the [RStudio Cloud website](https://rstudio.cloud/){:target="_blank"} and select "Get Started." In the ensuing dialog box enter your e-mail adddress, a password, and your first and last names. Press "Sign up." In a subsequent screen you will be asked to provide a name for the account with prompts to use your first and last name. Just press "Create Account" here.
 
-Once you have created your account, follow [this link to the "MTH250_S20" project](https://rstudio.cloud/project/1161857), which should open a project that looks like that below. Currently this project is in my "workspace." Click on the red "Save a Permanent Copy" item in the top bar to save the project to your workspace. Any changes that you make to the project (uploading files, creating scripts) will now be saved in this project in your workspace. If you do not save a permanent copy then any work that you do in the project will be lost when you come back to it.
+Once you have created your account, follow [this link to the "MTH250_S20" project](https://rstudio.cloud/project/1161857){:target="_blank"}, which should open a project that looks like that below. Currently this project is in my "workspace." Click on the red "Save a Permanent Copy" item in the top bar to save the project to your workspace. Any changes that you make to the project (uploading files, creating scripts) will now be saved in this project in your workspace. If you do not save a permanent copy then any work that you do in the project will be lost when you come back to it.
 
 RStudio-in-the-cloud operates the same as RStudio with the exception that RStudio-in-the-Cloud cannot access data from your computer. Rather you must uploaded the data from your computer to the cloud. Select the "Upload" button in the "Files" tab in the lower-right pane of RStudio to upload a file (e.g., a CSV data file) from your computer. Then "Browse ..." to where your file is located on your computer and select OK. The CSV file will then appear in the Files pane (e.g., see "Avocados.csv" below). This file is then read into RStudio-in-the-Cloud by including the filename in `read.csv()` (note that you do not need to worry about setting the working directory with `setwd()`).
 
-<img src="Figs/RStudioCloud_Data.JPG" alt="RStudio Cloud Data" width="80%">
+<img src="../zimgs/RStudioCloud_Data.JPG" alt="RStudio Cloud Data" width="80%">
+
+&nbsp;
+
+### Footnotes
 
 [^WinR]: More detailed instructions [are here](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html){:target="_blank"}, but note that the current version is either 3.6.3 or 4.0.0.
 
