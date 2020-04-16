@@ -16,8 +16,8 @@ Throughout this course we will use the R program to generate graphs. We will int
 
 ## Installing the Software and Packages
 
-<div class="alert alert-danger p-0" role="alert">
-  Skip this entire section (and go <a href="#rstudio-in-the-cloud">here</a> if you plan to use RStudio in the Cloud.
+<div class="alert alert-info" role="alert">
+<i class="fa fa-warning"></i> Skip this entire section (and go <a href="#rstudio-in-the-cloud">here</a> if you plan to use RStudio in the Cloud.
 </div>
 
 
