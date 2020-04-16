@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo=TRUE,fig.width=5,fig.height=5,comment="#R>")
 
 # Packages and Data
 ```{r packages, eval=-1, message=FALSE, warning=FALSE}
-setwd("https://derekogle.com/NCGraphing/") ## Set this for your computer
+setwd("https://derekogle.com/NCGraphing/") ## Set for your computer, delete eval=-1
 library(tidyverse)
 ```
 
