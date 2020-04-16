@@ -8,6 +8,8 @@ title: Resources
 
 ## Administrative
 1. [Piazza Class Discussion Site](https://piazza.com/northland/spring2020/mth250/home){:target="_blank"}
+1. [Exercises folder on mycourses](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz) for turning in completed homework exercises.
+1. [Online Meetings on mycourses](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) for the synchronous class periods (and recordings).
 1. [Anonymous Message to Dr. Ogle](https://www.surveymonkey.com/r/KC87PJW){:target="_blank"}
 
 ## Software

@@ -3,7 +3,7 @@ layout: page
 css: /css/syllabus.css
 ---
 
-<h1>Communicating Ideas with Great Graphics in R</h1>
+<h1>Communicating Ideas with Great Graphs in R</h1>
 
 <p style="margin-bottom:0.5cm;"></p>
 <figure>
@@ -20,9 +20,9 @@ css: /css/syllabus.css
 
 * [Catalog Description](#catalog-description) and [Learning Outcomes](#learning-outcomes)
 * [Delivery](#delivery)
-* [Assistance](#assistance) -- [Instructor](#instructor--derek-ogle), [Accommodations](#accommodations), and [Academic Alerts](#academic-alerts)
-* [Grading](#grading) -- [Homework](#homework), [Final Project](#final-project)
-* [Expectations](#expectations) -- [Ownership of Learning](#ownership-of-learning), [Work Outside of Class](#work-outside-of-class), [Classroom Conduct and Academic Integrity](#classroom-conduct-and-academic-integrity)
+* [Assistance](#assistance), [Accommodations](#accommodations), and [Academic Alerts](#academic-alerts)
+* [Grading](#grading) -- [Exercises](#exercises) and [Final Project](#final-project)
+* [Classroom Conduct and Academic Integrity](#classroom-conduct-and-academic-integrity)
 
 
 ----
@@ -99,7 +99,7 @@ As you adjust to college, you may benefit from working with a professional on yo
 An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
 
 ### Exercises
-Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to XXX.
+Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to the appropriate assignment under [the exercises folder on the mycourses page](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz).
 
 Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
 
@@ -153,7 +153,7 @@ An incomplete grade will be given ONLY in extreme circumstances that are beyond 
 ----
 
 ## Classroom Conduct and Academic Integrity
-<img class="img-right" src="../img/cell-cheat.jpg" alt="Conduct and Integrity">
+<img class="img-right" src="../img/integrity.jpg" alt="Conduct and Integrity">
 I hope that everyone in this class will feel comfortable express themselves, asking questions, and freely participatig in this online class. Thus, please treat each other with courtesy and respect, and refrain from offensive or inappropriate language during any part of the class. Please do not post non-course related or personal or non-academic material in the Piazza discussion forum or the class "chat" area during class. Issues related to just should be sent to me via my email.
 
 Students are expected to submit work which is their own. Plagiarism or cheating will not be tolerated. If either is the case the student may have their grade for the assignment lowered or they may fail the course. The [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
