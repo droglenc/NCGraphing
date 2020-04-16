@@ -28,11 +28,11 @@ XXX
 
 ## Preparation for Class
 
-* Peruse [Class Webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
-* Login to [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
+* Look around the [class webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
+* Look around [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
 * Setup Piazza
-  * You should have gotten an invitation from me, but [can also sign up through this link](https://piazza.com/northland/spring2020/mth250).
-  * Here is a brief introduction.
+  * You should have gotten an invitation from me, but you [can also sign up here](https://piazza.com/northland/spring2020/mth250).
+  * Here is [a brief introduction](https://www.youtube.com/watch?v=j7I_T3p-NPE).
 * Setup R & RStudio
   * On Your Computer
     * Install R ... [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html) or [Mac](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html) [*note that current version is 3.6.3.*]
