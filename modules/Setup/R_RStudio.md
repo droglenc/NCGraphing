@@ -17,14 +17,14 @@ Throughout this course we will use the R program to generate graphs. We will int
 ## Installing the Software and Packages
 
 <div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this entire section (and go <a href="#rstudio-in-the-cloud">here</a> if you plan to use RStudio in the Cloud.
+<i class="fa fa-warning"></i> Skip this entire section (and go <a href="#rstudio-in-the-cloud">here</a>) if you plan to use RStudio in the Cloud.
 </div>
 
 
 #### R and Rstudio for Windows
 
-<div class="alert alert-danger" role="alert">
-  Skip this section (and goto the next section) if you are using a Mac or a ChromeBook.
+<div class="alert alert-info" role="alert">
+<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using a Mac or a ChromeBook.
 </div>
 
 To install R on a Windows machine, downloaded the installer from [this site](https://cloud.r-project.org/bin/windows/base/){:target="_blank"} by selecting the "Download R X.X.X for Windows" link at the top. Locate the installer on your computer and run it. Using all of the default choices will perform an acceptable install for this class.[^WinR]
@@ -33,8 +33,8 @@ To install RStudio on a Windows machine, download the installer from [this link]
 
 
 #### R and Rstudio for MacOS
-<div class="alert alert-danger" role="alert">
-  Skip this section (and goto the next section) if you are using Windows or a ChromeBook.
+<div class="alert alert-info" role="alert">
+<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using Windows or a ChromeBook.
 </div>
 
 To install R on a Mac, downloaded the installer from [this site](https://cloud.r-project.org/bin/macosx/){:target="_blank"} by selecting one of the "R-X.X.X.pkg" links appropriate for your operating system under the "Latest Release" section. Locate the ".pkg" file on your computer and install it per usual. Using all of the default choices will perform an acceptable install for this class.[^MacR]
@@ -44,8 +44,8 @@ To install RStudio on aMac, download the installer from [this link](https://rstu
 
 #### R and Rstudio for ChromeBooks
 
-<div class="alert alert-danger" role="alert">
-  Skip this section (and goto the next section) if you are using Windows or a Mac.
+<div class="alert alert-info" role="alert">
+<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using Windows or a Mac.
 </div>
 
 RStudio can be used on a ChromeBook but the setup is complicated. Some directions that may work for you are [here](https://community.rstudio.com/t/rstudio-desktop-on-a-chromebook-without-crouton-using-new-linux-beta-option/17393), [here](https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio), and [here](https://community.rstudio.com/t/rstudio-on-a-chromebook/2802). I am not a Chromebook user and this looks endlessly confusing to me.
@@ -90,8 +90,8 @@ I suggest changing the following default settings in RStudio for optimal efficie
 
 ## RStudio in the Cloud
 
-<div class="alert alert-danger" role="alert">
-  Skip this section if you are using RStudio on your own computer.
+<div class="alert alert-info" role="alert">
+<i class="fa fa-warning"></i> Skip this section if you are using RStudio on your own computer.
 </div>
 
 
