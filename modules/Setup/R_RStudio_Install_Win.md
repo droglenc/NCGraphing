@@ -23,7 +23,7 @@ Then with your cursor on the line that you just typed press the "Run" button (to
 
 <img src="../zimgs/InstallPackages_1.png" alt="Installing Tidyverse" style="display: block; margin-left: auto; margin-right: auto; width: 90%;">
 
-At this point the installation is complete if no errors occurred along the way. You can check for success by typing the code below exactly as it appears here and running it (make sure your cursor is on the line with the code below and then press "Run" button).
+At this point the installation is complete if no errors occurred along the way. You can check for success by typing the code below exactly as it appears here and running it (make sure your cursor is on the line with the code below and then press the "Run" button).
 
 ```
 library(tidyverse)
@@ -49,6 +49,8 @@ I suggest changing the following default settings in RStudio for optimal efficie
   * Press "OK".
 
 &nbsp;
+
+----
 
 ### Footnotes
 
