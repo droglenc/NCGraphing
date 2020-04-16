@@ -25,7 +25,7 @@ library(tidyverse)
 
 ```{r data, echo=-1}
 ## Initially load data here
-avoc <- read.csv("avocados.csv",stringsAsFactors=FALSE,quote="") %>%
+avoc <- read.csv("Avocados.csv",stringsAsFactors=FALSE,quote="") %>%
   filter(region=="GreatLakes") %>%
   mutate(type=factor(type),
          year=factor(year))
