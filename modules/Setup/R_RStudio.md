@@ -12,105 +12,12 @@ Throughout this course we will use the R program to generate graphs. We will int
 * [What is RStudio (Part 1)?](https://www.youtube.com/watch?v=riONFzJdXcs){:target="_blank"} [*stop at 2:27*]
 * [What is RStudio (Part 2)?](https://www.youtube.com/watch?v=riONFzJdXcs){:target="_blank"} [*only from 3:16 to 4:13*]
 
-As you now know, both R and RStudio are free to use. You can install them on your own compute or your can use RStudio in a webpage. Directions for installing R, RStudio, and associated software on your own computed is described in the next section. If you want to use RStudio-in-the-Cloud (i.e., over a webpage) then skip to [this section](#rstudio-in-the-cloud)
+As you now know, both R and RStudio are free to use. You can install them on your own computer or your can use RStudio in a webpage. Directions for both are below.
 
-&nbsp;
-
-## R & RStudio for Your Own Computer
-#### R and Rstudio for Windows
-
-<div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using a Mac or a ChromeBook.
-</div>
-
-To install R on a Windows machine, downloaded the installer from [this site](https://cloud.r-project.org/bin/windows/base/){:target="_blank"} by selecting the "Download R X.X.X for Windows" link at the top. Locate the installer on your computer and run it. Using all of the default choices will perform an acceptable install for this class.[^WinR]
-
-To install RStudio on a Windows machine, download the installer from [this link](https://rstudio.com/products/rstudio/download/#download){:target="_blank"} by selecting the "DOWNLOAD RSTUDIO FOR WINDOWS" button. Locate the installer on your computer and run it. Using all of the default choices will perform an acceptable install for this class.[^WinRStudio]
-
-
-#### R and Rstudio for MacOS
-<div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using Windows or a ChromeBook.
-</div>
-
-To install R on a Mac, downloaded the installer from [this site](https://cloud.r-project.org/bin/macosx/){:target="_blank"} by selecting one of the "R-X.X.X.pkg" links appropriate for your operating system under the "Latest Release" section. Locate the ".pkg" file on your computer and install it per usual. Using all of the default choices will perform an acceptable install for this class.[^MacR]
-
-To install RStudio on aMac, download the installer from [this link](https://rstudio.com/products/rstudio/download/#download){:target="_blank"} by selecting the "DOWNLOAD RSTUDIO FOR MACOS" button (you can also select the MacOS option under the "All Installers" section). Locate the ".dmg" file on your computer and install it per usual. Using all of the default choices will perform an acceptable install for this class.[^MacRStudio]
-
-
-#### R and Rstudio for ChromeBooks
-
-<div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this section (and goto the next section) if you are using Windows or a Mac.
-</div>
-
-RStudio can be used on a ChromeBook but the setup is complicated. Some directions that may work for you are [here](https://community.rstudio.com/t/rstudio-desktop-on-a-chromebook-without-crouton-using-new-linux-beta-option/17393){:target="_blank"}, [here](https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio){:target="_blank"}, and [here](https://community.rstudio.com/t/rstudio-on-a-chromebook/2802){:target="_blank"}. I am not a Chromebook user and this looks endlessly confusing to me.
-
-It is possible, however, to use RStudio in “the cloud” through a web browser, which may be easier than installing on your ChromeBook -- see [further below](#rstudio-in-the-cloud).
-
-
-#### Tidyverse
-Extra functionality can be added to R with packages. The `tidyverse` package is the main package that we will use in this class. You can install the `tidyverse` package on your computer by opening RStudio (not R, but RStudio) and selecting the *File* menu, *New File* submenu, and *R Script* subsubmenu, which will open a new pane in the upper-left corner of RStudio. In that new pane type the code below exactly as it appears here.
-
-```
-install.packages("tidyverse",type="binary")
-```
-
-Then with your cursor on the line that you just typed press the "Run" button (towards the right side of the top of the pane you just typed in; see below). RStudio should then do a "bunch of stuff" (you will seen a window flashing by).[^InstallingNote] After several minutes, the lower-left pane (the "console") should have a ">" symbol on the last line (see below).
-
-<img src="../zimgs/InstallPackages_1.png" alt="Installing Tidyverse" style="display: block; margin-left: auto; margin-right: auto; width: 90%;">
-
-At this point the installation is complete if no errors occurred along the way. You can check for success by typing the code below exactly as it appears here and running it (make sure your cursor is on the line with the code below and then press "Run" button).
-
-```
-library(tidyverse)
-```
-
-If your lower-left pane resembles the one shown below then you have successfully installed the `tidyverse` package.
-
-<img src="../zimgs/InstallPackages_2.png" alt="Installing Tidyverse" style="display: block; margin-left: auto; margin-right: auto; width: 90%;">
-
-#### Optimally Configuring RStudio
-I suggest changing the following default settings in RStudio for optimal efficiency.
-
-* In RStudio select the "Tools" menu and "Global Options" submenu.
-  * Under the "Workspace" heading (assuming that "General" on the left is selected) ...
-    * Turn off (unselect) the "Restore .RData into workspace at startup" item.
-    * Change "Ask" following "Save Workspace to .RData on exit:" to "Never".
-  * Select "Code" on the left and "Display" at the top ...
-    * Turn on (select) "Highlight selected line".
-    * Turn on (select) "Show margin" (and I usually put 80 as the "Margin column").
-    * Turn on (select) "Show syntax highlighting in console input".
-  * Press "OK".
-
-&nbsp;
-
-## RStudio in the Cloud
-
-<div class="alert alert-info" role="alert">
-<i class="fa fa-warning"></i> Skip this section if you are using RStudio on your own computer.
-</div>
-
-Analyses with R and RStudio can be run on through a web browser on "the cloud", thus eliminating the need (and sometimes hassle) to install these softwares and the associated packages on your computer. Follow the directions below if you would like to try using R/RStudio in the cloud.
-
-You must create a free RStudio Cloud account to use this service. Go to the [RStudio Cloud website](https://rstudio.cloud/){:target="_blank"} and select "Get Started." In the ensuing dialog box enter your e-mail adddress, a password, and your first and last names. Press "Sign up." In a subsequent screen you will be asked to provide a name for the account with prompts to use your first and last name. Just press "Create Account" here.
-
-Once you have created your account, follow [this link to the "MTH250_S20" project](https://rstudio.cloud/project/1161857){:target="_blank"}, which should open a project that looks like that below. Currently this project is in my "workspace." Click on the red "Save a Permanent Copy" item in the top bar to save the project to your workspace. Any changes that you make to the project (uploading files, creating scripts) will now be saved in this project in your workspace. If you do not save a permanent copy then any work that you do in the project will be lost when you come back to it.
-
-RStudio-in-the-cloud operates the same as RStudio with the exception that RStudio-in-the-Cloud cannot access data from your computer. Rather you must uploaded the data from your computer to the cloud. Select the "Upload" button in the "Files" tab in the lower-right pane of RStudio to upload a file (e.g., a CSV data file) from your computer. Then "Browse ..." to where your file is located on your computer and select OK. The CSV file will then appear in the Files pane (e.g., see "Avocados.csv" below). This file is then read into RStudio-in-the-Cloud by including the filename in `read.csv()` (note that you do not need to worry about setting the working directory with `setwd()`).
-
-<img src="../zimgs/RStudioCloud_Data.JPG" alt="RStudio Cloud Data" width="80%">
+* Install R, RStudio, and associated package on your own computer -- [Windows](R_RStudio_Install_Win) or [Mac](R_RStudio_Install_Mac).[^Chromebook]
+* Use RStudio in a webpage (i.e., [RStudio-in-the-Cloud](R_RStudio_Cloud)) and not have to install anything.
 
 &nbsp;
 
 ### Footnotes
-
-[^WinR]: More detailed instructions [are here](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html){:target="_blank"}, but note that the current version is either 3.6.3 or 4.0.0.
-
-[^WinRStudio]: More detailed instructions [are here](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html){:target="_blank"}, but note that the current version is at least 1.2.5042.
-
-[^MacR]: More detailed instructions [are here](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html){:target="_blank"}, but note that the current version is either 3.6.3 or 4.0.0.
-
-[^MacRStudio]: More detailed instructions [are here](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html){:target="_blank"}, but note that the current version is at least 1.2.5042.
-
-[^InstallingNote]: The `tidyverse` package depends on many other packages. What RStudio is doing during this process is install all of those other packages.
+[^Chromebook]: RStudio can be used on a ChromeBook but the setup is complicated. Some directions that may work for you are [here](https://community.rstudio.com/t/rstudio-desktop-on-a-chromebook-without-crouton-using-new-linux-beta-option/17393){:target="_blank"}, [here](https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio){:target="_blank"}, and [here](https://community.rstudio.com/t/rstudio-on-a-chromebook/2802){:target="_blank"}. I am not a Chromebook user and this looks endlessly confusing to me. It is possible, however, to use RStudio in “the cloud” through a web browser, which may be easier than installing on your ChromeBook -- [see here](R_RStudio_Cloud).
