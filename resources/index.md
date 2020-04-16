@@ -12,11 +12,6 @@ title: Resources
 1. [Online Meetings on mycourses](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz) for the synchronous class periods (and recordings).
 1. [Anonymous Message to Dr. Ogle](https://www.surveymonkey.com/r/KC87PJW){:target="_blank"}
 
-## Software
-1. Use RStudio in the Cloud
-1. Use RStudio on your personal computer
-  * Install R -- [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRWin.html){:target="_blank"} / [Mac OS](http://derekogle.com/IFAR/supplements/installations/InstallRMac.html){:target="_blank"} / [ChromeBook](FAQ/FAQs/ChromeBook){:target="_blank"}
-  * Install RStudio -- [Windows](http://derekogle.com/IFAR/supplements/installations/InstallRStudioWin.html){:target="_blank"} / [Mac OS](http://derekogle.com/IFAR/supplements/installations/InstallRStudioMac.html){:target="_blank"} / [ChromeBook](FAQ/FAQs/ChromeBook){:target="_blank"}
 
 ## General Resources
 * [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html): Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
