@@ -1,6 +1,6 @@
 ---
 layout: page
-title: R and RStudio in the Cloud
+title: RStudio in the Cloud
 css: /css/modules.css
 ---
 
