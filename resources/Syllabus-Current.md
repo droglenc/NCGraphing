@@ -73,15 +73,17 @@ If you find yourself in this situation follow the advice of Hadley above and All
 
 <img src="../img/horst_error_tweet.png" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
-In terms of "extra eyes" ... ask a classmate a question, ask classmates or me a question on the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home), or [e-mail me directly](mailto:dogle@northland.edu). I will monitor Piazza and my e-mail regularly and will respond with assistance as quickly as I can.
+I am here to help you and I **want** to help you learn the concepts and skills of this class. I *promise* you that you can succeed in this class, especially if you reach out for help when you have questions or are stuck.
 
-If you do e-mail me, please include the following items in your e-mail:
+I will, however, not be able to monitor my e-mail constantly during this May term. Thus, please use the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home) to ask questions that may be able to be answered by others in class or if the eventual answer might be useful to others in class.[^Rhelp] Please also answer questions posted by others on Piazza if you feel that you know the answer. I will make every attempt to check my e-mail and Piazza every in the later afternoons.[^DHOemail] Questions that are specific to you should be sent directly to me.[^email]
+
+If you do ask questions on Piazza or directly to me, please include the following items in your question:
 
 1. A clear explanation of the problem, with as much detail as you can offer.
 1. Which data your are using. If you are using your own data then please attach the CSV file.
 1. An attachment of your R script so that, with your data, I can re-create your analyses.
 
-I am here to help you and I **want** to help you learn the concepts and skills of this class. I *promise* you that you can succeed in this class, especially if you reach out for help when you have questions or are stuck.
+Note that you can only include the attachments in direct e-mails to me (i.e., not on Piazza).
 
 &nbsp;
 
@@ -162,10 +164,14 @@ Students are expected to submit work which is their own. Plagiarism or cheating 
 
 ### Footnotes
 
-[^email]: While I am pretty open-minded and not much of a stickler when it comes to e-mail etiquette, some professors are. And it is always better to send an appropriate rather than an inappropriate e-mail. [Here](https://www.scribendi.com/advice/how_to_email_a_professor.en.html) and [here](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) are some good suggestions for e-mailing professors.
-
 [^encouragement]: This is largely from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
 
 [^WickhamQuote]: This is from the last question in [this interview](https://r-posts.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/).
 
 [^HorstCredit]: This cartoon is from [Allison Horst](https://github.com/allisonhorst/stats-illustrations).
+
+[^Rhelp]: There are several students in this course that have used R in previous courses. They should be able to answer R related questions for those of you that are just getting started with R.
+
+[^DHOemail]: I will often check my e-mail more often, but I won't be able to do that on a consistent basis. So, please, do not wait untl the last minute as you may not get an immediate response from me.
+
+[^email]: While I am pretty open-minded and not much of a stickler when it comes to e-mail etiquette, some professors are. And it is always better to send an appropriate rather than an inappropriate e-mail. [Here](https://www.scribendi.com/advice/how_to_email_a_professor.en.html) and [here](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) are some good suggestions for e-mailing professors.
