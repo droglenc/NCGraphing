@@ -20,8 +20,8 @@ css: /css/syllabus.css
 
 * [Catalog Description](#catalog-description) and [Learning Outcomes](#learning-outcomes)
 * [Delivery](#delivery)
-* [Assistance](#assistance), [Accommodations](#accommodations), and [Academic Alerts](#academic-alerts)
-* [Grading](#grading) -- [Exercises](#exercises) and [Final Project](#final-project)
+* [Assistance](#assistance) and [Accommodations](#accommodations)
+* [Grading](#grading) -- [Exercises](#exercises), [Final Project](#final-project), [Incomplete Grades](#incomplete-grades), and [Academic Alerts](#academic-alerts)
 * [Classroom Conduct and Academic Integrity](#classroom-conduct-and-academic-integrity)
 
 
@@ -51,11 +51,11 @@ While this course does not fulfill any requirements in the [General Education Pr
 
 ## Delivery
 <img class="img-right" src="../img/online.png" alt="Online Delivery">
-This course will be delivered in a synchronous "on-line" format through the "online meeting app" on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz){:target="_blank"} from 4-6pm on Monday, Wednesday, and Friday of May term. **You should make every effort to attend these online sessions as this will be the best opportunity to ask questions and get help from me and others in the class.**
+This course will be delivered in a synchronous "on-line" format through the "Big Blue Button" online meeting app on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz){:target="_blank"} from 4-6pm on Monday, Wednesday, and Friday of May term. **You should make every effort to attend these online sessions as this will be the best opportunity to ask questions and get help from me and others in the class.**
 
 I do understand during this "period of disruption" that you may miss an occasional class period. A video will be made of each synchronous meeting and will be available on [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Online_Meetings.jnz){:target="_blank"} to view asychronously (i.e., at other times). Also see the [Assistance](#assistance) section next for other ways to receive help with course material.
 
-During this period of remote instruction I can also set up "GoToMeetings" where we can "video chat", which will allow you to share your computer screen with me (provided you have a webcam). This can be invaluable for troubleshooting code issues as I can see exactly what you are doing on your computer. To setup a "video chat" send me an e-mail with some preferred times and I will send you back an invitation to "meet" that will contain directions for how to do so.
+During this period of remote instruction I can also set up "GoToMeetings" where we can "video chat", which will allow you to share your computer screen with me (provided you have a webcam). This can be invaluable for troubleshooting code issues as I can see exactly what **you** are doing on **your** computer. To setup a "video chat" with me, send me an e-mail with some preferred times and I will send you back an invitation to "meet" that will contain directions for how to do so.
 
 ----
 
@@ -67,15 +67,15 @@ This class will have lots of coding in R. Learning R can be difficult at first â
 
 This cartoon illustrates what Hadley explains and how you may feel at some point this term.[^HorstCredit]
 
-<img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
+<img src="../img/gator_error.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
 
 If you find yourself in this situation follow the advice of Hadley above and Allison below.
 
 <img src="../img/horst_error_tweet.png" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
-I am here to help you and I **want** to help you learn the concepts and skills of this class. I *promise* you that you can succeed in this class, especially if you reach out for help when you have questions or are stuck.
+This advice is predicated on two things. First, you **start early** enough that you have time to ask for help and wait for a response. Second, that you **will ask for help** when you need it. I am here to help you and I **want** to help you learn. **You can succeed** in this class, especially if you are organized and reach out for help when you have questions or are stuck.
 
-I will, however, not be able to monitor my e-mail constantly during this May term. Thus, please use the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home) to ask questions that may be able to be answered by others in class or if the eventual answer might be useful to others in class.[^Rhelp] Please also answer questions posted by others on Piazza if you feel that you know the answer. I will make every attempt to check my e-mail and Piazza every in the later afternoons.[^DHOemail] Questions that are specific to you should be sent directly to me.[^email]
+I will, however, not be able to monitor my e-mail constantly during this May term. Thus, please use the [Piazza forum](https://mycourses.northland.edu/ICS/piazza.com/northland/spring2020/mth250/home) to ask questions that may be able to be answered by others in class or if the eventual answer might be useful to others in class.[^Rhelp] Please also answer questions posted by others on Piazza if you feel that you know the answer. I will make every attempt to check my e-mail and Piazza every day in the later afternoons.[^DHOemail] Questions that are specific to you should be sent directly to me.[^email]
 
 If you do ask questions on Piazza or directly to me, please include the following items in your question:
 
@@ -90,10 +90,6 @@ Note that you can only include the attachments in direct e-mails to me (i.e., no
 ### Accommodations
 I want to create an inclusive and accessible learning environment for those of you that have a condition (e.g., attention, learning, vision, hearing, mental, physical, or other health-related concern) that may require special accommodations. *If you have already established accommodations* with the Office of Accessibility Resources (OAR), please communicate your approved accommodations to me as soon as possible so that we can discuss your needs in this course. If you have a condition that requires accommodations but *you have not yet established services* through OAR, then you should contact Jennifer Newago as soon as possible (Ponzio 230, x1387, or <a href="mailto:accomodations@northland.edu">accomodations@northland.edu</a>). It is the policy and practice of Northland College to create inclusive and accessible learning environments consistent with federal and state law. <a href="https://my.northland.edu/life/be-healthy/accommodations/">More information is available here.</a>
 
-### Academic Alerts
-<img class="img-right" src="../img/alert.jpg">
-As you adjust to college, you may benefit from working with a professional on your organization, motivation, and stress level. If I observe you struggling with the course early in the term then I may file an "Academic Alert" about you. If this happens, you will receive an e-mail from me that explains steps you can take to improve your performance in the course. Our Academic Success Coordinator, Gina Kirsten, will receive the alert and will likely also reach out to you to set up a time to further discuss ways to improve in the course. **Academic Alerts are not punitive**, they are simply an attempt to help you get back on track in this course as soon as possible.
-
 ----
 
 ## Grading
@@ -101,9 +97,9 @@ As you adjust to college, you may benefit from working with a professional on yo
 An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
 
 ### Exercises
-Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the exercises are completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to the appropriate assignment under [the exercises folder on the mycourses page](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz).
+Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the module is completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. We will likely complete a module during each class period, so **exercises will be due before nearly every class period.**
 
-Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
+All exercises should be formatted as I described on the first day of class and handed in to me by uploading your HTML document to the appropriate assignment in the "Exercises" unit of the "Coursework" page [on mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz){:target="_blank"}. Each exercise set is worth 10 points and will be graded with a two-part rubric. The first part of the rubric is based on your *completion* of the exercise.
 
 <div class="container-fluid">
   <table class="table table-bordered">
@@ -129,11 +125,13 @@ The second part of the rubric is based on your correctness in performing the wor
   </table>
 </div>
 
-**Exercises handed in late may still receive "completeness" points but may not receive any "correctness" points.**
+**Exercises handed in late may still receive "completeness" points but may not receive any "correctness" points.** May term moves very quickly and it is thus difficult to catch up if you fall behind. Please make every effort to not fall behind by turning in your exercises on time.
+
+&nbsp;
 
 ### Final Project
 
-To demonstrate your ability to communicate ideas with effective graphics created in R, I am asking you to create two graphs, from any data that you choose, as a final project. The graphs do not have to be overly complicated but they also should be overly simple; you should strive to create a graph that elegantly demonstrates a "story" in the data. One of your two graphics should either be a composite of multiple graphics or a facet across groups. Your graphic should be formatted as with the homework exercises, but you should also include an introduction to the data and the question that you are exploring, a summary of what you observed in your graph, and a discussion of design choices that you made when making your graph (i.e., why did you choose that type of graph, those colors, that faceting, etc.).
+To demonstrate your ability to communicate ideas with effective graphics created in R, I am asking you to create two graphs, from any data that you choose, as a final project. The graphs do not have to be overly complicated but they also should not be overly simple; you should strive to create a graph that elegantly demonstrates a "story" in the data. One of your two graphics should either be a composite of multiple graphics or a facet across groups. Your graphic should be formatted as with the homework exercises, but you should also include an introduction to the data and the question that you are exploring, a summary of what you observed in your graph, and a discussion of design choices that you made when making your graph (i.e., why did you choose that type of graph, those colors, that faceting, etc.).
 
 Items to be considered when grading your final project are:
 
@@ -146,25 +144,30 @@ Items to be considered when grading your final project are:
 * Is the question or topic generally interesting and creative?
 * Overall presentation ... is the graph pleasing to the eye?
 
-In addition to turning in your final graphs, you will "present" **one** of your graphs to the class. In this **5 minute** presentation you should briefly introduce your data and your interest in the data (i.e., why did you look at those data), present your final graph, and explain design choices that you made when constructing the graph.
+In addition to turning in your final graphs, you will "present" **one** of your graphs to the class. In this **5 minute** presentation you should briefly introduce your data and your interest in the data (i.e., why did you look at those data), present your final graph, and explain design choices that you made when constructing the graph. Given the course enrollment, you will likely only present your graph to half of the class.
 
 
 #### Note About Incomplete Grades
 An incomplete grade will be given ONLY in extreme circumstances that are beyond your control, such as a major illness, and will ONLY be given if you have successfully completed the entire course except for the final exam. This is in accordance with [Northland College policy](https://my.northland.edu/student-policies/academic-policies/#grades){:target="_blank"} (scroll down to "Incomplete Grades").
 
+
+#### Academic Alerts
+<img class="img-right" src="../img/alert.jpg">
+As you adjust to college, you may benefit from working with a professional on your organization, motivation, and stress level. If I observe you struggling with the course early in the term then I may file an "Academic Alert" about you. If this happens, you will receive an e-mail from me that explains steps you can take to improve your performance in the course. Our Academic Success Coordinator, Gina Kirsten, will receive the alert and will likely also reach out to you to set up a time to further discuss ways to improve in the course. **Academic Alerts are not punitive**, they are simply an attempt to help you get back on track in this course as soon as possible.
+
 ----
 
 ## Classroom Conduct and Academic Integrity
-<img class="img-right" src="../img/integrity.jpg" alt="Conduct and Integrity">
-I hope that everyone in this class will feel comfortable express themselves, asking questions, and freely participatig in this online class. Thus, please treat each other with courtesy and respect, and refrain from offensive or inappropriate language during any part of the class. Please do not post non-course related or personal or non-academic material in the Piazza discussion forum or the class "chat" area during class. Issues related to just should be sent to me via my email.
+<img class="img-right" src="../img/integrity.png" alt="Conduct and Integrity">
+I hope that everyone in this class will feel comfortable express themselves, asking questions, and freely participatig in this online class. Thus, please treat each other with courtesy and respect, and refrain from offensive or inappropriate language during any part of the class. Please do not post non-course related or personal or non-academic material in the Piazza discussion forum or the class "chat" area during class. Issues related to conduct and integrity should be sent directly to me via my email.
 
-Students are expected to submit work which is their own. Plagiarism or cheating will not be tolerated. If either is the case the student may have their grade for the assignment lowered or they may fail the course. The [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
+Students are expected to submit work which is their own. Plagiarism or cheating will not be tolerated. If either is the case you may have your grade for the assignment lowered or you may fail the course. The [College's Academic Integrity Statement & Policy](https://my.northland.edu/student-policies/academic-policies/#academic-integrity){:target="_blank"} will be followed in this course. Please make sure that you are familiar with its content.
 
 ----
 
 ### Footnotes
 
-[^encouragement]: This is largely from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
+[^encouragement]: The idea for this section came from [Dr. Ted Laderas](https://ready4r.netlify.com/syllabus/).
 
 [^WickhamQuote]: This is from the last question in [this interview](https://r-posts.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/).
 
