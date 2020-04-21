@@ -23,7 +23,9 @@ FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,message=FALSE,warning=FALSE,comment="",cache=FALSE)
+knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE,
+                      background=c(235,235,235)/255)
 library(flipbookr)
 library(tidyverse)
 options(width=120,show.signif.stars=FALSE)
@@ -562,4 +564,6 @@ p + #BREAK
 ```{css, eval= TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 60%}
 .remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
+code.r{font-weight: bold;}
+pre{font-weight: bold;}
 ```
