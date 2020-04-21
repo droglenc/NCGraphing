@@ -21,7 +21,7 @@ css: /css/syllabus.css
 * [Catalog Description](#catalog-description) and [Learning Outcomes](#learning-outcomes)
 * [Delivery](#delivery)
 * [Assistance](#assistance) and [Accommodations](#accommodations)
-* [Grading](#grading) -- [Exercises](#exercises), [Final Project](#final-project), [Incomplete Grades](#incomplete-grades), and [Academic Alerts](#academic-alerts)
+* [Grading](#grading) -- [Exercises](#exercises), [Final Project](#final-project), [Incomplete Grades](#note-about-incomplete-grades), and [Academic Alerts](#academic-alerts)
 * [Classroom Conduct and Academic Integrity](#classroom-conduct-and-academic-integrity)
 
 
@@ -146,6 +146,7 @@ Items to be considered when grading your final project are:
 
 In addition to turning in your final graphs, you will "present" **one** of your graphs to the class. In this **5 minute** presentation you should briefly introduce your data and your interest in the data (i.e., why did you look at those data), present your final graph, and explain design choices that you made when constructing the graph. Given the course enrollment, you will likely only present your graph to half of the class.
 
+&nbsp;
 
 #### Note About Incomplete Grades
 An incomplete grade will be given ONLY in extreme circumstances that are beyond your control, such as a major illness, and will ONLY be given if you have successfully completed the entire course except for the final exam. This is in accordance with [Northland College policy](https://my.northland.edu/student-policies/academic-policies/#grades){:target="_blank"} (scroll down to "Incomplete Grades").
