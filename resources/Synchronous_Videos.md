@@ -19,6 +19,8 @@ The following are suggestions for making the synchronous video sessions run more
 
 * If you have a question please "raise your hand" or ask a question through the "Public Chat" option (though I may miss activity on the chat).
 
-<img src="../img/BBB_RaiseHand.JPG" alt="BBB Raising Hand" style="display: block; margin-left: auto; margin-right: auto; width: 20%;">
+<img src="../img/BBB_RaiseHand.JPG" alt="BBB Raising Hand" style="display: block; margin-left: auto; margin-right: auto; width: 40%;">
 
-* More hints on using the on-line meeting software can be found [in this video](https://youtu.be/uYYnryIM0Uw){:target="_blank"}.
+* The video below is a quick demonstration of using the BigBlueButton meeting software.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uYYnryIM0Uw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
