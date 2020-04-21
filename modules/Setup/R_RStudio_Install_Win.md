@@ -4,6 +4,10 @@ title: R and RStudio for Windows
 css: /css/modules.css
 ---
 
+Please follow all of the directions below to install R, RStudio, and the `tidyverse` package on your personal Windows computer. Please [let me know](mailto:dogle@northland.edu) if you have any issues.
+
+&nbsp;
+
 ## Installing R and Rstudio
 
 To install R on a Windows machine, downloaded the installer from [this site](https://cloud.r-project.org/bin/windows/base/){:target="_blank"} by selecting the "Download R X.X.X for Windows" link at the top. Locate the installer on your computer and run it. Using all of the default choices will perform an acceptable install for this class.[^WinR]

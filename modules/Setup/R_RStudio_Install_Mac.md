@@ -4,6 +4,10 @@ title: R and RStudio for MacOS
 css: /css/modules.css
 ---
 
+Please follow all of the directions below to install R, RStudio, and the `tidyverse` package on your personal Mac computer. Please [let me know](mailto:dogle@northland.edu) if you have any issues.
+
+&nbsp;
+
 ## Installing R and Rstudio
 
 To install R on a Mac, downloaded the installer from [this site](https://cloud.r-project.org/bin/macosx/){:target="_blank"} by selecting one of the "R-X.X.X.pkg" links appropriate for your operating system under the "Latest Release" section. Locate the ".pkg" file on your computer and install it per usual. Using all of the default choices will perform an acceptable install for this class.[^MacR]
