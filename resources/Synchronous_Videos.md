@@ -12,10 +12,10 @@ The following are suggestions for making the synchronous video sessions run more
 
 * When we first start class you can share your video. Whether you do or not is completely up to you; though I like to see everybody's faces to start a class period. Once I start the lecture then please don't share your video to improve performance and reduce distractions.
 * After I start the lecture, please mute your audio to reduce unwanted noises being shared with others.
-* When not "chat"ting you can minimize the Public Chat box to maximize the amount of screen available for the slides.
+* When not "chat"ting you can minimize the Public Chat box to maximize the amount of screen available for the slides. You can also start the "Full Screen" model with the icon in the upper-right of the presentation portion of the screen.
 * Please minimize use of the chat except to answer questions or get my attention if I miss that you have "raised your hand.""
 
-<img src="../img/BBB_Startup.JPG" alt="BBB Startup" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
+<img src="../img/BBB_Startup.JPG" alt="BBB Startup" style="display: block; margin-left: auto; margin-right: auto; width: 95%;">
 
 * If you have a question please "raise your hand" or ask a question through the "Public Chat" option (though I may miss activity on the chat).
 
