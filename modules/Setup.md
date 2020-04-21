@@ -29,22 +29,30 @@ XXX
 ## Preparation for Class
 
 * Look around the [class webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
-* Look around [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
+* Look around [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/){:target="_blank"}
+* [Become familiar with the BigBlueButton online meeting software](http://derekogle.com/NCGraphing/resources/Synchronous_Videos){:target="_blank"}
 * Setup Piazza
-  * You should have gotten an invitation from me, but you [can also sign up here](https://piazza.com/northland/spring2020/mth250).
-  * Here is [a brief introduction](https://www.youtube.com/watch?v=j7I_T3p-NPE).
-* [Setup R & RStudio](Setup/R_RStudio)
+  * You should have gotten an invitation from me, but you [can also sign up here](https://piazza.com/northland/spring2020/mth250){:target="_blank"}.
+  * Here is [a brief introduction](https://www.youtube.com/watch?v=j7I_T3p-NPE){:target="_blank"}.
+* [Setup R & RStudio](Setup/R_RStudio){:target="_blank"}
 
 ----
 
 ## Discussion Points
 
 * Introduction
-* [Syllabus & Expectations](../resources/Syllabus-Current)
-* [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/)
+* [Syllabus & Expectations](../resources/Syllabus-Current){:target="_blank"}
+* [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/){:target="_blank"}
+* [Final Project](../resources/Syllabus-Current.html#final-project){:target="_blank"}
 * R & RStudio
 * Setting Up a Working Directory for the Class
 * Homework Formatting
   * [Rmarkdown Template](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd) [*download and save to your computer*]
-  * Example ... [Rmarkdown](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/HWFormatting_Example.Rmd), [HTML Result](Setup/HWFormatting_Example.html), [Avocados Data](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv)
-* Final Project
+  * Demonstration ...  [Avocados Data](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv)
+
+## Exercise
+* Download one of the files below to your computer, load it into RStudio, and show the structure. Compile your document and upload it to the "Course Organization" folder in the "Exercises" unit of the "Coursework" page on mycourses.northland.edu.
+  * [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv) ... biological data for Common Loons (*Gavia immer*) from around North America.
+  * [WalleyeErie2.csv](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) ... biological data for Walleye (*Sander vitreus*) from Lake Erie.
+  * [NCAAF19_QBS.csv](https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv) ... statistics for college football quarterbacks from the 2019-20 season.
+  * [StateOfWolf.csv](https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv) ... attitude data towards Gray Wolves (*Canis lupus*) in Michigan, Minnesota, and Wisconsin.
