@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Introduction
+title: Introduction 2
 css: /css/modules.css
 ---
 
