@@ -30,7 +30,7 @@ XXX
 
 * Look around the [class webpage](https://derekogle.com/NCGraphing/) (*should bookmark/favorite this page*)
 * Look around [mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/){:target="_blank"}
-* [Become familiar with the BigBlueButton online meeting software](http://derekogle.com/NCGraphing/resources/Synchronous_Videos){:target="_blank"}
+* [Become familiar with the GoToMeeting online meeting software](http://derekogle.com/NCGraphing/resources/Synchronous_Videos_GTM){:target="_blank"}
 * Setup Piazza
   * You should have gotten an invitation from me, but you [can also sign up here](https://piazza.com/northland/spring2020/mth250){:target="_blank"}.
   * Here is [a brief introduction](https://www.youtube.com/watch?v=j7I_T3p-NPE){:target="_blank"}.
