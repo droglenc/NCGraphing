@@ -3,7 +3,7 @@ layout: page
 title: GTM Class Meetings
 ---
 
-We will use the GoToMeeting app for our online lectures this term. A consistent link to the [online meeting space is here](https://www.gotomeet.me/droglenc/mth250-graphing) (which is also on the [Resources page](index). Links below are to specific suggestions or directions for using this app.
+We will use the GoToMeeting app for our online lectures this term. A consistent link to the [online meeting space is here](https://www.gotomeet.me/droglenc/mth250-graphing) (which is also on the [Resources page](index)). Links below are to sections below with specific suggestions or directions for using GoToMeeting.
 
 * [General Suggestions](#general-suggestions)
 * [Initial Installation of the App](#initial-installation-of-the-app)
@@ -15,11 +15,11 @@ We will use the GoToMeeting app for our online lectures this term. A consistent 
 
 The following are suggestions for making the synchronous video sessions run smoothly.
 
-* To minimize unwanted noise and distraction, please mute your microphone when not speaking. To mute and unmute yourself move your cursor over the bottom middle portion of the GoToMeeting screen and four circular buttons will appear (see below). Press the left-most butto to mute an unmute the microphone (in the screen below the microphone button is red and thus you are muted).
+* To minimize unwanted noise and distraction, **please mute your microphone when you are not speaking**. To mute and unmute yourself move your cursor over the bottom middle portion of the GoToMeeting screen and four circular buttons will appear (see below). Press the left-most button to mute and unmute the microphone (in the screen below, the microphone button is red and thus you are muted).
 
 <img src="../img/GTM_Screen1.PNG" alt="GTM First Screen" style="display: block; margin-left: auto; margin-right: auto; width: 95%;">
 
-* Whether you share your webcam or not is completely up to you; though I like to see everybody's face to start a class period. To share and unshare your webcam you can press the camera icon shown in the screen above (in this screen the camera icon is green so your camera is being shown to those in the meeting).
+* Whether you share your webcam or not is completely up to you; though I like to see everybody's face to start a class period. To share and unshare your webcam you can press the camera icon shown in the screen above (in this screen, the camera icon is green so your camera is being shown to those in the meeting).
 
 * During lecture you may want to hide all of the cameras so that my presentation is larger. To do this change the "View Everyone" item in the top middle of the screen above to "Hide Everyone". You can, of course, change this back if you want to see others (e.g., when we are having a discussion).
 
@@ -41,7 +41,7 @@ To join a GoToMeeting you will nee to install the GoToMeeting app. The process i
 
 * You will be prompted to download the app.
 
-<img src="../img/GTM_Download.PNG" alt="GTM Download App 1" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
+<img src="../img/GTM_Download1.PNG" alt="GTM Download App 1" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
 * And then directed on how to run the installer.
 
@@ -55,7 +55,7 @@ To join a GoToMeeting you will nee to install the GoToMeeting app. The process i
 
 <img src="../img/GTM_Join2.PNG" alt="GTM Join Meeting 2" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
-* Finally you will be given a preview of how you will appear. You can test your "audio" below the "OK, I'M READY" button and you can also select the option below that to skip this previous when entering future meetings. You can turn on (or off) your microphone or your camera in the preview window. When ready, press "OK, I'M READY" and you will be entered into the meeting (and your screen will look similar to the first screen in the previous section).
+* Finally you will be given a preview of how you will appear. You can test your "audio" below the "OK, I'M READY" button and you can also select the option below that to skip this preview when entering future meetings. You can turn on (or off) your microphone or your camera in the preview window. When ready, press "OK, I'M READY" and you will be entered into the meeting (and your screen will look similar to the first screen in the previous section).
 
 <img src="../img/GTM_Join3.PNG" alt="GTM Join Meeting 3" style="display: block; margin-left: auto; margin-right: auto; width: 60%;">
 
@@ -68,7 +68,7 @@ You are unlikely to share your screen during a class period. However, this is ve
 
 <img src="../img/GTM_Presenter1.PNG" alt="GTM Join Meeting 3" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
 
-* When in presenter mode, your screen will look like that below. A small GoToMeeting app will appear in the upper-right where you will have the same controls as usual. Note however that the screen icon is now green (as you are sharing your screen) and you probably want to have your microphone on (you are likely explaining something to me). You can declutter your screen some by "Hide Everyone" and minimize the small window showing what your screen looks like to others. When you are done showing your screen simply press the "Screen" button (it will change from being green).
+* When in presenter mode, your screen will look like that below. A small GoToMeeting app will appear in the upper-right where you will have the same controls as usual. Note however that the screen icon is now green (as you are sharing your screen) and you probably want to have your microphone on (you are likely explaining something to me). You can declutter your screen some with "Hide Everyone" and minimize the small window showing what your screen looks like to others. When you are done showing your screen simply press the "Screen" button (it will change from being green).
 
 <img src="../img/GTM_Presenter2.PNG" alt="GTM Join Meeting 3" style="display: block; margin-left: auto; margin-right: auto; width: 95%;">
 
