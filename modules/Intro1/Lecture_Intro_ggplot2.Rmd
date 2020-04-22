@@ -1,0 +1,226 @@
+---
+title: "Introduction to ggplot2"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: zlibs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r purler, eval=FALSE, echo=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_Intro_ggplot2"
+FSA::purl2(file.path(here::here(),"modules/Intro1",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+                       "include_graphics","options","splitPerc","leftAssign"))
+```
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
+library(flipbookr)
+library(tidyverse)
+options(width=120,show.signif.stars=FALSE)
+splitPerc <- 50
+leftAssign <- TRUE
+```
+
+# What is a Graphic?
+
+--
+- Most simply ... a "data visualization."
+
+--
+- Attempting to convey the "story" found in the data.
+  - Patterns, signals, variability.
+
+--
+- Simple and clear, effective and elegant
+
+--
+- Lots of opinions about graphing principles
+
+--
+- Our focus: Mechanics of making graphs in R with enough flexibility that you can follow any principles you desire.
+
+---
+
+# Tufte's Broad Guidelines
+
+.pull-left[
+- Graphical excellence.
+- Visual integrity.
+- Maximize data-ink ratio.
+- Aesthetic elegance.
+]
+
+.pull-right[
+![Edward Tufte](https://derekogle.com/NCGraphing/modules/zimgs/Tufte.jpg)
+]
+
+---
+
+# Graphical Excellence
+
+- Graphic should provide the user with “the greatest number of ideas, in the shortest time, using the least amount of ink, in the smallest space.”
+
+--
+- Can be simple or complex, but whichever it is it fits the data and the narrative.
+
+---
+
+# Graphical Excellence
+
+.center[
+```{r, echo=FALSE, out.width="600"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/polarization-feat3.jpg")
+```
+<font size="1"><a href="http://thehigherlearning.com/2015/05/03/this-visualization-shows-how-ridiculously-divided-our-congress-has-become/">The Higher Learning</a></font>
+]
+
+
+---
+
+# Visual Integriy
+
+- Numerical scales should be properly proportionate (and not made to exaggerate, usually, or obfuscate the pattern).
+
+--
+- Variations should relate to the data rather than the artistic interpretation of the data.
+
+---
+
+# Visual Integriy
+
+.center[
+```{r, echo=FALSE, out.width="600"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Bad_Graph_1.JPG")
+```
+<font size="1"><a href="https://flowingdata.com/category/statistics/mistaken-data/">FLOWINGDATA</a></font>
+]
+
+---
+
+# Maximize data-ink ratio
+
+- Ratio of ink require to present data to ink used to present the data.
+
+--
+- The closer this ratio is to 1 the less distracted the user will be and the easier it will be to visualize the data.
+
+--
+- Borders, backgrounds, 3-D effects, etc. tend to decrease this ratio.
+
+---
+
+# Maximize data-ink ratio
+
+.center[
+```{r, echo=FALSE, out.width="500px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Tufte_figure2.png")
+```
+<font size="1">From Tufte (1983)</a></font>
+]
+
+---
+
+# Aesthetic elegance
+
+- Not in the sense of "physical beauty."
+
+--
+- More in the sense of simplicity used to evoke the complexity of the data.
+
+---
+
+# Aesthetic elegance
+
+.center[
+```{r, echo=FALSE, out.width="500px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Savins_By_Income.JPG")
+```
+<font size="1"><a href="https://flowingdata.com/category/statistics/mistaken-data/">FLOWINGDATA</a></font>
+]
+
+
+---
+
+# What is ggplot2?
+
+- A package for making graphics in R.
+  - R is now one of the most used programs for data analysis.
+  - `ggplots` is one of most used packages in R for data visualization.
+
+--
+- Originally based on Leland Wilkinson's *The Grammar of Graphics*.
+
+--
+- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
+
+--
+- Graphics can be informative, impactful, and elegant.
+
+---
+
+# Examples in the Wild 1
+
+.center[
+```{r, echo=FALSE, out.width="600px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_1.JPG")
+```
+<font size="1">From <a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf">Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.</a></font>
+]
+
+---
+
+# Examples in the Wild 2
+
+.center[
+```{r, echo=FALSE, out.width="700px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_2.JPG")
+```
+<font size="1">From <a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519">Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470</a></font>
+]
+
+---
+
+# Examples in the Wild 3
+
+.center[
+```{r, echo=FALSE, out.width="500px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_3.JPG")
+```
+<font size="1">From <a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/">538.com</a></font>
+]
+
+---
+
+# Examples in the Wild 4
+
+.center[
+```{r, echo=FALSE, out.width="800px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_4.JPG")
+```
+<font size="1">From <a href="https://www.ft.com/coronavirus-latest">Financial Times</a></font>
+]
+
+---
+
+# Background
+
+
+---
+
+```{css, eval= TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 60%}
+.remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
+code.r{font-weight: bold;}
+pre{font-weight: bold;}
+```
