@@ -37,7 +37,6 @@ XXX
 
 <ul>
   <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_Intro_ggplot2_DHO.R">Script</a></button></li>
-  <li><a href="Intro/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li><a href="Intro/CE_.html">Exercise - XXX</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_XXX.R">Key</a></button></li>
 </ul>
 
