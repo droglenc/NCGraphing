@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introduction to ggplot2</title>
+    <title>Introduction</title>
     <meta charset="utf-8" />
     <meta name="author" content="Derek Ogle, April 2020" />
     <link href="zlibs/remark-css-0.0.1/default.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Introduction to ggplot2
+# Introduction
 ### Derek Ogle, April 2020
 
 ---
@@ -23,9 +23,14 @@ class: center, middle, inverse, title-slide
 
 
 
+class: inverse, center, middle
+
 # What is a Graphic?
 
---
+---
+
+# What is a Graphic?
+
 - Most simply ... a "data visualization."
 
 --
@@ -37,9 +42,6 @@ class: center, middle, inverse, title-slide
 
 --
 - Lots of opinions about graphing principles
-
---
-- Our focus: Mechanics of making graphs in R with enough flexibility that you can follow any principles you desire.
 
 ---
 
@@ -70,14 +72,14 @@ class: center, middle, inverse, title-slide
 # Graphical Excellence
 
 .center[
-&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/polarization-feat3.jpg" width="600" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/polarization-feat3.jpg" width="90%" /&gt;
 &lt;font size="1"&gt;&lt;a href="http://thehigherlearning.com/2015/05/03/this-visualization-shows-how-ridiculously-divided-our-congress-has-become/"&gt;The Higher Learning&lt;/a&gt;&lt;/font&gt;
 ]
 
 
 ---
 
-# Visual Integriy
+# Visual Integrity
 
 - Numerical scales should be properly proportionate (and not made to exaggerate, usually, or obfuscate the pattern).
 
@@ -86,10 +88,10 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Visual Integriy
+# Visual Integrity
 
 .center[
-&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Bad_Graph_1.JPG" width="600" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Bad_Graph_1.JPG" width="90%" /&gt;
 &lt;font size="1"&gt;&lt;a href="https://flowingdata.com/category/statistics/mistaken-data/"&gt;FLOWINGDATA&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -110,7 +112,7 @@ class: center, middle, inverse, title-slide
 # Maximize data-ink ratio
 
 .center[
-&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Tufte_figure2.png" width="500px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Tufte_figure2.png" width="90%" /&gt;
 &lt;font size="1"&gt;From Tufte (1983)&lt;/a&gt;&lt;/font&gt;
 ]
 
@@ -128,10 +130,49 @@ class: center, middle, inverse, title-slide
 # Aesthetic elegance
 
 .center[
-&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Savins_By_Income.JPG" width="500px" /&gt;
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Savings_By_Income.JPG" width="80%" /&gt;
 &lt;font size="1"&gt;&lt;a href="https://flowingdata.com/category/statistics/mistaken-data/"&gt;FLOWINGDATA&lt;/a&gt;&lt;/font&gt;
 ]
 
+---
+
+# Further Guidelines
+&lt;font size="2"&gt;From &lt;a href="https://mschermann.github.io/data_viz_reader/fundamentals.html#best-practices"&gt;A Reader on Data Visualization&lt;/a&gt;&lt;/font&gt;
+
+- **Five Second Rule**
+  - Research shows that the average modern attention span for viewing anything online is less than 5 seconds, so if you can’t grab attention within 5 minutes, you’ve likely lost your viewer. Include clear titles and instructions, and tell people succinctly what the visualization shows and how to interact with it.
+
+--
+- **Design and Layout Matter**
+  - The design and layout should facilitate ease of understanding to convey your message to the user. To take your data visualization from an everyday dashboard to a compelling data story, incorporate prnciples of graphic desig.
+
+--
+- **Keep it Simple**
+  - Keep charts simple and easy to interpret. Instead of overloading viewers’ brains with lots of information, keep only necessary elements in the chart and help the audience understand quickly what is going on.
+
+---
+
+# Further Guidelines
+&lt;font size="2"&gt;From &lt;a href="https://mschermann.github.io/data_viz_reader/fundamentals.html#best-practices"&gt;A Reader on Data Visualization&lt;/a&gt;&lt;/font&gt;
+
+- **Pretty Does Not Mean Effective**
+  - There is a misconception that aesthetically pleasing visualization is more effective. To draw attention, sometimes we want them to be pretty and eye-catching. But if it fails to communicate the data properly, you will quickly lose your audience’s interest.
+
+--
+- **Use Color Purposefully**
+  - Use of color may be attractive, but it can also be distracting. Thus, color should be used only if it assists in conveying your message. Also be consistent with the color scheme.
+
+---
+
+class: inverse, center, middle
+
+&lt;font size="7"&gt;Our focus will be on the mechanics of making graphs in R with enough flexibility that you can follow any principles you desire.&lt;/font&gt;
+
+---
+
+class: inverse, center, middle
+
+# What is ggplot2?
 
 ---
 
@@ -145,14 +186,13 @@ class: center, middle, inverse, title-slide
 - Originally based on Leland Wilkinson's *The Grammar of Graphics*.
 
 --
-- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
+- `ggplot2` describes itself as 
 
---
-- Graphics can be informative, impactful, and elegant.
+&gt; "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
 
 ---
 
-# Examples in the Wild 1
+# ggplot2 in the Wild 1
 
 .center[
 &lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_1.JPG" width="600px" /&gt;
@@ -161,7 +201,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Examples in the Wild 2
+# ggplot2 in the Wild 2
 
 .center[
 &lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_2.JPG" width="700px" /&gt;
@@ -170,7 +210,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Examples in the Wild 3
+# ggplot2 in the Wild 3
 
 .center[
 &lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_3.JPG" width="500px" /&gt;
@@ -179,19 +219,572 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Examples in the Wild 4
+# ggplot2 in the Wild 4
 
 .center[
 &lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_4.JPG" width="800px" /&gt;
 &lt;font size="1"&gt;From &lt;a href="https://www.ft.com/coronavirus-latest"&gt;Financial Times&lt;/a&gt;&lt;/font&gt;
 ]
 
----
-
-# Background
-
 
 ---
+
+class: inverse, center, middle
+
+# Very Basics of ggplot2
+
+---
+
+# `tidyverse` Package
+
+- A package that loads many other packages.
+  - `ggplot2`: What we need to use the "Grammar of Graphics" in R.
+  - `dplyr`: For manipulating data.
+  - `tidyr`: Also for manipulating data.
+  - `lubridate`: For manipulating dates.
+
+--
+- Load packages with `library()`.
+  - Must be done every time you start coding in R.
+
+
+
+```r
+library(tidyverse)
+```
+
+---
+
+# Data Format
+
+- All `ggplot2` plots need data usually in a "tidy format."
+  - **Rows**: Contain one **individual**/subject/unit.
+  - **Columns**: Contain one **variable** (characteristic recorded about an individual).
+
+&amp;nbsp;
+
+--
+- Example from data on Isle Royale Wolves and Moose
+
+
+
+```
+   year wolves moose winter_temp ice_bridges
+1  1959     20   538        1.40          no
+2  1960     22   564        8.45          no
+3  1961     22   572        9.75         yes
+4  1962     23   579        2.15         yes
+5  1963     20   596       -0.35         yes
+6  1964     26   620       12.40          no
+7  1965     28   634        1.25         yes
+8  1966     26   661        1.70         yes
+9  1967     22   766        2.75         yes
+10 1968     22   848        5.85         yes
+```
+
+---
+
+# Simple Data
+
+- For purposes of this introduction, we will use the very simple data entered below.
+
+
+
+```r
+dfobj &lt;- data.frame(var1=c(3,1,5),
+                    var2=c(2,4,6),
+                    lbls=c("a","b","c"))
+dfobj
+```
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+---
+
+# ggplot Base Plot
+
+
+
+```r
+p &lt;- ggplot(data=dfobj,
+            mapping=aes(x=var1,y=var2))
+```
+
+- All ggplots begin with `ggplot()`.
+
+--
+  - *Usually* has `data=` that declares a *global* data.frame for use.
+
+--
+  - *Usually* has `mapping=` that declares how 'aesthetics' are mapped to 'variables'.
+
+--
+  - Aesthetics are wrapped in `aes()` and *usually* require variables mapped to `x` and `y`.
+
+--
+- Result is assigned to an object (here `p`).
+
+--
+  - Items ('layers') will be added to this base plot.
+
+--
+- Plot not shown until object is "evaluated" (i.e., type `p`).
+
+---
+
+# ggplot Base Plot
+
+
+
+```r
+p
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
+
+---
+
+# Geometric Objects
+
+- Called 'geoms' for short.
+
+--
+- Declare the geometric object or shape that should be plotted.
+
+--
+- A 'layer' that is 'added' to the base plot with `+`.
+
+--
+- Functions are like `geom_XXXX()`.
+
+--
+- Some common 'geoms' are:
+  - `geom_point()`: Shows data as points (think *scatterplot*).
+  - `geom_line()`: Shows data as a connected line (think *line plot*).
+  - `geom_boxplot()`: shows data as a boxplot.
+  - `geom_bar()`: Shows data as a vertical bar (think *bar chart*).
+  - `geom_histogram()`: Show data as a histogram.
+  - `geom_rug()`: Shows values as 'ticks' along the axis.
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+class: inverse, center, middle
+
+# Adding geoms to Base Plot
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*dfobj
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+*p 
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/scatter_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+* geom_point()
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/scatter_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*dfobj
+
+*p 
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/line_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+* geom_line()
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/line_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_path()  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/path_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_area()  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/area_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_polygon()  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/polygon_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_tile()  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/tile_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_bar(stat="identity")  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/bar_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+dfobj  
+
+p +  
+  geom_text(aes(label=lbls))  
+```
+]]
+.column[.content[
+
+```
+  var1 var2 lbls
+1    3    2    a
+2    1    4    b
+3    5    6    c
+```
+
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/text_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Adding geoms to geoms
+
+
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p 
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/forFun_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+* geom_bar(stat="identity")
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/forFun_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_bar(stat="identity") +  
+* geom_line()
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/forFun_auto_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_bar(stat="identity") +  
+  geom_line() +  
+* geom_point()
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/forFun_auto_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_bar(stat="identity") +  
+  geom_line() +  
+  geom_point() +  
+* geom_text(aes(label=lbls),vjust=2)
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Intro_ggplot2_files/figure-html/forFun_auto_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will start adding more control over layers in the graph.&lt;/font&gt;
 
 &lt;style type="text/css"&gt;
 .remark-code{line-height: 1.5; font-size: 60%}

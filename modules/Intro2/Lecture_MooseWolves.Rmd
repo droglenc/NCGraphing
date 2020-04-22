@@ -647,8 +647,6 @@ p + #BREAK
 
 - Today was a start down towards that end.
 
----
-
 ```{css, eval= TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 60%}
 .remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}

@@ -4,7 +4,8 @@ title: Learning Modules
 ---
 
 1. [Course Organization](Setup)
-1. [Introduction to ggplot2](Intro)
+1. [Introduction to ggplot2 I](Intro1)
+1. [Introduction to ggplot2 II](Intro2)
 1. [Histograms, Boxplots, *et al.*](Univariate_Density)
 1. [Bar Charts](Univariate_Groups)
 1. [Means and Intervals](Means)

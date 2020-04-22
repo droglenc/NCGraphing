@@ -1,5 +1,5 @@
 ---
-title: "Introduction to ggplot2"
+title: "Introduction"
 author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
 output:
   xaringan::moon_reader:
@@ -32,9 +32,14 @@ splitPerc <- 50
 leftAssign <- TRUE
 ```
 
+class: inverse, center, middle
+
 # What is a Graphic?
 
---
+---
+
+# What is a Graphic?
+
 - Most simply ... a "data visualization."
 
 --
@@ -46,9 +51,6 @@ leftAssign <- TRUE
 
 --
 - Lots of opinions about graphing principles
-
---
-- Our focus: Mechanics of making graphs in R with enough flexibility that you can follow any principles you desire.
 
 ---
 
@@ -79,7 +81,7 @@ leftAssign <- TRUE
 # Graphical Excellence
 
 .center[
-```{r, echo=FALSE, out.width="600"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/polarization-feat3.jpg")
 ```
 <font size="1"><a href="http://thehigherlearning.com/2015/05/03/this-visualization-shows-how-ridiculously-divided-our-congress-has-become/">The Higher Learning</a></font>
@@ -88,7 +90,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/polariza
 
 ---
 
-# Visual Integriy
+# Visual Integrity
 
 - Numerical scales should be properly proportionate (and not made to exaggerate, usually, or obfuscate the pattern).
 
@@ -97,10 +99,10 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/polariza
 
 ---
 
-# Visual Integriy
+# Visual Integrity
 
 .center[
-```{r, echo=FALSE, out.width="600"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Bad_Graph_1.JPG")
 ```
 <font size="1"><a href="https://flowingdata.com/category/statistics/mistaken-data/">FLOWINGDATA</a></font>
@@ -123,7 +125,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Bad_Grap
 # Maximize data-ink ratio
 
 .center[
-```{r, echo=FALSE, out.width="500px"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Tufte_figure2.png")
 ```
 <font size="1">From Tufte (1983)</a></font>
@@ -143,12 +145,51 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Tufte_fi
 # Aesthetic elegance
 
 .center[
-```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Savins_By_Income.JPG")
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Savings_By_Income.JPG")
 ```
 <font size="1"><a href="https://flowingdata.com/category/statistics/mistaken-data/">FLOWINGDATA</a></font>
 ]
 
+---
+
+# Further Guidelines
+<font size="2">From <a href="https://mschermann.github.io/data_viz_reader/fundamentals.html#best-practices">A Reader on Data Visualization</a></font>
+
+- **Five Second Rule**
+  - Research shows that the average modern attention span for viewing anything online is less than 5 seconds, so if you can’t grab attention within 5 minutes, you’ve likely lost your viewer. Include clear titles and instructions, and tell people succinctly what the visualization shows and how to interact with it.
+
+--
+- **Design and Layout Matter**
+  - The design and layout should facilitate ease of understanding to convey your message to the user. To take your data visualization from an everyday dashboard to a compelling data story, incorporate prnciples of graphic desig.
+
+--
+- **Keep it Simple**
+  - Keep charts simple and easy to interpret. Instead of overloading viewers’ brains with lots of information, keep only necessary elements in the chart and help the audience understand quickly what is going on.
+
+---
+
+# Further Guidelines
+<font size="2">From <a href="https://mschermann.github.io/data_viz_reader/fundamentals.html#best-practices">A Reader on Data Visualization</a></font>
+
+- **Pretty Does Not Mean Effective**
+  - There is a misconception that aesthetically pleasing visualization is more effective. To draw attention, sometimes we want them to be pretty and eye-catching. But if it fails to communicate the data properly, you will quickly lose your audience’s interest.
+
+--
+- **Use Color Purposefully**
+  - Use of color may be attractive, but it can also be distracting. Thus, color should be used only if it assists in conveying your message. Also be consistent with the color scheme.
+
+---
+
+class: inverse, center, middle
+
+<font size="7">Our focus will be on the mechanics of making graphs in R with enough flexibility that you can follow any principles you desire.</font>
+
+---
+
+class: inverse, center, middle
+
+# What is ggplot2?
 
 ---
 
@@ -162,14 +203,13 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Savins_B
 - Originally based on Leland Wilkinson's *The Grammar of Graphics*.
 
 --
-- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
+- `ggplot2` describes itself as 
 
---
-- Graphics can be informative, impactful, and elegant.
+> "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
 
 ---
 
-# Examples in the Wild 1
+# ggplot2 in the Wild 1
 
 .center[
 ```{r, echo=FALSE, out.width="600px"}
@@ -180,7 +220,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplo
 
 ---
 
-# Examples in the Wild 2
+# ggplot2 in the Wild 2
 
 .center[
 ```{r, echo=FALSE, out.width="700px"}
@@ -191,7 +231,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplo
 
 ---
 
-# Examples in the Wild 3
+# ggplot2 in the Wild 3
 
 .center[
 ```{r, echo=FALSE, out.width="500px"}
@@ -202,7 +242,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplo
 
 ---
 
-# Examples in the Wild 4
+# ggplot2 in the Wild 4
 
 .center[
 ```{r, echo=FALSE, out.width="800px"}
@@ -211,12 +251,261 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplo
 <font size="1">From <a href="https://www.ft.com/coronavirus-latest">Financial Times</a></font>
 ]
 
----
-
-# Background
-
 
 ---
+
+class: inverse, center, middle
+
+# Very Basics of ggplot2
+
+---
+
+# `tidyverse` Package
+
+- A package that loads many other packages.
+  - `ggplot2`: What we need to use the "Grammar of Graphics" in R.
+  - `dplyr`: For manipulating data.
+  - `tidyr`: Also for manipulating data.
+  - `lubridate`: For manipulating dates.
+
+--
+- Load packages with `library()`.
+  - Must be done every time you start coding in R.
+
+```{r echo=FALSE}
+#!# Loading the tidyverse package (must do every time)
+```
+```{r}
+library(tidyverse)
+```
+
+---
+
+# Data Format
+
+- All `ggplot2` plots need data usually in a "tidy format."
+  - **Rows**: Contain one **individual**/subject/unit.
+  - **Columns**: Contain one **variable** (characteristic recorded about an individual).
+
+&nbsp;
+
+--
+- Example from data on Isle Royale Wolves and Moose
+
+```{r echo=FALSE}
+#!# DEREK -- Delete this for the script
+```
+```{r echo=FALSE, warning=FALSE, messages=FALSE}
+## #!# Set to your own working directory and have just your filename below.
+irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",na.strings=c("NA","N/A")) %>%
+  select(year,wolves,moose,Jan.Feb..temp..F.,ice.bridges..0.none..1...present.) %>%
+  rename(winter_temp=Jan.Feb..temp..F.,
+         ice_bridges=ice.bridges..0.none..1...present.) %>%
+  mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
+         ice_bridges=factor(ice_bridges)) %>%
+  as.data.frame()
+slice(irmw,1:10)
+```
+
+---
+
+# Simple Data
+
+- For purposes of this introduction, we will use the very simple data entered below.
+
+```{r echo=FALSE}
+#!# Making some simple data for the initial ggplot examples
+```
+```{r SimpleData}
+dfobj <- data.frame(var1=c(3,1,5),
+                    var2=c(2,4,6),
+                    lbls=c("a","b","c"))
+dfobj
+```
+
+---
+
+# ggplot Base Plot
+
+```{r echo=FALSE}
+#!# Making the base ggplot
+```
+```{r baseplot}
+p <- ggplot(data=dfobj,
+            mapping=aes(x=var1,y=var2))
+```
+
+- All ggplots begin with `ggplot()`.
+
+--
+  - *Usually* has `data=` that declares a *global* data.frame for use.
+
+--
+  - *Usually* has `mapping=` that declares how 'aesthetics' are mapped to 'variables'.
+
+--
+  - Aesthetics are wrapped in `aes()` and *usually* require variables mapped to `x` and `y`.
+
+--
+- Result is assigned to an object (here `p`).
+
+--
+  - Items ('layers') will be added to this base plot.
+
+--
+- Plot not shown until object is "evaluated" (i.e., type `p`).
+
+---
+
+# ggplot Base Plot
+
+```{r echo=FALSE}
+#!# Evaluating the base ggplot (not particularly useful until a geom is added)
+```
+```{r out.width="60%"}
+p
+```
+
+---
+
+# Geometric Objects
+
+- Called 'geoms' for short.
+
+--
+- Declare the geometric object or shape that should be plotted.
+
+--
+- A 'layer' that is 'added' to the base plot with `+`.
+
+--
+- Functions are like `geom_XXXX()`.
+
+--
+- Some common 'geoms' are:
+  - `geom_point()`: Shows data as points (think *scatterplot*).
+  - `geom_line()`: Shows data as a connected line (think *line plot*).
+  - `geom_boxplot()`: shows data as a boxplot.
+  - `geom_bar()`: Shows data as a vertical bar (think *bar chart*).
+  - `geom_histogram()`: Show data as a histogram.
+  - `geom_rug()`: Shows values as 'ticks' along the axis.
+
+```{r echo=FALSE}
+#!# Adding geoms to a base ggplot (using all defaults)
+```
+
+```{r scatter, include=FALSE}
+dfobj #BREAK
+
+p + #BREAK
+  geom_point()
+```
+```{r line, include=FALSE}
+dfobj
+
+p + #BREAK
+  geom_line()
+```
+```{r path, include=FALSE}
+dfobj
+
+p +
+  geom_path()
+```
+```{r area, include=FALSE}
+dfobj
+
+p +
+  geom_area()
+```
+```{r polygon, include=FALSE}
+dfobj
+
+p +
+  geom_polygon()
+```
+```{r tile, include=FALSE}
+dfobj
+
+p +
+  geom_tile()
+```
+```{r bar, include=FALSE}
+dfobj
+
+p +
+  geom_bar(stat="identity")
+```
+```{r text, include=FALSE}
+dfobj
+
+p +
+  geom_text(aes(label=lbls))
+```
+
+---
+
+class: inverse, center, middle
+
+# Adding geoms to Base Plot
+
+---
+
+`r chunk_reveal("scatter",break_type="user",split=splitPerc)`
+
+---
+
+`r chunk_reveal("line",break_type="user",split=splitPerc)`
+
+---
+
+`r chunk_reveal("path",break_type=1,split=splitPerc)`
+
+---
+
+`r chunk_reveal("area",break_type=1,split=splitPerc)`
+
+---
+
+`r chunk_reveal("polygon",break_type=1,split=splitPerc)`
+
+---
+
+`r chunk_reveal("tile",break_type=1,split=splitPerc)`
+
+---
+
+`r chunk_reveal("bar",break_type=1,split=splitPerc)`
+
+---
+
+`r chunk_reveal("text",break_type=1,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Adding geoms to geoms
+
+```{r forFun, include=FALSE}
+p +
+  geom_bar(stat="identity") +
+  geom_line() +
+  geom_point() +
+  geom_text(aes(label=lbls),vjust=2)
+```
+
+---
+
+`r chunk_reveal("forFun",break_type="auto",split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will start adding more control over layers in the graph.</font>
 
 ```{css, eval= TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 60%}
