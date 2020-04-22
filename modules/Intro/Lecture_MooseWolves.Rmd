@@ -24,8 +24,7 @@ FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE,
-                      background=c(235,235,235)/255)
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 library(flipbookr)
 library(tidyverse)
 options(width=120,show.signif.stars=FALSE)
@@ -33,6 +32,20 @@ splitPerc <- 50
 leftAssign <- TRUE
 ```
 
+
+## Where was R originally developed?
+
+A. Antarctica
+
+B. Australia
+
+C. Germany
+
+D. New Zealand
+
+E. United States
+
+---
 
 # What is ggplot2?
 
@@ -164,6 +177,20 @@ head(irmw)
 
 ---
 
+## What R function is used to load a CSV file?
+
+A. `head()`
+
+B. `read_csv()`
+
+C. `read.csv()`
+
+D. `ReadCSV()`
+
+E. `read.table()`
+
+---
+
 # ggplot Initial Requirements
 
 ```{r echo=FALSE}
@@ -195,6 +222,20 @@ p <- ggplot(data=irmw,
 
 --
   - Plot will not be shown until object is run (i.e., type `p`).
+
+---
+
+## What are the two usual arguments to `ggplot()`?
+
+A. `data=` and `geom=`
+
+B. `data=` and `aes=`
+
+C. `data=` and `mapping=`
+
+D. `mapping=` and `geom=`
+
+E. `mapping=` and `aes=`
 
 ---
 
@@ -289,6 +330,34 @@ p <- ggplot(data=irmw,
 
 ---
 
+## What "geom" is added to a `ggplot` to make a scatterplot?
+
+A. `geom_scatter()`
+
+B. `geom_point()`
+
+C. `geom_dot()`
+
+D. `geom_histogram()`
+
+E. `geom_line()`
+
+---
+
+## What "geom" is added to a `ggplot` to make a scatterplot to connect the points?
+
+A. `geom_scatter()`
+
+B. `geom_point()`
+
+C. `geom_dot()`
+
+D. `geom_histogram()`
+
+E. `geom_line()`
+
+---
+
 # Aesthetics
 
 - Visual properties of geoms on the graph.
@@ -321,8 +390,14 @@ class: inverse, center, middle
 ```{r scatline_yr2a, eval=-1, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_point(color="darkred",size=3) +
-  geom_line(size=1.5,linetype="dashed")
+  geom_point(
+    color="darkred", #BREAK2
+    size=3 #BREAK3
+  ) +
+  geom_line(
+    size=1.5, #BREAK4
+    linetype="dashed" #BREAK5
+  )
 ```
 
 
@@ -338,7 +413,7 @@ p <- ggplot(data=irmw,
 ```
 ---
 
-`r chunk_reveal("scatline_yr2a",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr2a",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -364,14 +439,15 @@ class: inverse, center, middle
 ```{r scatline_yr3a, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves,
-                        color="darkred")) +
+                        color="darkred" #BREAK2
+                        )) +
   geom_line() +
   geom_point(size=3)
 ```
 
 ---
 
-`r chunk_reveal("scatline_yr3a",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr3a",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -558,6 +634,18 @@ p + #BREAK
 ---
 
 `r chunk_reveal("scatline_yr5c",break_type="user",split=splitPerc)`
+
+---
+
+# Final Thought
+
+- Quote from end of the introduction to Wickham (2009) *ggplot2* book:
+
+> "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..."
+
+--
+
+- Today was a start down towards that end.
 
 ---
 

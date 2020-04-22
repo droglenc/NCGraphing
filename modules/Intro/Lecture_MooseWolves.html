@@ -24,6 +24,20 @@ class: center, middle, inverse, title-slide
 
 
 
+## Where was R originally developed?
+
+A. Antarctica
+
+B. Australia
+
+C. Germany
+
+D. New Zealand
+
+E. United States
+
+---
+
 # What is ggplot2?
 
 - A package for making graphics in R.
@@ -153,6 +167,20 @@ head(irmw)
 
 ---
 
+## What R function is used to load a CSV file?
+
+A. `head()`
+
+B. `read_csv()`
+
+C. `read.csv()`
+
+D. `ReadCSV()`
+
+E. `read.table()`
+
+---
+
 # ggplot Initial Requirements
 
 
@@ -183,6 +211,20 @@ p &lt;- ggplot(data=irmw,
 
 --
   - Plot will not be shown until object is run (i.e., type `p`).
+
+---
+
+## What are the two usual arguments to `ggplot()`?
+
+A. `data=` and `geom=`
+
+B. `data=` and `aes=`
+
+C. `data=` and `mapping=`
+
+D. `mapping=` and `geom=`
+
+E. `mapping=` and `aes=`
 
 ---
 
@@ -452,6 +494,34 @@ p
 
 ---
 
+## What "geom" is added to a `ggplot` to make a scatterplot?
+
+A. `geom_scatter()`
+
+B. `geom_point()`
+
+C. `geom_dot()`
+
+D. `geom_histogram()`
+
+E. `geom_line()`
+
+---
+
+## What "geom" is added to a `ggplot` to make a scatterplot to connect the points?
+
+A. `geom_scatter()`
+
+B. `geom_point()`
+
+C. `geom_dot()`
+
+D. `geom_histogram()`
+
+E. `geom_line()`
+
+---
+
 # Aesthetics
 
 - Visual properties of geoms on the graph.
@@ -495,14 +565,18 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=irmw,
-*           mapping=aes(x=year,y=wolves))
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point(  
+  ) +  
+  geom_line(  
+  )  
  
 p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_1_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_non_seq_1_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -515,13 +589,17 @@ count: false
 ```r
 p &lt;- ggplot(data=irmw,  
             mapping=aes(x=year,y=wolves)) +  
-* geom_point(color="darkred",size=3)
+  geom_point(  
+*   color="darkred",
+  ) +  
+  geom_line(  
+  )  
  
 p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_2_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_non_seq_2_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -534,14 +612,69 @@ count: false
 ```r
 p &lt;- ggplot(data=irmw,  
             mapping=aes(x=year,y=wolves)) +  
-  geom_point(color="darkred",size=3) +  
-* geom_line(size=1.5,linetype="dashed")
+  geom_point(  
+    color="darkred",  
+*   size=3
+  ) +  
+  geom_line(  
+  )  
  
 p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_auto_3_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point(  
+    color="darkred",  
+    size=3  
+  ) +  
+  geom_line(  
+*   size=1.5,
+  )  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves)) +  
+  geom_point(  
+    color="darkred",  
+    size=3  
+  ) +  
+  geom_line(  
+    size=1.5,  
+*   linetype="dashed"
+  )  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr2a_non_seq_5_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -630,56 +763,39 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=irmw,
-*           mapping=aes(x=year,y=wolves,
-*                       color="darkred"))
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_1_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
 p &lt;- ggplot(data=irmw,  
             mapping=aes(x=year,y=wolves,  
-                        color="darkred")) +  
-* geom_line()
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_2_output-1.png" width="100%" /&gt;
-]]
----
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-p &lt;- ggplot(data=irmw,  
-            mapping=aes(x=year,y=wolves,  
-                        color="darkred")) +  
+                        )) +  
   geom_line() +  
-* geom_point(size=3)
+  geom_point(size=3)  
  
 p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_auto_3_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw,  
+            mapping=aes(x=year,y=wolves,  
+*                       color="darkred"
+                        )) +  
+  geom_line() +  
+  geom_point(size=3)  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr3a_non_seq_2_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -1178,6 +1294,18 @@ p +
 .column[.content[
 &lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5c_user_2_output-1.png" width="100%" /&gt;
 ]]
+
+---
+
+# Final Thought
+
+- Quote from end of the introduction to Wickham (2009) *ggplot2* book:
+
+&gt; "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..."
+
+--
+
+- Today was a start down towards that end.
 
 ---
 
