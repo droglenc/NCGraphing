@@ -1,8 +1,7 @@
-library(tidyverse)
-
 #!# Load and Prep Data
 
-irmw <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/Data_wolves_moose_Isle_Royale_June2019.csv",
+#!# Set to your own working directory and have just your filename below.
+irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
                  na.strings=c("NA","N/A"))
 
 #!# Cleaning up messy names and reducing size of data.frame (for lecture only)
@@ -13,92 +12,88 @@ irmw %<>%
          ice_bridges=ice.bridges..0.none..1...present.) %>%
   mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
          ice_bridges=factor(ice_bridges))
-head(irmw)
 
 head(irmw)
 
-#!# DEREK ... delete this for the script
+#!# Making a simple line plot of number of wolves by year
 
-#!# DEREK ... delete this for the script
-
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves))
-
-#!# DEREK ... delete this for the script
-
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_point()
-
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
+p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line()
 
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_bar(stat="identity")
-
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_point() +
-  geom_line() +
-  geom_rug()
+p
 
 #!# Setting aesthetics within a geom
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_point(color="darkred",size=3) +
-  geom_line(size=1.5,linetype="dashed")
+  geom_point(
+    color="darkred", #BREAK2
+    size=2 #BREAK3
+  ) +
+  geom_line(
+    size=0.8, #BREAK4
+    linetype="dashed" #BREAK5
+  )
 
-#!# DEREK ... delete this for the script
+#!# ... order of geoms matters
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line(size=1.5,linetype="dashed") +
-  geom_point(color="darkred",size=3)
+  geom_line(size=0.8,linetype="dashed") +
+  geom_point(color="darkred",size=2)
 
 #!# Setting a color aesthetic for all geoms
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves,
-                        color="darkred")) +
+                        color="darkred" #BREAK2
+                        )) +
   geom_line() +
-  geom_point(size=3)
+  geom_point(size=2)
 
 #!# Mapping a color aesthetic to a variable for all geoms
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves,
-                        color=ice_bridges)) +
+                        color=ice_bridges #BREAK2
+                        )) +
   geom_line() +
-  geom_point(size=3)
+  geom_point(size=2)
 
 #!# Mapping a color aesthetic to a variable for one geom
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=ice_bridges),size=3)
+  geom_line() +
+  geom_point(
+    aes(color=ice_bridges), #BREAK2
+    size=2
+  )
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=winter_temp),size=3)
+  geom_line() +
+  geom_point(
+    aes(color=winter_temp), #BREAK2
+    size=2
+  )
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=winter_temp,
-                 shape=ice_bridges),
-             size=3)
+  geom_line() +
+  geom_point(
+    aes(
+      color=winter_temp, #BREAK2
+      shape=ice_bridges #BREAK3
+      ),
+      size=2)
 
 #!# Using scales to control colors and axis labels
 
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=3) + #BREAK
+  geom_point(aes(color=ice_bridges),size=2) + #BREAK
   scale_color_manual(values=c("blue","red"),
                      name="Ice Bridge?") + #BREAK
   scale_x_continuous(name="Year",
@@ -113,7 +108,7 @@ p <- ggplot(data=irmw,
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=3) +
+  geom_point(aes(color=ice_bridges),size=2) +
   scale_color_manual(values=c("blue","red"),
                      name="Ice Bridge?") +
   scale_x_continuous(name="Year",
@@ -129,4 +124,4 @@ p + #BREAK
   theme_bw()
 
 
-# Script created at 2020-04-14 12:43:51
+# Script created at 2020-04-22 18:19:26

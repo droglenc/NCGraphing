@@ -4,7 +4,7 @@ author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
 output:
   xaringan::moon_reader:
     lib_dir: zlibs
-    css: [default, hygge, ninjutsu]
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
     nature:
       ratio: 16:10
       highlightStyle: github
@@ -16,95 +16,28 @@ output:
 ## Use Knit button to make actual slides.
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_MooseWolves"
-FSA::purl2(file.path(here::here(),"modules/Intro",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+FSA::purl2(file.path(here::here(),"modules/Intro2",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache",
                        "include_graphics","options","splitPerc","leftAssign"))
 ```
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
+knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
                       message=FALSE,warning=FALSE,comment="",cache=FALSE)
-library(flipbookr)
+source("../zzzflipbook_settings.R")
+```
+
+```{r include=FALSE}
+#!# Loading the tidyverse package (must do every time)
 library(tidyverse)
-options(width=120,show.signif.stars=FALSE)
-splitPerc <- 50
-leftAssign <- TRUE
 ```
 
+class: inverse, center, middle
 
-## Where was R originally developed?
+# Today's Goal
 
-A. Antarctica
-
-B. Australia
-
-C. Germany
-
-D. New Zealand
-
-E. United States
-
----
-
-# What is ggplot2?
-
-- A package for making graphics in R.
-  - R is now one of the most used programs for data analysis.
-  - `ggplots` is one of most used packages in R for data visualization.
-
---
-- Originally based on Leland Wilkinson's *The Grammar of Graphics*.
-
---
-- `ggplot2` describes itself as "a system for declaratively creating graphics. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details."
-
---
-- Graphics can be informative, impactful, and elegant.
-
----
-
-# Examples in the Wild 1
-
-.center[
-```{r, echo=FALSE, out.width="600px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_1.JPG")
-```
-<font size="1">From <a href="https://www.int-res.com/articles/esr2020/41/n041p319.pdf">Roos NC, Taylor BM, Carvalho AR, Longo GO. 2020. Demography of the largest and most endangered Brazilian Parrotfish, Scarus trispinosus, reveals overfishing. Endangered Species Research 41:319-327.</a></font>
-]
-
----
-
-# Examples in the Wild 2
-
-.center[
-```{r, echo=FALSE, out.width="700px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_2.JPG")
-```
-<font size="1">From <a href="https://agupubs-onlinelibrary-wiley-com.ezproxy.uwsp.edu/doi/full/10.1002/2015WR017519">Lessels JS et al. 2016. Water sources and mixing in riparian wetlands revealed by tracers and geospatial analysis. Water Resources Research. 52:456-470</a></font>
-]
-
----
-
-# Examples in the Wild 3
-
-.center[
-```{r, echo=FALSE, out.width="500px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_3.JPG")
-```
-<font size="1">From <a href="https://fivethirtyeight.com/features/the-midwest-is-getting-drenched-and-its-causing-big-problems/">538.com</a></font>
-]
-
----
-
-# Examples in the Wild 4
-
-.center[
-```{r, echo=FALSE, out.width="800px"}
-knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Ex_ggplot2_4.JPG")
-```
-<font size="1">From <a href="https://www.ft.com/coronavirus-latest">Financial Times</a></font>
-]
+<font size="7">Build upon the basics of ggplot2 that we developed last time by adding more controls over elements of the graph.</font>
 
 ---
 
@@ -131,7 +64,6 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/wolves_m
 ```{r echo=FALSE}
 #!# Load and Prep Data
 ```
-
 ```{r load1, eval=-1}
 #!# Set to your own working directory and have just your filename below.
 irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
@@ -150,7 +82,6 @@ irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Wolve
 ```{r echo=FALSE}
 #!# Cleaning up messy names and reducing size of data.frame (for lecture only)
 ```
-
 ```{r load2}
 irmw %<>%
   select(year,wolves,moose,Jan.Feb..temp..F.,ice.bridges..0.none..1...present.) %>%
@@ -177,184 +108,27 @@ head(irmw)
 
 ---
 
-## What R function is used to load a CSV file?
-
-A. `head()`
-
-B. `read_csv()`
-
-C. `read.csv()`
-
-D. `ReadCSV()`
-
-E. `read.table()`
-
----
-
-# ggplot Initial Requirements
+### What is Happening Here?
 
 ```{r echo=FALSE}
-#!# DEREK ... delete this for the script
+#!# Making a simple line plot of number of wolves by year
 ```
-
-```{r baseplot1, eval=FALSE}
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves))
-```
-
-- ggplots begin with `ggplot()`.
-
---
-  - *Usually* has `data=` that declares a *global* data.frame for use.
-
---
-  - *Usually* has `mapping=` that declares how 'aesthetics' are mapped to 'variables'.
-
---
-    - Aesthetics are wrapped in `aes()` and *usually* require variables mapped to `x` and `y`.
-
-
---
-- Result is assigned to an object (here `p`).
-
---
-  - Items ('layers') can be added to this base plot.
-
---
-  - Plot will not be shown until object is run (i.e., type `p`).
-
----
-
-## What are the two usual arguments to `ggplot()`?
-
-A. `data=` and `geom=`
-
-B. `data=` and `aes=`
-
-C. `data=` and `mapping=`
-
-D. `mapping=` and `geom=`
-
-E. `mapping=` and `aes=`
-
----
-
-class: inverse, center, middle
-
-# Base ggplot2 Object
-
----
-
-```{r baseplot2, include=FALSE}
-<<baseplot1>>
-```
-
-`r chunk_reveal("baseplot1",break_type=1,left_assign=leftAssign,split=splitPerc)`
-
----
-
-# Geometric Objects
-
-- Called 'geoms' for short.
-
---
-- Declare the geometric object or shape that should be plotted.
-
---
-- A 'layer' that is 'added' to the base plot with `+`.
-
---
-- Functions are like `geom_XXXX()`.
-
---
-- Some common 'geoms' are:
-  - `geom_point()`: Shows data as points (think *scatterplot*).
-  - `geom_line()`: Shows data as a connected line (think *line plot*).
-  - `geom_boxplot()`: shows data as a boxplot.
-  - `geom_bar()`: Shows data as a vertical bar (think *bar chart*).
-  - `geom_histogram()`: Show data as a histogram.
-  - `geom_rug()`: Shows values as 'ticks' along the axis.
-
-```{r echo=FALSE}
-#!# Adding geoms to a base ggplot (using all defaults)
-```
-
-```{r scat_yr, include=FALSE}
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_point()
-```
-
-```{r line_yr, include=FALSE}
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
+```{r line_yr, echo=TRUE}
+p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line()
 ```
 
-```{r bar_yr, include=FALSE}
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_bar(stat="identity")
-```
+--
 
+```{r fig.width=3, fig.height=3, out.width="45%"}
+p
+```
 
 ---
 
 class: inverse, center, middle
 
-# Adding geoms to Base Object
-
----
-
-`r chunk_reveal("scat_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-`r chunk_reveal("line_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-`r chunk_reveal("bar_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r scatline_yr, include=FALSE}
-p <- ggplot(data=irmw,
-            mapping=aes(x=year,y=wolves)) +
-  geom_point() +
-  geom_line() +
-  geom_rug()
-```
-
-`r chunk_reveal("scatline_yr",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-## What "geom" is added to a `ggplot` to make a scatterplot?
-
-A. `geom_scatter()`
-
-B. `geom_point()`
-
-C. `geom_dot()`
-
-D. `geom_histogram()`
-
-E. `geom_line()`
-
----
-
-## What "geom" is added to a `ggplot` to make a scatterplot to connect the points?
-
-A. `geom_scatter()`
-
-B. `geom_point()`
-
-C. `geom_dot()`
-
-D. `geom_histogram()`
-
-E. `geom_line()`
+### Controlling Specific Aspects of the Graph
 
 ---
 
@@ -366,12 +140,24 @@ E. `geom_line()`
 - Commonly used aesthetics are:
   - `x=`: positioning along x-axis.
   - `y=`: positioning along y-axis.
-  - `color=`: color of objects; for two-dimensional objects (e.g., bars, some points), the color of the object’s outline (compare to `fill=` below). [[see this](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)]
-  - `fill=`: fill color of objects
-  - `linetype=`: how lines should be drawn (`"solid"`, `"dashed"`, `"dotted"`, etc.)
+
+--
+  - `color=`: color of objects or object's outline if object is 2-d (e.g., bars, some points).
+
+--
+  - `fill=`: fill color of objects.
+
+--
+  - `alpha=`: transparency of color (between 0 [fully transparent] and 1 [fully opaque]).
+
+--
   - `shape=`: shape of markers in scatter plots. [[see this](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)].
+
+--
   - `size=`: how large objects appear.
-  - `alpha=`: transparency of objects (value between 0 [fully transparent] and 1 [fully opaque]).
+
+--
+  - `linetype=`: how lines should be drawn (`"solid"`, `"dashed"`, `"dotted"`, etc.)
 
 --
 - Which aesthetics are required and allowed vary by geom.
@@ -381,21 +167,20 @@ E. `geom_line()`
 class: inverse, center, middle
 
 # Aesthetics
-### Can be **set** for all data within each 'geom'.
+### Can be *set* for all data within each 'geom'.
 
 ```{r echo=FALSE}
 #!# Setting aesthetics within a geom
 ```
-
 ```{r scatline_yr2a, eval=-1, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
   geom_point(
     color="darkred", #BREAK2
-    size=3 #BREAK3
+    size=2 #BREAK3
   ) +
   geom_line(
-    size=1.5, #BREAK4
+    size=0.8, #BREAK4
     linetype="dashed" #BREAK5
   )
 ```
@@ -404,12 +189,11 @@ p <- ggplot(data=irmw,
 ```{r echo=FALSE}
 #!# ... order of geoms matters
 ```
-
 ```{r scatline_yr2b, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line(size=1.5,linetype="dashed") +
-  geom_point(color="darkred",size=3)
+  geom_line(size=0.8,linetype="dashed") +
+  geom_point(color="darkred",size=2)
 ```
 ---
 
@@ -419,7 +203,7 @@ p <- ggplot(data=irmw,
 
 class: inverse, center, middle
 
-# Order of geoms Becomes Apparent
+### Order of geoms Becomes Apparent
 
 ---
 
@@ -430,19 +214,18 @@ class: inverse, center, middle
 class: inverse, center, middle
 
 # Aesthetics
-### Can be *globally* **mapped** to **a color** in `aes()` in `mapping=` in `ggplot()`.
+### Can be *globally mapped* to *a color* in aes() in mapping= in ggplot().
 
 ```{r echo=FALSE}
 #!# Setting a color aesthetic for all geoms
 ```
-
 ```{r scatline_yr3a, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves,
                         color="darkred" #BREAK2
                         )) +
   geom_line() +
-  geom_point(size=3)
+  geom_point(size=2)
 ```
 
 ---
@@ -454,69 +237,77 @@ p <- ggplot(data=irmw,
 class: inverse, center, middle
 
 # Aesthetics
-### Can be *globally* **mapped** to **a variable** in `aes()` in `mapping=` in `ggplot()`.
+### Can be *globally mapped* to *a variable* in aes() in mapping= in ggplot().
 
 ```{r echo=FALSE}
 #!# Mapping a color aesthetic to a variable for all geoms
 ```
-
 ```{r scatline_yr3b, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves,
-                        color=ice_bridges)) +
+                        color=ice_bridges #BREAK2
+                        )) +
   geom_line() +
-  geom_point(size=3)
+  geom_point(size=2)
 ```
 
 ---
 
-`r chunk_reveal("scatline_yr3b",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr3b",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
 class: inverse, center, middle
 
 # Aesthetics
-### Can be **mapped** to **a variable** for a specific 'geom' with `aes()` in the `geom_XXXX()`.
+### Can be *mapped* to *a variable* for a specific 'geom' with aes() in the geom_XXXX().
 
 ```{r echo=FALSE}
 #!# Mapping a color aesthetic to a variable for one geom
 ```
-
 ```{r scatline_yr3c, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=ice_bridges),size=3)
+  geom_line() +
+  geom_point(
+    aes(color=ice_bridges), #BREAK2
+    size=2
+  )
 ```
 
 ```{r scatline_yr3d, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=winter_temp),size=3)
+  geom_line() +
+  geom_point(
+    aes(color=winter_temp), #BREAK2
+    size=2
+  )
 ```
 
 ```{r scatline_yr3e, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
-  geom_line() + #BREAK
-  geom_point(aes(color=winter_temp,
-                 shape=ice_bridges),
-             size=3)
+  geom_line() +
+  geom_point(
+    aes(
+      color=winter_temp, #BREAK2
+      shape=ice_bridges #BREAK3
+      ),
+      size=2)
 ```
 
 ---
 
-`r chunk_reveal("scatline_yr3c",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr3c",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr3d",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr3d",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-`r chunk_reveal("scatline_yr3e",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("scatline_yr3e",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
@@ -530,10 +321,14 @@ p <- ggplot(data=irmw,
 --
 - All scales have sensible defaults; but you may want to change.
 
+&nbsp;
+
 --
-- Scale functions are of form `scale_`*`aesthetic`*`_`*`suffix`*.
+- Scale functions are of the form `scale_`*`aesthetic`*`_`*`suffix`*.
   - *`aesthetic`* is an aesthetic name (e.g., `color`, `shape`, `x`).
   - *`suffix`* is the functionality of the scale (e.g., `manual`, `discrete`).
+
+&nbsp;
 
 --
 - Basic functionality introduced here, more details in subsequent modules.
@@ -541,12 +336,11 @@ p <- ggplot(data=irmw,
 ```{r echo=FALSE}
 #!# Using scales to control colors and axis labels
 ```
-
 ```{r scatline_yr4a, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=3) + #BREAK
+  geom_point(aes(color=ice_bridges),size=2) + #BREAK
   scale_color_manual(values=c("blue","red"),
                      name="Ice Bridge?") + #BREAK
   scale_x_continuous(name="Year",
@@ -574,7 +368,7 @@ class: inverse, center, middle
 
 # Themes
 
-- A theme controls elements of the graph note related to data; e.g.,
+- A theme controls elements of the graph not related to data; e.g.,
   - Background color.
   - Size of font.
   - Gridlines.
@@ -598,12 +392,11 @@ class: inverse, center, middle
 ```{r echo=FALSE}
 #!# Demonstrating themes
 ```
-
 ```{r scatline_yr5a, include=FALSE}
 p <- ggplot(data=irmw,
             mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=3) +
+  geom_point(aes(color=ice_bridges),size=2) +
   scale_color_manual(values=c("blue","red"),
                      name="Ice Bridge?") +
   scale_x_continuous(name="Year",
@@ -642,14 +435,3 @@ p + #BREAK
 - Quote from end of the introduction to Wickham (2009) *ggplot2* book:
 
 > "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..."
-
---
-
-- Today was a start down towards that end.
-
-```{css, eval= TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 60%}
-.remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
-code.r{font-weight: bold;}
-pre{font-weight: bold;}
-```

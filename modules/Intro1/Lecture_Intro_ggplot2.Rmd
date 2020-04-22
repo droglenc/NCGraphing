@@ -17,7 +17,7 @@ output:
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_Intro_ggplot2"
 FSA::purl2(file.path(here::here(),"modules/Intro1",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache",
                        "include_graphics","options","splitPerc","leftAssign"))
 ```
 
