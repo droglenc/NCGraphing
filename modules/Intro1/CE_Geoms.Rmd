@@ -19,22 +19,64 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+knitr::opts_chunk$set(echo=FALSE, fig.show=FALSE, results='hide')
 ```
 
 ----
 
 ## Dataset
-A very small data set is contained in [GeomExample.csv](GeomExample.csv). Please load these data[^loaddata] and display the results.[^showdata]
+A very small data set is contained in [Geoms_Example.csv](http://derekogle.com/NCGraphing/modules/Intro1/Geoms_Example.csv). Please load these data[^loaddata] and display the results.[^showdata]
+
+```{r}
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
+
+#!# Load and Prep Data
+#!# Set to your own working directory and have just your filename below.
+df <- read.csv("http://derekogle.com/NCGraphing/modules/Intro1/Geoms_Example.csv")
+df
+```
 
 ## Geoms I
 Create a base plot that maps `x` to the "lon" variable and `y` to the "lat" variable. Add `geom_`s to this base plot to make the eight plots we made during lecture.[^tidyverse]
 
+```{r}
+#!# Make the base plot
+p <- ggplot(data=df,mapping=aes(x=lon,y=lat))
+
+#!# Adding the "usual" geoms
+p + geom_point()
+p + geom_line()
+p + geom_path()
+p + geom_area()
+p + geom_polygon()
+p + geom_tile()
+p + geom_bar(stat="identity")
+p + geom_text(aes(label=let))
+```
+
 ## Geoms II
 There are other `geom_`s that we did not discuss during lecture. Of the others, `geom_density_2d()`, `geom_hex()`, `geom_step()`, `geom_rug()`, and `geom_label()` (note that `geom_label()` requires the same `aes()` argument as `geom_text()`. Try adding two of these `geom_`s to your base plot from above. Explain what was plotted (note that you may want to perform an internet search on the `geom_` name for help with what it is plotting).
 
+```{r}
+#!# Trying some "new" geoms
+p + geom_density_2d()
+p + geom_hex()
+p + geom_step()
+p + geom_rug()
+p + geom_label(aes(label=let))
+```
+
 ## Geoms III
 Add one or more of the `geom_` from "Geoms I" above AND one or more of the `geom_`s from "Geoms II" above to create a single plot that is at least somewhat interesting (*with the understanding that it is probably not that interesting yet as we don't have much in our toolbox yet*).
+
+```{r}
+#!# Putting geoms together
+p + geom_point() + geom_rug()
+p + geom_point() + geom_density_2d()
+p + geom_point() + geom_hex()
+p + geom_line() + geom_text(aes(label=let))
+```
 
 [^loaddata]: Download the data and load them from there into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
 

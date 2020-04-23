@@ -37,7 +37,7 @@ XXX
 
 <ul>
   <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_Intro_ggplot2_DHO.R">Script</a></button></li>
-  <li><a href="Intro/CE_Geoms.html">Exercise - Geoms/a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Geoms.R">Key</a></button></li>
+  <li><a href="Intro/CE_Geoms.html">Exercise - Geoms</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Geoms.R">Key</a></button></li>
 </ul>
 
 ----

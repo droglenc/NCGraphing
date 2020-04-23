@@ -1,0 +1,92 @@
+---
+layout: page
+title: Exercise - Geoms
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="dataset" class="section level2">
+<h2>Dataset</h2>
+<p>A very small data set is contained in <a href="http://derekogle.com/NCGraphing/modules/Intro1/Geoms_Example.csv">Geoms_Example.csv</a>. Please load these data<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and display the results.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## √ ggplot2 3.3.0.9000     √ purrr   0.3.3     
+## √ tibble  3.0.0          √ dplyr   0.8.5     
+## √ tidyr   1.0.2          √ stringr 1.4.0     
+## √ readr   1.3.1          √ forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="geoms-i" class="section level2">
+<h2>Geoms I</h2>
+<p>Create a base plot that maps <code>x</code> to the “lon” variable and <code>y</code> to the “lat” variable. Add <code>geom_</code>s to this base plot to make the eight plots we made during lecture.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-2.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-3.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-4.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-5.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-6.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-7.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-4-8.png" width="672" /></p>
+</div>
+<div id="geoms-ii" class="section level2">
+<h2>Geoms II</h2>
+<p>There are other <code>geom_</code>s that we did not discuss during lecture. Of the others, <code>geom_density_2d()</code>, <code>geom_hex()</code>, <code>geom_step()</code>, <code>geom_rug()</code>, and <code>geom_label()</code> (note that <code>geom_label()</code> requires the same <code>aes()</code> argument as <code>geom_text()</code>. Try adding two of these <code>geom_</code>s to your base plot from above. Explain what was plotted (note that you may want to perform an internet search on the <code>geom_</code> name for help with what it is plotting).</p>
+<p><img src="CE_Geoms_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-5-2.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-5-3.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-5-4.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-5-5.png" width="672" /></p>
+</div>
+<div id="geoms-iii" class="section level2">
+<h2>Geoms III</h2>
+<p>Add one or more of the <code>geom_</code> from “Geoms I” above AND one or more of the <code>geom_</code>s from “Geoms II” above to create a single plot that is at least somewhat interesting (<em>with the understanding that it is probably not that interesting yet as we don’t have much in our toolbox yet</em>).</p>
+<p><img src="CE_Geoms_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-6-2.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-6-3.png" width="672" /><img src="CE_Geoms_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Download the data and load them from there into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Simply type the name of the object you saved the results in. In the lecture I would just type <code>dfobj</code>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Don’t forget to load the tidyverse.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
