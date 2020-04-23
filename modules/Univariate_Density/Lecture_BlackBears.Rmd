@@ -22,14 +22,10 @@ FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd"
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 source("../zzzflipbook_settings.R")
-library(patchwork)
-```
-```{r include=FALSE}
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
+library(patchwork)
 ```
 
 # Background
@@ -49,7 +45,7 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/blackbea
 
 # Background
 
-- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as [this CSV file]("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv").
+- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as [BlackBearsFL.csv]("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv").
 
 --
 - Loaded data into `flbb` data.frame.
@@ -63,9 +59,14 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/blackbea
 ```{r load1}
 #!# Set to your own working directory and have just your filename below.
 flbb <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv") %>%
-  rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
-         weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %>%
-  mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),
+  rename(sex=SEX,
+         age=AGE..yr.,
+         length=BODY.LENGTH..cm.,
+         weight=BODY.WEIGHT..kg.,
+         chest=CHEST.GIRTH..cm.) %>%
+  mutate(sex=plyr::mapvalues(sex,
+                             from=c("FEMALE","MALE"),
+                             to=c("Female","Male")),
          sex=factor(sex))
 ```
 
@@ -148,8 +149,7 @@ class: inverse, center, middle
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram() +
   scale_y_continuous(name="Frequency of Bears") +
-  scale_x_continuous(name="Weight (kg)",
-                     breaks=seq(0,250,25)) +
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25)) +
   theme_bw()
 ```
 
@@ -602,7 +602,15 @@ p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   theme_bw() + #BREAK
-  geom_jitter(width=0.05,height=0)
+  geom_jitter(width=0.05,height=0,alpha=0.5)
 ```
 
 `r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will examine graphs for distributions of categorical data.</font>

@@ -2,9 +2,14 @@ library(flipbookr)
 options(width=120,show.signif.stars=FALSE)
 splitPerc <- 50
 leftAssign <- TRUE
+figw <- 3
+figh <- figw*(3/4)
+
+knitr::opts_chunk$set(fig.width=figw,fig.height=figh,out.width="100%",fig.retina=3,
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 
 library(xaringanthemer)
-xaringanthemer::mono_accent(
+mono_accent(
   base_color = "#162135",
   header_font_google = google_font("Montserrat"),
   text_font_google   = google_font("Robot", "200", "200i"),

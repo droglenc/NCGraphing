@@ -22,7 +22,6 @@ class: center, middle, inverse, title-slide
 
 
 
-
 # Background
 
 - Morphological measurements of Florida Black Bear (*Ursus americanus floridanus*).
@@ -38,7 +37,7 @@ class: center, middle, inverse, title-slide
 
 # Background
 
-- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as [this CSV file]("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv").
+- Downloaded 'fwma-08-01-02_table s1.xls' Excel file from [Journal of Fish and Wildlife Management](https://www.fwspubs.org/doi/10.3996/012016-JFWM-003) and saved as [BlackBearsFL.csv]("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv").
 
 --
 - Loaded data into `flbb` data.frame.
@@ -51,9 +50,14 @@ class: center, middle, inverse, title-slide
 ```r
 #!# Set to your own working directory and have just your filename below.
 flbb &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv") %&gt;%
-  rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
-         weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %&gt;%
-  mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),
+  rename(sex=SEX,
+         age=AGE..yr.,
+         length=BODY.LENGTH..cm.,
+         weight=BODY.WEIGHT..kg.,
+         chest=CHEST.GIRTH..cm.) %&gt;%
+  mutate(sex=plyr::mapvalues(sex,
+                             from=c("FEMALE","MALE"),
+                             to=c("Female","Male")),
          sex=factor(sex))
 ```
 
@@ -114,7 +118,7 @@ head(flbb)
 ]
 
 .pull-right[
-&lt;img src="Lecture_BlackBears_files/figure-html/unnamed-chunk-5-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
 ]
 
 ---
@@ -194,8 +198,7 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram() +  
   scale_y_continuous(name="Frequency of Bears") +  
-* scale_x_continuous(name="Weight (kg)",
-*                    breaks=seq(0,250,25))
+* scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25))
  
 p
 ```
@@ -215,8 +218,7 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram() +  
   scale_y_continuous(name="Frequency of Bears") +  
-  scale_x_continuous(name="Weight (kg)",  
-                     breaks=seq(0,250,25)) +  
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25)) +  
 * theme_bw()
  
 p
@@ -1587,7 +1589,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
   theme_bw() +  
-* geom_jitter(width=0.05,height=0)
+* geom_jitter(width=0.05,height=0,alpha=0.5)
  
 p
 ```

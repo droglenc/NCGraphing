@@ -22,14 +22,10 @@ FSA::purl2(file.path(here::here(),"modules/Univariate_Groups",paste0(fnm,".Rmd")
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 source("../zzzflipbook_settings.R")
-library(patchwork)
-```
-```{r include=FALSE}
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
+library(patchwork)
 ```
 
 # Background

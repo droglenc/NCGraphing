@@ -23,12 +23,7 @@ FSA::purl2(file.path(here::here(),"modules/Intro2",paste0(fnm,".Rmd")),
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
-                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
 source("../zzzflipbook_settings.R")
-```
-
-```{r include=FALSE}
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
 ```
@@ -434,3 +429,11 @@ p + #BREAK
 
 > "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..." -- Wickham (2009)
 
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will examine graphs for distributions of quantitative data.</font>
