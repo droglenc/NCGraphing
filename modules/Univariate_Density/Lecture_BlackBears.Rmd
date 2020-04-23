@@ -4,7 +4,7 @@ author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
 output:
   xaringan::moon_reader:
     lib_dir: zlibs
-    css: [default, hygge, ninjutsu]
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
     nature:
       ratio: 16:10
       highlightStyle: github
@@ -18,17 +18,18 @@ output:
 fnm <- "Lecture_BlackBears"
 FSA::purl2(file.path(here::here(),"modules/Univariate_Density",paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork",
-                       "include_graphics","options","splitPerc","leftAssign"))
+                       "include_graphics","options","splitPerc","leftAssign","cache"))
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,message=FALSE,warning=FALSE,comment="",cache=FALSE)
-library(flipbookr)
-library(tidyverse)
+knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
+                      message=FALSE,warning=FALSE,comment="",cache=FALSE)
+source("../zzzflipbook_settings.R")
 library(patchwork)
-options(width=120,show.signif.stars=FALSE)
-splitPerc <- 50
-leftAssign <- TRUE
+```
+```{r include=FALSE}
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
 ```
 
 # Background
@@ -605,10 +606,3 @@ p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
 ```
 
 `r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{css, eval= TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 60%}
-.remark-slide-content {font-size: 24px;padding: 1em 4em 1em 4em}
-```

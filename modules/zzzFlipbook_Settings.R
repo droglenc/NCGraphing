@@ -1,5 +1,4 @@
 library(flipbookr)
-library(tidyverse)
 options(width=120,show.signif.stars=FALSE)
 splitPerc <- 50
 leftAssign <- TRUE
