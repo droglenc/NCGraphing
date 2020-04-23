@@ -3,6 +3,8 @@ layout: page
 title: Learning Modules
 ---
 
+* [Pre-Course Introduction to R](IntroR)
+
 1. [Course Organization](Setup)
 1. [Introduction to ggplot2 I](Intro1)
 1. [Introduction to ggplot2 II](Intro2)
