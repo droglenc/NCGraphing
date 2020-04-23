@@ -23,7 +23,7 @@ FSA::purl2(file.path(here::here(),"modules/Intro1",paste0(fnm,".Rmd")),
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(fig.width=5.4,fig.height=4,out.width="100%",fig.retina=3,
+knitr::opts_chunk$set(fig.width=4,fig.height=3,out.width="100%",fig.retina=3,
                       message=FALSE,warning=FALSE,comment="",cache=FALSE)
 source("../zzzflipbook_settings.R")
 ```
@@ -196,6 +196,11 @@ class: inverse, center, middle
 
 --
 - Originally based on Leland Wilkinson's *The Grammar of Graphics*.
+
+--
+- Extended and brought to R by Hadley Wickham.
+
+&nbsp;
 
 --
 - `ggplot2` describes itself as 

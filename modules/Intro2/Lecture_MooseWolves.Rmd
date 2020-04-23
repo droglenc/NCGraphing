@@ -430,8 +430,7 @@ p + #BREAK
 
 ---
 
-# Final Thought
+## Final Thought for Next Time
 
-- Quote from end of the introduction to Wickham (2009) *ggplot2* book:
+> "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..." -- Wickham (2009)
 
-> "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..."

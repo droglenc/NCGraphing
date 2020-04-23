@@ -18,20 +18,20 @@
  *  Version: 0.2.0.9100
  *
  * ------------------------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:200,200i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Robot:200,200i&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Montserrat&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Droid+Mono&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata&display=swap);
 
 
 :root {
   /* Fonts */
-  --text-font-family: Montserrat;
+  --text-font-family: Robot;
   --text-font-is-google: 1;
   --text-font-family-fallback: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial;
   --text-font-base: sans-serif;
   --header-font-family: Montserrat;
   --header-font-is-google: 1;
-  --code-font-family: 'Droid Mono';
+  --code-font-family: Inconsolata;
   --code-font-is-google: 1;
   --base-font-size: 20px;
   --text-font-size: .7cm;
@@ -101,9 +101,9 @@ h1, h2, h3 {
   color: #162135;
 }
 .remark-slide-number {
-  color: #162135;
+  color: #cfcecc;
   opacity: 1;
-  font-size: 0.9em;
+  font-size: .4cm;
 }
 strong { color: var(--text-bold-color); }
 a, a > code {
