@@ -13,7 +13,7 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Loons"
-dnm <- "modules/Intro"
+dnm <- "modules/Intro2"
 modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))

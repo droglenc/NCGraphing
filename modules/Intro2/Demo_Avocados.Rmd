@@ -13,7 +13,7 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "Demo_Avocados"
-dnm <- "modules/Intro"
+dnm <- "modules/Intro2"
 modHTML(file.path(here::here(),dnm,fnm))
 ```
 ```{r echo=FALSE}
@@ -24,13 +24,15 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 
 ## Background
 <img src="../zimgs/avocado.jpg" alt="Walleye" class="img-right">
-Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices).[^getdata] Make sure to load `tidyverse`.
+Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices)).[^getdata]
+
+Make sure (as always) to load `tidyverse`.
 
 ```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
-Their data are loaded below[^loaddata] and, for this exercise, reduced to only results for the "GreatLakes" region (i.e., `filter()`, and `type` and `year` are converted to groupings (ie., `factor()` withing `mutate()`).
+Their data are loaded below[^loaddata] and, for this exercise, reduced to only results for the "GreatLakes" region (i.e., `filter()`), and `type` and `year` are converted to groupings (i.e., `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
@@ -44,7 +46,7 @@ str(avoc)
 
 &nbsp;
 
-## Example 1
+## Example
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r avoc1, fig.width=6.5}
@@ -61,3 +63,5 @@ avoc1
 [^getdata]: This CSV file is freely available from Kaggle at [this page](). However, you must sign-in to download the data file. I did this and made it available from my website at the link above.
 
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.

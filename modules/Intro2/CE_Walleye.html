@@ -11,7 +11,7 @@ css: "/css/modules.css"
 <h2>Background</h2>
 <p><img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right"> Lake Erie is world-renowned for its Walleye [<em>Sander vitreus</em>] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in <a href="https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv">this file</a> from the fishR webpage. <a href="http://derekogle.com/fishR/data/data-html/WalleyeErie2.html">Metadata for this file is here</a>. Make sure to load <code>tidyverse</code>.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<p>The data are loaded below<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and, for this exercise, reduced to only those fish captured in 2003 (i.e., <code>filter()</code>), the <code>loc</code>ation codes are changed from numbers to words (i.e., <code>mapvalues()</code> within <code>mutate()</code>), and <code>loc</code>ation is converted groupings (i.e., <code>factor()</code> within <code>mutate()</code>).</p>
+<p>The data are loaded below<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and, for this exercise, reduced to only those fish captured in 2003 (i.e., <code>filter()</code>), the <code>loc</code>ation codes are changed from numbers to words (i.e., <code>mapvalues()</code> within <code>mutate()</code>), and <code>loc</code>ation is converted groupings (i.e., <code>factor()</code> within <code>mutate()</code>).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <pre class="r"><code>#!# Set to your own working directory and have just your filename below.
 wae &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv&quot;) %&gt;%
   filter(year==2003) %&gt;%
@@ -60,6 +60,7 @@ str(wae)</code></pre>
 <hr />
 <ol>
 <li id="fn1"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>These code can be copied as is, but make sure to set your working directory with <code>setwd()</code> and to put just the filename inside <code>read.csv()</code>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

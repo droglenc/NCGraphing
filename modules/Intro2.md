@@ -28,7 +28,7 @@ XXX
 
 ## Preparation for Class
 
-* [Introduction to ggplot2](https://youtu.be/h29g21z0a68?t=1095) ... this will give an overview of the idea behind ggplot2. It is a bit "chatty" so don't feel like you have to watch it. If you do, watch from the 18:15 mark to the 40:30 mark.
+* [Introduction to ggplot2](https://youtu.be/h29g21z0a68?t=1095){:target="_blank"} ... this gives an overview of the idea behind `ggplot2`. It is a bit "chatty" so don't feel like you have to watch it. If you do, watch from the 18:15 mark to the 40:30 mark.
 
 ----
 
@@ -50,6 +50,6 @@ XXX
 
 ## Resources
 
-* [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html): Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
-* [Introduction to ggplot2 at UCLA](https://stats.idre.ucla.edu/stat/data/intro_ggplot2_int/ggplot2_intro_interactive.html#(1)): A comprehensive introduction.
-* [Beginning Tutorial at ggplot2tor](https://ggplot2tutor.com/beginner_tutorial/beginner_tutorial/): Introduction to ggplot2 including discussion of geoms, aethetitics, mappings, and scales.
+* [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html){:target="_blank"}: Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf){:target="_blank"}.
+* [Introduction to ggplot2 at UCLA](https://stats.idre.ucla.edu/stat/data/intro_ggplot2_int/ggplot2_intro_interactive.html#(1)){:target="_blank"}: A comprehensive introduction.
+* [Beginning Tutorial at ggplot2tor](https://ggplot2tutor.com/beginner_tutorial/beginner_tutorial/){:target="_blank"}: Introduction to ggplot2 including discussion of geoms, aethetitics, mappings, and scales.

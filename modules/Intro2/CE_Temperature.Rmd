@@ -13,7 +13,7 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Temperature"
-dnm <- "modules/Intro"
+dnm <- "modules/Intro2"
 modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
@@ -32,7 +32,7 @@ The National Oceanic and Atmospheric Administration (NOAA) maintains a database 
 library(tidyverse)
 ```
 
-The data file is loaded into R below,[^loaddata] but note that `skip=4` is need as the first four lines of the CSV file do not contain data.
+The data file is loaded into R below,[^loaddata] but note that `skip=4` is need as the first four lines of the CSV file do not contain data.[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
@@ -62,8 +62,8 @@ Construct `ggplot2` code to match the graph below (as closely as you can). [*HIN
 
 ```{r Temperature_2}
 ft2 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
+  geom_line(size=0.75) +
   geom_point(size=2,color="red",alpha=0.5) +
-  geom_line(size=1.25) +
   scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
   theme_bw()
@@ -107,3 +107,5 @@ ft3
 ```
 
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.

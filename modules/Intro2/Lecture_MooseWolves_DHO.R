@@ -22,41 +22,41 @@ p
 
 #!# Setting aesthetics within a geom
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
-  geom_point(color="darkred",size=2) +
-  geom_line(size=0.8,linetype="dashed")
+  geom_point(color="red",size=1) +
+  geom_line(size=0.25,linetype="dashed")
 
 #!# ... order of geoms matters
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
-  geom_line(size=0.8,linetype="dashed") +
-  geom_point(color="darkred",size=2)
+  geom_line(size=0.25,linetype="dashed") +
+  geom_point(color="red",size=1)
 
 #!# Setting a color aesthetic for all geoms
-p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves,color="darkred")) +
+p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves,color="red")) +
   geom_line() +
-  geom_point(size=2)
+  geom_point(size=1)
 
 #!# Mapping a color aesthetic to a variable for all geoms
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves,color=ice_bridges)) +
   geom_line() +
-  geom_point(size=2)
+  geom_point(size=1)
 
 #!# Mapping a color aesthetic to a variable for one geom
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=2)
+  geom_point(aes(color=ice_bridges),size=1)
 
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=winter_temp),size=2)
+  geom_point(aes(color=winter_temp),size=1)
 
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=winter_temp,shape=ice_bridges),size=2)
+  geom_point(aes(color=winter_temp,shape=ice_bridges),size=1)
 
 #!# Using scales to control colors and axis labels
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=2) +
+  geom_point(aes(color=ice_bridges),size=1) +
   scale_color_manual(values=c("blue","red"),name="Ice Bridge?") +
   scale_x_continuous(name="Year",breaks=seq(1960,2020,10),minor_breaks=seq(1959,2019,1)) +
   scale_y_continuous(name="Estimated Number of Wolves",breaks=seq(0,50,5),minor_breaks=NULL)
@@ -64,7 +64,7 @@ p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
 #!# Demonstrating themes
 p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line() +
-  geom_point(aes(color=ice_bridges),size=2) +
+  geom_point(aes(color=ice_bridges),size=1) +
   scale_color_manual(values=c("blue","red"),name="Ice Bridge?") +
   scale_x_continuous(name="Year",breaks=seq(1960,2020,5)) +
   scale_y_continuous(name="Estimated Number of Wolves",breaks=seq(0,50,5)) +

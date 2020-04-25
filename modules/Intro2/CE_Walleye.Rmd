@@ -13,7 +13,7 @@ output:
 # Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
 source(file.path(here::here(),"rhelpers/rhelpers.R"))
 fnm <- "CE_Walleye"
-dnm <- "modules/Intro"
+dnm <- "modules/Intro2"
 modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
@@ -32,7 +32,7 @@ Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fi
 library(tidyverse)
 ```
 
-The data are loaded below[^loaddata] and, for this exercise, reduced to only those fish captured in 2003 (i.e., `filter()`), the `loc`ation codes are changed from numbers to words (i.e., `mapvalues()` within `mutate()`), and `loc`ation is converted groupings (i.e., `factor()` within `mutate()`).
+The data are loaded below[^loaddata] and, for this exercise, reduced to only those fish captured in 2003 (i.e., `filter()`), the `loc`ation codes are changed from numbers to words (i.e., `mapvalues()` within `mutate()`), and `loc`ation is converted groupings (i.e., `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
@@ -126,3 +126,5 @@ laa5
 ```
 
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.
