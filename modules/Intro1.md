@@ -28,8 +28,10 @@ XXX
 
 ## Preparation for Class
 
-* [Three Laws of Effective Visual Communication](https://graphicsprinciples.github.io/threelaws.html) ... watch the 4-min video.
-* [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e) ... just skim-read, don't worry about specifics.
+* [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e){:target="_blank"} ... just skim-read, don't worry about specifics.
+* [Three Laws of Effective Visual Communication](https://graphicsprinciples.github.io/threelaws.html){:target="_blank"} ... watch the 4-min video.
+* [*optional*] [Five Data Storytelling Tips to Improve Your Charts and Graphcs](https://youtu.be/4pymfPHQ6SA){:target="_blank"} ... 9-minute Visme video.
+* [*optional*] [Storytelling with Data](https://youtu.be/8EMW7io4rSI){:target="_blank"} ... author Cole Nussbaumer Knaflic's 1-hour talk at Google.
 
 ----
 
@@ -44,4 +46,4 @@ XXX
 
 ## Resources
 
-* [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html) and [Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html) chapters in [R for Data Science](https://r4ds.had.co.nz/index.html): A short introduction to ggplot2.
+* [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html){:target="_blank"} and [Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html){:target="_blank"} chapters in [R for Data Science](https://r4ds.had.co.nz/index.html): A short introduction to ggplot2.
