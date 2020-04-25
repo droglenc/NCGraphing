@@ -20,7 +20,7 @@ css: /css/modules.css
 
 ## Resources
 
-* [Introduction to R](https://monashdatafluency.github.io/r-intro-2/index.html) ... Monash Dat Fluency
-* [R For Data Science](https://r4ds.had.co.nz/introduction.html) ... Gromelund and Wickham
-* [Beginner's Guide to R: Introduction](https://www.computerworld.com/article/2497143/business-intelligence-beginner-s-guide-to-r-introduction.html) ... Sharon Machlis at Computerworld
+* [Introduction to R](https://monashdatafluency.github.io/r-intro-2/index.html){:target="_blank"} ... Monash Data Fluency
+* [R For Data Science](https://r4ds.had.co.nz/introduction.html){:target="_blank"} ... Gromelund and Wickham
+* [Beginner's Guide to R: Introduction](https://www.computerworld.com/article/2497143/business-intelligence-beginner-s-guide-to-r-introduction.html){:target="_blank"} ... Sharon Machlis at Computerworld
 
