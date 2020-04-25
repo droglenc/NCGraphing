@@ -51,7 +51,7 @@ XXX
   * Demonstration ...  [Avocados Data](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv)
 
 ## Exercise
-* Download one of the files below to your computer, load it into RStudio, and show the structure. Compile your document and upload it to the "Course Organization" folder in the "Exercises" unit of the "Coursework" page on mycourses.northland.edu.
+* Download one of the files below to your computer, load it into RStudio, and show the `str()`ucture and `head()` of the data.frame object. Compile your document and upload it to the "Course Organization" folder in the "Exercises" unit of [the "Coursework" page on mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz){:target="_blank"}.
   * [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv) ... biological data for Common Loons (*Gavia immer*) from around North America.
   * [WalleyeErie2.csv](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) ... biological data for Walleye (*Sander vitreus*) from Lake Erie.
   * [NCAAF19_QBS.csv](https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv) ... statistics for college football quarterbacks from the 2019-20 season.
