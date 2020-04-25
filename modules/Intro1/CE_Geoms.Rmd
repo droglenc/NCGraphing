@@ -19,7 +19,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.show=FALSE, results='hide', message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo=FALSE, fig.show='hide', results='hide', message=FALSE, warning=FALSE)
 ```
 
 ----
@@ -56,7 +56,7 @@ p + geom_text(aes(label=let))
 ```
 
 ## Geoms II
-There are other `geom_`s that we did not discuss during lecture. Of the others, `geom_density_2d()`, `geom_hex()`, `geom_step()`, `geom_rug()`, and `geom_label()` (note that `geom_label()` requires the same `aes()` argument as `geom_text()`. Try adding two of these `geom_`s to your base plot from above. Explain what was plotted (note that you may want to perform an internet search on the `geom_` name for help with what it is plotting).
+There are other `geom_`s that we did not discuss during lecture. Of the others, `geom_density_2d()`, `geom_hex()`, `geom_step()`, `geom_rug()`, and `geom_label()` (note that `geom_label()` requires the same `aes()` argument as `geom_text()`) may be used with these same data. Add two of these `geom_`s to your base plot from above (add the `geom_`s one at a time to make two plots). Explain what was plotted (note that you may want to perform an internet search on the `geom_` name for help with what it is plotting).
 
 ```{r}
 #!# Trying some "new" geoms
@@ -68,7 +68,7 @@ p + geom_label(aes(label=let))
 ```
 
 ## Geoms III
-Add one or more of the `geom_` from "Geoms I" above AND one or more of the `geom_`s from "Geoms II" above to create a single plot that is at least somewhat interesting (*with the understanding that it is probably not that interesting yet as we don't have much in our toolbox yet*).
+Add one or more of the `geom_`s from "Geoms I" above AND one or more of the `geom_`s from "Geoms II" above to create a single plot that is at least somewhat interesting (*with the understanding that it is probably not that interesting yet as we don't have much in our toolbox yet*).
 
 ```{r}
 #!# Putting geoms together

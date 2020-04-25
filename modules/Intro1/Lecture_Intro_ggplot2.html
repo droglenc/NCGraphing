@@ -99,7 +99,7 @@ class: inverse, center, middle
 
 # Maximize data-ink ratio
 
-- Ratio of ink require to present data to ink used to present the data.
+- Ratio of ink *required* to present data to ink *used* to present the data.
 
 --
 - The closer this ratio is to 1 the less distracted the user will be and the easier it will be to visualize the data.
@@ -140,26 +140,40 @@ class: inverse, center, middle
 &lt;font size="2"&gt;From &lt;a href="https://mschermann.github.io/data_viz_reader/fundamentals.html#best-practices"&gt;A Reader on Data Visualization&lt;/a&gt;&lt;/font&gt;
 
 - **Five Second Rule**
-  - Research shows that the average modern attention span for viewing anything online is less than 5 seconds, so if you can’t grab attention within 5 minutes, you’ve likely lost your viewer. Include clear titles and instructions, and tell people succinctly what the visualization shows and how to interact with it.
+  - The average modern attention span for viewing anything online is &lt;5 s.
+  - If you can not grab attention within 5 s, you have likely lost your audience.
+  - Include clear titles and instructions; tell people what the visualization shows and how to interact with it.
+
+&amp;nbsp;
 
 --
 - **Design and Layout Matter**
-  - The design and layout should facilitate ease of understanding to convey your message to the user. To take your data visualization from an everyday dashboard to a compelling data story, incorporate prnciples of graphic desig.
+  - Design and layout should ease of understanding your message.
+  - Incorporate principles of graphic design to present a compelling story.
 
 ---
 
 # Further Guidelines
 
 - **Keep it Simple**
-  - Keep charts simple and easy to interpret. Instead of overloading viewers’ brains with lots of information, keep only necessary elements in the chart and help the audience understand quickly what is going on.
+  - Keep graphs simple and easy to interpret.
+  - Keep only necessary elements in the graph.
+  - Help your audience understand quickly what is going on.
+
+&amp;nbsp;
 
 --
 - **Pretty Does Not Mean Effective**
-  - There is a misconception that aesthetically pleasing visualization is more effective. To draw attention, sometimes we want them to be pretty and eye-catching. But if it fails to communicate the data properly, you will quickly lose your audience’s interest.
+  - Aesthetically pleasing visualizations are not necessarily more effective.
+  - Pretty and eye-catching may be nice, but communicating the data properly is paramount.
+
+&amp;nbsp;
 
 --
 - **Use Color Purposefully**
-  - Use of color may be attractive, but it can also be distracting. Thus, color should be used only if it assists in conveying your message. Also be consistent with the color scheme.
+  - Use of color may be attractive, but it can also be distracting.
+  - Color should be used only if it assists in conveying your message.
+  - Be consistent with the color scheme.
 
 ---
 
@@ -179,7 +193,7 @@ class: inverse, center, middle
 
 - A package for making graphics in R.
   - R is now one of the most used programs for data analysis.
-  - `ggplots` is one of most used packages in R for data visualization.
+  - `ggplot2` is one of most used packages for data visualization in R.
 
 --
 - Originally based on Leland Wilkinson's *The Grammar of Graphics*.
@@ -261,7 +275,7 @@ library(tidyverse)
 
 # Data Format
 
-- All `ggplot2` plots need data usually in a "tidy format."
+- All `ggplot2` plots need data, usually in a "tidy format."
   - **Rows**: Contain one **individual**/subject/unit.
   - **Columns**: Contain one **variable** (characteristic recorded about an individual).
 
@@ -290,7 +304,7 @@ library(tidyverse)
 
 # Simple Data
 
-- For purposes of this introduction, we will use the very simple data entered below.
+- For purposes of this introduction, we will use the simple data entered below.
 
 
 

@@ -30,7 +30,7 @@ XXX
 
 * [I Learned Data Viz in a Year, and You Can Too](https://medium.com/nightingale/i-learned-data-viz-in-a-year-and-you-can-too-2b610d25946e){:target="_blank"} ... just skim-read, don't worry about specifics.
 * [Three Laws of Effective Visual Communication](https://graphicsprinciples.github.io/threelaws.html){:target="_blank"} ... watch the 4-min video.
-* [*optional*] [Five Data Storytelling Tips to Improve Your Charts and Graphcs](https://youtu.be/4pymfPHQ6SA){:target="_blank"} ... 9-minute Visme video.
+* [*optional*] [Five Data Storytelling Tips to Improve Your Charts and Graphics](https://youtu.be/4pymfPHQ6SA){:target="_blank"} ... 9-minute Visme video.
 * [*optional*] [Storytelling with Data](https://youtu.be/8EMW7io4rSI){:target="_blank"} ... author Cole Nussbaumer Knaflic's 1-hour talk at Google.
 
 ----
@@ -38,8 +38,8 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/Lecture_Intro_ggplot2_DHO.R">Script</a></button></li>
-  <li><a href="Intro1/CE_Geoms.html">Exercise - Geoms</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro/CE_Geoms.R">Key</a></button></li>
+  <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro1/Lecture_Intro_ggplot2_DHO.R">Script</a></button></li>
+  <li><a href="Intro1/CE_Geoms.html">Exercise - Geoms</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro1/CE_Geoms.R">Key</a></button></li>
 </ul>
 
 ----
