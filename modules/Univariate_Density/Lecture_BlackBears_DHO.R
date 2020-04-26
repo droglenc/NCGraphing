@@ -18,7 +18,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 
 #!# Histogram with Typical Modifications
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
-  geom_histogram(color="gray30",fill="gray70",
+  geom_histogram(color="gray30",fill="gray30",alpha=0.25,
                  binwidth=10,boundary=0,closed="left") +
   scale_y_continuous(name="Frequency of Bears",
                      expand=expansion(mult=c(0,0.05))) +
@@ -38,9 +38,9 @@ p <- ggplot(data=flbb,
                      expand=expansion(mult=c(0,0))) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank()) + #BREAK
-  scale_color_manual(values=c("red3","blue3")) + #BREAK
-  scale_fill_manual(values=c("red3","blue3"))
+        panel.grid.minor.x=element_blank()) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue"))
 
 
 #!# Density Plot with Typical Modifications
@@ -72,8 +72,8 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,color=sex,fill=sex)) +
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) + 
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) + 
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -81,7 +81,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight,color=sex,fill=sex)) +
 
 #!# Boxplot with Typical Modifications
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
-  geom_boxplot(fill="gray70") +
+  geom_boxplot(fill="gray30",alpha=0.25) +
   scale_x_discrete(name="Sex") +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
@@ -94,8 +94,8 @@ p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   scale_x_discrete(name="Sex") +
   scale_y_continuous(name="Weight (kg)",limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   theme_bw() +
   theme(legend.position="none")
 

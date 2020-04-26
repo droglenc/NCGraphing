@@ -112,9 +112,10 @@ head(flbb)
 - Constructed with `geom_histogram()`.
   - `bins=`: Number of bins to use.
   - `binwidth=`: Width of the bins.
-  - `boundary=`: Sets left-most boundary of first bin.
-  - `center=`: Sets center of first bin.
-  - `closed=`: Sets if bins are closed on `"right"` (*default*) or `"left"`.
+  - `breaks=`: Bin boundary values.
+  - `boundary=`: Left-most boundary of first bin.
+  - `center=`: Center of first bin.
+  - `closed=`: Are bins closed on `"right"` (*default*) or `"left"`.
 ]
 
 .pull-right[
@@ -304,7 +305,7 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram(  
     color="gray30",  
-*   fill="gray70",
+*   fill="gray30",
   ) +  
   scale_y_continuous(  
     name="Frequency of Bears",  
@@ -332,8 +333,8 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram(  
     color="gray30",  
-    fill="gray70",  
-*   binwidth=10,
+    fill="gray30",  
+*   alpha=0.25,
   ) +  
   scale_y_continuous(  
     name="Frequency of Bears",  
@@ -361,9 +362,9 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram(  
     color="gray30",  
-    fill="gray70",  
-    binwidth=10,  
-*   boundary=0,closed="left"
+    fill="gray30",  
+    alpha=0.25,  
+*   binwidth=10,
   ) +  
   scale_y_continuous(  
     name="Frequency of Bears",  
@@ -391,13 +392,13 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram(  
     color="gray30",  
-    fill="gray70",  
+    fill="gray30",  
+    alpha=0.25,  
     binwidth=10,  
-    boundary=0,closed="left"  
+*   boundary=0,closed="left"
   ) +  
   scale_y_continuous(  
     name="Frequency of Bears",  
-*   expand=expansion(mult=c(0,0.05))
   ) +  
   scale_x_continuous(  
     name="Weight (kg)",breaks=seq(0,250,25),  
@@ -422,7 +423,40 @@ count: false
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
   geom_histogram(  
     color="gray30",  
-    fill="gray70",  
+    fill="gray30",  
+    alpha=0.25,  
+    binwidth=10,  
+    boundary=0,closed="left"  
+  ) +  
+  scale_y_continuous(  
+    name="Frequency of Bears",  
+*   expand=expansion(mult=c(0,0.05))
+  ) +  
+  scale_x_continuous(  
+    name="Weight (kg)",breaks=seq(0,250,25),  
+  ) +  
+  theme_bw()  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/hist2_non_seq_7_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
+  geom_histogram(  
+    color="gray30",  
+    fill="gray30",  
+    alpha=0.25,  
     binwidth=10,  
     boundary=0,closed="left"  
   ) +  
@@ -440,7 +474,7 @@ p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/hist2_non_seq_7_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/hist2_non_seq_8_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -466,7 +500,7 @@ count: false
 
 ```r
 *p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +
-* geom_histogram(color="gray30",fill="gray70",
+* geom_histogram(color="gray30",fill="gray30",alpha=0.25,
 *                binwidth=10,boundary=0,closed="left") +
 * scale_y_continuous(name="Frequency of Bears",
 *                    expand=expansion(mult=c(0,0.05))) +
@@ -490,7 +524,7 @@ count: false
 
 ```r
 p &lt;- ggplot(data=flbb, mapping=aes(x=weight)) +  
-  geom_histogram(color="gray30",fill="gray70",  
+  geom_histogram(color="gray30",fill="gray30",alpha=0.25,  
                  binwidth=10,boundary=0,closed="left") +  
   scale_y_continuous(name="Frequency of Bears",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -698,7 +732,7 @@ p &lt;- ggplot(data=flbb,
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
         panel.grid.minor.x=element_blank()) +  
-* scale_color_manual(values=c("red3","blue3"))
+* scale_color_manual(values=c("red","blue"))
  
 p
 ```
@@ -726,8 +760,8 @@ p &lt;- ggplot(data=flbb,
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
         panel.grid.minor.x=element_blank()) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-* scale_fill_manual(values=c("red3","blue3"))
+  scale_color_manual(values=c("red","blue")) +  
+* scale_fill_manual(values=c("red","blue"))
  
 p
 ```
@@ -1109,7 +1143,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(
                      expand=expansion(mult=c(0,0))) +  
   scale_y_continuous(name="Relative Density of Bears",  
                      expand=expansion(mult=c(0,0.05))) +  
-* scale_color_manual(values=c("red3","blue3")) +
+* scale_color_manual(values=c("red","blue")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
         panel.grid.minor.x=element_blank())  
@@ -1140,8 +1174,8 @@ p &lt;- ggplot(data=flbb, mapping=aes(
                      expand=expansion(mult=c(0,0))) +  
   scale_y_continuous(name="Relative Density of Bears",  
                      expand=expansion(mult=c(0,0.05))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-* scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +  
+* scale_fill_manual(values=c("red","blue")) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
         panel.grid.minor.x=element_blank())  
@@ -1215,7 +1249,7 @@ count: false
 
 ```r
 p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
-* geom_boxplot(fill="gray70")
+* geom_boxplot(fill="gray30",alpha=0.25)
  
 p
 ```
@@ -1233,7 +1267,7 @@ count: false
 
 ```r
 p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
-  geom_boxplot(fill="gray70") +  
+  geom_boxplot(fill="gray30",alpha=0.25) +  
 * scale_x_discrete(name="Sex")
  
 p
@@ -1252,7 +1286,7 @@ count: false
 
 ```r
 p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
-  geom_boxplot(fill="gray70") +  
+  geom_boxplot(fill="gray30",alpha=0.25) +  
   scale_x_discrete(name="Sex") +  
 * scale_y_continuous(name="Weight (kg)",
 *                    limits=c(0,250),breaks=seq(0,250,25),
@@ -1274,7 +1308,7 @@ count: false
 
 ```r
 p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +  
-  geom_boxplot(fill="gray70") +  
+  geom_boxplot(fill="gray30",alpha=0.25) +  
   scale_x_discrete(name="Sex") +  
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
@@ -1316,7 +1350,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
+  scale_color_manual(values=c("red","blue")) +  
   theme_bw()   
  
 p
@@ -1343,7 +1377,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
+  scale_color_manual(values=c("red","blue")) +  
   theme_bw()   
  
 p
@@ -1370,8 +1404,8 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-* scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +  
+* scale_fill_manual(values=c("red","blue")) +
   theme_bw()   
  
 p
@@ -1398,8 +1432,8 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red3","blue3")) +  
-  scale_fill_manual(values=c("red3","blue3")) +  
+  scale_color_manual(values=c("red","blue")) +  
+  scale_fill_manual(values=c("red","blue")) +  
   theme_bw() +  
 * theme(legend.position="none")
  
@@ -1589,7 +1623,7 @@ p &lt;- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
   theme_bw() +  
-* geom_jitter(width=0.05,height=0,alpha=0.5)
+* geom_jitter(width=0.05,height=0,alpha=0.25)
  
 p
 ```
@@ -1597,6 +1631,14 @@ p
 .column[.content[
 &lt;img src="Lecture_BlackBears_files/figure-html/violin2_user_2_output-1.png" width="100%" /&gt;
 ]]
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will examine graphs for distributions of categorical data.&lt;/font&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

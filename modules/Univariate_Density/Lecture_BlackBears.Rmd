@@ -102,7 +102,7 @@ head(flbb)
 ```{r hist_demo, echo=FALSE}
 h <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(binwidth=10,boundary=0,closed="left",
-                 color="gray30",fill="gray70") +
+                 color="gray30",fill="gray30",alpha=0.25) +
   scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Frequency of Bears",
@@ -122,9 +122,10 @@ h
 - Constructed with `geom_histogram()`.
   - `bins=`: Number of bins to use.
   - `binwidth=`: Width of the bins.
-  - `boundary=`: Sets left-most boundary of first bin.
-  - `center=`: Sets center of first bin.
-  - `closed=`: Sets if bins are closed on `"right"` (*default*) or `"left"`.
+  - `breaks=`: Bin boundary values.
+  - `boundary=`: Left-most boundary of first bin.
+  - `center=`: Center of first bin.
+  - `closed=`: Are bins closed on `"right"` (*default*) or `"left"`.
 ]
 
 .pull-right[
@@ -171,17 +172,18 @@ class: inverse, center, middle
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(
     color="gray30", #BREAK2
-    fill="gray70", #BREAK3
-    binwidth=10, #BREAK4
-    boundary=0,closed="left" #BREAK5
+    fill="gray30", #BREAK3
+    alpha=0.25, #BREAK4
+    binwidth=10, #BREAK5
+    boundary=0,closed="left" #BREAK6
   ) +
   scale_y_continuous(
     name="Frequency of Bears",
-    expand=expansion(mult=c(0,0.05)) #BREAK6
+    expand=expansion(mult=c(0,0.05)) #BREAK7
   ) +
   scale_x_continuous(
     name="Weight (kg)",breaks=seq(0,250,25),
-    expand=expansion(mult=c(0,0)) #BREAK7
+    expand=expansion(mult=c(0,0)) #BREAK8
   ) +
   theme_bw()
 ```
@@ -204,7 +206,7 @@ class: inverse, center, middle
 
 ```{r hist3, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
-  geom_histogram(color="gray30",fill="gray70",
+  geom_histogram(color="gray30",fill="gray30",alpha=0.25,
                  binwidth=10,boundary=0,closed="left") +
   scale_y_continuous(name="Frequency of Bears",
                      expand=expansion(mult=c(0,0.05))) +
@@ -275,8 +277,8 @@ p <- ggplot(data=flbb,
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank()) + #BREAK
-  scale_color_manual(values=c("red3","blue3")) + #BREAK
-  scale_fill_manual(values=c("red3","blue3"))
+  scale_color_manual(values=c("red","blue")) + #BREAK
+  scale_fill_manual(values=c("red","blue"))
 ```
 ```{r include=FALSE}
 h2 <- p # for boxplots later
@@ -411,8 +413,8 @@ p <- ggplot(data=flbb, mapping=aes(
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) + #BREAK4
-  scale_fill_manual(values=c("red3","blue3")) + #BREAK5
+  scale_color_manual(values=c("red","blue")) + #BREAK4
+  scale_fill_manual(values=c("red","blue")) + #BREAK5
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -448,8 +450,8 @@ b <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
@@ -472,7 +474,7 @@ class: inverse, center, middle
 
 ```{r boxplot1, include=FALSE}
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
-  geom_boxplot(fill="gray70") +
+  geom_boxplot(fill="gray30",alpha=0.25) +
   scale_x_discrete(name="Sex") +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
@@ -504,8 +506,8 @@ p <- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) + #BREAK3
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) + #BREAK3
   theme_bw() +
   theme(legend.position="none") #BREAK4
 ```
@@ -538,8 +540,8 @@ v <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
@@ -552,8 +554,8 @@ d2 <- ggplot(data=flbb, mapping=aes(x=weight,color=sex,fill=sex)) +
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -602,7 +604,7 @@ p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   theme_bw() + #BREAK
-  geom_jitter(width=0.05,height=0,alpha=0.5)
+  geom_jitter(width=0.05,height=0,alpha=0.25)
 ```
 
 `r chunk_reveal("violin2",break_type="user",left_assign=leftAssign,split=splitPerc)`
