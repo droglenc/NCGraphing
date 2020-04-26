@@ -9,12 +9,11 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right"> Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning’s data was recorded in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv">StateOfWolf.csv</a>.</p>
-<p>Make sure to load <code>tidyverse</code>.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<p>These data are loaded below and reduced to many fewer variables (i.e., <code>select()</code> and only those respondents that answered all of those questions (<code>complete.cases()</code> within <code>filter()</code>) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year (i.e., the last <code>filter()</code>). Several variales were converted to groupings with the levels controlled to a proper order (i.e., <code>levels=</code> within <code>factor()</code> within <code>mutate()</code>).</p>
+<p><img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right"> Dr. Kevin Schanning used a mail survey designed to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning’s data was recorded in <a href="https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv">StateOfWolf.csv</a>.</p>
+<p>These data are loaded below and reduced to many fewer variables (use of <code>select()</code>) and only those respondents that answered all of those questions (use of <code>complete.cases()</code> within <code>filter()</code>) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, the data.frame was reduced to only those respondents that deer hunted the previous year (i.e., the last <code>filter()</code>). Several variables were converted to groupings with the levels controlled to a proper order (i.e., <code>levels=</code> within <code>factor()</code> within <code>mutate()</code>).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <pre class="r"><code>library(tidyverse)
 lvls_agree &lt;- c(&quot;Strongly Disagree&quot;,&quot;Disagree&quot;,&quot;Neutral&quot;,&quot;Agree&quot;,&quot;Strongly Agree&quot;)
+
 #!# Set to your own working directory and have just your filename below.
 sow &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv&quot;) %&gt;%
   select(state,hunt_deer,seen_wolf,part_deer,
@@ -39,6 +38,7 @@ sow &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/maste
 <li><code>ad_threaten_deer</code>: Respondent’s answer to the question “State your level of agreement with the statement ‘The state’s wolf population threatens deer hunting opportunities’.”</li>
 <li><code>ad_deer_hunting</code>: Respondent’s answer to the question “State your level of agreement with the statement ‘There is no way sportsmen can have good deer hunting if wolves live in the same area’.”</li>
 </ul>
+<p> </p>
 </div>
 <div id="no-good-deer-hunting-1" class="section level2">
 <h2>No Good Deer Hunting 1</h2>
@@ -61,19 +61,26 @@ sow &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/maste
 <div id="no-good-deer-hunting-2" class="section level2">
 <h2>No Good Deer Hunting 2</h2>
 <p>Recreate the plot in the “Region 1” section but using summarized data (<em>i.e., summarize the data first and then use that to construct the plot</em>).</p>
-<p><img src="CE_Wolves_files/figure-html/Wolves_NGDH2-1.png" width="60%" /></p>
 <p> </p>
 </div>
 <div id="state-and-no-good-deer-hunting-3" class="section level2">
 <h2>State and No Good Deer Hunting 3</h2>
 <p>Recreate the plot in “State and No Good Deer Hunting 2” using summarized data. [<em>Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that</em>.]</p>
-<p><img src="CE_Wolves_files/figure-html/Wolves_NGDHState3-1.png" width="75%" /></p>
 <p> </p>
 </div>
 <div id="state-and-no-good-deer-hunting-4" class="section level2">
 <h2>State and No Good Deer Hunting 4</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
-<p><img src="CE_Wolves_files/figure-html/Wolves_NGDHState4-1.png" width="75%" /></p>
+<p> </p>
+<div id="footnote" class="section level3">
+<h3>Footnote</h3>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These code can be copied as is, but make sure to set your working directory with <code>setwd()</code> and to put just the filename inside <code>read.csv()</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 

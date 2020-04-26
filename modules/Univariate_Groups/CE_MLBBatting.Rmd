@@ -27,34 +27,32 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ## Background
 <img src="../zimgs/BattingAverage.jpg" alt="Batting Average" class="img-right">
 
-[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are [in this file](https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv), will be explored in this exercise.[^getdata] Make sure to load `tidyverse`.
+[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are [in this file](https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv), will be explored in this exercise.[^getdata] 
+
+These data are loaded below and were restricted to only a few variables (use of `select()`), those players that had at least 200 at-bats in one league (use of `filter()`), and were in the top 100 with respect to batting "average" (use of `top_n()`). In addition, an age-group variable was created (use of `case_when()` within `mutate()`) and the `Lg` and `Age_grp` variables were converted to groupings (use of `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results="hide", message=FALSE, warning=FALSE}
 library(tidyverse)
-```
 
-These data are loaded below and were restricted to only a few variables (i.e., `select()`), those players that had at least 200 at-bats in one league (i.e., `filter()`), and were in the top 100 with respect to batting "average" (i.e., `top_n()`). In addition, an age-group variable was created (i.e., `case_when()` within `mutate()`) and the `Lg` and `Age_grp` variables were converted to groupings (i.e., `factor()` within `mutate()`).
-
-```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
 mlb <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/MLB19_Batting.csv",
                 stringsAsFactors=FALSE) %>%
   select(Name,Age,Lg,G,AB,H,HR,RBI,BB,BA) %>%
   filter(Lg!="MLB",AB>200) %>%  # >200 at-bats in one league
-  mutate(Lg=factor(Lg)) %>%
   top_n(n=100,wt=BA) %>%        # players in top 100 by batting average
   mutate(Age_grp=case_when(     # create age groups
     Age < 24 ~ "<24 yrs",
     Age < 30 ~ "24-30 yrs",
     TRUE ~ ">30 yrs"),
-    Age_grp=factor(Age_grp,levels=c("<24 yrs","24-30 yrs",">30 yrs")))
+    Age_grp=factor(Age_grp,levels=c("<24 yrs","24-30 yrs",">30 yrs")),
+    Lg=factor(Lg))
 str(mlb)
 ```
 
 Here we will only use the following variables:
 
 * `BA`: Batting average (as a proportion).
-* `Lg`: League competed in (`AL` or `NL`.
+* `Lg`: League competed in (`AL` or `NL`).
 * `Age_grp`: Age grouping (`<24 yrs`, `24-30 yrs`, `>30 yrs`).
 
 &nbsp;
@@ -165,4 +163,10 @@ lgage4 <- ggplot(data=sum2,mapping=aes(x=Lg,y=perc,fill=Age_grp)) +
 lgage4
 ```
 
+&nbsp;
+
+### Footnote
+
 [^getdata]: These data were obtained from https://www.sports-reference.com/ with the following steps: 1) Select "Baseball" in the list of sports in the gray box near the top of the page; 2) Select "Seasons" in the list of items in the gray box near the top of the page; 3) Select "Batting" after "All Major Leagues" under "League Index", 4) Select "2019" in the list of years; 5) Scroll down to "Player Standard Batting"; 6) hover over the "Share & more" item just after "Player Standard Batting" above the table of statistics and select "Get Table as a CSV"; and 7) copy CSV result to a text file.
+
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.

@@ -26,18 +26,14 @@ knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 
 ## Background
 <img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right">
-Dr. Kevin Schanning used a mail survey was designed in order to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: your experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv).
+Dr. Kevin Schanning used a mail survey designed to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv).
 
-Make sure to load `tidyverse`.
+These data are loaded below and reduced to many fewer variables (use of `select()`) and only those respondents that answered all of those questions (use of `complete.cases()` within `filter()`) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, the data.frame was reduced to only those respondents that deer hunted the previous year (i.e., the last `filter()`). Several variables were converted to groupings with the levels controlled to a proper order (i.e., `levels=` within `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results="hide", message=FALSE, warning=FALSE}
 library(tidyverse)
-```
-
-These data are loaded below and reduced to many fewer variables (i.e., `select()` and only those respondents that answered all of those questions (`complete.cases()` within `filter()`) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, I reduced the data.frame to only those respondents that deer hunted the previous year (i.e., the last `filter()`). Several variales were converted to groupings with the levels controlled to a proper order (i.e., `levels=` within `factor()` within `mutate()`).
-
-```{r echo=TRUE}
 lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
+
 #!# Set to your own working directory and have just your filename below.
 sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
   select(state,hunt_deer,seen_wolf,part_deer,
@@ -64,6 +60,7 @@ The specific questions with respect to the variable names are as follows:
 * `ad_threaten_deer`: Respondent's answer to the question "State your level of agreement with the statement 'The state's wolf population threatens deer hunting opportunities'."
 * `ad_deer_hunting`: Respondent's answer to the question "State your level of agreement with the statement 'There is no way sportsmen can have good deer hunting if wolves live in the same area'."
 
+&nbsp;
 
 ## No Good Deer Hunting 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
@@ -121,7 +118,7 @@ NGDHst2
 ## No Good Deer Hunting 2
 Recreate the plot in the "Region 1" section but using summarized data (*i.e., summarize the data first and then use that to construct the plot*).
 
-```{r Wolves_NGDH2}
+```{r Wolves_NGDH2, fig.show='hide'}
 sum1 <- sow %>%
   group_by(ad_deer_hunting) %>%
   summarize(freq=n()) %>%
@@ -142,7 +139,7 @@ ngdh2
 ## State and No Good Deer Hunting 3
 Recreate the plot in "State and No Good Deer Hunting 2" using summarized data. [*Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that*.]
 
-```{r Wolves_NGDHState3, fig.width=6.5, out.width="75%"}
+```{r Wolves_NGDHState3, fig.show='hide'}
 sum2 <- sow %>%
   group_by(state,ad_deer_hunting) %>%
   summarize(freq=n()) %>%
@@ -167,7 +164,7 @@ NGDHst3
 ## State and No Good Deer Hunting 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Wolves_NGDHState4, fig.width=6.5, out.width="75%"}
+```{r Wolves_NGDHState4, fig.show='hide'}
 NGDHst4 <- ggplot(data=sum2,mapping=aes(x=state,y=perc,fill=ad_deer_hunting)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="State") +
@@ -180,3 +177,8 @@ NGDHst4 <- ggplot(data=sum2,mapping=aes(x=state,y=perc,fill=ad_deer_hunting)) +
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
 NGDHst4
 ```
+
+&nbsp;
+
+### Footnote
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.
