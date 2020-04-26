@@ -28,7 +28,11 @@ XXX
 
 ## Preparation for Class
 
-* [What are Bar Graphs?](https://youtu.be/FYFYrjMLG7E)
+Develop (or recall) a *basic* understanding of bar charts/plots/graphs (use any of the resources below).
+
+
+* [Barplots](https://www.data-to-viz.com/graph/barplot.html){:target="_blank"} ... *very short read*
+* [What are Bar Graphs?](https://youtu.be/FYFYrjMLG7E){:target="_blank"} ... *very short simple video*.
 
 ----
 
@@ -50,6 +54,6 @@ XXX
 
 ## Resources
 
-* [ggplot2 barplots : Quick start guide - R software and data visualization](http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization)
-* [Cookbook for R](http://www.cookbook-r.com/Graphs/Bar_and_line_graphs_(ggplot2)/)
+* [ggplot2 barplots : Quick start guide - R software and data visualization](http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization){:target="_blank"}
+* [Cookbook for R](http://www.cookbook-r.com/Graphs/Bar_and_line_graphs_(ggplot2)/){:target="_blank"}
 * 
