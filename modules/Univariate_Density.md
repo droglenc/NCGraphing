@@ -31,18 +31,18 @@ XXX
 Develop (or recall) a *basic* understanding of each of the following graphs (use any of the resources under each graph).
 
 * **Histograms**
-  * [Histograms](https://www.data-to-viz.com/graph/histogram.html) ... *very short read.*
-  * [What's So Hard About Histograms?](https://tinlizzie.org/histograms/)
-  * [How Histograms Work](https://flowingdata.com/2017/06/07/how-histograms-work/)
-  * [What is a Histogram](https://www.youtube.com/watch?v=YLPDPglvePY)) ... *a short video*.
-  * [Histograms Explained](https://www.youtube.com/watch?v=sC7gjg9g3JU) ... *a longer video*.
+  * [Histograms](https://www.data-to-viz.com/graph/histogram.html){:target="_blank"} ... *very short read.*
+  * [What is a Histogram](https://www.youtube.com/watch?v=YLPDPglvePY){:target="_blank"} ... *a short video*.
+  * [How Histograms Work](https://flowingdata.com/2017/06/07/how-histograms-work/){:target="_blank"} ... *a short read*.
+  * [Histograms Explained](https://www.youtube.com/watch?v=sC7gjg9g3JU){:target="_blank"} ... *a longer video*.
+  * [What's So Hard About Histograms?](https://tinlizzie.org/histograms/){:target="_blank"} ... *a longer read with interactive plots*.
 * **Density plots**
-  * [Density Plots](https://www.data-to-viz.com/graph/density.html) ... *very short read*.
+  * [Density Plots](https://www.data-to-viz.com/graph/density.html){:target="_blank"} ... *very short read*.
 * **Boxplots**
-  * [Boxplots](https://www.data-to-viz.com/caveat/boxplot.html) ... *very short read up to "Adding jitter".*
-  * [Understanding Boxplots](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) ...*only through 'What is a Boxplot' example*).
+  * [Boxplots](https://www.data-to-viz.com/caveat/boxplot.html){:target="_blank"} ... *very short read (only read up to "Adding jitter").*
+  * [Understanding Boxplots](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51){:target="_blank"} ...*very short read (only read up to 'Probability Density Function')*.
 * **Violin Plots**
-  * [Violin Plots](https://www.data-to-viz.com/graph/violin.html) ... *very short read.*
+  * [Violin Plots](https://www.data-to-viz.com/graph/violin.html){:target="_blank"} ... *very short read.*
 
 ----
 
@@ -63,4 +63,4 @@ Develop (or recall) a *basic* understanding of each of the following graphs (use
 
 ## Resources
 
-* [How to Make a Histogram in R with ggplot](https://www.youtube.com/watch?v=uWsYFqXGnoQ): YouTube video by thatRnerd.
+* [How to Make a Histogram in R with ggplot](https://www.youtube.com/watch?v=uWsYFqXGnoQ){:target="_blank"}: YouTube video by thatRnerd.
