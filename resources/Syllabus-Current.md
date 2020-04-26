@@ -133,6 +133,8 @@ The second part of the rubric is based on your correctness in performing the wor
 
 To demonstrate your ability to communicate ideas with effective graphics created in R, I am asking you to create two graphs, from any data that you choose, as a final project. The graphs do not have to be overly complicated but they also should not be overly simple; you should strive to create a graph that elegantly demonstrates a "story" in the data. One of your two graphics should either be a composite of multiple graphics or a facet across groups. Your graphic should be formatted as with the homework exercises, but you should also include an introduction to the data and the question that you are exploring, a summary of what you observed in your graph, and a discussion of design choices that you made when making your graph (i.e., why did you choose that type of graph, those colors, that faceting, etc.).
 
+You can choose any data that you want for this project. For your convenience, I have compiled some [sources of reliable and interesting data here](data_250){:target="_blank"}.
+
 Items to be considered when grading your final project are:
 
 * How clearly defined the objective of or question explored by the graphic is.
