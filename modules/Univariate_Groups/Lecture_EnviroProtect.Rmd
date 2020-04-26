@@ -61,13 +61,12 @@ knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/Driving.
 # Background
 
 - Loaded data into `gss` data.frame.
-  - Converted codes to questions.
-  - Removed "missing data."
+  - Converted codes to words (use of `mapvalues()`).
+  - Removed "missing data" (use of `is.na()` within `filter()`).
 
 ```{r echo=FALSE}
 #!# Load and Prep Data
 ```
-
 ```{r load1}
 #!# Set to your own working directory and have just your filename below.
 gss <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GSS_Enviro_2010.csv",
@@ -88,32 +87,28 @@ gss <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GSS_En
 # Background
 
 - Loaded data into `gss` data.frame.
-  - Converted all variables to factors and ordered all levels.
+  - Converted all variables to factors and ordered all levels (use of `levels=` in `factor()` in `mutate()`).
+  - Selected only three variables, for simplicity (use of `select()`).
 
 ```{r echo=FALSE}
 #!# Controlling order of levels of factor variables (where order is important)
+#!# Narrowing only to those variables of interest for the slides
 ```
-
 ```{r load2}
 gss <- gss %>%
   mutate(SEX=factor(SEX),RACE=factor(RACE,levels=c("White","Black","Other")),
          DEGREE=factor(DEGREE,levels=c("Less than HS","High School","Junior College",
                                        "Bachelors","Graduate School")),
          GRNSOL = factor(GRNSOL,levels=c("Not At All","Not Very","Neither","Fairly","Very")),
-         GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very")))
+         GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very"))) %>%
+  select(SEX,DEGREE,GRNSOL)
 ```
 
 ---
 
 # Background
 
-```{r echo=FALSE}
-#!# Narrowing only to those variables of interest for the slides
-```
-
 ```{r}
-gss <- gss %>%
-  select(SEX,DEGREE,GRNSOL)
 head(gss)
 ```
 
@@ -123,13 +118,11 @@ head(gss)
   - **GRNSOL**: Response to "willingness to cut standard of living" question.
 
 --
-
 - Color palette used is:
 
 ```{r echo=FALSE}
 #!# Declaring a color palette so I don't have to type this every time
 ```
-
 ```{r}
 clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
 ```
@@ -146,9 +139,12 @@ clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
 ]
 
 .pull-right[
+```{r echo=FALSE}
+#!# Derek ... delete this in the script
+```
 ```{r bar_demo, echo=FALSE}
 b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
-  geom_bar(color="gray30",fill="gray70") +
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +
   scale_x_discrete(name="Willingness to Pay") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -170,10 +166,9 @@ class: inverse, center, middle
 ```{r echo=FALSE}
 #!# Bar Chart with Typical Modifications
 ```
-
 ```{r bar1, include=FALSE}
 b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
-  geom_bar(color="gray30",fill="gray70") +
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +
   scale_x_discrete(name="Willingness to Pay") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -204,7 +199,7 @@ b <- ggplot(data=gss, mapping=aes(
   x=SEX,
   fill=GRNSOL #BREAK2
   )) +
-  geom_bar(color="gray30") +
+  geom_bar(color="gray30",alpha=0.75) +
   scale_x_discrete(name="Sex of Respondent") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -227,7 +222,7 @@ b <- ggplot(data=gss, mapping=aes(
   x=DEGREE,
   fill=GRNSOL #BREAK2
   )) +
-  geom_bar(color="gray30") +
+  geom_bar(color="gray30",alpha=0.75) +
   scale_x_discrete(name="Highest Completed Degree") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -255,6 +250,7 @@ class: inverse, center, middle
 b <- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   geom_bar(
     color="gray30",
+    alpha=0.75,
     position="dodge" #BREAK2
   ) +
   scale_x_discrete(name="Highest Completed Degree") +
@@ -294,15 +290,14 @@ b + #BREAK
 
 class: inverse, center, middle
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 
 ---
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 - Data must be in "tidy format."
-  - Each row represents one data point.
-  - Each column represents one variable.
-
+  - Each **row** represents one **individual** (i.e., observation or unit).
+  - Each **column** represents one **variable**.
 
 ---
 
@@ -327,13 +322,13 @@ gss_sum1 <- gss %>%
 
 ---
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 - Constructed with `geom_bar()`, but using `stat="identity"`.
-  - Forces to use the actual value rather than "counting" as it had done previously.
+  - Forces to use actual values rather than "counting" as it does by default.
 
 ```{r bar1a, include=FALSE}
 b <- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) + #BREAK
-  geom_bar(stat="identity",color="gray30",fill="gray70") + #BREAK
+  geom_bar(stat="identity",color="gray30",fill="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Willingness to Pay") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -373,7 +368,7 @@ gss_sum2 <- gss %>%
 ```{r bar2a, include=FALSE}
 b <- ggplot(data=gss_sum2,
             mapping=aes(x=SEX,y=freq,fill=GRNSOL)) + #BREAK
-  geom_bar(stat="identity",color="gray30") + #BREAK
+  geom_bar(stat="identity",color="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Sex of Respondent") +
   scale_y_continuous(name="Frequency of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -387,13 +382,14 @@ b <- ggplot(data=gss_sum2,
 
 ---
 
-# Advantage to Summarized Data?
+# Advantage to Summaries?
 
 - Sometimes this is the only data you have.
 
---
+&nbsp;
 
-- You can easily turn the frequencies into percentages.
+--
+- You can easily turn frequencies into percentages.
 
 ```{r echo=FALSE}
 #!# Stacked Bar Chart of Percentages
@@ -422,7 +418,7 @@ class: inverse, center, middle
 ```{r bar2b, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=SEX,y=perc,fill=GRNSOL)) + #BREAK
-  geom_bar(stat="identity",color="gray30") + #BREAK
+  geom_bar(stat="identity",color="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Sex of Respondent") +
   scale_y_continuous(name="Percentage of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -455,7 +451,7 @@ gss_sum3 <- gss %>%
 ```{r bar3c, include=FALSE}
 b <- ggplot(data=gss_sum3,
             mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +
-  geom_bar(stat="identity",color="gray30") + #BREAK
+  geom_bar(stat="identity",color="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Highest Degree Completed") +
   scale_y_continuous(name="Percentage of Respondents",
                      expand=expansion(mult=c(0,0.05))) +
@@ -467,3 +463,11 @@ b <- ggplot(data=gss_sum3,
 ```
 
 `r chunk_reveal("bar3c",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will examine graphs from summary statistics, including measures of uncertainty.</font>

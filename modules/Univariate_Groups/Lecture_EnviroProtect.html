@@ -22,7 +22,6 @@ class: center, middle, inverse, title-slide
 
 
 
-
 # Background
 
 - The General Sociological Survey (GSS) gathers data on American society to monitor and explain trends in attitudes, behaviors, and attributes.
@@ -52,9 +51,8 @@ class: center, middle, inverse, title-slide
 # Background
 
 - Loaded data into `gss` data.frame.
-  - Converted codes to questions.
-  - Removed "missing data."
-
+  - Converted codes to words (use of `mapvalues()`).
+  - Removed "missing data" (use of `is.na()` within `filter()`).
 
 
 
@@ -78,8 +76,8 @@ gss &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GSS
 # Background
 
 - Loaded data into `gss` data.frame.
-  - Converted all variables to factors and ordered all levels.
-
+  - Converted all variables to factors and ordered all levels (use of `levels=` in `factor()` in `mutate()`).
+  - Selected only three variables, for simplicity (use of `select()`).
 
 
 
@@ -89,7 +87,8 @@ gss &lt;- gss %&gt;%
          DEGREE=factor(DEGREE,levels=c("Less than HS","High School","Junior College",
                                        "Bachelors","Graduate School")),
          GRNSOL = factor(GRNSOL,levels=c("Not At All","Not Very","Neither","Fairly","Very")),
-         GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very")))
+         GRNCON = factor(GRNCON,levels=c("Not at All","Not Much","Neither","Somewhat","Very"))) %&gt;%
+  select(SEX,DEGREE,GRNSOL)
 ```
 
 ---
@@ -97,11 +96,7 @@ gss &lt;- gss %&gt;%
 # Background
 
 
-
-
 ```r
-gss &lt;- gss %&gt;%
-  select(SEX,DEGREE,GRNSOL)
 head(gss)
 ```
 
@@ -121,9 +116,7 @@ head(gss)
   - **GRNSOL**: Response to "willingness to cut standard of living" question.
 
 --
-
 - Color palette used is:
-
 
 
 
@@ -143,6 +136,7 @@ clrs &lt;- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
 ]
 
 .pull-right[
+
 &lt;img src="Lecture_EnviroProtect_files/figure-html/bar_demo-1.png" width="100%" /&gt;
 ]
 
@@ -153,7 +147,6 @@ class: inverse, center, middle
 # Bar Chart with Typical Modifications
 
 ---
-
 
 
 
@@ -184,7 +177,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +  
-* geom_bar(color="gray30",fill="gray70")
+* geom_bar(color="gray30",fill="gray30",alpha=0.75)
  
 b
 ```
@@ -202,7 +195,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +  
-  geom_bar(color="gray30",fill="gray70") +  
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Willingness to Pay")
  
 b
@@ -221,7 +214,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +  
-  geom_bar(color="gray30",fill="gray70") +  
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +  
   scale_x_discrete(name="Willingness to Pay") +  
 * scale_y_continuous(name="Frequency of Respondents",
 *                    expand=expansion(mult=c(0,0.05)))
@@ -242,7 +235,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +  
-  geom_bar(color="gray30",fill="gray70") +  
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +  
   scale_x_discrete(name="Willingness to Pay") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -264,7 +257,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +  
-  geom_bar(color="gray30",fill="gray70") +  
+  geom_bar(color="gray30",fill="gray30",alpha=0.75) +  
   scale_x_discrete(name="Willingness to Pay") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -305,7 +298,7 @@ count: false
 b &lt;- ggplot(data=gss, mapping=aes(  
   x=SEX,  
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Sex of Respondent") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -332,7 +325,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
   x=SEX,  
 * fill=GRNSOL
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Sex of Respondent") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -359,7 +352,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
   x=SEX,  
   fill=GRNSOL  
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Sex of Respondent") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -392,7 +385,7 @@ count: false
 b &lt;- ggplot(data=gss, mapping=aes(  
   x=DEGREE,  
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Highest Completed Degree") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -419,7 +412,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
   x=DEGREE,  
 * fill=GRNSOL
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Highest Completed Degree") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -446,7 +439,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
   x=DEGREE,  
   fill=GRNSOL  
   )) +  
-  geom_bar(color="gray30") +  
+  geom_bar(color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Highest Completed Degree") +  
   scale_y_continuous(name="Frequency of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -485,6 +478,7 @@ count: false
 b &lt;- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +  
   geom_bar(  
     color="gray30",  
+    alpha=0.75,  
   ) +  
   scale_x_discrete(name="Highest Completed Degree") +  
   scale_y_continuous(name="Frequency of Respondents",  
@@ -512,6 +506,7 @@ count: false
 b &lt;- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +  
   geom_bar(  
     color="gray30",  
+    alpha=0.75,  
 *   position="dodge"
   ) +  
   scale_x_discrete(name="Highest Completed Degree") +  
@@ -579,15 +574,14 @@ b +
 
 class: inverse, center, middle
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 
 ---
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 - Data must be in "tidy format."
-  - Each row represents one data point.
-  - Each column represents one variable.
-
+  - Each **row** represents one **individual** (i.e., observation or unit).
+  - Each **column** represents one **variable**.
 
 ---
 
@@ -2052,9 +2046,9 @@ gss_sum1
 
 ---
 
-# Bar Charts from Summarized Data
+# Bar Charts from Summaries
 - Constructed with `geom_bar()`, but using `stat="identity"`.
-  - Forces to use the actual value rather than "counting" as it had done previously.
+  - Forces to use actual values rather than "counting" as it does by default.
 
 
 
@@ -2086,7 +2080,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) +  
-* geom_bar(stat="identity",color="gray30",fill="gray70")
+* geom_bar(stat="identity",color="gray30",fill="gray30",alpha=0.75)
  
 b
 ```
@@ -2104,7 +2098,7 @@ count: false
 
 ```r
 b &lt;- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) +  
-  geom_bar(stat="identity",color="gray30",fill="gray70") +  
+  geom_bar(stat="identity",color="gray30",fill="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Willingness to Pay") +
 * scale_y_continuous(name="Frequency of Respondents",
 *                    expand=expansion(mult=c(0,0.05))) +
@@ -3653,7 +3647,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum2,  
             mapping=aes(x=SEX,y=freq,fill=GRNSOL)) +  
-* geom_bar(stat="identity",color="gray30")
+* geom_bar(stat="identity",color="gray30",alpha=0.75)
  
 b
 ```
@@ -3672,7 +3666,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum2,  
             mapping=aes(x=SEX,y=freq,fill=GRNSOL)) +  
-  geom_bar(stat="identity",color="gray30") +  
+  geom_bar(stat="identity",color="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Sex of Respondent") +
 * scale_y_continuous(name="Frequency of Respondents",
 *                    expand=expansion(mult=c(0,0.05))) +
@@ -3690,13 +3684,14 @@ b
 
 ---
 
-# Advantage to Summarized Data?
+# Advantage to Summaries?
 
 - Sometimes this is the only data you have.
 
---
+&amp;nbsp;
 
-- You can easily turn the frequencies into percentages.
+--
+- You can easily turn frequencies into percentages.
 
 
 
@@ -3849,7 +3844,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum3,  
             mapping=aes(x=SEX,y=perc,fill=GRNSOL)) +  
-* geom_bar(stat="identity",color="gray30")
+* geom_bar(stat="identity",color="gray30",alpha=0.75)
  
 b
 ```
@@ -3868,7 +3863,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum3,  
             mapping=aes(x=SEX,y=perc,fill=GRNSOL)) +  
-  geom_bar(stat="identity",color="gray30") +  
+  geom_bar(stat="identity",color="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Sex of Respondent") +
 * scale_y_continuous(name="Percentage of Respondents",
 *                    expand=expansion(mult=c(0,0.05))) +
@@ -3941,7 +3936,7 @@ count: false
 ```r
 *b &lt;- ggplot(data=gss_sum3,
 *           mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +
-* geom_bar(stat="identity",color="gray30")
+* geom_bar(stat="identity",color="gray30",alpha=0.75)
  
 b
 ```
@@ -3960,7 +3955,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum3,  
             mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +  
-  geom_bar(stat="identity",color="gray30") +  
+  geom_bar(stat="identity",color="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Highest Degree Completed") +
 * scale_y_continuous(name="Percentage of Respondents",
 *                    expand=expansion(mult=c(0,0.05))) +
@@ -3986,7 +3981,7 @@ count: false
 ```r
 b &lt;- ggplot(data=gss_sum3,  
             mapping=aes(x=DEGREE,y=perc,fill=GRNSOL)) +  
-  geom_bar(stat="identity",color="gray30") +  
+  geom_bar(stat="identity",color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Highest Degree Completed") +  
   scale_y_continuous(name="Percentage of Respondents",  
                      expand=expansion(mult=c(0,0.05))) +  
@@ -4002,6 +3997,14 @@ b
 .column[.content[
 &lt;img src="Lecture_EnviroProtect_files/figure-html/bar3c_user_3_output-1.png" width="100%" /&gt;
 ]]
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will examine graphs from summary statistics, including measures of uncertainty.&lt;/font&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
