@@ -151,7 +151,7 @@ lgage3
 ## League and Age Group 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r MLB_LgAge4, fig.width=6.5, out.width="75%"}
+```{r MLB_LgAge4, fig.show='hide'}
 lgage4 <- ggplot(data=sum2,mapping=aes(x=Lg,y=perc,fill=Age_grp)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="League") +
