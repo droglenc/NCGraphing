@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 ----
 
 ## Background
-<img src="../zimgs/avocado.jpg" alt="Walleye" class="img-right">
+<img src="../zimgs/avocado.jpg" alt="Avocado" class="img-right">
 Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices)).[^getdata] Make sure to load `tidyverse`.
 
 ```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}

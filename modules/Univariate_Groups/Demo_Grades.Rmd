@@ -1,0 +1,85 @@
+---
+layout: page
+title: Demo - Avocados
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+fnm <- "Demo_Grades"
+dnm <- "modules/Univariate_Groups"
+modHTML(file.path(here::here(),dnm,fnm))
+```
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE, fig.width=6, fig.height=5)
+```
+
+----
+
+## Background
+<img src="../zimgs/ReportCard.jpg" alt="Grades" class="img-right">
+A mathematics professor at Northland College has tracked the letter grade assigned to each student that completed his classes for the last five years. The data can be found in [MTHGrades.csv](https://raw.githubusercontent.com/droglenc/NCData/master/MTHGrades.csv). Their data are loaded below[^loaddata] and, for this exercise, "minus" and "plus" grades are converted to "whole"grades (use of `mapvalues()`). Letter grades and year were then converted to groupings (i.e., `factor()` within `mutate()`).[^copycode]
+
+```{r echo=TRUE, results='hide'}
+#!# Set to your own working directory and have just your filename below.
+grds <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/MTHGrades.csv") %>%
+  filter(!Grade %in% c("W","I")) %>%
+  mutate(Grade2=plyr::mapvalues(Grade,from=c("A-","B+","B-","C+","C-","D+"),
+                                to=c("A","B","B","C","C","D")),
+         Grade2=factor(Grade2,levels=c("A","B","C","D","F")),
+         Grade=factor(Grade,levels=c("A","A-","B+","B","B-","C+","C","C-","D+","D","F")))
+
+str(grds)
+```
+
+&nbsp;
+
+## Example 1
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r grds1}
+g1 <- ggplot(data=grds,mapping=aes(x=Grade)) +
+  geom_bar(col="black",fill="orange",alpha=0.5) +
+  scale_x_discrete(name="Letter Grade") +
+  scale_y_continuous(name="Frequency of Students",expand=expansion(mult=c(0,0.02))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank())
+g1
+```
+
+&nbsp;
+
+## Example 2
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r grds2, warning=FALSE}
+smry <- grds %>%
+  group_by(AY,Grade2) %>%
+  summarize(freq=n()) %>%
+  mutate(perc=freq/sum(freq)*100) %>%
+  ungroup()
+
+g2 <- ggplot(data=smry,mapping=aes(x=AY,y=perc,fill=Grade2)) +
+  geom_bar(stat="identity",color="black",alpha=0.65) +
+  scale_x_continuous(name="Academic Year") +
+  scale_y_continuous(name="Frequency of Students",expand=expansion(mult=c(0,0))) +
+  scale_fill_manual(name="Grade",
+                    values=c("#4B0055","#00588B","#009B95","#53CC67","#FDE333")) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank(),
+        panel.grid.minor.x=element_blank())
+g2
+```
+
+### Footnote
+[^getdata]: This CSV file is freely available from Kaggle at [this page](). However, you must sign-in to download the data file. I did this and made it available from my website at the link above.
+
+[^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
+
+[^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.
