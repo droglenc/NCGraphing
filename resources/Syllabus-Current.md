@@ -94,7 +94,14 @@ I want to create an inclusive and accessible learning environment for those of y
 
 ## Grading
 <img class="img-right" src="../img/grading.jpg">
-An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below.
+An overall grade will be computed from your performance on daily exercises (75%) and a final project (25%), which are both described below. Your letter grade will be assigned from your overall percentage (rounded to a whole number) and the table below.
+
+<table class="tg">
+  <tr><td></td><td>A 92-100</td><td>A- 90-91</td></tr>
+  <tr><td>B+ 87-89</td><td>B  82-86</td><td>B- 80-81</td></tr>
+  <tr><td>C+ 77-79</td><td>C  70-76</td><td></td></tr>
+  <tr><td>D+ 67-69</td><td>D  60-66</td><td>F   0-59</td></tr>
+</table>
 
 ### Exercises
 Most course modules will have exercises that will be due by 3pm on the day of the *next* class period after the module is completed. For example, if we complete a module in Monday's class period then the exercises for that module will be due on Wednesday (two days later) by 3pm. We will likely complete a module during each class period, so **exercises will be due before nearly every class period.**
