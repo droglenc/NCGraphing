@@ -43,13 +43,13 @@ XXX
 * Introduction
 * [Syllabus & Expectations](../resources/Syllabus-Current){:target="_blank"}
 * [Final Project](../resources/Syllabus-Current.html#final-project){:target="_blank"}
-* R & RStudio
+* R and RStudio
 * Setting Up a Working Directory for the Class
 * Homework Formatting
   * [Rmarkdown Template](https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd) [*download and save to your computer*]
   * Demonstration ...  [Avocados Data](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv)
   * Uploading to [Exercises unit in Coursework page of mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz){:target="_blank"}
-* Reminder to prepare for [next class period](intro1){:target="_blank"}.
+* Reminder to prepare for [next class period](Intro1){:target="_blank"}.
 
 ## Exercise
 * Download one of the files below to your computer, load it into RStudio, and show the `str()`ucture and `head()` of the data.frame object. Compile your document and upload it to the "Course Organization" folder in the "Exercises" unit of [the "Coursework" page on mycourses.northland.edu](https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz){:target="_blank"}.
