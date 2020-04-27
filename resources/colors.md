@@ -23,7 +23,7 @@ You can choose a color by specifying its hexadecimal code (e.g., `color="#CC3300
 
 ----
 
-## Choosing Colors in a Palette
+## Choosing Colors as a Palette
 
 Two simple color-blind-friendly palettes are shown below, with R code to produce a vector with the colors (from [cookbook-r](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){:target="_blank"}).
 
