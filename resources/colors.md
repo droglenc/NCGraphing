@@ -13,13 +13,13 @@ You can choose one of the 657 named colors in R (e.g., `color="orange4"`).
 
 ![R Named Colors](../img/colorbynames.png)
 
-<font size="7">from <a href="https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/">Greg Gilbert Lab</a></font>
+<font size="2">from <a href="https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/">Greg Gilbert Lab</a></font>
 
 ### Hexadecimal Colors
 You can choose a color by specifying its hexadecimal code (e.g., `color="#CC3300"`).
 
 ![R Named Colors](../img/colorbyhex.png)
-<font size="7">from <a href="http://www.visibone.com/">visibone.com</a></font>
+<font size="2">from <a href="http://www.visibone.com/">visibone.com</a></font>
 
 ----
 
