@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=6, fig.height=5)
 
 ## Background
 <img src="../zimgs/ReportCard.jpg" alt="Grades" class="img-right">
-A mathematics professor at Northland College has tracked the letter grade assigned to each student that completed a particular course for each of the last five academic years. The data can be found in [MTHGrades.csv](https://raw.githubusercontent.com/droglenc/NCData/master/MTHGrades.csv). The data are loaded below,[^loaddata] and "W" (withdraw) and "I" (incomplete) grades were removed (use of `filter()`). The letter grades were ordered appropriately (using `levels=` in `factor()` in `mutate()`) and a second grade variable was created where "minus" and "plus" grades were converted to "whole"grades (use of `mapvalues()` in `mutate()`).[^copycode]
+A mathematics professor at Northland College has tracked the letter grade assigned to each student that completed a particular course for each of the last five academic years. The data can be found in [MTHGrades.csv](https://raw.githubusercontent.com/droglenc/NCData/master/MTHGrades.csv). The data are loaded below,[^loaddata] and "W" (withdraw) and "I" (incomplete) grades were removed (use of `filter()`). The letter grades were ordered appropriately (using `levels=` in `factor()` in `mutate()`) and a second grade variable was created where "minus" and "plus" grades were converted to "whole" grades (use of `mapvalues()` in `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
