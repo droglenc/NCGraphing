@@ -41,14 +41,6 @@ XXX
 
 ## Resources
 
-* Colors in R
-  * [Named Colors in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf): A list (with sample) of all named colors available in R.
-  * [Paletteer Gallery](https://github.com/PMassicotte/paletteer_gallery): Gallery of palettes built into R and R packages.
-* Palette Generators
-  * [HCL Wizard](http://hclwizard.org/): Software to develop palettes and emulate what a graph would look like to multiple types of color deficiency (i.e,. color-blindness).
-  * [Color Pallette Generator](https://mycolor.space/?hex=%23C25EB0&sub=1): Generates a color palette from one user-provided color.
-  * [Color Thief](https://lokeshdhakar.com/projects/color-thief/): Software to generate a palette from an image.
-  * [Color Calculator](https://www.sessions.edu/color-calculator/): Generate color scheme by choosing base colors and a "harmony."
-* Typography
-  * [Butterick's Practical Typography](https://practicaltypography.com/): The classic book.
+* [Colors in R](../resources/colors): Resources for choosing colors in R.
+* [Butterick's Practical Typography](https://practicaltypography.com/): The classic book.
   

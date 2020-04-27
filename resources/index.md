@@ -16,6 +16,7 @@ title: Resources
 
 ## General Resources
 * [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html): Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
+* [Color Resources](colors): Resources for choosing colors in R.
 * Books
   * [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/) by Claus Wilke.
   * [Data Visualization: A Practical Introduction](https://socviz.co/index.html) by Kieran Healy
