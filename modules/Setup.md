@@ -38,21 +38,24 @@ XXX
 
 ----
 
-## Discussion Points
+## Demonstration
 
 <ul>
-  <li>Introduction<button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/?utm_source=recordingReadyNotification&utm_medium=email#/s/421248d5bdd50902215c6d48ac212806ad75026153315c183ae93e340233e1a8" target="_blank">VIDEO</a></button></li>
-  <li><a href="../resources/Syllabus-Current" target="_blank">Syllabus & Expectations</a></li>
-  <li>R and RStudio</li>
-  <li>Setting Up a Working Directory for the Class</li>
-  <li>Homework Formatting</li>
-    <ul>
-      <li><a href="https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd" target="_blank">Rmarkdown Template</a> ... download and save to your computer</li>
-      <li><a href="https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv" target="_blank">Avocados Data</a> ... download and save to your computer</li>
-      <li><a href="https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz" target="_blank">Uploading to Exercises unit in Coursework page of mycourses.northland.edu</a></li>
-    </ul>
-  <li><a href="Intro1.html" target="_blank">Reminder to prepare for [next class period]</a></li>
-</uL
+  <li>Lecture/Demonstration <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/?utm_source=recordingReadyNotification&utm_medium=email#/s/421248d5bdd50902215c6d48ac212806ad75026153315c183ae93e340233e1a8" target="_blank">VIDEO</a></button></li>
+  <ul>
+    <li>Introduction</li>
+    <li><a href="../resources/Syllabus-Current" target="_blank">Syllabus & Expectations</a></li>
+    <li>R and RStudio</li>
+    <li>Setting Up a Working Directory for the Class</li>
+    <li>Homework Formatting</li>
+      <ul>
+        <li><a href="https://raw.githubusercontent.com/droglenc/NCGraphing/gh-pages/modules/Setup/TEMPLATE.Rmd" target="_blank">Rmarkdown Template</a> ... download and save to your computer</li>
+        <li><a href="https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv" target="_blank">Avocados Data</a> ... download and save to your computer</li>
+        <li><a href="https://mycourses.northland.edu/ICS/Academics/MTH/MTH__250/2019_30-MTH__250-01/Coursework.jnz" target="_blank">Uploading to Exercises unit in Coursework page of mycourses.northland.edu</a></li>
+      </ul>
+    <li><a href="Intro1.html" target="_blank">Reminder to prepare for [next class period]</a></li>
+  </ul>
+</ul>
 
 
 ## Exercise
