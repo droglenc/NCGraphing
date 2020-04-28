@@ -16,6 +16,5 @@ title: Learning Modules
 1. [Themes (Colors and Typography)](Themes)
 1. [Facets & Compositions](Facets)
 1. Case Studies
-1. Case Studies
 1. Presentations
 
