@@ -1,0 +1,364 @@
+---
+title: "Means and Uncertainty"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: zlibs
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r purler, eval=FALSE, echo=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_GreatLakesIce"
+FSA::purl2(file.path(here::here(),"modules/Means",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork",
+                       "include_graphics","options","splitPerc","leftAssign","cache"))
+```
+
+```{r setup, include = FALSE}
+source("../zzzflipbook_settings.R")
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
+library(patchwork)
+```
+
+# Background
+
+- The Great Lakes Environmental Research Laboratory (GLERL) of the National Oceanic and Atmospheric Administration (NOAA) uses satellites to annually monitor ice coverage on the Great Lakes.
+  - Maximum ice coverage during was recorded for all five lakes from 1972 to present.
+  - Data originally accessed from [the GLERL website](https://www.glerl.noaa.gov/data/ice/#historical) and are [in this file](https://raw.githubusercontent.com/droglenc/NCData/master/GreatLakesIce.csv").
+
+.center[
+```{r, echo=FALSE, out.width="400px"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/GreatLakesIce.jpg")
+```
+]
+
+---
+
+# Background
+
+- Loaded data into `gli` data.frame.
+  - Ordered lakes from west to east (use of `levels=` in `factor()`).
+  - Created a `decade` variable.
+
+```{r echo=FALSE}
+#!# Load and Prep Data
+#!# Ordered lakes, created a decade variable
+```
+```{r load1}
+#!# Set to your own working directory and have just your filename below.
+gli <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GreatLakesIce.csv") %>%
+  mutate(lake=factor(lake,levels=c("Superior","Michigan","Huron","Erie","Ontario")),
+         decade=floor(year/10)*10,
+         decade=factor(paste0(decade,"s"),levels=c("1970s","1980s","1990s","2000s","2010s")))
+```
+
+---
+
+# Background
+
+```{r}
+head(gli)
+```
+
+- Variables used are:
+  - **lake**: Great lake.
+  - **year**: Year of ice season.
+  - **max.cover**: Maximum percent of lake covered with ice.
+  - **decade**: Decade of ice season.
+
+--
+- Color palette used is:
+
+```{r echo=FALSE}
+#!# Declaring a color palette so I don't have to type this every time
+```
+```{r}
+clrs <- c("Superior"="#000000","Michigan"="#E69F00","Huron"="#56B4E9",
+          "Erie"="#009E73","Ontario"="#CC79A7")
+```
+
+---
+
+class: inverse, center, middle
+
+# Exploratory Data Visualizations
+
+---
+
+```{r echo=FALSE}
+#!# EDV ... Line Chart
+```
+```{r edv1, include=FALSE}
+p <- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +
+  geom_line(size=0.5,alpha=0.75) +
+  scale_x_continuous(name="Annual Ice Season") +
+  scale_y_continuous(name="Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+  scale_color_manual(name="Lake",values=clrs) +
+  theme_bw()
+```
+
+`r chunk_reveal("edv1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# A Peek into a Future Module
+
+---
+
+```{r echo=FALSE,fig.width=5,fig.height=3.5,out.width="100%"}
+#!# EDV ... line plot with faceting (peek into future)
+p +
+  facet_wrap(vars(lake)) +
+  theme(legend.position="none")
+```
+
+---
+```{r echo=FALSE}
+#!# EDV ... violin plot
+```
+```{r edv2, include=FALSE}
+v <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
+  geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +
+  geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+  theme_bw()
+```
+
+`r chunk_reveal("edv2",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots
+
+### Create Summary Data.frame
+
+---
+
+```{r echo=FALSE}
+#!# Compute means by lake
+```
+```{r sum1, include=FALSE}
+sum1 <- gli %>%
+  group_by(lake) %>%
+  summarize(n=n(),
+            mean=mean(max.cover,na.rm=TRUE))
+```
+
+`r chunk_reveal("sum1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots
+
+### Plot Summarized Means
+
+---
+
+```{r echo=FALSE}
+#!# Plot means by lake ... bars
+```
+```{r mnsbar1, include=FALSE}
+mb <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.5)
+```
+
+`r chunk_reveal("mnsbar1",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+```{r echo=FALSE}
+#!# Plot means by lake ... points
+```
+```{r mnspoint1, include=FALSE}
+mp <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+  geom_point(color="gray30") + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.75)
+```
+
+`r chunk_reveal("mnspoint1",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Create Summary Data.frame
+
+---
+
+## Uncertainty
+
+- Primarily related to variability.
+
+&nbsp;
+
+--
+- Standard deviation (SD) measures variability of individuals.
+
+&nbsp;
+
+--
+- Standard error (SE) measures variability of a statistic (from sample to sample).
+  - SE=SD/sqrt(n)
+
+&nbsp;
+
+--
+- Margin-of-error (ME) measure uncertainty in our inference for (estimate of) an unknown parameter.
+  - ME = t<sup>\*</sup>SE, where t<sup>\*</sup> is from a t distribution with n-1 df
+
+---
+
+```{r echo=FALSE}
+#!# Compute means, SDs, SEs, and MEs by lake
+```
+```{r sum2, include=FALSE}
+sum2 <- gli %>%
+  group_by(lake) %>%
+  summarize(n=n(),
+            mean=mean(max.cover,na.rm=TRUE),
+            sd=sd(max.cover,na.rm=TRUE)) %>% #BREAK
+  mutate(se=sd/sqrt(n),
+         me=qt(0.975,df=n-1)*se)
+```
+
+`r chunk_reveal("sum2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+## Uncertainty
+
+- Generally visualized as intervals around a point estimate (e.g., a mean).
+
+&nbsp;
+
+- mean &pm; SD
+  - Expresses variability of individuals around the mean.
+
+&nbsp;
+
+--
+- mean &pm; SE
+  - Shows variability of a statistic (from sample to sample).
+
+&nbsp;
+
+--
+- mean &pm; ME
+  - Show an interval for which we are 95% confident that the unknown parameter will fall.
+
+---
+
+```{r echo=FALSE}
+#!# Compute SD, SE, and confidence intervals by lake
+```
+```{r sum3, include=FALSE}
+sum3 <- sum2 %>% #BREAK
+  mutate(lsd=mean-sd,usd=mean+sd,
+         lse=mean-se,use=mean+se,
+         lci=mean-me,uci=mean+me)
+```
+
+`r chunk_reveal("sum3",break_type="user",left_assign=leftAssign,split=45)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Plot Summarized Means with Intervals
+
+---
+
+## Intervals added with `geom_errorbar()`
+
+- New `aes()`thetics.
+  - `ymin=`: the lower value for the error bar.
+  - `ymax=`: the upper value for the error bar.
+
+&nbsp;
+
+--
+- Control width of end caps on error bar with `width=`.
+
+---
+
+```{r echo=FALSE}
+#!# Plot means and confidence intervals by lake ... bars
+```
+```{r mnsbar2, include=FALSE}
+mbi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) + #BREAK
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_errorbar(aes(ymin=lci,ymax=uci),width=0.15)
+```
+
+`r chunk_reveal("mnsbar2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r echo=FALSE}
+#!# Plot means and SD intervals by lake ... points
+```
+```{r mnspoint2, include=FALSE}
+mpi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
+  geom_point(color="gray30") + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),hjust=-0.25)
+```
+
+`r chunk_reveal("mnspoint2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+
+
+
+
+
+
+
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">XXX.</font>

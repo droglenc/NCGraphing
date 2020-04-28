@@ -8,9 +8,12 @@ figh <- figw*(3/4)
 knitr::opts_chunk$set(fig.width=figw,fig.height=figh,out.width="100%",fig.retina=3,
                       message=FALSE,warning=FALSE,comment="",cache=FALSE)
 
+## Create xaringan theme ... need zlibs directory if it does not exist
+dir.create("zlibs",showWarnings=FALSE)
 library(xaringanthemer)
 mono_accent(
   base_color = "#162135",
+  link_color="#ff0000",
   header_font_google = google_font("Montserrat"),
   text_font_google   = google_font("Robot", "200", "200i"),
   code_font_google   = google_font("Inconsolata"),
