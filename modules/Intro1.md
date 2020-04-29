@@ -38,7 +38,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro1/Lecture_Intro_ggplot2_DHO.R">Script</a></button></li>
+  <li><a href="Intro1/Lecture_Intro_ggplot2.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro1/Lecture_Intro_ggplot2_DHO.R">Script</a></button>  <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/7a9a0554a78681d707eb61a01650f90019a8e11f665420594e5eddbaffdd7ecf" target="_blank">VIDEO</a></button></li>
   <li><a href="Intro1/CE_Geoms.html">Exercise - Geoms</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro1/CE_Geoms.R">Key</a></button></li>
 </ul>
 
