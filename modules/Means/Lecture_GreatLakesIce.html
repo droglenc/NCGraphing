@@ -839,7 +839,7 @@ class: inverse, center, middle
 
 ## Uncertainty
 
-- Uncertainty is primarily related to variability.
+- Primarily related to variability.
 
 &amp;nbsp;
 
@@ -856,7 +856,7 @@ class: inverse, center, middle
 
 --
 - Margin-of-error (ME) measure uncertainty in our inference for (estimate of) an unknown parameter.
-  - me = t&lt;sup&gt;\*&lt;/sup&gt;SE, where t&lt;sup&gt;\*&lt;/sup&gt; is from a t distribution with n-1 df
+  - ME = t&lt;sup&gt;\*&lt;/sup&gt;SE, where t&lt;sup&gt;\*&lt;/sup&gt; is from a t distribution with n-1 df
 
 ---
 
@@ -908,7 +908,7 @@ sum2 &lt;- gli %&gt;%
             mean=mean(max.cover,na.rm=TRUE),  
             sd=sd(max.cover,na.rm=TRUE)) %&gt;%  
 * mutate(se=sd/sqrt(n),
-*        ci=qt(0.975,df=n-1)*se)
+*        me=qt(0.975,df=n-1)*se)
  
 sum2
 ```
@@ -917,7 +917,7 @@ sum2
 
 ```
 # A tibble: 5 x 6
-  lake         n  mean    sd    se    ci
+  lake         n  mean    sd    se    me
   &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1 Superior    47  62.3  30.3  4.42  8.90
 2 Michigan    47  40.5  21.7  3.16  6.36
@@ -929,7 +929,11 @@ sum2
 
 ---
 
-## Intervals
+## Uncertainty
+
+- Generally visualized as intervals around a point estimate (e.g., a mean).
+
+&amp;nbsp;
 
 - mean &amp;pm; SD
   - Expresses variability of individuals around the mean.
@@ -968,7 +972,7 @@ sum3
 
 ```
 # A tibble: 5 x 6
-  lake         n  mean    sd    se    ci
+  lake         n  mean    sd    se    me
   &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1 Superior    47  62.3  30.3  4.42  8.90
 2 Michigan    47  40.5  21.7  3.16  6.36
@@ -989,7 +993,7 @@ count: false
 sum3 &lt;- sum2 %&gt;%  
 * mutate(lsd=mean-sd,usd=mean+sd,
 *        lse=mean-se,use=mean+se,
-*        lci=mean-ci,uci=mean+ci)
+*        lci=mean-me,uci=mean+me)
  
 sum3
 ```
@@ -998,7 +1002,7 @@ sum3
 
 ```
 # A tibble: 5 x 12
-  lake         n  mean    sd    se    ci   lsd   usd   lse   use   lci   uci
+  lake         n  mean    sd    se    me   lsd   usd   lse   use   lci   uci
   &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1 Superior    47  62.3  30.3  4.42  8.90  32.0  92.6  57.9  66.7  53.4  71.2
 2 Michigan    47  40.5  21.7  3.16  6.36  18.8  62.1  37.3  43.6  34.1  46.8
@@ -1192,9 +1196,329 @@ mpi
 
 ---
 
+class: inverse, center, middle
+
+# Show Means/Intervals with Data
+
+---
 
 
 
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mvi &lt;- ggplot() +
+* geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),
+*             color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +
+* geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
+*             width=0.07,size=0.5,color="black",alpha=0.25)
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot() +  
+  geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),  
+              color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +  
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
+              width=0.07,size=0.5,color="black",alpha=0.25) +  
+* geom_point(data=sum3,aes(x=lake,y=mean),
+*            size=0.75,color="lightblue",fill="lightblue")
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot() +  
+  geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),  
+              color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +  
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
+              width=0.07,size=0.5,color="black",alpha=0.25) +  
+  geom_point(data=sum3,aes(x=lake,y=mean),  
+             size=0.75,color="lightblue",fill="lightblue") +  
+* geom_errorbar(data=sum3,aes(x=lake,ymin=lci,ymax=uci),
+*               color="lightblue",width=0.1)
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot() +  
+  geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),  
+              color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +  
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
+              width=0.07,size=0.5,color="black",alpha=0.25) +  
+  geom_point(data=sum3,aes(x=lake,y=mean),  
+             size=0.75,color="lightblue",fill="lightblue") +  
+  geom_errorbar(data=sum3,aes(x=lake,ymin=lci,ymax=uci),  
+                color="lightblue",width=0.1) +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+* theme_bw()
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Another Way: Using stat_summary()
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&amp;nbsp;
+
+--
+- Requires functions to compute the summary in `fun=`, `fun.min=`, or `fun.max=` (for computing singular values for the "center", minimum, and maximum values).
+  - For example, `fun=mean`.
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&amp;nbsp;
+
+- Requires function to compute a data.frame with "center", minimum, and maximum values in `fun.data=`.
+  - `mean_se`: computes mean ("center") and plus/minus a SE.
+  - `mean_sdl`: computes mean and plus/minus two SDs.
+  - `mean_cl_normal`: computes mean and confidence interval from normal distribution theory.
+  - `mean_cl_boot`: computes mean and confidence interval from bootstrapping.
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&amp;nbsp;
+
+- Requires a `geom=` for which to present the results.
+  - Can then include options for the particular `geom_`.
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mbi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
+ 
+mbi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mbi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+* stat_summary(fun=mean,geom="bar",
+*              fill="gray30",alpha=0.75)
+ 
+mbi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mbi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(fun=mean,geom="bar",  
+               fill="gray30",alpha=0.75) +  
+* stat_summary(fun.data=mean_cl_normal,
+*              geom="errorbar",width=0.25)
+ 
+mbi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mbi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(fun=mean,geom="bar",  
+               fill="gray30",alpha=0.75) +  
+  stat_summary(fun.data=mean_cl_normal,  
+               geom="errorbar",width=0.25) +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mbi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
+ 
+mpi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspoint3_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+* stat_summary(fun=mean,geom="point",
+*              fill="gray30",alpha=0.75)
+ 
+mpi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspoint3_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(fun=mean,geom="point",  
+               fill="gray30",alpha=0.75) +  
+* stat_summary(fun.data=mean_cl_normal,
+*              geom="errorbar",width=0.25)
+ 
+mpi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspoint3_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(fun=mean,geom="point",  
+               fill="gray30",alpha=0.75) +  
+  stat_summary(fun.data=mean_cl_normal,  
+               geom="errorbar",width=0.25) +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mpi2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspoint3_user_4_output-1.png" width="100%" /&gt;
+]]
 
 
 

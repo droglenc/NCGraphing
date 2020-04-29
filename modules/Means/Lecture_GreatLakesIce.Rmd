@@ -347,9 +347,109 @@ mpi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
 
 ---
 
+class: inverse, center, middle
 
+# Show Means/Intervals with Data
 
+---
 
+```{r echo=FALSE}
+#!# EDV ... violin plot
+```
+```{r mnvio, include=FALSE}
+mvi <- ggplot() +
+  geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),
+              color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
+              width=0.07,size=0.5,color="black",alpha=0.25) + #BREAK
+  geom_point(data=sum3,aes(x=lake,y=mean),
+             size=0.75,color="lightblue",fill="lightblue") + #BREAK
+  geom_errorbar(data=sum3,aes(x=lake,ymin=lci,ymax=uci),
+                color="lightblue",width=0.1) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+  theme_bw()
+```
+
+`r chunk_reveal("mnvio",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Another Way: Using stat_summary()
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&nbsp;
+
+--
+- Requires functions to compute the summary in `fun=`, `fun.min=`, or `fun.max=` (for computing singular values for the "center", minimum, and maximum values).
+  - For example, `fun=mean`.
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&nbsp;
+
+- Requires function to compute a data.frame with "center", minimum, and maximum values in `fun.data=`.
+  - `mean_se`: computes mean ("center") and plus/minus a SE.
+  - `mean_sdl`: computes mean and plus/minus two SDs.
+  - `mean_cl_normal`: computes mean and confidence interval from normal distribution theory.
+  - `mean_cl_boot`: computes mean and confidence interval from bootstrapping.
+
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of the data and applies that to a `geom_`.
+
+&nbsp;
+
+- Requires a `geom=` for which to present the results.
+  - Can then include options for the particular `geom_`.
+
+---
+
+```{r mnsbar3, include=FALSE}
+mbi2 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="bar",
+               fill="gray30",alpha=0.75) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,
+               geom="errorbar",width=0.25) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank())
+```
+
+`r chunk_reveal("mnsbar3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r mnspoint3, include=FALSE}
+mpi2 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="point",
+               fill="gray30",alpha=0.75) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,
+               geom="errorbar",width=0.25) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank())
+```
+
+`r chunk_reveal("mnspoint3",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 
 
