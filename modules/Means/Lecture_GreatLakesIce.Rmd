@@ -241,7 +241,7 @@ class: inverse, center, middle
 
 --
 - mean &pm; SD
-  - Expresses variability of individuals around the mean.
+  - Shows variability of individuals around the mean.
 
 &nbsp;
 
@@ -253,7 +253,7 @@ class: inverse, center, middle
 
 --
 - mean &pm; ME
-  - Show an interval for which we are 95% confident that the unknown parameter will fall.
+  - Shows an interval for which we are 95% confident that the unknown parameter will fall.
 
 ---
 
@@ -358,6 +358,33 @@ mpi2 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
 
 class: inverse, center, middle
 
+# Show Means/Intervals with Data
+
+---
+
+```{r echo=FALSE}
+#!# EDV ... violin plot
+```
+```{r mnvio, include=FALSE}
+mvi <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
+  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) + #BREAK
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
+              width=0.07,size=0.5,color="black",alpha=0.25) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",
+               size=1,fatten=1) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=0.01)) +
+  theme_bw()
+```
+
+`r chunk_reveal("mnvio",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+
+---
+
+class: inverse, center, middle
+
 # Means Plots with Multiple Groupings
 
 ---
@@ -379,12 +406,153 @@ mpi3 <- ggplot(data=gli,mapping=aes(
 
 `r chunk_reveal("mnspts4",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
 
+---
+
+class: inverse, center, middle
+
+# Means Plots
+### From Summarized Results
+
+---
+
+```{r echo=FALSE}
+#!# Compute means by lake
+```
+```{r sum1, include=FALSE}
+sum1 <- gli %>%
+  group_by(lake) %>%
+  summarize(n=n(),
+            mean=mean(max.cover,na.rm=TRUE))
+```
+
+`r chunk_reveal("sum1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots
+
+### Plot Summarized Means
+
+---
+
+```{r echo=FALSE}
+#!# Plot means by lake ... bars from summarized data
+```
+```{r mnsbar3, include=FALSE}
+mb3 <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.5)
+```
+
+`r chunk_reveal("mnsbar3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r echo=FALSE}
+#!# Plot means by lake ... points from summarized data
+```
+```{r mnspts5, include=FALSE}
+mp5 <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+  geom_point(color="gray30") + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.75)
+```
+
+`r chunk_reveal("mnspts5",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Create Summary Data.frame
+
+---
+
+```{r echo=FALSE}
+#!# Compute means, SDs, SEs, and MEs by lake
+```
+```{r sum2, include=FALSE}
+sum2 <- gli %>%
+  group_by(lake) %>%
+  summarize(n=n(),
+            mean=mean(max.cover,na.rm=TRUE),
+            sd=sd(max.cover,na.rm=TRUE)) %>% #BREAK
+  mutate(se=sd/sqrt(n),
+         me=qt(0.975,df=n-1)*se)
+```
+
+`r chunk_reveal("sum2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 
+---
 
+```{r echo=FALSE}
+#!# Compute SD, SE, and confidence intervals by lake
+```
+```{r sum3, include=FALSE}
+sum3 <- sum2 %>% #BREAK
+  mutate(lsd=mean-sd,usd=mean+sd,
+         lse=mean-se,use=mean+se,
+         lci=mean-me,uci=mean+me)
+```
 
+`r chunk_reveal("sum3",break_type="user",left_assign=leftAssign,split=45)`
 
+---
 
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Plot Summarized Means with Intervals
+
+---
+
+```{r echo=FALSE}
+#!# Plot means and confidence intervals by lake ... bars
+```
+```{r mnsbar6, include=FALSE}
+mbi6 <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) + #BREAK
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_errorbar(aes(ymin=lci,ymax=uci),width=0.15)
+```
+
+`r chunk_reveal("mnsbar6",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r echo=FALSE}
+#!# Plot means and SD intervals by lake ... points
+```
+```{r mnspts6, include=FALSE}
+mpi6 <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
+  geom_point(color="gray30") + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15) + #BREAK
+  geom_text(aes(label=formatC(mean,format="f",digits=1)),hjust=-0.25)
+```
+
+`r chunk_reveal("mnspts6",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 

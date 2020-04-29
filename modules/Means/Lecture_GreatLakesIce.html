@@ -544,7 +544,7 @@ class: inverse, center, middle
 
 --
 - mean &amp;pm; SD
-  - Expresses variability of individuals around the mean.
+  - Shows variability of individuals around the mean.
 
 &amp;nbsp;
 
@@ -556,7 +556,7 @@ class: inverse, center, middle
 
 --
 - mean &amp;pm; ME
-  - Show an interval for which we are 95% confident that the unknown parameter will fall.
+  - Shows an interval for which we are 95% confident that the unknown parameter will fall.
 
 ---
 
@@ -839,6 +839,104 @@ mpi2
 
 class: inverse, center, middle
 
+# Show Means/Intervals with Data
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
+* geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE)
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+* geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
+*             width=0.07,size=0.5,color="black",alpha=0.25)
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
+              width=0.07,size=0.5,color="black",alpha=0.25) +  
+* stat_summary(fun.data=mean_cl_normal,geom="pointrange",
+*              size=1,fatten=1)
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
+              width=0.07,size=0.5,color="black",alpha=0.25) +  
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",  
+               size=1,fatten=1) +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=0.01)) +
+* theme_bw()
+ 
+mvi
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_4_output-1.png" width="100%" /&gt;
+]]
+
+
+---
+
+class: inverse, center, middle
+
 # Means Plots with Multiple Groupings
 
 ---
@@ -926,12 +1024,792 @@ mpi3
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts4_non_seq_3_output-1.png" width="100%" /&gt;
 ]]
 
+---
+
+class: inverse, center, middle
+
+# Means Plots
+### From Summarized Results
+
+---
 
 
 
 
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*sum1 &lt;- gli
+ 
+sum1
+```
+]]
+.column[.content[
+
+```
+        lake year   date max.cover decade
+1   Superior 1973 27-Feb     69.80  1970s
+2   Superior 1974 27-Feb     73.80  1970s
+3   Superior 1975 13-Feb     64.90  1970s
+4   Superior 1976 16-Mar     49.90  1970s
+5   Superior 1977 16-Feb     96.00  1970s
+6   Superior 1978  1-Mar     92.50  1970s
+7   Superior 1979 25-Feb     97.10  1970s
+8   Superior 1980  5-Mar     77.20  1980s
+9   Superior 1981 11-Feb     84.70  1980s
+10  Superior 1982  9-Mar     85.30  1980s
+11  Superior 1983  7-Feb     20.20  1980s
+12  Superior 1984  7-Mar     88.20  1980s
+13  Superior 1985  2-Mar     81.90  1980s
+14  Superior 1986 22-Feb     90.70  1980s
+15  Superior 1987 25-Jan     14.50  1980s
+16  Superior 1988 15-Feb     67.30  1980s
+17  Superior 1989  8-Mar     82.30  1980s
+18  Superior 1990  5-Mar     78.10  1990s
+19  Superior 1991  4-Mar     89.60  1990s
+20  Superior 1992 23-Mar     73.30  1990s
+21  Superior 1993  1-Mar     77.20  1990s
+22  Superior 1994  9-Feb     96.10  1990s
+23  Superior 1995  3-Mar     28.80  1990s
+24  Superior 1996  8-Mar    100.00  1990s
+25  Superior 1997 23-Mar     89.00  1990s
+26  Superior 1998 16-Jan     11.10  1990s
+27  Superior 1999 23-Feb     18.30  1990s
+28  Superior 2000 18-Feb     33.50  2000s
+29  Superior 2001 12-Mar     46.70  2000s
+30  Superior 2002 17-Mar     10.30  2000s
+31  Superior 2003  4-Mar     95.50  2000s
+32  Superior 2004 19-Feb     52.20  2000s
+33  Superior 2005 17-Mar     54.50  2000s
+34  Superior 2006  2-Mar     16.66  2000s
+35  Superior 2007  8-Mar     51.83  2000s
+36  Superior 2008 10-Mar     62.70  2000s
+37  Superior 2009  2-Mar     93.63  2000s
+38  Superior 2010 22-Feb     27.34  2010s
+39  Superior 2011  2-Apr     33.64  2010s
+40  Superior 2012 22-Jan      8.22  2010s
+41  Superior 2013 17-Feb     38.62  2010s
+42  Superior 2014  3-Mar     95.82  2010s
+43  Superior 2015 28-Feb     95.70  2010s
+44  Superior 2016 14-Feb     22.69  2010s
+45  Superior 2017  4-Mar     18.70  2010s
+46  Superior 2018 11-Feb     77.17  2010s
+47  Superior 2019  8-Mar     94.91  2010s
+48  Michigan 1973 27-Feb     33.00  1970s
+49  Michigan 1974 21-Feb     39.40  1970s
+50  Michigan 1975 29-Jan     28.10  1970s
+51  Michigan 1976  3-Feb     29.50  1970s
+52  Michigan 1977  9-Feb     93.10  1970s
+53  Michigan 1978 22-Feb     66.60  1970s
+54  Michigan 1979 25-Feb     92.30  1970s
+55  Michigan 1980 20-Feb     38.60  1980s
+56  Michigan 1981 21-Jan     53.80  1980s
+57  Michigan 1982  9-Feb     60.20  1980s
+58  Michigan 1983  8-Feb     23.60  1980s
+59  Michigan 1984  8-Feb     43.30  1980s
+60  Michigan 1985 23-Feb     41.30  1980s
+61  Michigan 1986 23-Feb     66.80  1980s
+62  Michigan 1987 21-Feb     20.00  1980s
+63  Michigan 1988  7-Feb     32.70  1980s
+64  Michigan 1989 19-Mar     30.90  1980s
+65  Michigan 1990 14-Jan     32.40  1990s
+66  Michigan 1991 30-Jan     21.50  1990s
+67  Michigan 1992  3-Feb     32.80  1990s
+68  Michigan 1993 28-Feb     32.20  1990s
+69  Michigan 1994 14-Feb     82.70  1990s
+70  Michigan 1995 13-Feb     21.60  1990s
+71  Michigan 1996  7-Feb     75.00  1990s
+72  Michigan 1997  5-Feb     37.80  1990s
+73  Michigan 1998  6-Feb     15.10  1990s
+74  Michigan 1999 15-Jan     23.00  1990s
+75  Michigan 2000 28-Jan     27.20  2000s
+76  Michigan 2001 22-Feb     29.50  2000s
+77  Michigan 2002  7-Mar     12.40  2000s
+78  Michigan 2003 10-Mar     48.00  2000s
+79  Michigan 2004  5-Feb     36.40  2000s
+80  Michigan 2005 24-Jan     29.40  2000s
+81  Michigan 2006 20-Feb     16.15  2000s
+82  Michigan 2007  8-Mar     37.19  2000s
+83  Michigan 2008 21-Feb     33.51  2000s
+84  Michigan 2009 29-Jan     52.27  2000s
+85  Michigan 2010  8-Feb     23.46  2010s
+86  Michigan 2011 11-Feb     29.35  2010s
+87  Michigan 2012 21-Jan     16.72  2010s
+88  Michigan 2013 18-Feb     24.38  2010s
+89  Michigan 2014  8-Mar     93.08  2010s
+90  Michigan 2015 27-Feb     72.90  2010s
+91  Michigan 2016 14-Feb     26.75  2010s
+92  Michigan 2017 18-Jan     18.20  2010s
+93  Michigan 2018 11-Feb     51.32  2010s
+94  Michigan 2019  8-Mar     55.83  2010s
+95     Huron 1973 26-Feb     66.70  1970s
+96     Huron 1974 27-Feb     61.40  1970s
+97     Huron 1975 13-Feb     55.10  1970s
+98     Huron 1976 28-Jan     52.50  1970s
+99     Huron 1977  9-Feb     95.00  1970s
+100    Huron 1978  1-Mar     95.80  1970s
+101    Huron 1979 19-Feb     96.40  1970s
+102    Huron 1980  5-Mar     70.30  1980s
+103    Huron 1981  4-Feb     93.80  1980s
+104    Huron 1982  9-Mar     93.30  1980s
+105    Huron 1983  1-Feb     31.80  1980s
+106    Huron 1984 14-Mar     77.60  1980s
+107    Huron 1985 23-Feb     87.40  1980s
+108    Huron 1986 23-Feb     73.50  1980s
+109    Huron 1987 15-Feb     43.50  1980s
+110    Huron 1988  6-Mar     60.10  1980s
+111    Huron 1989 19-Mar     76.30  1980s
+112    Huron 1990  7-Mar     73.80  1990s
+113    Huron 1991  1-Feb     43.80  1990s
+114    Huron 1992 23-Mar     69.90  1990s
+115    Huron 1993 28-Feb     78.30  1990s
+116    Huron 1994  2-Mar     96.90  1990s
+117    Huron 1995  5-Mar     41.70  1990s
+118    Huron 1996 19-Feb     98.20  1990s
+119    Huron 1997 23-Feb     65.30  1990s
+120    Huron 1998  6-Feb     28.60  1990s
+121    Huron 1999  9-Mar     36.00  1990s
+122    Huron 2000 18-Feb     41.90  2000s
+123    Huron 2001 19-Feb     45.70  2000s
+124    Huron 2002  4-Mar     26.10  2000s
+125    Huron 2003  8-Mar     96.20  2000s
+126    Huron 2004 19-Feb     64.50  2000s
+127    Huron 2005  9-Mar     58.90  2000s
+128    Huron 2006  2-Mar     32.17  2000s
+129    Huron 2007  8-Mar     71.39  2000s
+130    Huron 2008 17-Mar     59.51  2000s
+131    Huron 2009  2-Mar     85.11  2000s
+132    Huron 2010 18-Feb     36.95  2010s
+133    Huron 2011 24-Feb     63.79  2010s
+134    Huron 2012  5-Mar     23.06  2010s
+135    Huron 2013 18-Feb     47.75  2010s
+136    Huron 2014  6-Mar     96.10  2010s
+137    Huron 2015  6-Mar     96.40  2010s
+138    Huron 2016 14-Feb     47.98  2010s
+139    Huron 2017 14-Mar     35.35  2010s
+140    Huron 2018 11-Feb     81.39  2010s
+141    Huron 2019  9-Mar     95.70  2010s
+142     Erie 1973 27-Feb     95.70  1970s
+143     Erie 1974 21-Feb     88.50  1970s
+144     Erie 1975 13-Feb     80.10  1970s
+145     Erie 1976  8-Feb     95.40  1970s
+146     Erie 1977  8-Feb     99.80  1970s
+147     Erie 1978  8-Feb    100.00  1970s
+148     Erie 1979 12-Feb    100.00  1970s
+149     Erie 1980  5-Mar     93.40  1980s
+150     Erie 1981 14-Jan     96.00  1980s
+151     Erie 1982 15-Feb     99.10  1980s
+152     Erie 1983 14-Feb     40.80  1980s
+153     Erie 1984 18-Jan     95.70  1980s
+154     Erie 1985  9-Feb     96.00  1980s
+155     Erie 1986  1-Feb     95.50  1980s
+156     Erie 1987 14-Feb     88.00  1980s
+157     Erie 1988  7-Feb     91.50  1980s
+158     Erie 1989 17-Feb     91.60  1980s
+159     Erie 1990  9-Mar     72.80  1990s
+160     Erie 1991  1-Feb     35.10  1990s
+161     Erie 1992 16-Feb     89.80  1990s
+162     Erie 1993 24-Feb     94.30  1990s
+163     Erie 1994  9-Feb     96.70  1990s
+164     Erie 1995 13-Feb     94.00  1990s
+165     Erie 1996  5-Feb    100.00  1990s
+166     Erie 1997  2-Feb     99.60  1990s
+167     Erie 1998 23-Jan      5.40  1990s
+168     Erie 1999 15-Jan     74.80  1990s
+169     Erie 2000  1-Feb     90.70  2000s
+170     Erie 2001 12-Feb     94.00  2000s
+171     Erie 2002  3-Jan     14.40  2000s
+172     Erie 2003 27-Jan     95.70  2000s
+173     Erie 2004  2-Feb     95.40  2000s
+174     Erie 2005  7-Feb     93.00  2000s
+175     Erie 2006  2-Mar     21.88  2000s
+176     Erie 2007 19-Feb     95.77  2000s
+177     Erie 2008 10-Mar     93.38  2000s
+178     Erie 2009  5-Feb     95.55  2000s
+179     Erie 2010  8-Feb     93.13  2010s
+180     Erie 2011  1-Feb     95.85  2010s
+181     Erie 2012 21-Jan     13.87  2010s
+182     Erie 2013 22-Feb     83.72  2010s
+183     Erie 2014  6-Mar     96.08  2010s
+184     Erie 2015 18-Feb     98.10  2010s
+185     Erie 2016 15-Feb     78.73  2010s
+186     Erie 2017  8-Feb     35.51  2010s
+187     Erie 2018  9-Feb     95.12  2010s
+188     Erie 2019  2-Mar     94.28  2010s
+189  Ontario 1973 20-Feb     62.60  1970s
+190  Ontario 1974 10-Jan     24.50  1970s
+191  Ontario 1975 13-Feb     14.90  1970s
+192  Ontario 1976  3-Feb     15.20  1970s
+193  Ontario 1977 17-Feb     46.70  1970s
+194  Ontario 1978 15-Feb     57.70  1970s
+195  Ontario 1979 19-Feb     86.20  1970s
+196  Ontario 1980 13-Feb     30.60  1980s
+197  Ontario 1981  7-Jan     47.60  1980s
+198  Ontario 1982 25-Jan     50.70  1980s
+199  Ontario 1983  8-Feb     12.50  1980s
+200  Ontario 1984 18-Jan     40.70  1980s
+201  Ontario 1985  9-Feb     38.20  1980s
+202  Ontario 1986 28-Feb     43.70  1980s
+203  Ontario 1987 14-Feb      8.40  1980s
+204  Ontario 1988 10-Jan     21.10  1980s
+205  Ontario 1989 13-Mar     15.50  1980s
+206  Ontario 1990 28-Feb     29.50  1990s
+207  Ontario 1991  2-Feb     11.60  1990s
+208  Ontario 1992 16-Feb     17.50  1990s
+209  Ontario 1993 28-Feb     29.00  1990s
+210  Ontario 1994 11-Feb     55.70  1990s
+211  Ontario 1995 13-Feb     18.80  1990s
+212  Ontario 1996 16-Feb     45.10  1990s
+213  Ontario 1997 23-Feb     25.60  1990s
+214  Ontario 1998 30-Jan      6.20  1990s
+215  Ontario 1999  9-Mar     17.90  1990s
+216  Ontario 2000  1-Feb     22.30  2000s
+217  Ontario 2001 15-Feb     17.90  2000s
+218  Ontario 2002 10-Jan      4.00  2000s
+219  Ontario 2003 27-Feb     49.60  2000s
+220  Ontario 2004 29-Jan     38.50  2000s
+221  Ontario 2005 31-Jan     37.80  2000s
+222  Ontario 2006  2-Mar     14.25  2000s
+223  Ontario 2007  8-Mar     23.77  2000s
+224  Ontario 2008 10-Mar     13.97  2000s
+225  Ontario 2009  5-Feb     25.90  2000s
+226  Ontario 2010  8-Feb     13.10  2010s
+227  Ontario 2011 24-Feb     31.09  2010s
+228  Ontario 2012 17-Feb      1.86  2010s
+229  Ontario 2013 23-Feb     15.58  2010s
+230  Ontario 2014  6-Mar     60.84  2010s
+231  Ontario 2015 18-Feb     82.40  2010s
+232  Ontario 2016 14-Feb     23.46  2010s
+233  Ontario 2017 16-Mar      5.75  2010s
+234  Ontario 2018 17-Jan     24.67  2010s
+235  Ontario 2019  1-Mar     39.78  2010s
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+sum1 &lt;- gli %&gt;%  
+* group_by(lake)
+ 
+sum1
+```
+]]
+.column[.content[
+
+```
+# A tibble: 235 x 5
+# Groups:   lake [5]
+   lake      year date   max.cover decade
+   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt; 
+ 1 Superior  1973 27-Feb      69.8 1970s 
+ 2 Superior  1974 27-Feb      73.8 1970s 
+ 3 Superior  1975 13-Feb      64.9 1970s 
+ 4 Superior  1976 16-Mar      49.9 1970s 
+ 5 Superior  1977 16-Feb      96   1970s 
+ 6 Superior  1978 1-Mar       92.5 1970s 
+ 7 Superior  1979 25-Feb      97.1 1970s 
+ 8 Superior  1980 5-Mar       77.2 1980s 
+ 9 Superior  1981 11-Feb      84.7 1980s 
+10 Superior  1982 9-Mar       85.3 1980s 
+# ... with 225 more rows
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+sum1 &lt;- gli %&gt;%  
+  group_by(lake) %&gt;%  
+* summarize(n=n(),
+*           mean=mean(max.cover,na.rm=TRUE))
+ 
+sum1
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+]]
+
+---
+
+class: inverse, center, middle
+
+# Means Plots
+
+### Plot Summarized Means
+
+---
 
 
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+* geom_bar(stat="identity",fill="gray30",alpha=0.75)
+ 
+mb3
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mb3
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.5)
+ 
+mb3
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+* geom_point(color="gray30")
+ 
+mp5
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+  geom_point(color="gray30") +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mp5
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+  geom_point(color="gray30") +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.75)
+ 
+mp5
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Create Summary Data.frame
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*sum2 &lt;- gli %&gt;%
+* group_by(lake) %&gt;%
+* summarize(n=n(),
+*           mean=mean(max.cover,na.rm=TRUE),
+*           sd=sd(max.cover,na.rm=TRUE))
+ 
+sum2
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 4
+  lake         n  mean    sd
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3
+2 Michigan    47  40.5  21.7
+3 Huron       47  65.3  23.3
+4 Erie        47  82.6  26.0
+5 Ontario     47  30.2  19.7
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+sum2 &lt;- gli %&gt;%  
+  group_by(lake) %&gt;%  
+  summarize(n=n(),  
+            mean=mean(max.cover,na.rm=TRUE),  
+            sd=sd(max.cover,na.rm=TRUE)) %&gt;%  
+* mutate(se=sd/sqrt(n),
+*        me=qt(0.975,df=n-1)*se)
+ 
+sum2
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n  mean    sd    se    me
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  4.42  8.90
+2 Michigan    47  40.5  21.7  3.16  6.36
+3 Huron       47  65.3  23.3  3.40  6.83
+4 Erie        47  82.6  26.0  3.80  7.64
+5 Ontario     47  30.2  19.7  2.87  5.78
+```
+]]
+
+
+---
+
+
+
+
+class: split-45
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*sum3 &lt;- sum2
+ 
+sum3
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n  mean    sd    se    me
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  4.42  8.90
+2 Michigan    47  40.5  21.7  3.16  6.36
+3 Huron       47  65.3  23.3  3.40  6.83
+4 Erie        47  82.6  26.0  3.80  7.64
+5 Ontario     47  30.2  19.7  2.87  5.78
+```
+]]
+---
+class: split-45
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+sum3 &lt;- sum2 %&gt;%  
+* mutate(lsd=mean-sd,usd=mean+sd,
+*        lse=mean-se,use=mean+se,
+*        lci=mean-me,uci=mean+me)
+ 
+sum3
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 12
+  lake         n  mean    sd    se    me   lsd   usd   lse   use   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  4.42  8.90  32.0  92.6  57.9  66.7  53.4  71.2
+2 Michigan    47  40.5  21.7  3.16  6.36  18.8  62.1  37.3  43.6  34.1  46.8
+3 Huron       47  65.3  23.3  3.40  6.83  42.0  88.6  61.9  68.7  58.5  72.1
+4 Erie        47  82.6  26.0  3.80  7.64  56.6 109.   78.8  86.4  75.0  90.3
+5 Ontario     47  30.2  19.7  2.87  5.78  10.5  49.9  27.3  33.1  24.4  36.0
+```
+]]
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Uncertainty
+
+### Plot Summarized Means with Intervals
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean))
+ 
+mbi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+* geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mbi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_errorbar(aes(ymin=lci,ymax=uci),width=0.15)
+ 
+mbi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
+* geom_point(color="gray30")
+ 
+mpi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+  geom_point(color="gray30") +  
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+ 
+mpi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+  geom_point(color="gray30") +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15)
+ 
+mpi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+  geom_point(color="gray30") +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+  geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15) +  
+* geom_text(aes(label=formatC(mean,format="f",digits=1)),hjust=-0.25)
+ 
+mpi6
+```
+]]
+.column[.content[
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_4_output-1.png" width="100%" /&gt;
+]]
 
 ---
 
