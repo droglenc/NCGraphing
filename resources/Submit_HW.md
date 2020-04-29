@@ -28,7 +28,7 @@ The following are directions for submitting the HTML homework items.
 
 * Select the "Add File" button.
 
-<img src="../img/HW_TurnIn_.6JPG" alt="HW Submit 6" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
+<img src="../img/HW_TurnIn_.JPG" alt="HW Submit 6" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
 
 * Select the "Turn in your ... homework" button.
 
