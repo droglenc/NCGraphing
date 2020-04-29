@@ -31,7 +31,7 @@ library(patchwork)
 # Background
 
 - The Great Lakes Environmental Research Laboratory (GLERL) of the National Oceanic and Atmospheric Administration (NOAA) uses satellites to annually monitor ice coverage on the Great Lakes.
-  - Maximum ice coverage during was recorded for all five lakes from 1972 to present.
+  - Maximum ice coverage recorded for all five lakes since 1972.
   - Data originally accessed from [the GLERL website](https://www.glerl.noaa.gov/data/ice/#historical) and are [in this file](https://raw.githubusercontent.com/droglenc/NCData/master/GreatLakesIce.csv").
 
 .center[
@@ -98,10 +98,10 @@ class: inverse, center, middle
 ```
 ```{r edv1, include=FALSE}
 p <- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +
-  geom_line(size=0.5,alpha=0.75) +
+  geom_line(size=0.4,alpha=0.75) +
   scale_x_continuous(name="Annual Ice Season") +
   scale_y_continuous(name="Maximum Ice Coverage (%)",
-                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+                     limits=c(0,100),expand=expansion(mult=0.01)) +
   scale_color_manual(name="Lake",values=clrs) +
   theme_bw()
 ```
@@ -133,7 +133,7 @@ v <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
   geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +
   scale_x_discrete(name="Great Lake") +
   scale_y_continuous(name="Maximum Ice Coverage (%)",
-                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
+                     limits=c(0,100),expand=expansion(mult=0.01)) +
   theme_bw()
 ```
 
@@ -145,71 +145,68 @@ class: inverse, center, middle
 
 # Means Plots
 
-### Create Summary Data.frame
+---
+
+## Using `stat_summary()`
+
+- Computes a summary of data and applies that to a `geom_`.
+
+&nbsp;
+
+--
+- Is flexible -- we will use in two different ways.
+
+&nbsp;
+
+--
+- First way is to compute a summary with a function in `fun=`.
+  - For example, `fun=mean` will compute the mean of "Y" for each "X".
+
+&nbsp;
+
+--
+- The summary is then plotted according to a specified `geom_` in `geom=`.
+  - For example, `geom="bar"` or `geom="point"`.
 
 ---
 
 ```{r echo=FALSE}
-#!# Compute means by lake
-```
-```{r sum1, include=FALSE}
-sum1 <- gli %>%
-  group_by(lake) %>%
-  summarize(n=n(),
-            mean=mean(max.cover,na.rm=TRUE))
-```
-
-`r chunk_reveal("sum1",break_type="auto",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Means Plots
-
-### Plot Summarized Means
-
----
-
-```{r echo=FALSE}
-#!# Plot means by lake ... bars
+#!# Barplot of means by lake using stat_summary()
 ```
 ```{r mnsbar1, include=FALSE}
-mb <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
-  geom_bar(stat="identity",fill="gray30",alpha=0.75) + #BREAK
+mb1 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="bar",
+               fill="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Great Lake") +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
                      limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
-  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.5)
+  theme(panel.grid.major.x=element_blank())
 ```
 
 `r chunk_reveal("mnsbar1",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
+
 ```{r echo=FALSE}
-#!# Plot means by lake ... points
+#!# Means by lake using points and stat_summary()
 ```
-```{r mnspoint1, include=FALSE}
-mp <- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
-  geom_point(color="gray30") + #BREAK
+```{r mnspts1, include=FALSE}
+mp1 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="point") + #BREAK
   scale_x_discrete(name="Great Lake") +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
-  geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.75)
+  theme(panel.grid.major.x=element_blank())
 ```
 
-`r chunk_reveal("mnspoint1",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("mnspts1",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
 class: inverse, center, middle
 
 # Means Plots with Uncertainty
-
-### Create Summary Data.frame
 
 ---
 
@@ -236,29 +233,13 @@ class: inverse, center, middle
 
 ---
 
-```{r echo=FALSE}
-#!# Compute means, SDs, SEs, and MEs by lake
-```
-```{r sum2, include=FALSE}
-sum2 <- gli %>%
-  group_by(lake) %>%
-  summarize(n=n(),
-            mean=mean(max.cover,na.rm=TRUE),
-            sd=sd(max.cover,na.rm=TRUE)) %>% #BREAK
-  mutate(se=sd/sqrt(n),
-         me=qt(0.975,df=n-1)*se)
-```
-
-`r chunk_reveal("sum2",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
 ## Uncertainty
 
 - Generally visualized as intervals around a point estimate (e.g., a mean).
 
 &nbsp;
 
+--
 - mean &pm; SD
   - Expresses variability of individuals around the mean.
 
@@ -276,25 +257,22 @@ sum2 <- gli %>%
 
 ---
 
-```{r echo=FALSE}
-#!# Compute SD, SE, and confidence intervals by lake
-```
-```{r sum3, include=FALSE}
-sum3 <- sum2 %>% #BREAK
-  mutate(lsd=mean-sd,usd=mean+sd,
-         lse=mean-se,use=mean+se,
-         lci=mean-me,uci=mean+me)
-```
+## Using `stat_summary()`
 
-`r chunk_reveal("sum3",break_type="user",left_assign=leftAssign,split=45)`
+- Computes a summary of the data and applies that to a `geom_`.
+- Is flexible -- we will use in two different ways.
 
----
+&nbsp;
 
-class: inverse, center, middle
+--
+- Second way is to compute a data.frame with "center", minimum, and maximum values with a function in `fun.data=`.
 
-# Means Plots with Uncertainty
-
-### Plot Summarized Means with Intervals
+--
+- Built-in functions that can be used in `fun.data=`.
+  - `mean_se`: computes mean ("center") and plus/minus a SE.
+  - `mean_sdl`: computes mean and plus/minus **two** SDs.
+  - `mean_cl_normal`: computes mean and confidence interval from normal distribution theory.
+  - `mean_cl_boot`: computes mean and confidence interval from bootstrapping.
 
 ---
 
@@ -304,6 +282,9 @@ class: inverse, center, middle
   - `ymin=`: the lower value for the error bar.
   - `ymax=`: the upper value for the error bar.
 
+--
+- These new `aes()`thetics are automatic from the built-in functions used in `stat_summary()`.
+
 &nbsp;
 
 --
@@ -312,17 +293,18 @@ class: inverse, center, middle
 ---
 
 ```{r echo=FALSE}
-#!# Plot means and confidence intervals by lake ... bars
+#!# Means by lake with bars and confidence intervals
 ```
 ```{r mnsbar2, include=FALSE}
-mbi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) + #BREAK
-  geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+mbi <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="bar",fill="gray30",alpha=0.75) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,geom="errorbar",
+               width=0.25) + #BREAK
   scale_x_discrete(name="Great Lake") +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
                      limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
-  geom_errorbar(aes(ymin=lci,ymax=uci),width=0.15)
+  theme(panel.grid.major.x=element_blank())
 ```
 
 `r chunk_reveal("mnsbar2",break_type="user",left_assign=leftAssign,split=splitPerc)`
@@ -330,126 +312,75 @@ mbi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) + #BREAK
 ---
 
 ```{r echo=FALSE}
-#!# Plot means and SD intervals by lake ... points
+#!# Means by lake with points and confidence intervals
 ```
-```{r mnspoint2, include=FALSE}
-mpi <- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
-  geom_point(color="gray30") + #BREAK
+```{r mnspts2, include=FALSE}
+mpi <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
+  stat_summary(fun=mean,geom="point",) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,geom="errorbar",width=0.25) + #BREAK
   scale_x_discrete(name="Great Lake") +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
-  geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15) + #BREAK
-  geom_text(aes(label=formatC(mean,format="f",digits=1)),hjust=-0.25)
+  theme(panel.grid.major.x=element_blank())
 ```
 
-`r chunk_reveal("mnspoint2",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("mnspts2",break_type="user",left_assign=leftAssign,split=splitPerc)`
 
 ---
 
-class: inverse, center, middle
+## Intervals added with `geom_pointrange()`
 
-# Show Means/Intervals with Data
-
----
-
-```{r echo=FALSE}
-#!# EDV ... violin plot
-```
-```{r mnvio, include=FALSE}
-mvi <- ggplot() +
-  geom_violin(data=gli,mapping=aes(x=lake,y=max.cover),
-              color="gray50",fill="gray50",alpha=0.5,trim=FALSE) +
-  geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
-              width=0.07,size=0.5,color="black",alpha=0.25) + #BREAK
-  geom_point(data=sum3,aes(x=lake,y=mean),
-             size=0.75,color="lightblue",fill="lightblue") + #BREAK
-  geom_errorbar(data=sum3,aes(x=lake,ymin=lci,ymax=uci),
-                color="lightblue",width=0.1) + #BREAK
-  scale_x_discrete(name="Great Lake") +
-  scale_y_continuous(name="Maximum Ice Coverage (%)",
-                     limits=c(0,100),expand=expansion(mult=c(0.01,0.01))) +
-  theme_bw()
-```
-
-`r chunk_reveal("mnvio",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Another Way: Using stat_summary()
-
----
-
-## Using `stat_summary()`
-
-- Computes a summary of the data and applies that to a `geom_`.
+- Similar to `geom_errorbar()` but also plots the "center" value.
 
 &nbsp;
 
 --
-- Requires functions to compute the summary in `fun=`, `fun.min=`, or `fun.max=` (for computing singular values for the "center", minimum, and maximum values).
-  - For example, `fun=mean`.
+- No end caps on interval, thus no `width=` argument.
 
 ---
 
-## Using `stat_summary()`
-
-- Computes a summary of the data and applies that to a `geom_`.
-
-&nbsp;
-
-- Requires function to compute a data.frame with "center", minimum, and maximum values in `fun.data=`.
-  - `mean_se`: computes mean ("center") and plus/minus a SE.
-  - `mean_sdl`: computes mean and plus/minus two SDs.
-  - `mean_cl_normal`: computes mean and confidence interval from normal distribution theory.
-  - `mean_cl_boot`: computes mean and confidence interval from bootstrapping.
-
----
-
-## Using `stat_summary()`
-
-- Computes a summary of the data and applies that to a `geom_`.
-
-&nbsp;
-
-- Requires a `geom=` for which to present the results.
-  - Can then include options for the particular `geom_`.
-
----
-
-```{r mnsbar3, include=FALSE}
-mbi2 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
-  stat_summary(fun=mean,geom="bar",
-               fill="gray30",alpha=0.75) + #BREAK
-  stat_summary(fun.data=mean_cl_normal,
-               geom="errorbar",width=0.25) + #BREAK
-  scale_x_discrete(name="Great Lake") +
-  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
-                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
-  theme_bw() +
-  theme(panel.grid.major.x=element_blank())
+```{r echo=FALSE}
+#!# Means by lake with points and confidence intervals ... using geom_pointrange
 ```
-
-`r chunk_reveal("mnsbar3",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r mnspoint3, include=FALSE}
+```{r mnspts3, include=FALSE}
 mpi2 <- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) + #BREAK
-  stat_summary(fun=mean,geom="point",
-               fill="gray30",alpha=0.75) + #BREAK
-  stat_summary(fun.data=mean_cl_normal,
-               geom="errorbar",width=0.25) + #BREAK
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",
+               size=0.15) + #BREAK
   scale_x_discrete(name="Great Lake") +
-  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
-                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
   theme_bw() +
   theme(panel.grid.major.x=element_blank())
 ```
 
-`r chunk_reveal("mnspoint3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+`r chunk_reveal("mnspts3",break_type="user",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Means Plots with Multiple Groupings
+
+---
+
+```{r mnspts4, include=FALSE}
+mpi3 <- ggplot(data=gli,mapping=aes(
+    x=lake,y=max.cover,
+    color=decade #BREAK2
+  )) +
+  stat_summary(
+    fun.data=mean_cl_normal,geom="pointrange",size=0.15,
+    position=position_dodge(width=0.5) #BREAK3
+  ) +
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank())
+```
+
+`r chunk_reveal("mnspts4",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+
+
 
 
 
