@@ -3,7 +3,7 @@
   <head>
     <title>Introduction to ggplot2</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Derek Ogle, April 2020" />
+    <meta name="author" content="Derek Ogle, May 2020" />
     <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 # Introduction to ggplot2
-### Derek Ogle, April 2020
+### Derek Ogle, May 2020
 
 ---
 
@@ -44,7 +44,9 @@ class: inverse, center, middle
 
 # Background
 
-- Downloaded 'Data_wolves_moose_Isle_Royale_June2019.xlsx' Excel file from [Wolves &amp; Moose of Isle Royale](https://isleroyalewolf.org/data/data/home.html), deleted first row of the first sheet, and saved the first sheet as a CSV file.
+- Downloaded 'Data_wolves_moose_Isle_Royale_June2019.xlsx' Excel file from [Wolves &amp; Moose of Isle Royale](https://isleroyalewolf.org/data/data/home.html), deleted first row of the first sheet, and saved the first sheet as [this CSV file](https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv).
+
+&amp;nbsp;
 
 --
 - Loaded the data into the `irmw` object.
@@ -105,7 +107,7 @@ head(irmw)
 
 ---
 
-### What is Happening Here?
+### What is Happening Here? Where is the graph?
 
 
 
@@ -115,7 +117,6 @@ p &lt;- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
 ```
 
 --
-
 
 ```r
 p
@@ -141,22 +142,24 @@ class: inverse, center, middle
   - `y=`: positioning along y-axis.
 
 --
-  - `color=`: color of objects or object's outline if object is 2-d (e.g., bars, some points).
+  - `color=`: [color](https://derekogle.com/NCGraphing/resources/colors) of objects or, if 2-d (e.g., bars, some points), object's outline.
 
 --
-  - `fill=`: fill color of objects.
+  - `fill=`: fill [color](https://derekogle.com/NCGraphing/resources/colors) of objects.
 
 --
-  - `alpha=`: transparency of color (between 0 [fully transparent] and 1 [fully opaque]).
+  - `alpha=`: color transparency color (0 [fully transparent] to 1 [fully opaque]).
 
 --
-  - `shape=`: shape of markers in scatter plots. [[see this](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)].
+  - `shape=`: [shape](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#point) of markers in scatter plots.
 
 --
   - `size=`: how large objects appear.
 
 --
-  - `linetype=`: how lines should be drawn (`"solid"`, `"dashed"`, `"dotted"`, etc.)
+  - `linetype=`: how [lines](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#lines) should be drawn (`"solid"`, `"dashed"`, `"dotted"`, etc.)
+
+&amp;nbsp;
 
 --
 - Which aesthetics are required and allowed vary by geom.
@@ -821,34 +824,10 @@ p
 
 
 
+
+
 ---
 
-class: split-50
-count: false
- 
-
- 
-.column[.content[
-
-```r
-*p &lt;- ggplot(data=irmw,
-*           mapping=aes(x=year,y=wolves)) +
-* geom_line() +
-* geom_point(aes(color=ice_bridges),size=1) +
-* scale_color_manual(values=c("blue","red"),
-*                    name="Ice Bridge?") +
-* scale_x_continuous(name="Year",
-*                    breaks=seq(1960,2020,5)) +
-* scale_y_continuous(name="Estimated Number of Wolves",
-*                    breaks=seq(0,50,5))
- 
-p
-```
-]]
-.column[.content[
-&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5a_user_1_output-1.png" width="100%" /&gt;
-]]
----
 class: split-50
 count: false
  
@@ -866,10 +845,42 @@ p &lt;- ggplot(data=irmw,
   scale_x_continuous(name="Year",  
                      breaks=seq(1960,2020,5)) +  
   scale_y_continuous(name="Estimated Number of Wolves",  
-                     breaks=seq(0,50,5)) +  
-* theme_classic()
+                     breaks=seq(0,50,5))  
  
 p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5_1_1_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p 
+```
+]]
+.column[.content[
+&lt;img src="Lecture_MooseWolves_files/figure-html/scatline_yr5a_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+* theme_classic()
 ```
 ]]
 .column[.content[
@@ -948,7 +959,9 @@ p +
 
 &gt; "[This book will] introduce you to `ggplot2` as a novice, unfamiliar with the grammar; teach you the basics so that you can re-create plots you are already familiar with [and] show you how to use the grammar to create new types of graphics ..." -- Wickham (2009)
 
-
+.pull-right[
+![Hadley Wickham](https://derekogle.com/NCGraphing/modules/zimgs/wickham.jpg)
+]
 ---
 
 class: inverse, center, middle
