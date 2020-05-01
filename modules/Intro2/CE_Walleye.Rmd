@@ -18,21 +18,16 @@ modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
-```{r echo=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
 ```
 
 ----
 
 ## Background
 <img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
-Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in [this file](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) from the fishR webpage. [Metadata for this file is here](http://derekogle.com/fishR/data/data-html/WalleyeErie2.html). Make sure to load `tidyverse`.
-
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-The data are loaded below[^loaddata] and, for this exercise, reduced to only those fish captured in 2003 (i.e., `filter()`), the `loc`ation codes are changed from numbers to words (i.e., `mapvalues()` within `mutate()`), and `loc`ation is converted groupings (i.e., `factor()` within `mutate()`).[^copycode]
+Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in [this file](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) from the fishR webpage. [Metadata for this file is here](http://derekogle.com/fishR/data/data-html/WalleyeErie2.html). The data are loaded below[^loaddata] and, for this exercise, reduced to only those fish captured in 2003 (i.e., `filter()`), the `loc`ation codes are changed from numbers to words (i.e., `mapvalues()` within `mutate()`), and `loc`ation is converted groupings (i.e., `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
@@ -117,7 +112,7 @@ laa4
 &nbsp;
 
 ## Total Length vs Age 5
-Modify your plot from "Total Length vs Age 2" to use three *divergent* colors for the different locations that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+Modify your plot from "Total Length vs Age 2" to use three *divergent* colors for the different locations that are *colorblind-safe*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://derekogle.com/NCGraphing/resources/colors#choosing-colors-as-a-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors.
 
 ```{r QBS_act5, fig.width=6,out.width="75%"}
 laa5 <- laa2 +

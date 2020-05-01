@@ -9,9 +9,7 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right"> The National Oceanic and Atmospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their <a href="https://www.ncdc.noaa.gov/cag/global/time-series">Climate at a Glance website</a>. Their default settings show the <em>global</em> temperature anomaly (difference from a long-term average) for <em>February</em> and are in <a href="https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv">this CSV file</a>. Make sure to load <code>tidyverse</code>.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<p>The data file is loaded into R below,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> but note that <code>skip=4</code> is need as the first four lines of the CSV file do not contain data.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><img src="../zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right"> The National Oceanic and Atmospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their <a href="https://www.ncdc.noaa.gov/cag/global/time-series">Climate at a Glance website</a>. Their default settings show the <em>global</em> temperature anomaly (difference from a long-term average) for <em>February</em> and are in <a href="https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv">this CSV file</a>. The data file is loaded into R below,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> but note that <code>skip=4</code> is need as the first four lines of the CSV file do not contain data.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <pre class="r"><code>#!# Set to your own working directory and have just your filename below.
 gt &lt;- read.csv(&quot;https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv&quot;,skip=4)
 str(gt)</code></pre>

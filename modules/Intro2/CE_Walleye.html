@@ -9,9 +9,7 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right"> Lake Erie is world-renowned for its Walleye [<em>Sander vitreus</em>] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in <a href="https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv">this file</a> from the fishR webpage. <a href="http://derekogle.com/fishR/data/data-html/WalleyeErie2.html">Metadata for this file is here</a>. Make sure to load <code>tidyverse</code>.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<p>The data are loaded below<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and, for this exercise, reduced to only those fish captured in 2003 (i.e., <code>filter()</code>), the <code>loc</code>ation codes are changed from numbers to words (i.e., <code>mapvalues()</code> within <code>mutate()</code>), and <code>loc</code>ation is converted groupings (i.e., <code>factor()</code> within <code>mutate()</code>).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right"> Lake Erie is world-renowned for its Walleye [<em>Sander vitreus</em>] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in <a href="https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv">this file</a> from the fishR webpage. <a href="http://derekogle.com/fishR/data/data-html/WalleyeErie2.html">Metadata for this file is here</a>. The data are loaded below<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and, for this exercise, reduced to only those fish captured in 2003 (i.e., <code>filter()</code>), the <code>loc</code>ation codes are changed from numbers to words (i.e., <code>mapvalues()</code> within <code>mutate()</code>), and <code>loc</code>ation is converted groupings (i.e., <code>factor()</code> within <code>mutate()</code>).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <pre class="r"><code>#!# Set to your own working directory and have just your filename below.
 wae &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv&quot;) %&gt;%
   filter(year==2003) %&gt;%
@@ -53,7 +51,7 @@ str(wae)</code></pre>
 </div>
 <div id="total-length-vs-age-5" class="section level2">
 <h2>Total Length vs Age 5</h2>
-<p>Modify your plot from “Total Length vs Age 2” to use three <em>divergent</em> colors for the different locations that are <em>colorblind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
+<p>Modify your plot from “Total Length vs Age 2” to use three <em>divergent</em> colors for the different locations that are <em>colorblind-safe</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://derekogle.com/NCGraphing/resources/colors#choosing-colors-as-a-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors.</p>
 <p><img src="CE_Walleye_files/figure-html/QBS_act5-1.png" width="75%" /></p>
 </div>
 <div class="footnotes">

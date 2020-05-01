@@ -18,21 +18,16 @@ modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
-```{r echo=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
 ```
 
 ----
 
 ## Background
 <img src="../zimgs/loon.jpg" alt="Common Loon" class="img-right">
-Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). Make sure to load `tidyverse`.
-
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-These data are then loaded into R and their structure examined below.[^loaddata]
+Dr. Jim Paruk studied the morphology of Common Loons (*Gavia immer*), primarily their bills, from a wide variety of locations in North America. These data are in [Loon1.csv](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1.csv), with information about these data in [this metadata file](https://raw.githubusercontent.com/droglenc/NCData/master/Loon1_meta.txt). These data are then loaded into R and their structure examined below.[^loaddata]
 
 ```{r eval=-1, echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
@@ -114,7 +109,7 @@ tb4
 &nbsp;
 
 ## Tarsus Length vs. Bill Length 5
-Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+Modify your plot from "Tarsus Length vs Bill Length 2" to use three *divergent* colors for the different regions that are *colorblind-safe*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly palettes](http://derekogle.com/NCGraphing/resources/colors#choosing-colors-as-a-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors.
 
 ```{r Loons_TB5, fig.width=6,out.width="75%"}
 tb5 <- tb2 +

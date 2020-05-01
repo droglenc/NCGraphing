@@ -35,10 +35,10 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Intro2/Lecture_MooseWolves.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/Lecture_MooseWolves_DHO.R">Script</a></button></li>
+  <li><a href="Intro2/Lecture_MooseWolves.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/Lecture_MooseWolves_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
   <li><a href="Intro2/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
-  <li><a href="Intro2/CE_Temperature.html">Exercise - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/CE_Temperature.R">Key</a></button></li>
-  <li>Analysis Exercise 2 (pick one)</li>
+  <li><a href="Intro2/CE_Temperature.html">Exercise 1 - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/CE_Temperature.R">Key</a></button></li>
+  <li>Exercise 2 (*pick one of the following*)</li>
   <ul>
     <li><a href="Intro2/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/CE_Loons.R">Key</a></button></li>
     <li><a href="Intro2/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/CE_Walleye.R">Key</a></button></li>

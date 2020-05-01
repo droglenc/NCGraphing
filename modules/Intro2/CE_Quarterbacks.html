@@ -10,8 +10,7 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
-<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into <a href="https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv">NCAAF19_QBS.csv</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Make sure to load <code>tidyverse</code>.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into <a href="https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv">NCAAF19_QBS.csv</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Perform the following steps to load the data for all quarterbacks from the 2019-20 season,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> restrict the data to only those in the so-called “power 5 conferences” (i.e., <code>filter()</code>), and make sure that the <code>Conf</code>erence variable is a grouping variable (i.e., <code>factor()</code>).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <pre class="r"><code>#!# Set to your own working directory and have just your filename below.
 qbs &lt;- read.csv(&quot;https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv&quot;,
@@ -62,7 +61,7 @@ str(qbs)</code></pre>
 </div>
 <div id="passing-attempts-vs-rushing-attempts-5" class="section level2">
 <h2>Passing Attempts vs Rushing Attempts 5</h2>
-<p>Modify your plot from “Passing Attempts vs Rushing Attempts 2” to use five <em>divergent</em> colors for the different conferences that are <em>colorblind-safe</em> and <em>printer-friendly</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.</p>
+<p>Modify your plot from “Passing Attempts vs Rushing Attempts 2” to use five <em>divergent</em> colors for the different conferences that are <em>colorblind-safe</em>. See the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">color brewer website</a> or <a href="http://derekogle.com/NCGraphing/resources/colors#choosing-colors-as-a-palette">these color-blind-friendly pallettes</a> for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors.</p>
 <p><img src="CE_Quarterbacks_files/figure-html/QBS_act5-1.png" width="75%" /></p>
 </div>
 <div class="footnotes">

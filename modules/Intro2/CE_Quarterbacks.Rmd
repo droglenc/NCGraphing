@@ -18,8 +18,9 @@ modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
-```{r echo=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
 ```
 
 ----
@@ -27,11 +28,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ## Background
 <img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
 
-[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into [NCAAF19_QBS.csv](https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv), will be explored in this exercise.[^getdata] Make sure to load `tidyverse`.
-
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(tidyverse)
-```
+[sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into [NCAAF19_QBS.csv](https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv), will be explored in this exercise.[^getdata]
 
 Perform the following steps to load the data for all quarterbacks from the 2019-20 season,[^loaddata] restrict the data to only those in the so-called "power 5 conferences" (i.e., `filter()`), and make sure that the `Conf`erence variable is a grouping variable (i.e., `factor()`).[^copycode]
 
@@ -126,7 +123,7 @@ act4
 &nbsp;
 
 ## Passing Attempts vs Rushing Attempts 5
-Modify your plot from "Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorblind-safe* and *printer-friendly*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors. An example is below.
+Modify your plot from "Passing Attempts vs Rushing Attempts 2" to use five *divergent* colors for the different conferences that are *colorblind-safe*. See the [color brewer website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [these color-blind-friendly pallettes](http://derekogle.com/NCGraphing/resources/colors#choosing-colors-as-a-palette) for help with this. Note that hexadecimal codes for colors can be entered the same as names of colors.
 
 ```{r QBS_act5, fig.width=6,out.width="75%"}
 act5 <- act2 +

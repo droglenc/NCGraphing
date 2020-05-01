@@ -18,21 +18,16 @@ modHTML(file.path(here::here(),dnm,fnm))
 FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
-```{r echo=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
 ```
 
 ----
 
 ## Background
 <img src="../zimgs/MeltingGlacier.jpg" alt="Melting" class="img-right">
-The National Oceanic and Atmospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their default settings show the *global* temperature anomaly (difference from a long-term average) for *February* and are in [this CSV file](https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv). Make sure to load `tidyverse`.
-
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-The data file is loaded into R below,[^loaddata] but note that `skip=4` is need as the first four lines of the CSV file do not contain data.[^copycode]
+The National Oceanic and Atmospheric Administration (NOAA) maintains a database of global land and sea temperatures. The data can be accessed from their [Climate at a Glance website](https://www.ncdc.noaa.gov/cag/global/time-series). Their default settings show the *global* temperature anomaly (difference from a long-term average) for *February* and are in [this CSV file](https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv). The data file is loaded into R below,[^loaddata] but note that `skip=4` is need as the first four lines of the CSV file do not contain data.[^copycode]
 
 ```{r echo=TRUE, results='hide'}
 #!# Set to your own working directory and have just your filename below.
