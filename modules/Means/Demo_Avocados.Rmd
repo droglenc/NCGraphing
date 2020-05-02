@@ -16,7 +16,7 @@ fnm <- "Demo_Avocados"
 dnm <- "modules/Means"
 modHTML(file.path(here::here(),dnm,fnm))
 ```
-```{r echo=TRUE, results='hide', message=FALSE, warning=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 library(tidyverse)
 ```
