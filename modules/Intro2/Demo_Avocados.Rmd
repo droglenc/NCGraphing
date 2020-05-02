@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5)
 
 ## Background
 <img src="../zimgs/avocado.jpg" alt="Avocados" class="img-right">
-Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices){:target="_blank"}).[^getdata]
+Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The [data is here](https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv) (with [metadata under "columns" at this site](https://www.kaggle.com/neuromusic/avocado-prices)).[^getdata]
 
 Make sure (as always) to load `tidyverse`.
 
@@ -60,8 +60,8 @@ avoc1 <- ggplot(data=avoc,mapping=aes(x=AveragePrice,y=Total.Bags,
 avoc1
 ```
 
-[^getdata]: This CSV file is freely available from Kaggle at [this page](https://www.kaggle.com/neuromusic/avocado-prices){:target="_blank"}. However, you must sign-in to download the data file. I did this and made it available from my website at the link above.
+[^getdata]: This CSV file is freely available from Kaggle at [this page](https://www.kaggle.com/neuromusic/avocado-prices). However, you must sign-in to download the data file. I did this and made it available from my website at the link above.
 
-[^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138){:target="_blank"}, for which the password is "NCStats" (without the quotes).
+[^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
 
 [^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.
