@@ -53,4 +53,4 @@ harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
 harv5
 
 
-# Script created at 2020-05-02 20:06:26
+# Script created at 2020-05-02 20:12:37
