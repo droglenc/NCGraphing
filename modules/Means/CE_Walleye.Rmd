@@ -1,0 +1,112 @@
+---
+layout: page
+title: Exercise - Walleye
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+fnm <- "CE_Walleye"
+dnm <- "modules/Means"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
+```
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
+library(tidyverse)
+#!# Set to your own working directory and have just your filename below.
+wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
+  filter(year==2003) %>%
+  mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
+              to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
+         loc=factor(loc))
+```
+
+----
+
+## Background
+<img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
+This is the same data set [introduced here](../Intro2/CE_Walleye.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `tidyverse`) loading portion of your script. If you did not do those exercises then please see that page for the instructions on loading the data.
+
+&nbsp;
+
+
+## Total Length by Location 1
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Walleye_tl1}
+tl1 <- ggplot(data=wae,mapping=aes(x=loc,y=tl)) +
+  geom_violin(color="gray50",fill="gray70",alpha=0.5,trim=FALSE) +
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",size=1,shape=3) +
+  scale_y_continuous(name="Mean (95% CI) Total Length (mm)") +
+  scale_x_discrete(name="Location of Capture") +
+  theme_minimal()
+tl1
+```
+
+## Total Length by Location and Sex
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Walleye_tl2}
+tl2 <- ggplot(data=wae,mapping=aes(x=loc,y=tl,color=sex)) +
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",
+               size=1,shape=21,fill="white",
+               position=position_dodge(width=0.2)) +
+  scale_y_continuous(name="Mean (95% CI) Total Length (mm)") +
+  scale_x_discrete(name="Location of Capture") +
+  theme_bw()
+tl2
+```
+
+&nbsp;
+
+## Total Length by Location 2
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Walleye_tl3}
+smry <- wae %>%
+  group_by(loc) %>%
+  summarize(n=n(),
+            mean=mean(tl,na.rm=TRUE),
+            sd=sd(tl,na.rm=TRUE)) %>%
+  mutate(se=sd/sqrt(n),
+         ci=qt(0.975,df=n-1)*se,
+         lci=mean-ci,
+         uci=mean+ci)
+
+tl3 <- ggplot(data=smry,mapping=aes(x=loc,y=mean)) +
+  geom_pointrange(aes(ymin=lci,ymax=uci),pch=21,fill="white",size=1) +
+  geom_label(aes(label=formatC(mean,format="f",digits=0)),hjust=-0.25) +
+  scale_x_discrete(name="Location of Capture") +
+  scale_y_continuous(name="Mean Total Length (95% CI) (mm)") +
+  theme_bw()
+tl3
+```
+
+&nbsp;
+
+## Total Length by Location 2
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Walleye_tl4}
+tl4 <- ggplot() +
+  geom_jitter(data=wae,aes(x=loc,y=tl),width=0.05,alpha=0.1) +
+  geom_pointrange(data=smry,mapping=aes(x=loc,y=mean,ymin=lci,ymax=uci),
+                  pch=21,fill="white",color="red",size=0.75) +
+  geom_label(data=smry,mapping=aes(x=loc,y=mean,
+                                   label=formatC(mean,format="f",digits=0)),
+             hjust=-0.5) +
+  scale_x_discrete(name="Location of Capture") +
+  scale_y_continuous(name="Mean Total Length (95% CI) (mm)") +
+  theme_bw()
+tl4
+```
+
+&nbsp;

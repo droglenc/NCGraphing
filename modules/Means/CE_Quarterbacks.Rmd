@@ -1,0 +1,102 @@
+---
+layout: page
+title: Exercise - Quarterbacks
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+fnm <- "CE_Quarterbacks"
+dnm <- "modules/Means"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
+```
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
+library(tidyverse)
+#!# Set to your own working directory and have just your filename below.
+qbs <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv",
+                stringsAsFactors=FALSE) %>%
+  filter(Conf %in% c("ACC","Big 12","Big Ten","Pac-12","SEC")) %>%
+  mutate(Conf=factor(Conf))
+```
+
+----
+
+## Background
+<img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
+This is the same data set [introduced here](../Intro2/CE_Quarterbacks.html) (which included code for accessing the data). If you did those exercises, then you can use the same data and package (e.g., `tidyverse`) loading portion of your script. If you did not do those exercises then please see that page for the instructions on loading the data.
+
+&nbsp;
+
+## Total Passing Yards by Conference 1
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Quarterbacks_PYds1}
+PYds1 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds)) +
+  geom_violin(color="gray50",fill="gray70",alpha=0.5,trim=FALSE) +
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",size=1,shape=3) +
+  scale_y_continuous(name="Mean (95% CI) Total Passing Yards") +
+  scale_x_discrete(name="Conference") +
+  theme_minimal()
+PYds1
+```
+
+&nbsp;
+
+## Total Passing Yards by Conference and Attempts
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Quarterbacks_PYds2}
+PYds2 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds,color=Att>350)) +
+  stat_summary(fun.data=mean_cl_normal,geom="pointrange",
+               size=1,shape=21,fill="white",
+               position=position_dodge(width=0.2)) +
+  scale_y_continuous(name="Mean (95% CI) Total Passing Yards") +
+  scale_x_discrete(name="Conference") +
+  theme_bw()
+PYds2
+```
+
+&nbsp;
+
+## Total Passing Yards by Conference 2
+Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy your code from above and then modify.*]
+
+```{r Quarterbacks_PYds3}
+smry <- qbs %>%
+  group_by(Conf) %>%
+  summarize(n=n(),
+            mean=mean(PYds,na.rm=TRUE),
+            sd=sd(PYds,na.rm=TRUE)) %>%
+  mutate(se=sd/sqrt(n),
+         ci=qt(0.975,df=n-1)*se,
+         lci=mean-ci,
+         uci=mean+ci)
+
+PYds3 <- ggplot(data=smry,mapping=aes(x=Conf,y=mean)) +
+  geom_pointrange(aes(ymin=lci,ymax=uci),pch=21,fill="white",size=1) +
+  geom_label(aes(label=formatC(mean,format="f",digits=0)),hjust=-0.25) +
+  scale_x_discrete(name="Conference") +
+  scale_y_continuous(name="Mean Total Passing Yards (95% CI) (g)") +
+  theme_bw()
+PYds3
+```
+
+&nbsp;
+
+## BONUS - Total Passing Yards by Conference 3
+Construct `ggplot2` code to match the graph below (as closely as you can). *Hint: If you saved your plot from the previous section, you should be able to create this plot by "adding" one function of code to the saved ggplot object.*
+
+```{r Quarterbacks_PYds4}
+PYds4 <- PYds3 +
+  geom_jitter(data=qbs,aes(x=Conf,y=PYds),width=0.075,alpha=0.5)
+PYds4
+```
