@@ -54,7 +54,7 @@ tl1
 ## Total Length by Location and Sex
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Walleye_tl2}
+```{r Walleye_tl2, fig.width=6.5, out.width="75%"}
 tl2 <- ggplot(data=wae,mapping=aes(x=loc,y=tl,color=sex)) +
   stat_summary(fun.data=mean_cl_normal,geom="pointrange",
                size=1,shape=21,fill="white",
@@ -99,7 +99,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 tl4 <- ggplot() +
   geom_jitter(data=wae,aes(x=loc,y=tl),width=0.05,alpha=0.1) +
   geom_pointrange(data=smry,mapping=aes(x=loc,y=mean,ymin=lci,ymax=uci),
-                  pch=21,fill="white",color="red",size=0.75) +
+                  pch=21,fill="white",color="red",size=0.6) +
   geom_label(data=smry,mapping=aes(x=loc,y=mean,
                                    label=formatC(mean,format="f",digits=0)),
              hjust=-0.5) +

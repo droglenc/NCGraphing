@@ -44,7 +44,7 @@ tl3
 tl4 <- ggplot() +
   geom_jitter(data=wae,aes(x=loc,y=tl),width=0.05,alpha=0.1) +
   geom_pointrange(data=smry,mapping=aes(x=loc,y=mean,ymin=lci,ymax=uci),
-                  pch=21,fill="white",color="red",size=0.75) +
+                  pch=21,fill="white",color="red",size=0.6) +
   geom_label(data=smry,mapping=aes(x=loc,y=mean,
                                    label=formatC(mean,format="f",digits=0)),
              hjust=-0.5) +
@@ -54,4 +54,4 @@ tl4 <- ggplot() +
 tl4
 
 
-# Script created at 2020-05-03 08:42:34
+# Script created at 2020-05-03 08:59:24

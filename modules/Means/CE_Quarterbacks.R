@@ -16,7 +16,7 @@ PYds1
 PYds2 <- ggplot(data=qbs,mapping=aes(x=Conf,y=PYds,color=Att>350)) +
   stat_summary(fun.data=mean_cl_normal,geom="pointrange",
                size=1,shape=21,fill="white",
-               position=position_dodge(width=0.2)) +
+               position=position_dodge(width=0.3)) +
   scale_y_continuous(name="Mean (95% CI) Total Passing Yards") +
   scale_x_discrete(name="Conference") +
   theme_bw()
@@ -45,4 +45,4 @@ PYds4 <- PYds3 +
 PYds4
 
 
-# Script created at 2020-05-03 08:41:23
+# Script created at 2020-05-03 08:59:14

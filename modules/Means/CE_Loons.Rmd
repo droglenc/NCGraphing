@@ -51,14 +51,14 @@ wt1
 ## Weight by Sex and Region
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_WT2}
+```{r Loons_WT2, warning=FALSE, fig.width=6.5, out.width="75%"}
 wt2 <- ggplot(data=loon,mapping=aes(x=region,y=weight,color=sex)) +
   stat_summary(fun.data=mean_cl_normal,geom="pointrange",
                size=1,shape=21,fill="white",
                position=position_dodge(width=0.2)) +
   scale_y_continuous(name="Mean (95% CI) Weight (g)") +
   scale_x_discrete(name="Region") +
-  theme_minimal()
+  theme_bw()
 wt2
 ```
 

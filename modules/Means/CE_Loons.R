@@ -16,7 +16,7 @@ wt2 <- ggplot(data=loon,mapping=aes(x=region,y=weight,color=sex)) +
                position=position_dodge(width=0.2)) +
   scale_y_continuous(name="Mean (95% CI) Weight (g)") +
   scale_x_discrete(name="Region") +
-  theme_minimal()
+  theme_bw()
 wt2
 
 smry <- loon %>%
@@ -42,4 +42,4 @@ wt4 <- wt3 +
 wt4
 
 
-# Script created at 2020-05-03 08:41:02
+# Script created at 2020-05-03 08:59:04
