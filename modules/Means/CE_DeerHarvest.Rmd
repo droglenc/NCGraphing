@@ -103,12 +103,12 @@ harv4
 &nbsp;
 
 ## Total Annual Harvest by County and Year
-Construct `ggplot2` code to match the graph below (as closely as you can). *Note, I don't recommend this superfluous use of color, but I do want to see if you can figure out how to make it.*
+Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Harvest_5, fig.width=6.5, out.width="75%"}
 harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
-  geom_point(alpha=0.25,size=2) +
   geom_line(size=1) +
+  geom_point(shape=21,fill="white",size=2) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
   scale_y_continuous(name="Total Annual Deer Harvest",
                      expand=expansion(mult=c(0,0.05)),

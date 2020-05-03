@@ -41,8 +41,8 @@ harv4 <- harv3 +
 harv4
 
 harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
-  geom_point(alpha=0.25,size=2) +
   geom_line(size=1) +
+  geom_point(shape=21,fill="white",size=2) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
   scale_y_continuous(name="Total Annual Deer Harvest",
                      expand=expansion(mult=c(0,0.05)),
@@ -53,4 +53,4 @@ harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
 harv5
 
 
-# Script created at 2020-05-02 19:58:03
+# Script created at 2020-05-02 20:06:26
