@@ -52,5 +52,24 @@ harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
   theme_bw()
 harv5
 
+smry <- dh %>%
+  group_by(County) %>%
+  summarize(n=n(),
+            mean=mean(Ttl.All,na.rm=TRUE),
+            sd=sd(Ttl.All,na.rm=TRUE)) %>%
+  mutate(ci=qt(0.975,df=n-1)*sd/sqrt(n),
+         lci=mean-ci,
+         uci=mean+ci)
 
-# Script created at 2020-05-02 21:48:40
+harv6 <- ggplot(data=smry,mapping=aes(x=County,y=mean)) +
+  geom_bar(stat="identity",color="black",fill="gray70",alpha=0.75) +
+  geom_errorbar(aes(ymin=mean,ymax=uci),width=0.1) +
+  scale_x_discrete(name="County") +
+  scale_y_continuous(name="Mean Total Annual Deer Harvest",
+                     expand=expansion(mult=c(0,0.05))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank())
+harv6
+
+
+# Script created at 2020-05-03 10:17:41
