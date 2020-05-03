@@ -37,8 +37,8 @@ XXX
 <ul>
   <li><a href="Means/Lecture_GreatLakesIce.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/Lecture_GreatLakesIce_DHO.R">Script</a></button></li>
   <li><a href="Means/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
-  <li><a href="Means/CE_DeerHarvest.html">Exercise - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_DeerHarvest.R">Key</a></button></li>
-  <li>Analysis Exercise 2 (pick one)</li>
+  <li><a href="Means/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_DeerHarvest.R">Key</a></button></li>
+  <li>Exercise 2 (pick <b>one</b> of the following)</li>
   <ul>
     <li><a href="Means/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_Loons.R">Key</a></button></li>
     <li><a href="Means/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_Walleye.R">Key</a></button></li>

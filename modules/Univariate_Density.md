@@ -51,7 +51,7 @@ Develop (or recall) a *basic* understanding of each of the following graphs (use
 <ul>
   <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears_DHO.R">Script</a></button></li>
   <li><a href="Univariate_Density/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
-  <li>Analysis Exercises (pick one)</li>
+  <li>Exercise (pick <b>one</b> of the following)</li>
   <ul>
     <li><a href="Univariate_Density/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_Loons.R">Key</a></button></li>
     <li><a href="Univariate_Density/CE_Walleye.html">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/CE_Walleye.R">Key</a></button></li>

@@ -41,8 +41,8 @@ Develop (or recall) a *basic* understanding of bar charts/plots/graphs (use any 
 <ul>
   <li><a href="Univariate_Groups/Lecture_EnviroProtect.html">Lecture -- GSS</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/Lecture_EnviroProtect_DHO.R">Script</a></button></li>
   <li><a href="Univariate_Groups/Demo_Grades.html">Demonstration - Grades</a></li>
-  <li><a href="Univariate_Groups/CE_Wolves.html">Analysis Exercise I - Wolves </a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Wolves.R">Key</a></button></li>
-  <li>Analysis Exercise II (pick one)</li>
+  <li><a href="Univariate_Groups/CE_Wolves.html">Exercise I - Wolves </a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Wolves.R">Key</a></button></li>
+  <li>Exercise 2 (pick <b>one</b> of the following)</li>
   <ul>
     <li><a href="Univariate_Groups/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Loons.R">Key</a></button></li>
     <li><a href="Univariate_Groups/CE_Walleye.html">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Walleye.R">Key</a></button></li>
