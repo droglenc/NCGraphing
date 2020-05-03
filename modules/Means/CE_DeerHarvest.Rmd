@@ -81,7 +81,7 @@ harv2
 ## Total Annual Harvest by County 3
 Construct `ggplot2` code to match the graph below (as closely as you can). *Hint: If you saved your plot from the previous section, you should be able to create this plot by "adding" three functions of code to the saved ggplot object.*
 
-```{r Harvest_3, warning=FALSE}
+```{r Harvest_3, warning=FALSE, message=FALSE}
 harv3 <- harv2 +
   coord_flip() +
   scale_x_discrete(name=element_blank()) +
