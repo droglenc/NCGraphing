@@ -27,9 +27,9 @@ library(tidyverse)
 
 ## Background
 <img src="../zimgs/Deer.jpg" alt="Deer" class="img-right">
-Deer hunting is ingrained in the culture and is big business in northern Wisconsin. Thus, management of the Whitetail Deer (**) populations in this area is an important issue. Harvest rules and recommendations are based on recommendations from the Department of Natural Resources (DNR) and the County Deer Advisory Councils (CDACs), which are made up of local citizents, to the Natural Resources Board. One piece of evidence used in these recommendations are past harvest statistics. The harvest of deer from Douglas, Bayfield, Ashland, and Iron Counties, the northern-most tier of couties in Wisconsin, from 2010-2019 were recorded in the [DeerHarvest.csv file](https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv), with [these metadata](https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest_meta.txt).
+Deer hunting is ingrained in the culture and is big business in northern Wisconsin. Thus, management of the Whitetail Deer (*Odocoileus virginianus*) populations in this area is an important issue. Harvest rules and recommendations are based on recommendations from the Department of Natural Resources (DNR) and the County Deer Advisory Councils (CDACs), which are made up of local citizents, to the Natural Resources Board. One piece of evidence used in these recommendations are past harvest statistics. The harvest of deer from Douglas, Bayfield, Ashland, and Iron Counties, the northern-most tier of couties in Wisconsin, from 2010-2019 were recorded in the [DeerHarvest.csv file](https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv), with [these metadata](https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest_meta.txt).
 
-```{r echo=TRUE, results='hide'}
+```{r}
 #!# Set to your own working directory and have just your filename below.
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
 str(dh)
@@ -81,7 +81,7 @@ harv2
 ## Total Annual Harvest by County 3
 Construct `ggplot2` code to match the graph below (as closely as you can). *Hint: If you saved your plot from the previous section, you should be able to create this plot by "adding" three functions of code to the saved ggplot object.*
 
-```{r Harvest_3}
+```{r Harvest_3, warning=FALSE}
 harv3 <- harv2 +
   coord_flip() +
   scale_x_discrete(name=element_blank()) +
@@ -105,10 +105,10 @@ harv4
 ## Total Annual Harvest by County and Year
 Construct `ggplot2` code to match the graph below (as closely as you can). *Note, I don't recommend this superfluous use of color, but I do want to see if you can figure out how to make it.*
 
-```{r Harvest_5, fig.width=6.5}
+```{r Harvest_5, fig.width=6.5, out.width="75%"}
 harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
-  geom_point(alpha=0.25) +
-  geom_line() +
+  geom_point(alpha=0.25,size=2) +
+  geom_line(size=1) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
   scale_y_continuous(name="Total Annual Deer Harvest",
                      expand=expansion(mult=c(0,0.05)),
