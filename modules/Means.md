@@ -28,7 +28,7 @@ XXX
 
 ## Preparation for Class
 
-* XXX
+* [What are Confidence Intervals in Statistics](https://www.simplypsychology.org/confidence-interval.html){:target="_blank"} ... short read.
 
 ----
 
