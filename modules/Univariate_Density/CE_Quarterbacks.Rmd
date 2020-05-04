@@ -167,6 +167,18 @@ PYds7
 
 This plot can also[^coord_flip] be produced from your "Quarterbacks Total Passing Yards 6" plot with the addition of one more line of code. Perform an internet search to see if you can find this method for flipping the coordinates.
 
+&nbsp;
+
+## BONUS - Total Passing Yards 8
+Construct `ggplot2` code to match the graph below (as closely as you can). *Hints: (1) This plot has been "faceted", which may help your Google search, (2) this can be created from your "Total Passing Yards 1" plot with one extra function of code (assuming you saved that plot into an object), and (3) change to `fig.height=10` in the code chunk header for this plot.*
+
+```{r Quarterbacks_PYds8, fig.height=10}
+PYds8 <- PYds1 +
+  facet_grid(row=vars(Conf))
+PYds8
+```
+
+&nbsp;
 
 ### Footnotes
 [^coord_flip]: Assuming that you did not do it this easier way the first time.
