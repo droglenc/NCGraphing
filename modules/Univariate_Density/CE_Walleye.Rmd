@@ -173,7 +173,7 @@ This plot can also[^coord_flip] be produced from your "Walleye Total Length 6" p
 ## BONUS - Total Length 8
 Construct `ggplot2` code to match the graph below (as closely as you can). *Hints: (1) This plot has been "faceted", which may help your Google search, (2) this can be created from your "Total Length 1" plot with one extra function of code (assuming you saved that plot into an object), and (3) change to `fig.height=8` in the code chunk header for this plot.*
 
-```{r Walleye_tl8, fig.height=}
+```{r Walleye_tl8, fig.height=8}
 tl8 <- tl1 +
   facet_grid(row=vars(loc))
 tl8
