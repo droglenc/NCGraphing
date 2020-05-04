@@ -79,7 +79,7 @@ head(flbb)
 ```
 
 - Variables are:
-  - **DATE**: Date of capture (*won't be used here*).
+  - **DATE**: Date of capture.
   - **sex**: Sex of bear (`Female` or `Male`).
   - **age**: Estimated age of the bear (years).
   - **weight**: Body weight of the bear (kg).
@@ -297,7 +297,7 @@ class: inverse, center, middle
 .pull-left[
 # Density Plot
 - Displays the density of observations of the quantitative *X* variable.
-  - i.e., the relative distribution of *X*.
+  - i.e., relative distribution of *X*.
   - A smoothed representation of a histogram.
 - Constructed with `geom_density()`.
   - Use `adjust=` to modify "smoothing effect."
@@ -506,10 +506,10 @@ p <- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red","blue")) +
-  scale_fill_manual(values=c("red","blue")) + #BREAK3
+  scale_color_manual(values=c("red","blue")) + #BREAK3
+  scale_fill_manual(values=c("red","blue")) + #BREAK4
   theme_bw() +
-  theme(legend.position="none") #BREAK4
+  theme(legend.position="none") #BREAK5
 ```
 
 `r chunk_reveal("boxplot2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`

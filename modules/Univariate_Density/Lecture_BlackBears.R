@@ -1,18 +1,25 @@
+#!# Loading the tidyverse package (must do every time)
 library(tidyverse)
 
 #!# Load and Prep Data
 
-flbb <- read.csv("https://derekogle.com/NCGraphing/modules/zdata/fwma-08-01-02_table s1.csv") %>%
-  rename(sex=SEX,age=AGE..yr.,length=BODY.LENGTH..cm.,
-         weight=BODY.WEIGHT..kg.,chest=CHEST.GIRTH..cm.) %>%
-  mutate(sex=plyr::mapvalues(sex,from=c("FEMALE","MALE"),to=c("Female","Male")),
+#!# Set to your own working directory and have just your filename below.
+flbb <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/BlackBearsFL.csv") %>%
+  rename(sex=SEX,
+         age=AGE..yr.,
+         length=BODY.LENGTH..cm.,
+         weight=BODY.WEIGHT..kg.,
+         chest=CHEST.GIRTH..cm.) %>%
+  mutate(sex=plyr::mapvalues(sex,
+                             from=c("FEMALE","MALE"),
+                             to=c("Female","Male")),
          sex=factor(sex))
 
 head(flbb)
 
 h <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(binwidth=10,boundary=0,closed="left",
-                 color="gray30",fill="gray70") +
+                 color="gray30",fill="gray30",alpha=0.25) +
   scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Frequency of Bears",
@@ -24,7 +31,7 @@ h
 
 h <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(binwidth=10,boundary=0,closed="left",
-                 color="gray30",fill="gray70") +
+                 color="gray30",fill="gray30",alpha=0.25) +
   scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Frequency of Bears",
@@ -39,8 +46,7 @@ h
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram() +
   scale_y_continuous(name="Frequency of Bears") +
-  scale_x_continuous(name="Weight (kg)",
-                     breaks=seq(0,250,25)) +
+  scale_x_continuous(name="Weight (kg)",breaks=seq(0,250,25)) +
   theme_bw()
 
 #!# DEREK ... delete this in the script
@@ -48,24 +54,25 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   geom_histogram(
     color="gray30", #BREAK2
-    fill="gray70", #BREAK3
-    binwidth=10, #BREAK4
-    boundary=0,closed="left" #BREAK5
+    fill="gray30", #BREAK3
+    alpha=0.25, #BREAK4
+    binwidth=10, #BREAK5
+    boundary=0,closed="left" #BREAK6
   ) +
   scale_y_continuous(
     name="Frequency of Bears",
-    expand=expansion(mult=c(0,0.05)) #BREAK6
+    expand=expansion(mult=c(0,0.05)) #BREAK7
   ) +
   scale_x_continuous(
     name="Weight (kg)",breaks=seq(0,250,25),
-    expand=expansion(mult=c(0,0)) #BREAK7
+    expand=expansion(mult=c(0,0)) #BREAK8
   ) +
   theme_bw()
 
 #!# Histogram with Typical Modifications
 
 p <- ggplot(data=flbb, mapping=aes(x=weight)) +
-  geom_histogram(color="gray30",fill="gray70",
+  geom_histogram(color="gray30",fill="gray30",alpha=0.25,
                  binwidth=10,boundary=0,closed="left") +
   scale_y_continuous(name="Frequency of Bears",
                      expand=expansion(mult=c(0,0.05))) +
@@ -106,8 +113,8 @@ p <- ggplot(data=flbb,
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank()) + #BREAK
-  scale_color_manual(values=c("red3","blue3")) + #BREAK
-  scale_fill_manual(values=c("red3","blue3"))
+  scale_color_manual(values=c("red","blue")) + #BREAK
+  scale_fill_manual(values=c("red","blue"))
 
 h2 <- p # for boxplots later
 
@@ -137,7 +144,7 @@ p <- ggplot(data=flbb, mapping=aes(x=weight)) +
   scale_x_continuous(
     name="Weight (kg)",
     breaks=seq(0,250,25),expand=expansion(mult=c(0,0)),
-    limits=c(0,250), #BREAK5
+    limits=c(0,250) #BREAK5
   ) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
@@ -173,8 +180,8 @@ p <- ggplot(data=flbb, mapping=aes(
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) + #BREAK4
-  scale_fill_manual(values=c("red3","blue3")) + #BREAK5
+  scale_color_manual(values=c("red","blue")) + #BREAK4
+  scale_fill_manual(values=c("red","blue")) + #BREAK5
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -185,8 +192,8 @@ b <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
@@ -196,7 +203,7 @@ b / h2 & theme(legend.position="none")
 #!# Boxplot with Typical Modifications
 
 p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
-  geom_boxplot(fill="gray70") +
+  geom_boxplot(fill="gray30",alpha=0.25) +
   scale_x_discrete(name="Sex") +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
@@ -214,8 +221,8 @@ p <- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) + #BREAK3
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) + #BREAK3
   theme_bw() +
   theme(legend.position="none") #BREAK4
 
@@ -225,8 +232,8 @@ v <- ggplot(data=flbb, mapping=aes(x=sex,y=weight,color=sex,fill=sex)) +
   scale_y_continuous(name="Weight (kg)",
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   coord_flip() +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
@@ -239,8 +246,8 @@ d2 <- ggplot(data=flbb, mapping=aes(x=weight,color=sex,fill=sex)) +
                      expand=expansion(mult=c(0,0))) +
   scale_y_continuous(name="Relative Density of Bears",
                      expand=expansion(mult=c(0,0.05))) +
-  scale_color_manual(values=c("red3","blue3")) +
-  scale_fill_manual(values=c("red3","blue3")) +
+  scale_color_manual(values=c("red","blue")) +
+  scale_fill_manual(values=c("red","blue")) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank())
@@ -266,7 +273,7 @@ p <- ggplot(data=flbb, mapping=aes(x=sex,y=weight)) +
                      limits=c(0,250),breaks=seq(0,250,25),
                      expand=expansion(mult=c(0,0))) +
   theme_bw() + #BREAK
-  geom_jitter(width=0.05,height=0)
+  geom_jitter(width=0.05,height=0,alpha=0.25)
 
 
-# Script created at 2020-04-14 12:21:17
+# Script created at 2020-05-04 08:29:22

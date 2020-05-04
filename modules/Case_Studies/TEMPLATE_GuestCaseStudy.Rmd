@@ -1,0 +1,40 @@
+---
+######!!!!! DO NOT SAVE THIS AS TEMPLATE.Rmd ... GIVE IT A NEW NAME !!!!!######
+title: "Untitled"
+author: "XXX"   ## Don't change next twelve lines
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    theme: yeti
+    highlight: pygments
+    code_folding: hide
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo=TRUE,fig.width=5,fig.height=5,comment="#R>")
+```
+
+<!---- You can edit anything below here ---->
+
+# Packages and Data
+```{r packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r data, echo=-(1:4)}
+## Initially load and manipulate data here ... I suggest reducing to
+## only a few variables (possibly only those needed for the visualization),
+## Set working directory if not using a project.
+setwd("")
+df <- read.csv("XXX.csv")
+head(df)
+```
+
+# The Visualization
+
+<!---- Put graph code in the code chunk below ---->
+
+```{r}
+```
+
+<!---- Press Knit button in window toolbar to create HTML file ---->

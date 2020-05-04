@@ -3,7 +3,7 @@
   <head>
     <title>Graphing Univariate Densities</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Derek Ogle, April 2020" />
+    <meta name="author" content="Derek Ogle, May 2020" />
     <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 # Graphing Univariate Densities
-### Derek Ogle, April 2020
+### Derek Ogle, May 2020
 
 ---
 
@@ -81,7 +81,7 @@ head(flbb)
 ```
 
 - Variables are:
-  - **DATE**: Date of capture (*won't be used here*).
+  - **DATE**: Date of capture.
   - **sex**: Sex of bear (`Female` or `Male`).
   - **age**: Estimated age of the bear (years).
   - **weight**: Body weight of the bear (kg).
@@ -781,7 +781,7 @@ class: inverse, center, middle
 .pull-left[
 # Density Plot
 - Displays the density of observations of the quantitative *X* variable.
-  - i.e., the relative distribution of *X*.
+  - i.e., relative distribution of *X*.
   - A smoothed representation of a histogram.
 - Constructed with `geom_density()`.
   - Use `adjust=` to modify "smoothing effect."
@@ -1350,7 +1350,6 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red","blue")) +  
   theme_bw()   
  
 p
@@ -1377,7 +1376,6 @@ p &lt;- ggplot(data=flbb, mapping=aes(
   scale_y_continuous(name="Weight (kg)",  
                      limits=c(0,250),breaks=seq(0,250,25),  
                      expand=expansion(mult=c(0,0))) +  
-  scale_color_manual(values=c("red","blue")) +  
   theme_bw()   
  
 p
@@ -1385,6 +1383,33 @@ p
 ]]
 .column[.content[
 &lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=flbb, mapping=aes(  
+    x=sex,y=weight,  
+    color=sex,fill=sex  
+  )) +  
+  geom_boxplot(alpha=0.25) +  
+  scale_x_discrete(name="Sex") +  
+  scale_y_continuous(name="Weight (kg)",  
+                     limits=c(0,250),breaks=seq(0,250,25),  
+                     expand=expansion(mult=c(0,0))) +  
+* scale_color_manual(values=c("red","blue")) +
+  theme_bw()   
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_3_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -1412,7 +1437,7 @@ p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_3_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_4_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -1441,7 +1466,7 @@ p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_4_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_BlackBears_files/figure-html/boxplot2_non_seq_5_output-1.png" width="100%" /&gt;
 ]]
 
 
