@@ -19,32 +19,13 @@ knitr::opts_chunk$set(echo=TRUE,fig.width=6,fig.height=10,comment="#R>")
 # Packages and Data
 ```{r packages, message=FALSE, warning=FALSE}
 library(tidyverse)
-```
 
-```{r data, echo=-(1:4)}
-## Initially load and manipulate data here ... I suggest reducing to
-## only a few variables (possibly only those needed for the visualization),
-## Set working directory if not using a project.
 wae <- read.csv("https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv") %>%
   mutate(loc=plyr::mapvalues(loc,from=c(1,2,3),
               to=c("Toledo-Huron","Huron-Fairport","Fairport-Conneaut")),
          loc=factor(loc)) %>%
   select(-setID,-grid)
 head(wae)
-```
-
-```{r}
-smry <- wae %>%
-  group_by(loc,year,sex) %>%
-  summarize(n=n(),
-            mean=mean(tl,na.rm=TRUE),
-            sd=sd(tl,na.rm=TRUE)) %>%
-  mutate(ci=qt(0.975,df=n-1)*sd/sqrt(n),
-         lci=mean-ci,
-         uci=mean+ci) %>%
-  select(-ci) %>%
-  as.data.frame()
-head(smry)
 ```
 
 # The Visualization
