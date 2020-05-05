@@ -49,7 +49,7 @@ Develop (or recall) a *basic* understanding of each of the following graphs (use
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears_DHO.R">Script</a></button></li>
+  <li><a href="Univariate_Density/Lecture_BlackBears.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Density/Lecture_BlackBears_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/9ce847296e35a39b40c60ab2c101dcaa2181c5c414f3afae9c11cba8801f33d7" target="_blank">VIDEO</a></button></li>
   <li><a href="Univariate_Density/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li>Exercise (pick <b>one</b> of the following)</li>
   <ul>
