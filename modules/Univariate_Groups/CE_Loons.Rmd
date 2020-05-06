@@ -128,7 +128,7 @@ regsex3
 ## Region and Sex 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Loons_RegSex4, fig.show='hide'}
+```{r Loons_RegSex4, fig.width=6.5, out.width="75%"}
 regsex4 <- ggplot(data=sum2,mapping=aes(x=region,y=perc,fill=sex)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="Region of Capture") +
@@ -138,4 +138,25 @@ regsex4 <- ggplot(data=sum2,mapping=aes(x=region,y=perc,fill=sex)) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
 regsex4
+```
+
+&nbsp;
+
+## Region and Sex 5
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r Loons_RegSex5}
+regsex5 <- ggplot(data=sum2,mapping=aes(x=sex,y=region,fill=perc)) +
+  geom_tile() +
+  scale_fill_gradient2(low="orange1",high="orange4") +
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +
+  theme_minimal() +
+  theme(legend.position="none",
+        aspect.ratio=1,
+        panel.grid=element_blank()) +
+  labs(title="Sex Distribution of Loons",
+       subtitle="by region of North America")
+regsex5
 ```

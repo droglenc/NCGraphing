@@ -151,7 +151,7 @@ lgage3
 ## League and Age Group 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r MLB_LgAge4, fig.show='hide'}
+```{r MLB_LgAge4, fig.width=6.5, out.width="75%"}
 lgage4 <- ggplot(data=sum2,mapping=aes(x=Lg,y=perc,fill=Age_grp)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="League") +
@@ -161,6 +161,27 @@ lgage4 <- ggplot(data=sum2,mapping=aes(x=Lg,y=perc,fill=Age_grp)) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank())
 lgage4
+```
+
+
+&nbsp;
+
+## League and Age Group 5
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r MLB_LgAge5}
+lgage5 <- ggplot(data=sum2,mapping=aes(x=Age_grp,y=Lg,fill=perc)) +
+  geom_tile() +
+  scale_fill_gradient2(low="khaki1",high="khaki4") +
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +
+  theme_minimal() +
+  theme(legend.position="none",
+        aspect.ratio=1) +
+  labs(title="Age Distribution of MLB Players",
+       subtitle="by American and National Leagues")
+lgage5
 ```
 
 &nbsp;

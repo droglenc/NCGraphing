@@ -10,7 +10,7 @@ css: "/css/modules.css"
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p><img src="../zimgs/BattingAverage.jpg" alt="Batting Average" class="img-right"></p>
-<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are <a href="https://derekogle.com/NCGraphing/modules/zdata/MLB19_Batting.csv">in this file</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are <a href="https://raw.githubusercontent.com/droglenc/NCData/master/MLB19_Batting.csv">in this file</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>These data are loaded below and were restricted to only a few variables (use of <code>select()</code>), those players that had at least 200 at-bats in one league (use of <code>filter()</code>), and were in the top 100 with respect to batting “average” (use of <code>top_n()</code>). In addition, an age-group variable was created (use of <code>case_when()</code> within <code>mutate()</code>) and the <code>Lg</code> and <code>Age_grp</code> variables were converted to groupings (use of <code>factor()</code> within <code>mutate()</code>).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <pre class="r"><code>library(tidyverse)
 
@@ -66,6 +66,13 @@ str(mlb)</code></pre>
 <div id="league-and-age-group-4" class="section level2">
 <h2>League and Age Group 4</h2>
 <p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_MLBBatting_files/figure-html/MLB_LgAge4-1.png" width="75%" /></p>
+<p> </p>
+</div>
+<div id="league-and-age-group-5" class="section level2">
+<h2>League and Age Group 5</h2>
+<p>Construct <code>ggplot2</code> code to match the graph below (as closely as you can).</p>
+<p><img src="CE_MLBBatting_files/figure-html/MLB_LgAge5-1.png" width="60%" /></p>
 <p> </p>
 <div id="footnote" class="section level3">
 <h3>Footnote</h3>
