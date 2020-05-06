@@ -3,7 +3,7 @@
   <head>
     <title>Graphing Univariate Groups</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Derek Ogle, April 2020" />
+    <meta name="author" content="Derek Ogle, May 2020" />
     <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 # Graphing Univariate Groups
-### Derek Ogle, April 2020
+### Derek Ogle, May 2020
 
 ---
 
@@ -131,8 +131,8 @@ clrs &lt;- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
 .pull-left[
 - Displays the frequency of observations in levels of the categorical *X* variable.
 - Constructed with `geom_bar()`.
-  - `position=`: Controls position of bars with groups.
   - `width=`: Width of bars.
+  - `position=`: Controls position of bars with groups.
 ]
 
 .pull-right[
@@ -263,7 +263,7 @@ b &lt;- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
                      expand=expansion(mult=c(0,0.05))) +  
   theme_bw() +  
 * theme(panel.grid.major.x=element_blank(),
-*       panel.grid.minor.x=element_blank())
+*       panel.grid.minor=element_blank())
  
 b
 ```
@@ -304,7 +304,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
                      expand=expansion(mult=c(0,0.05))) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -331,7 +331,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
                      expand=expansion(mult=c(0,0.05))) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -359,7 +359,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
 * scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -391,7 +391,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
                      expand=expansion(mult=c(0,0.05))) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -418,7 +418,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
                      expand=expansion(mult=c(0,0.05))) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -446,7 +446,7 @@ b &lt;- ggplot(data=gss, mapping=aes(
 * scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -486,7 +486,7 @@ b &lt;- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   scale_fill_manual(name="Willingness?",values=clrs) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -515,7 +515,7 @@ b &lt;- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   scale_fill_manual(name="Willingness?",values=clrs) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank())  
+        panel.grid.minor=element_blank())  
  
 b
 ```
@@ -2104,7 +2104,7 @@ b &lt;- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) +
 *                    expand=expansion(mult=c(0,0.05))) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank(),
-*       panel.grid.minor.x=element_blank())
+*       panel.grid.minor=element_blank())
  
 b
 ```
@@ -3673,7 +3673,7 @@ b &lt;- ggplot(data=gss_sum2,
 * scale_fill_manual(name="Willingness?",values=clrs) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank(),
-*       panel.grid.minor.x=element_blank())
+*       panel.grid.minor=element_blank())
  
 b
 ```
@@ -3866,11 +3866,8 @@ b &lt;- ggplot(data=gss_sum3,
   geom_bar(stat="identity",color="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Sex of Respondent") +
 * scale_y_continuous(name="Percentage of Respondents",
-*                    expand=expansion(mult=c(0,0.05))) +
-* scale_fill_manual(name="Willingness?",values=clrs) +
-* theme_bw() +
-* theme(panel.grid.major.x=element_blank(),
-*       panel.grid.minor.x=element_blank())
+*                    expand=expansion(mult=0),
+*                    labels=scales::label_percent(scale=1,accuracy=1))
  
 b
 ```
@@ -3878,9 +3875,35 @@ b
 .column[.content[
 &lt;img src="Lecture_EnviroProtect_files/figure-html/bar2b_user_3_output-1.png" width="100%" /&gt;
 ]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+b &lt;- ggplot(data=gss_sum3,  
+            mapping=aes(x=SEX,y=perc,fill=GRNSOL)) +  
+  geom_bar(stat="identity",color="gray30",alpha=0.75) +  
+  scale_x_discrete(name="Sex of Respondent") +  
+  scale_y_continuous(name="Percentage of Respondents",  
+                     expand=expansion(mult=0),  
+                     labels=scales::label_percent(scale=1,accuracy=1)) +  
+* scale_fill_manual(name="Willingness?",values=clrs) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank(),
+*       panel.grid.minor=element_blank())
+ 
+b
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/bar2b_user_4_output-1.png" width="100%" /&gt;
+]]
 
 ---
-
 
 
 
@@ -3958,11 +3981,12 @@ b &lt;- ggplot(data=gss_sum3,
   geom_bar(stat="identity",color="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Highest Degree Completed") +
 * scale_y_continuous(name="Percentage of Respondents",
-*                    expand=expansion(mult=c(0,0.05))) +
+*                    expand=expansion(mult=0),
+*                    labels=scales::label_percent(scale=1,accuracy=1)) +
 * scale_fill_manual(name="Willingness?",values=clrs) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank(),
-*       panel.grid.minor.x=element_blank())
+*       panel.grid.minor=element_blank())
  
 b
 ```
@@ -3984,11 +4008,12 @@ b &lt;- ggplot(data=gss_sum3,
   geom_bar(stat="identity",color="gray30",alpha=0.75) +  
   scale_x_discrete(name="Highest Degree Completed") +  
   scale_y_continuous(name="Percentage of Respondents",  
-                     expand=expansion(mult=c(0,0.05))) +  
+                     expand=expansion(mult=0),  
+                     labels=scales::label_percent(scale=1,accuracy=1)) +  
   scale_fill_manual(name="Willingness?",values=clrs) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank(),  
-        panel.grid.minor.x=element_blank()) +  
+        panel.grid.minor=element_blank()) +  
 * coord_flip()
  
 b
@@ -3996,6 +4021,208 @@ b
 ]]
 .column[.content[
 &lt;img src="Lecture_EnviroProtect_files/figure-html/bar3c_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# A Tile Plot
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc))
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+* geom_tile()
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+* scale_fill_gradient2(low="aquamarine",high="aquamarine4")
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+* geom_text(aes(label=paste0(round(perc,0),"%")))
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +  
+* scale_y_discrete(name=NULL,expand=expansion(mult=0))
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_5_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +  
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +  
+* scale_x_discrete(name=NULL,expand=expansion(mult=0))
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_6_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +  
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +  
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +  
+* theme_minimal()
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_7_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +  
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +  
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +  
+  theme_minimal() +  
+* theme(legend.position="none",
+*       aspect.ratio=1)
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_8_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+t &lt;- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +  
+  geom_tile() +  
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +  
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +  
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +  
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +  
+  theme_minimal() +  
+  theme(legend.position="none",  
+        aspect.ratio=1) +  
+* labs(title="Willingness to Change Standard of Living",
+*      subtitle="by highest educational degree")
+ 
+t
+```
+]]
+.column[.content[
+&lt;img src="Lecture_EnviroProtect_files/figure-html/tile1_auto_9_output-1.png" width="100%" /&gt;
 ]]
 
 ---

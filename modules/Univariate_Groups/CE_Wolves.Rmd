@@ -164,12 +164,12 @@ NGDHst3
 ## State and No Good Deer Hunting 4
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r Wolves_NGDHState4, fig.show='hide'}
+```{r Wolves_NGDHState4}
 NGDHst4 <- ggplot(data=sum2,mapping=aes(x=state,y=perc,fill=ad_deer_hunting)) +
   geom_bar(stat="identity",color="gray30",alpha=0.7) +
   scale_x_discrete(name="State") +
   scale_y_continuous(name="Percent of Respondents",
-                     expand=expansion(mult=c(0,0.05))) +
+                     expand=expansion(mult=0)) +
   scale_fill_manual(name="Agreement",
                     values=c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")) +
   coord_flip() +
