@@ -66,7 +66,7 @@ smry <- grds %>%
 g2 <- ggplot(data=smry,mapping=aes(x=AY,y=perc,fill=Grade2)) +
   geom_bar(stat="identity",color="black",alpha=0.65) +
   scale_x_continuous(name="Academic Year") +
-  scale_y_continuous(name="Percent of Students",expand=expansion(mult=c(0,0))) +
+  scale_y_continuous(name="Percent of Students",expand=expansion(mult=0)) +
   scale_fill_manual(name="Grade",
                     values=c("#4B0055","#00588B","#009B95","#53CC67","#FDE333")) +
   theme_bw() +
@@ -76,8 +76,6 @@ g2
 ```
 
 ### Footnote
-[^getdata]: This CSV file is freely available from Kaggle at [this page](). However, you must sign-in to download the data file. I did this and made it available from my website at the link above.
-
 [^loaddata]: These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is [described in this video](https://vimeo.com/144035138), for which the password is "NCStats" (without the quotes).
 
 [^copycode]: These code can be copied as is, but make sure to set your working directory with `setwd()` and to put just the filename inside `read.csv()`.

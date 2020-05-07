@@ -39,7 +39,7 @@ Develop (or recall) a *basic* understanding of bar charts/plots/graphs (use any 
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Univariate_Groups/Lecture_EnviroProtect.html">Lecture -- GSS</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/Lecture_EnviroProtect_DHO.R">Script</a></button></li>
+  <li><a href="Univariate_Groups/Lecture_EnviroProtect.html">Lecture -- GSS</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/Lecture_EnviroProtect_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/1692f4129f97b2aacd8b2d0b54d4f9027472278108576cab10430937bb0b0558" target="_blank">VIDEO</a></button></li>
   <li><a href="Univariate_Groups/Demo_Grades.html">Demonstration - Grades</a></li>
   <li><a href="Univariate_Groups/CE_Wolves.html">Exercise I - Wolves </a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Univariate_Groups/CE_Wolves.R">Key</a></button></li>
   <li>Exercise 2 (pick <b>one</b> of the following)</li>

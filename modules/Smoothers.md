@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Bivariate Plots
+title: Smoothers & Best-Fit Lines
 css: /css/modules.css
 ---
 
