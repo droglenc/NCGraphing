@@ -49,15 +49,83 @@ class: inverse, center, middle
   - **Parametric** ... regression models (lines, polynomials, nonlinear).
 
 --
-  - **Non-parameteric** ... loess or GAM smoothers.
+  - **Non-parameteric** ... LO(W)ESS or GAM smoothers.
     
 ---
 
 # Linear Regression
 
+- The line that "best fits" a scatterplot of data.
+
+--
+- The line out of all possible lines that is "closest" to the data.
+
+--
+  - "Closeness" measured by *residual* (vertical distance b/w point and line).
+
+--
+  - "Best-fit line" has small sum of squared residuals.
+
+--
+```{r echo=FALSE, fig.width=2, fig.height=2, out.width="45%"}
+#!# DEREK ... delete this from the script
+set.seed(3342374)
+df <- data.frame(x=rnorm(15,mean=10,sd=3)) %>%
+  mutate(y=3*x+2+rnorm(15,sd=5))
+
+lm1 <- lm(y~x,data=df)
+
+df <- df %>%
+  mutate(preds=predict(lm1),
+         resid=y-preds)
+
+ggplot(data=df,mapping=aes(x=x,y=y)) +
+  geom_point(aes(color=resid>0),size=1.5) +
+  geom_segment(mapping=aes(xend=x,yend=preds,color=resid>0),size=0.75,linetype="dashed") +
+  geom_smooth(method="lm",se=FALSE,size=1,color="black") +
+  scale_x_continuous("Explanatory Variable") +
+  scale_y_continuous("Response Variable") +
+  scale_color_manual(values=c("FALSE"="red","TRUE"="blue")) +
+  theme_bw() +
+  theme(legend.position="none",panel.grid=element_blank())
+```
+
+
 ---
 
-# loess Smoother
+# LO(W)ESS Smoother
+
+- *LO*cally *WE*ighted *S*catterplot *S*moother.
+
+--
+- Details are bit involved (you saw this in the preparation video).
+
+--
+  - Essentially fits several regressions to "windows" of data.
+  - "Stitches" those together to form a 
+
+--
+  - `span=` controls size of windows and, thus, smoothing.
+
+--
+```{r echo=FALSE, fig.width=2.75, fig.height=2, out.width="55%"}
+#!# DEREK ... delete this from the script
+set.seed(334287)
+df <- df %>%
+  mutate(y2=0.1*x^3-1.8*x^2-1.5*x+150+rnorm(15,sd=10))
+
+ggplot(data=df,mapping=aes(x=x,y=y2/10,color=)) +
+  geom_point(size=1.5) +
+  geom_smooth(aes(color="0.5"),method="loess",se=FALSE,size=0.75,span=0.5) +
+  geom_smooth(aes(color="0.75"),method="loess",se=FALSE,size=0.75,span=0.75) +
+  geom_smooth(aes(color="1.5"),method="loess",se=FALSE,size=0.75,span=1.5) +
+  scale_color_manual(name="Span",values=c("black","blue","red")) +
+  scale_x_continuous("Explanatory Variable") +
+  scale_y_continuous("Response Variable") +
+  theme_bw() +
+  theme(panel.grid=element_blank())
+```
+
 
 ---
 

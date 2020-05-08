@@ -28,6 +28,10 @@ XXX
 
 ## Preparation for Class
 
+* Linear Regression
+  * [Fitting a Line to Data](https://youtu.be/PaFPbb66DxQ?t=25) ... A 7-min video to understand the general principle [*start at 0:26* and *skip 7:27 to 8:32*].
+* LO(W)ESS Smoother
+  * [Fitting a Curve to Data](https://youtu.be/Vf7oJ6z2LCc?t=67) ... A 9-min video to understand the general principle (don't get bogged down on the details) [*start at 1:07*]. 
 
 ----
 

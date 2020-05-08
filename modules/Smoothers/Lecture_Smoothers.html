@@ -44,15 +44,46 @@ class: inverse, center, middle
   - **Parametric** ... regression models (lines, polynomials, nonlinear).
 
 --
-  - **Non-parameteric** ... loess or GAM smoothers.
+  - **Non-parameteric** ... LO(W)ESS or GAM smoothers.
     
 ---
 
 # Linear Regression
 
+- The line that "best fits" a scatterplot of data.
+
+--
+- The line out of all possible lines that is "closest" to the data.
+
+--
+  - "Closeness" measured by *residual* (vertical distance b/w point and line).
+
+--
+  - "Best-fit line" has small sum of squared residuals.
+
+--
+&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-1-1.png" width="45%" /&gt;
+
+
 ---
 
-# loess Smoother
+# LO(W)ESS Smoother
+
+- *LO*cally *WE*ighted *S*catterplot *S*moother.
+
+--
+- Details are bit involved (you saw this in the preparation video).
+
+--
+  - Essentially fits several regressions to "windows" of data.
+  - "Stitches" those together to form a 
+
+--
+  - `span=` controls size of windows and, thus, smoothing.
+
+--
+&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-2-1.png" width="55%" /&gt;
+
 
 ---
 
@@ -328,7 +359,7 @@ cbPalette &lt;- c("#999999","#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#
 scales::show_col(cbPalette)
 ```
 
-&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-6-1.png" width="45%" /&gt;
+&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-8-1.png" width="45%" /&gt;
 
 ---
 
