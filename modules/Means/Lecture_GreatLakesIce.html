@@ -3,7 +3,7 @@
   <head>
     <title>Means and Uncertainty</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Derek Ogle, April 2020" />
+    <meta name="author" content="Derek Ogle, May 2020" />
     <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 # Means and Uncertainty
-### Derek Ogle, April 2020
+### Derek Ogle, May 2020
 
 ---
 
@@ -104,13 +104,20 @@ count: false
 .column[.content[
 
 ```r
-*p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake))
- 
-p
+*head(gli)
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_1_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
 ]]
 ---
 class: split-50
@@ -121,13 +128,23 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
-* geom_line(size=0.4,alpha=0.75)
- 
-p
+head(gli)  
+
+*ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -139,14 +156,24 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
-  geom_line(size=0.4,alpha=0.75) +  
-* scale_x_continuous(name="Annual Ice Season")
- 
-p
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
+* geom_line(size=0.4,alpha=0.75)
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -158,16 +185,25 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
   geom_line(size=0.4,alpha=0.75) +  
-  scale_x_continuous(name="Annual Ice Season") +  
-* scale_y_continuous(name="Maximum Ice Coverage (%)",
-*                    limits=c(0,100),expand=expansion(mult=0.01))
- 
-p
+* scale_x_continuous(name="Annual Ice Season")
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_4_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -179,17 +215,27 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
   geom_line(size=0.4,alpha=0.75) +  
   scale_x_continuous(name="Annual Ice Season") +  
-  scale_y_continuous(name="Maximum Ice Coverage (%)",  
-                     limits=c(0,100),expand=expansion(mult=0.01)) +  
-* scale_color_manual(name="Lake",values=clrs)
- 
-p
+* scale_y_continuous(name="Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=0.01))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_5_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -201,19 +247,63 @@ count: false
 .column[.content[
 
 ```r
-p &lt;- ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
+  geom_line(size=0.4,alpha=0.75) +  
+  scale_x_continuous(name="Annual Ice Season") +  
+  scale_y_continuous(name="Maximum Ice Coverage (%)",  
+                     limits=c(0,100),expand=expansion(mult=0.01)) +  
+* scale_color_manual(name="Lake",values=clrs)
+```
+]]
+.column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_6_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=year,y=max.cover,color=lake)) +  
   geom_line(size=0.4,alpha=0.75) +  
   scale_x_continuous(name="Annual Ice Season") +  
   scale_y_continuous(name="Maximum Ice Coverage (%)",  
                      limits=c(0,100),expand=expansion(mult=0.01)) +  
   scale_color_manual(name="Lake",values=clrs) +  
 * theme_bw()
- 
-p
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_6_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv1_auto_7_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -238,13 +328,20 @@ count: false
 .column[.content[
 
 ```r
-*v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-v
+*head(gli)
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_1_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
 ]]
 ---
 class: split-50
@@ -255,13 +352,23 @@ count: false
 .column[.content[
 
 ```r
-v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-* geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE)
- 
-v
+head(gli)  
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -273,14 +380,24 @@ count: false
 .column[.content[
 
 ```r
-v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-  geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +  
-* geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5)
- 
-v
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+* geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE)
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -292,15 +409,25 @@ count: false
 .column[.content[
 
 ```r
-v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +  
-  geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +  
-* scale_x_discrete(name="Great Lake")
- 
-v
+* geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5)
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_4_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -312,17 +439,26 @@ count: false
 .column[.content[
 
 ```r
-v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +  
   geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +  
-  scale_x_discrete(name="Great Lake") +  
-* scale_y_continuous(name="Maximum Ice Coverage (%)",
-*                    limits=c(0,100),expand=expansion(mult=0.01))
- 
-v
+* scale_x_discrete(name="Great Lake")
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_5_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -334,19 +470,63 @@ count: false
 .column[.content[
 
 ```r
-v &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +  
+  geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +  
+  scale_x_discrete(name="Great Lake") +  
+* scale_y_continuous(name="Maximum Ice Coverage (%)",
+*                    limits=c(0,100),expand=expansion(mult=0.01))
+```
+]]
+.column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_6_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   geom_violin(color="gray50",fill="gray50",alpha=0.75,trim=FALSE) +  
   geom_jitter(width=0.07,size=0.5,color="black",alpha=0.5) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Maximum Ice Coverage (%)",  
                      limits=c(0,100),expand=expansion(mult=0.01)) +  
 * theme_bw()
- 
-v
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_6_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/edv2_auto_7_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -391,12 +571,23 @@ count: false
 .column[.content[
 
 ```r
-*mb1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-mb1
+*head(gli)
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar1_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -408,14 +599,25 @@ count: false
 .column[.content[
 
 ```r
-mb1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
 * stat_summary(fun=mean,geom="bar",
 *              fill="gray30",alpha=0.75)
- 
-mb1
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar1_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -427,7 +629,9 @@ count: false
 .column[.content[
 
 ```r
-mb1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="bar",  
                fill="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Great Lake") +
@@ -435,11 +639,20 @@ mb1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
 *                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mb1
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar1_user_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -456,12 +669,23 @@ count: false
 .column[.content[
 
 ```r
-*mp1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-mp1
+*head(gli)
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts1_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -473,13 +697,24 @@ count: false
 .column[.content[
 
 ```r
-mp1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
 * stat_summary(fun=mean,geom="point")
- 
-mp1
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts1_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -491,17 +726,28 @@ count: false
 .column[.content[
 
 ```r
-mp1 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="point") +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mp1
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts1_user_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -513,7 +759,7 @@ class: inverse, center, middle
 
 ---
 
-## Uncertainty
+## Uncertainty?
 
 - Primarily related to variability.
 
@@ -606,12 +852,23 @@ count: false
 .column[.content[
 
 ```r
-*mbi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-mbi
+*head(gli)
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar2_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -623,13 +880,24 @@ count: false
 .column[.content[
 
 ```r
-mbi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
 * stat_summary(fun=mean,geom="bar",fill="gray30",alpha=0.75)
- 
-mbi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar2_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -641,15 +909,26 @@ count: false
 .column[.content[
 
 ```r
-mbi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="bar",fill="gray30",alpha=0.75) +  
 * stat_summary(fun.data=mean_cl_normal,geom="errorbar",
 *              width=0.25)
- 
-mbi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar2_user_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -661,7 +940,9 @@ count: false
 .column[.content[
 
 ```r
-mbi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="bar",fill="gray30",alpha=0.75) +  
   stat_summary(fun.data=mean_cl_normal,geom="errorbar",  
                width=0.25) +  
@@ -670,11 +951,20 @@ mbi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
 *                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mbi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar2_user_4_output-1.png" width="100%" /&gt;
 ]]
 
@@ -691,12 +981,23 @@ count: false
 .column[.content[
 
 ```r
-*mpi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-mpi
+*head(gli)
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts2_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -708,13 +1009,24 @@ count: false
 .column[.content[
 
 ```r
-mpi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
 * stat_summary(fun=mean,geom="point",)
- 
-mpi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts2_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -726,14 +1038,25 @@ count: false
 .column[.content[
 
 ```r
-mpi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="point",) +  
 * stat_summary(fun.data=mean_cl_normal,geom="errorbar",width=0.25)
- 
-mpi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts2_user_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -745,18 +1068,29 @@ count: false
 .column[.content[
 
 ```r
-mpi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
   stat_summary(fun=mean,geom="point",) +  
   stat_summary(fun.data=mean_cl_normal,geom="errorbar",width=0.25) +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mpi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts2_user_4_output-1.png" width="100%" /&gt;
 ]]
 
@@ -771,6 +1105,10 @@ mpi
 --
 - No end caps on interval, thus no `width=` argument.
 
+--
+- `size=`: controls the size of the range line AND point.
+- `fatten=`: subsequently controls the size of the center point (as a multiplier).
+
 ---
 
 
@@ -784,13 +1122,31 @@ count: false
 .column[.content[
 
 ```r
-*mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover))
- 
-mpi2
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(  
+    fun.data=mean_cl_normal,geom="pointrange",  
+  ) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank())  
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_user_1_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_non_seq_1_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -801,15 +1157,32 @@ count: false
 .column[.content[
 
 ```r
-mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-* stat_summary(fun.data=mean_cl_normal,geom="pointrange",
-*              size=0.15)
- 
-mpi2
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(  
+    fun.data=mean_cl_normal,geom="pointrange",  
+*   size=1,
+  ) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank())  
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_user_2_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_non_seq_2_output-1.png" width="100%" /&gt;
 ]]
 ---
 class: split-50
@@ -820,19 +1193,33 @@ count: false
 .column[.content[
 
 ```r
-mpi2 &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-  stat_summary(fun.data=mean_cl_normal,geom="pointrange",  
-               size=0.15) +  
-* scale_x_discrete(name="Great Lake") +
-* scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
-* theme_bw() +
-* theme(panel.grid.major.x=element_blank())
- 
-mpi2
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  stat_summary(  
+    fun.data=mean_cl_normal,geom="pointrange",  
+    size=1,  
+*   fatten=2
+  ) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank())  
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_user_3_output-1.png" width="100%" /&gt;
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
+&lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts3_non_seq_3_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -854,13 +1241,24 @@ count: false
 .column[.content[
 
 ```r
-*mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
-* geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE)
- 
-mvi
+*head(gli)
+
+*ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +
+* geom_violin(color="gray30",fill="gray50",alpha=0.1,trim=FALSE)
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -872,15 +1270,26 @@ count: false
 .column[.content[
 
 ```r
-mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray30",fill="gray50",alpha=0.1,trim=FALSE) +  
 * geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),
 *             width=0.07,size=0.5,color="black",alpha=0.25)
- 
-mvi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -892,17 +1301,28 @@ count: false
 .column[.content[
 
 ```r
-mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray30",fill="gray50",alpha=0.1,trim=FALSE) +  
   geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
               width=0.07,size=0.5,color="black",alpha=0.25) +  
 * stat_summary(fun.data=mean_cl_normal,geom="pointrange",
-*              size=1,fatten=1)
- 
-mvi
+*              size=0.75,fatten=1,pch=3,color="red")
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -914,21 +1334,32 @@ count: false
 .column[.content[
 
 ```r
-mvi &lt;- ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
-  geom_violin(color="gray50",fill="gray50",alpha=0.1,trim=FALSE) +  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(x=lake,y=max.cover)) +  
+  geom_violin(color="gray30",fill="gray50",alpha=0.1,trim=FALSE) +  
   geom_jitter(data=gli,mapping=aes(x=lake,y=max.cover),  
               width=0.07,size=0.5,color="black",alpha=0.25) +  
   stat_summary(fun.data=mean_cl_normal,geom="pointrange",  
-               size=1,fatten=1) +  
+               size=0.75,fatten=1,pch=3,color="red") +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Maximum Ice Coverage (%)",
 *                    limits=c(0,100),expand=expansion(mult=0.01)) +
 * theme_bw()
- 
-mvi
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnvio_user_4_output-1.png" width="100%" /&gt;
 ]]
 
@@ -951,21 +1382,32 @@ count: false
 .column[.content[
 
 ```r
-mpi3 &lt;- ggplot(data=gli,mapping=aes(  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(  
     x=lake,y=max.cover,  
   )) +  
   stat_summary(  
-    fun.data=mean_cl_normal,geom="pointrange",size=0.15,  
+    fun.data=mean_cl_normal,geom="pointrange",size=0.5,fatten=1,  
   ) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank())  
- 
-mpi3
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts4_non_seq_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -977,22 +1419,33 @@ count: false
 .column[.content[
 
 ```r
-mpi3 &lt;- ggplot(data=gli,mapping=aes(  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(  
     x=lake,y=max.cover,  
 *   color=decade
   )) +  
   stat_summary(  
-    fun.data=mean_cl_normal,geom="pointrange",size=0.15,  
+    fun.data=mean_cl_normal,geom="pointrange",size=0.5,fatten=1,  
   ) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank())  
- 
-mpi3
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts4_non_seq_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1004,23 +1457,34 @@ count: false
 .column[.content[
 
 ```r
-mpi3 &lt;- ggplot(data=gli,mapping=aes(  
+head(gli)  
+
+ggplot(data=gli,mapping=aes(  
     x=lake,y=max.cover,  
     color=decade  
   )) +  
   stat_summary(  
-    fun.data=mean_cl_normal,geom="pointrange",size=0.15,  
+    fun.data=mean_cl_normal,geom="pointrange",size=0.5,fatten=1,  
 *   position=position_dodge(width=0.5)
   ) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank())  
- 
-mpi3
 ```
 ]]
 .column[.content[
+
+```
+      lake year   date max.cover decade
+1 Superior 1973 27-Feb      69.8  1970s
+2 Superior 1974 27-Feb      73.8  1970s
+3 Superior 1975 13-Feb      64.9  1970s
+4 Superior 1976 16-Mar      49.9  1970s
+5 Superior 1977 16-Feb      96.0  1970s
+6 Superior 1978  1-Mar      92.5  1970s
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts4_non_seq_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -1377,13 +1841,25 @@ count: false
 .column[.content[
 
 ```r
-*mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+*sum1
+
+*ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
 * geom_bar(stat="identity",fill="gray30",alpha=0.75)
- 
-mb3
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1395,18 +1871,30 @@ count: false
 .column[.content[
 
 ```r
-mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
 *                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mb3
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1418,19 +1906,31 @@ count: false
 .column[.content[
 
 ```r
-mb3 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
                      limits=c(0,100),expand=expansion(mult=c(0,0.01))) +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank()) +  
-* geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.5)
- 
-mb3
+* geom_text(aes(label=round(mean,1)),vjust=-0.5)
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar3_user_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -1447,13 +1947,25 @@ count: false
 .column[.content[
 
 ```r
-*mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+*sum1
+
+*ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
 * geom_point(color="gray30")
- 
-mp5
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1465,17 +1977,29 @@ count: false
 .column[.content[
 
 ```r
-mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
   geom_point(color="gray30") +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mp5
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1487,18 +2011,30 @@ count: false
 .column[.content[
 
 ```r
-mp5 &lt;- ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +  
   geom_point(color="gray30") +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank()) +  
-* geom_text(aes(label=formatC(mean,format="f",digits=1)),vjust=-0.75)
- 
-mp5
+* geom_text(aes(label=round(mean,1)),vjust=-0.75)
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 3
+  lake         n  mean
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;
+1 Superior    47  62.3
+2 Michigan    47  40.5
+3 Huron       47  65.3
+4 Erie        47  82.6
+5 Ontario     47  30.2
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts5_user_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -1515,7 +2051,7 @@ class: inverse, center, middle
 
 
 
-class: split-50
+class: split-40
 count: false
  
 
@@ -1546,7 +2082,7 @@ sum2
 ```
 ]]
 ---
-class: split-50
+class: split-40
 count: false
  
 
@@ -1578,14 +2114,8 @@ sum2
 5 Ontario     47  30.2  19.7  2.87  5.78
 ```
 ]]
-
-
 ---
-
-
-
-
-class: split-45
+class: split-40
 count: false
  
 
@@ -1593,39 +2123,18 @@ count: false
 .column[.content[
 
 ```r
-*sum3 &lt;- sum2
- 
-sum3
-```
-]]
-.column[.content[
-
-```
-# A tibble: 5 x 6
-  lake         n  mean    sd    se    me
-  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 Superior    47  62.3  30.3  4.42  8.90
-2 Michigan    47  40.5  21.7  3.16  6.36
-3 Huron       47  65.3  23.3  3.40  6.83
-4 Erie        47  82.6  26.0  3.80  7.64
-5 Ontario     47  30.2  19.7  2.87  5.78
-```
-]]
----
-class: split-45
-count: false
- 
-
- 
-.column[.content[
-
-```r
-sum3 &lt;- sum2 %&gt;%  
+sum2 &lt;- gli %&gt;%  
+  group_by(lake) %&gt;%  
+  summarize(n=n(),  
+            mean=mean(max.cover,na.rm=TRUE),  
+            sd=sd(max.cover,na.rm=TRUE)) %&gt;%  
+  mutate(se=sd/sqrt(n),  
+         me=qt(0.975,df=n-1)*se) %&gt;%  
 * mutate(lsd=mean-sd,usd=mean+sd,
 *        lse=mean-se,use=mean+se,
 *        lci=mean-me,uci=mean+me)
  
-sum3
+sum2
 ```
 ]]
 .column[.content[
@@ -1663,12 +2172,24 @@ count: false
 .column[.content[
 
 ```r
-*mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean))
- 
-mbi6
+*head(select(sum2,lake,n,mean,lci,uci))
+
+*ggplot(data=sum2,mapping=aes(x=lake,y=mean))
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1680,18 +2201,30 @@ count: false
 .column[.content[
 
 ```r
-mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+head(select(sum2,lake,n,mean,lci,uci))  
+
+ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +  
 * geom_bar(stat="identity",fill="gray30",alpha=0.75) +
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
 *                    limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mbi6
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1703,7 +2236,9 @@ count: false
 .column[.content[
 
 ```r
-mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+head(select(sum2,lake,n,mean,lci,uci))  
+
+ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +  
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
@@ -1711,11 +2246,21 @@ mbi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
   theme_bw() +  
   theme(panel.grid.major.x=element_blank()) +  
 * geom_errorbar(aes(ymin=lci,ymax=uci),width=0.15)
- 
-mbi6
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnsbar6_user_3_output-1.png" width="100%" /&gt;
 ]]
 
@@ -1732,13 +2277,25 @@ count: false
 .column[.content[
 
 ```r
-*mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +
+*head(select(sum2,lake,n,mean,lci,uci))
+
+*ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +
 * geom_point(color="gray30")
- 
-mpi6
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_1_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1750,17 +2307,29 @@ count: false
 .column[.content[
 
 ```r
-mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+head(select(sum2,lake,n,mean,lci,uci))  
+
+ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +  
   geom_point(color="gray30") +  
 * scale_x_discrete(name="Great Lake") +
 * scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +
 * theme_bw() +
 * theme(panel.grid.major.x=element_blank())
- 
-mpi6
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_2_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1772,18 +2341,30 @@ count: false
 .column[.content[
 
 ```r
-mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+head(select(sum2,lake,n,mean,lci,uci))  
+
+ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +  
   geom_point(color="gray30") +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank()) +  
 * geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15)
- 
-mpi6
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_3_output-1.png" width="100%" /&gt;
 ]]
 ---
@@ -1795,19 +2376,31 @@ count: false
 .column[.content[
 
 ```r
-mpi6 &lt;- ggplot(data=sum3,mapping=aes(x=lake,y=mean)) +  
+head(select(sum2,lake,n,mean,lci,uci))  
+
+ggplot(data=sum2,mapping=aes(x=lake,y=mean)) +  
   geom_point(color="gray30") +  
   scale_x_discrete(name="Great Lake") +  
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)") +  
   theme_bw() +  
   theme(panel.grid.major.x=element_blank()) +  
   geom_errorbar(aes(ymin=lsd,ymax=usd),width=0.15) +  
-* geom_text(aes(label=formatC(mean,format="f",digits=1)),hjust=-0.25)
- 
-mpi6
+* geom_text(aes(label=round(mean,1)),hjust=-0.25)
 ```
 ]]
 .column[.content[
+
+```
+# A tibble: 5 x 5
+  lake         n  mean   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  53.4  71.2
+2 Michigan    47  40.5  34.1  46.8
+3 Huron       47  65.3  58.5  72.1
+4 Erie        47  82.6  75.0  90.3
+5 Ontario     47  30.2  24.4  36.0
+```
+
 &lt;img src="Lecture_GreatLakesIce_files/figure-html/mnspts6_user_4_output-1.png" width="100%" /&gt;
 ]]
 
@@ -1817,7 +2410,7 @@ class: inverse, center, middle
 
 # Next Time
 
-&lt;font size="7"&gt;XXX.&lt;/font&gt;
+&lt;font size="7"&gt;We will discuss how to add smoothers and model results to a scatterplot.&lt;/font&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
