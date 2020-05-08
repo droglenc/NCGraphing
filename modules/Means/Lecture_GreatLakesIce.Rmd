@@ -17,7 +17,7 @@ output:
 ## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
 fnm <- "Lecture_GreatLakesIce"
 FSA::purl2(file.path(here::here(),"modules/Means",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork",
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","patchwork","head",
                        "include_graphics","options","splitPerc","leftAssign","cache"))
 ```
 
@@ -384,7 +384,7 @@ class: inverse, center, middle
 ---
 
 ```{r echo=FALSE}
-#!# EDV ... violin plot
+#!# Violin plot with points and mean and confidence interval
 ```
 ```{r mnvio, include=FALSE}
 head(gli)
@@ -412,6 +412,9 @@ class: inverse, center, middle
 
 ---
 
+```{r echo=FALSE}
+#!# Means and confidence intervals separated by lake AND decade
+```
 ```{r mnspts4, include=FALSE}
 head(gli)
 
