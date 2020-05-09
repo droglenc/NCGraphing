@@ -1,73 +1,6 @@
----
-title: "Smoothers & Best-Fit Lines"
-author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
-output:
-  xaringan::moon_reader:
-    lib_dir: zlibs
-    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
-    nature:
-      ratio: 16:10
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
----
-
-```{r purler, eval=FALSE, echo=FALSE}
-## Use Knit button to make actual slides.
-## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
-fnm <- "Lecture_Smoothers"
-FSA::purl2(file.path(here::here(),"modules/Smoothers",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache","head",
-                       "include_graphics","options","splitPerc","leftAssign"))
-```
-
-
-```{r setup, include = FALSE}
-source("../zzzflipbook_settings.R")
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
-```
 
-class: inverse, center, middle
-
-# Today's Goal
-
-<font size="7">Highligh trends in data with "smoothers" and models (e.g., lines) of best-fit.</font>
-
----
-
-# Problem to be Addressed
-
-- You want to draw attention to the overall trend and away from the detail.
-
-&nbsp;
-
---
-- May be accomplished by adding a "smoother" to the graph.
-
---
-  - **Parametric** ... regression models (lines, polynomials, nonlinear).
-
---
-  - **Non-parameteric** ... LO(W)ESS or GAM smoothers.
-    
----
-
-# Linear Regression
-
-- The line that "best fits" a scatterplot of data.
-
---
-- The line out of all possible lines that is "closest" to the data.
-
---
-  - "Closeness" measured by *residuals* (vertical distances b/w points and line).
-
---
-  - "Best-fit line" has smallest sum of squared residuals.
-
---
-```{r echo=FALSE, fig.width=2, fig.height=2, out.width="45%"}
 #!# DEREK ... delete this from the script
 set.seed(3342374)
 df <- data.frame(x=rnorm(15,mean=10,sd=3)) %>%
@@ -88,27 +21,7 @@ ggplot(data=df,mapping=aes(x=x,y=y)) +
   scale_color_manual(values=c("FALSE"="red","TRUE"="blue")) +
   theme_bw() +
   theme(legend.position="none",panel.grid=element_blank())
-```
 
-
----
-
-# LO(W)ESS Smoother
-
-- *LO*cally *WE*ighted *S*catterplot *S*moother.
-
---
-- Details are bit involved (you saw this in the preparation video).
-
---
-  - Essentially fits several regressions to "windows" of data.
-  - "Stitches" those together to form a "curve."
-
---
-  - `span=` controls size of windows and, thus, smoothing.
-
---
-```{r echo=FALSE, fig.width=2.75, fig.height=2, out.width="55%"}
 #!# DEREK ... delete this from the script
 set.seed(334287)
 df <- df %>%
@@ -124,52 +37,9 @@ ggplot(data=df,mapping=aes(x=x,y=y2/10,color=)) +
   scale_y_continuous("Response Variable") +
   theme_bw() +
   theme(panel.grid=element_blank())
-```
 
----
-
-# Adding Smoothers
-
-- A "smoother" is added with `geom_smooth()`.
-
-&nbsp;
-
---
-- Type of smoother is chosen with `method=`.
-
---
-  - `method="lm"` ... for a linear regression model.
-  - `method="loess"` ... for a loess smoother model (default if n<1000).
-  - `method="gam"` ... for a GAM smoother (default if n>1000).
-
-&nbsp;
-
---
-- Specifics of models can be controlled with `se`, `formula=`, `n=`, `span=`.
-  - `se=TRUE` ... adds a 95% confidence band (*default*).
-
---
-  - Others are beyond the scope of this class (though we will look at a couple).
-
----
-
-class: inverse, center, middle
-
-### Linear Regression
-
----
-
-# Background
-
-- Examine the relationship between the total volume of avocados sold and the average price of an avocado, for *only* organic avocados.
-
---
-- Loaded the data into the `avoc` object.
-
-```{r echo=FALSE}
 #!# Load and Prep Data
-```
-```{r load1, eval=-1}
+
 #!# Set to your own working directory and have just your filename below.
 avoc <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv",
                 stringsAsFactors=FALSE,quote="") %>%
@@ -177,14 +47,9 @@ avoc <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avoca
   mutate(type=factor(type),year=factor(year)) %>%
   select(year,region,Total.Volume,AveragePrice)
 head(avoc)
-```
 
----
-
-```{r echo=FALSE}
 #!# Exploratory Scatter Plot
-```
-```{r avoc_scat, include=FALSE}
+
 p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +
   scale_x_continuous(name="Average Price ($)") +
@@ -195,22 +60,9 @@ p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
   ) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("avoc_scat",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-### Adding a Regression Line
-
----
-
-```{r echo=FALSE}
 #!# Adding a regression line
-```
-```{r avoc_lm1, include=FALSE}
+
 p + 
   geom_smooth(
     method="lm", #BREAK2
@@ -218,38 +70,15 @@ p +
     fill="red", #BREAK4
     se=FALSE #BREAK5
   )
-```
 
-`r chunk_reveal("avoc_lm1",break_type="non_seq",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-### Adding a Regression Line by Group
-
----
-
-# Create and Show a Palette
-
-```{r echo=FALSE}
 #!# create and show a palette
-```
-```{r}
+
 cbPalette <- c("#999999","#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7")
-```
 
---
-```{r fig.width=1.5, fig.height=1.5, out.width="45%"}
 scales::show_col(cbPalette)
-```
 
----
-
-```{r echo=FALSE}
 #!# Adding a regression line for each group
-```
-```{r avoc_lm2, include=FALSE}
+
 p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
                                   color=year,fill=year #BREAK2
                                   )) +
@@ -263,31 +92,9 @@ p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
   scale_fill_manual(name="Year",values=cbPalette) + #BREAK4
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("avoc_lm2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
-
-
----
-
-class: inverse, center, middle
-
-### Loess Smoother
-
----
-
-# Background
-
-- Examine the trend in Moose (*Alces alces*) aboundance on Isle Royale over time.
-
---
-- Loaded the data into the `irwm` object.
-
-```{r echo=FALSE}
 #!# Load and Prep Data
-```
-```{r load2, eval=-1}
+
 #!# Set to your own working directory and have just your filename below.
 irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
                  na.strings=c("NA","N/A")) %>%
@@ -297,36 +104,18 @@ irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Wolve
   mutate(ice_bridges=plyr::mapvalues(ice_bridges,from=c(0,1),to=c("no","yes")),
          ice_bridges=factor(ice_bridges))
 head(irmw)
-```
 
----
-
-```{r echo=FALSE}
 #!# Exploratory Line Plot
-```
-```{r moose_scat, include=FALSE}
+
 mw <- ggplot(data=irmw,mapping=aes(y=moose,x=wolves)) +
   geom_point(size=1.25,pch=21,color="black",fill="gray50") +
   scale_x_continuous(name="Number of Wolves") +
   scale_y_continuous(name="Number of Moose") +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("moose_scat",break_type=1,left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-### Adding a Loess Line
-
----
-
-```{r echo=FALSE}
 #!# Adding a loess line
-```
-```{r moose_loess1, include=FALSE}
+
 mw + 
   geom_smooth(
     method="loess", #BREAK2
@@ -334,16 +123,9 @@ mw +
     fill="orange", #BREAK4
     span=0.6 #BREAK5
   )
-```
 
-`r chunk_reveal("moose_loess1",break_type="non_seq",split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Adding loess lines separated by the ice_bridges factor variable
-```
-```{r moose_loess2, include=FALSE}
+
 mw2 <- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,
                                    color=ice_bridges,fill=ice_bridges #BREAK3
                                    )) +
@@ -355,91 +137,21 @@ mw2 <- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,
   scale_fill_manual(name="Ice Bridge?",values=cbPalette) + 
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("moose_loess2",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-### User-Defined Models
-
----
-
-# User-Defined Models
-
-- Linear regression and LOESS smoothers are effective for highlighting trends.
-
---
-- However, you may also want to show the fit of other models.
-
---
-  - An effective way to do this is to fit the model, predict values of Y for given values of X, and then overlay a line that connects the X and predicted Y points.
-
---
-  - This is flexible but requires keeping track of two data sets.
-
---
-  - Will demonstrate with a linear model and then a logistic regression model.
-
----
-
-# Showing Linear Regression II
-
-- Return to predicting bags of organic avocados sold from price of an avocado.
-
---
-- Fit the linear model
-
-```{r echo=FALSE}
 #!# Fitting a linear model to make predicted values of Y
-```
-```{r}
+
 lmavoc <- lm(Total.Volume~AveragePrice,data=avoc)
 lmavoc
-```
 
----
-
-# Showing Linear Regression II
-
-- Create many **ordered** values of X across range of X.
-
-```{r}
 x <- seq(0.75,1.90,0.01)
-```
 
---
-- Predict values of Y for each X.
-
-```{r}
 y <- predict(lmavoc,data.frame(AveragePrice=x),interval="confidence")
-```
 
---
-- Put together as a data.frame.
-
-```{r}
 preds <- data.frame(x,y)
 head(preds)
-```
 
----
-
-# Showing Linear Regression II
-
-- Plot the points, but make sure `data=` and `mapping=` for the **raw data** are in `geom_point()`.
-
---
-- Plot line, but make sure `data=` and `mapping=` for the **predicted** results are in `geom_line()`.
-
----
-
-```{r echo=FALSE}
 #!# Scatterplot with the predicted values overlaid
-```
-```{r avoc3, include=FALSE}
+
 head(avoc,n=3)
 head(preds,n=3) #BREAK
 
@@ -454,16 +166,9 @@ ggplot() +
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("avoc3",break_type="user",split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Scatterplot with the fitted values and confidence band overlaid
-```
-```{r avoc4, include=FALSE}
+
 head(avoc,n=3)
 head(preds,n=3) #BREAK
 
@@ -480,22 +185,9 @@ ggplot() +
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("avoc4",break_type="user",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-### User-Defined Models (Another Example)
-
----
-
-```{r echo=FALSE}
 #!# Logistic Regression Example
-```
-```{r logistic1}
+
 bm <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Batmorph.csv")
 
 logreg <- glm(subsp~canine,data=bm,family="binomial")
@@ -505,11 +197,7 @@ x <- seq(0.250,0.375,length.out=200)
 y <- predict(logreg,data.frame(canine=x),type="response",se=TRUE)
 preds <- data.frame(x,y)
 head(preds)
-```
 
----
-
-```{r logistic2, include=FALSE}
 head(bm,n=3)
 head(preds,n=3) #BREAK
 
@@ -527,14 +215,6 @@ ggplot() +
                      expand=expansion(mult=0.01)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
-```
 
-`r chunk_reveal("logistic2",break_type="user",split=splitPerc)`
 
----
-
-class: inverse, center, middle
-
-# Next Time
-
-<font size="7">We will discuss how to add titles, labels, and annotations to your graphs.</font>
+# Script created at 2020-05-09 17:44:44

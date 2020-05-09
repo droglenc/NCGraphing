@@ -31,14 +31,14 @@ class: inverse, center, middle
 
 ---
 
-# Problem Statement
+# Problem to be Addressed
 
-- You may want to draw your audience's attention to the overall trend in a graphic and away from the detail.
+- You want to draw attention to the overall trend and away from the detail.
 
 &amp;nbsp;
 
 --
-- This may be accomplished by adding a "smoother" to the graph.
+- May be accomplished by adding a "smoother" to the graph.
 
 --
   - **Parametric** ... regression models (lines, polynomials, nonlinear).
@@ -56,10 +56,10 @@ class: inverse, center, middle
 - The line out of all possible lines that is "closest" to the data.
 
 --
-  - "Closeness" measured by *residual* (vertical distance b/w point and line).
+  - "Closeness" measured by *residuals* (vertical distances b/w points and line).
 
 --
-  - "Best-fit line" has small sum of squared residuals.
+  - "Best-fit line" has smallest sum of squared residuals.
 
 --
 &lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-1-1.png" width="45%" /&gt;
@@ -76,18 +76,13 @@ class: inverse, center, middle
 
 --
   - Essentially fits several regressions to "windows" of data.
-  - "Stitches" those together to form a 
+  - "Stitches" those together to form a "curve."
 
 --
   - `span=` controls size of windows and, thus, smoothing.
 
 --
 &lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-2-1.png" width="55%" /&gt;
-
-
----
-
-# GAM
 
 ---
 
@@ -654,6 +649,7 @@ mw +
 
 
 
+
 class: split-50
 count: false
  
@@ -662,22 +658,74 @@ count: false
 .column[.content[
 
 ```r
-mw &lt;- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,  
-                                   color=ice_bridges,fill=ice_bridges)) +  
+mw2 &lt;- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,  
+                                   )) +  
   geom_point(size=1.25,pch=21) +  
   scale_x_continuous(name="Number of Wolves") +  
   scale_y_continuous(name="Number of Moose",limits=c(0,NA)) +  
   scale_color_manual(name="Ice Bridge?",values=cbPalette) +  
   scale_fill_manual(name="Ice Bridge?",values=cbPalette) +  
-  geom_smooth(method="loess",span=0.6) +  
   theme_bw() +  
   theme(panel.grid.minor=element_blank())  
  
-mw
+mw2
 ```
 ]]
 .column[.content[
-&lt;img src="Lecture_Smoothers_files/figure-html/moose_loess2_1_1_output-1.png" width="100%" /&gt;
+&lt;img src="Lecture_Smoothers_files/figure-html/moose_loess2_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mw2 &lt;- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,  
+                                   )) +  
+  geom_point(size=1.25,pch=21) +  
+  geom_smooth(method="loess",span=0.6) +  
+* scale_x_continuous(name="Number of Wolves") +
+  scale_y_continuous(name="Number of Moose",limits=c(0,NA)) +  
+  scale_color_manual(name="Ice Bridge?",values=cbPalette) +  
+  scale_fill_manual(name="Ice Bridge?",values=cbPalette) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank())  
+ 
+mw2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Smoothers_files/figure-html/moose_loess2_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+mw2 &lt;- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,  
+*                                  color=ice_bridges,fill=ice_bridges
+                                   )) +  
+  geom_point(size=1.25,pch=21) +  
+  geom_smooth(method="loess",span=0.6) +  
+  scale_x_continuous(name="Number of Wolves") +  
+  scale_y_continuous(name="Number of Moose",limits=c(0,NA)) +  
+  scale_color_manual(name="Ice Bridge?",values=cbPalette) +  
+  scale_fill_manual(name="Ice Bridge?",values=cbPalette) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank())  
+ 
+mw2
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Smoothers_files/figure-html/moose_loess2_non_seq_3_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -688,16 +736,682 @@ class: inverse, center, middle
 
 ---
 
+# User-Defined Models
+
+- Linear regression and LOESS smoothers are effective for highlighting trends.
+
+--
+- However, you may also want to show the fit of other models.
+
+--
+  - An effective way to do this is to fit the model, predict values of Y for given values of X, and then overlay a line that connects the X and predicted Y points.
+
+--
+  - This is flexible but requires keeping track of two data sets.
+
+--
+  - Will demonstrate with a linear model and then a logistic regression model.
+
+---
+
+# Showing Linear Regression II
+
+- Return to predicting bags of organic avocados sold from price of an avocado.
+
+--
+- Fit the linear model
+
+
+
+```r
+lmavoc &lt;- lm(Total.Volume~AveragePrice,data=avoc)
+lmavoc
+```
+
+```
+
+Call:
+lm(formula = Total.Volume ~ AveragePrice, data = avoc)
+
+Coefficients:
+ (Intercept)  AveragePrice  
+      314773       -123162  
+```
+
+---
+
+# Showing Linear Regression II
+
+- Create many **ordered** values of X across range of X.
+
+
+```r
+x &lt;- seq(0.75,1.90,0.01)
+```
+
+--
+- Predict values of Y for each X.
+
+
+```r
+y &lt;- predict(lmavoc,data.frame(AveragePrice=x),interval="confidence")
+```
+
+--
+- Put together as a data.frame.
+
+
+```r
+preds &lt;- data.frame(x,y)
+head(preds)
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+4 0.78 218706.1 189955.9 247456.3
+5 0.79 217474.5 189099.5 245849.5
+6 0.80 216242.9 188242.7 244243.1
+```
+
+---
+
+# Showing Linear Regression II
+
+- Plot the points, but make sure `data=` and `mapping=` for the **raw data** are in `geom_point()`.
+
+--
+- Plot line, but make sure `data=` and `mapping=` for the **predicted** results are in `geom_line()`.
+
+---
 
 
 
 
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*head(avoc,n=3)
+*head(preds,n=3)
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+*ggplot() +
+* geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
+*            size=1.25,pch=21,color="black",fill="gray70")
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc3_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),  
+             size=1.25,pch=21,color="black",fill="gray70") +  
+* geom_line(data=preds,mapping=aes(y=fit,x=x),
+*           size=1,color="blue")
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc3_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),  
+             size=1.25,pch=21,color="black",fill="gray70") +  
+  geom_line(data=preds,mapping=aes(y=fit,x=x),  
+            size=1,color="blue") +  
+* scale_x_continuous(name="Average Price ($)") +
+* scale_y_continuous(name="Thousands of Bags Sold",
+*                    breaks=seq(50000,350000,50000),
+*                    labels=scales::unit_format(unit="",scale=1e-3)) +
+* theme_bw() +
+* theme(panel.grid.minor=element_blank())
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc3_user_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*head(avoc,n=3)
+*head(preds,n=3)
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+*ggplot() +
+* geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),
+*             fill="blue",alpha=0.25)
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc4_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),  
+              fill="blue",alpha=0.25) +  
+* geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
+*            size=1.25,pch=21,color="black",fill="gray70")
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc4_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),  
+              fill="blue",alpha=0.25) +  
+  geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),  
+             size=1.25,pch=21,color="black",fill="gray70") +  
+* geom_line(data=preds,mapping=aes(y=fit,x=x),
+*           size=1,color="blue")
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc4_user_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(avoc,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),  
+              fill="blue",alpha=0.25) +  
+  geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),  
+             size=1.25,pch=21,color="black",fill="gray70") +  
+  geom_line(data=preds,mapping=aes(y=fit,x=x),  
+            size=1,color="blue") +  
+* scale_x_continuous(name="Average Price ($)") +
+* scale_y_continuous(name="Thousands of Bags Sold",
+*                    breaks=seq(50000,350000,50000),
+*                    labels=scales::unit_format(unit="",scale=1e-3)) +
+* theme_bw() +
+* theme(panel.grid.minor=element_blank())
+```
+]]
+.column[.content[
+
+```
+  year     region Total.Volume AveragePrice
+1 2015 GreatLakes     66775.85         1.49
+2 2015 GreatLakes     62669.16         1.55
+3 2015 GreatLakes     65341.66         1.53
+```
+
+```
+     x      fit      lwr      upr
+1 0.75 222401.0 192523.2 252278.8
+2 0.76 221169.4 191667.8 250671.0
+3 0.77 219937.7 190812.0 249063.5
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc4_user_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+### User-Defined Models (Another Example)
+
+---
+
+
+
+```r
+bm &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Batmorph.csv")
+
+logreg &lt;- glm(subsp~canine,data=bm,family="binomial")
+logreg
+```
+
+```
+
+Call:  glm(formula = subsp ~ canine, family = "binomial", data = bm)
+
+Coefficients:
+(Intercept)       canine  
+      35.52      -111.12  
+
+Degrees of Freedom: 117 Total (i.e. Null);  116 Residual
+Null Deviance:	    163 
+Residual Deviance: 97.18 	AIC: 101.2
+```
+
+```r
+x &lt;- seq(0.250,0.375,length.out=200)
+y &lt;- predict(logreg,data.frame(canine=x),type="response",se=TRUE)
+preds &lt;- data.frame(x,y)
+head(preds)
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+4 0.2518844 0.9994617 0.0007514356              1
+5 0.2525126 0.9994228 0.0007985531              1
+6 0.2531407 0.9993811 0.0008485547              1
+```
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*head(bm,n=3)
+*head(preds,n=3)
+```
+]]
+.column[.content[
+
+```
+    subsp bodymass skulllength canine coronoid wingspan hab
+1 semotus    19.50       1.597  0.326    0.303    0.358   A
+2 semotus    16.22       1.552  0.308    0.282    0.358   A
+3 semotus    16.98       1.563  0.291    0.292    0.359   A
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+```
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(bm,n=3)  
+head(preds,n=3)  
+
+*ggplot() +
+* geom_ribbon(data=preds,mapping=aes(x=x,
+*                                    ymin=fit-2*se.fit,
+*                                    ymax=fit+2*se.fit),
+*             fill="blue",alpha=0.25)
+```
+]]
+.column[.content[
+
+```
+    subsp bodymass skulllength canine coronoid wingspan hab
+1 semotus    19.50       1.597  0.326    0.303    0.358   A
+2 semotus    16.22       1.552  0.308    0.282    0.358   A
+3 semotus    16.98       1.563  0.291    0.292    0.359   A
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/logistic2_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(bm,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,  
+                                     ymin=fit-2*se.fit,  
+                                     ymax=fit+2*se.fit),  
+              fill="blue",alpha=0.25) +  
+* geom_line(data=preds,mapping=aes(x=x,y=fit),color="blue",size=1)
+```
+]]
+.column[.content[
+
+```
+    subsp bodymass skulllength canine coronoid wingspan hab
+1 semotus    19.50       1.597  0.326    0.303    0.358   A
+2 semotus    16.22       1.552  0.308    0.282    0.358   A
+3 semotus    16.98       1.563  0.291    0.292    0.359   A
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/logistic2_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(bm,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,  
+                                     ymin=fit-2*se.fit,  
+                                     ymax=fit+2*se.fit),  
+              fill="blue",alpha=0.25) +  
+  geom_line(data=preds,mapping=aes(x=x,y=fit),color="blue",size=1) +  
+* geom_point(data=bm,mapping=aes(x=canine,y=as.numeric(subsp)-1),
+*            size=1.5,alpha=0.25)
+```
+]]
+.column[.content[
+
+```
+    subsp bodymass skulllength canine coronoid wingspan hab
+1 semotus    19.50       1.597  0.326    0.303    0.358   A
+2 semotus    16.22       1.552  0.308    0.282    0.358   A
+3 semotus    16.98       1.563  0.291    0.292    0.359   A
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/logistic2_user_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(bm,n=3)  
+head(preds,n=3)  
+
+ggplot() +  
+  geom_ribbon(data=preds,mapping=aes(x=x,  
+                                     ymin=fit-2*se.fit,  
+                                     ymax=fit+2*se.fit),  
+              fill="blue",alpha=0.25) +  
+  geom_line(data=preds,mapping=aes(x=x,y=fit),color="blue",size=1) +  
+  geom_point(data=bm,mapping=aes(x=canine,y=as.numeric(subsp)-1),  
+             size=1.5,alpha=0.25) +  
+* scale_x_continuous(name="Canine Tooth Height (cm)",
+*                    expand=expansion(mult=0)) +
+* scale_y_continuous(name="Probability of Semotus",
+*                    expand=expansion(mult=0.01)) +
+* theme_bw() +
+* theme(panel.grid.minor=element_blank())
+```
+]]
+.column[.content[
+
+```
+    subsp bodymass skulllength canine coronoid wingspan hab
+1 semotus    19.50       1.597  0.326    0.303    0.358   A
+2 semotus    16.22       1.552  0.308    0.282    0.358   A
+3 semotus    16.98       1.563  0.291    0.292    0.359   A
+```
+
+```
+          x       fit       se.fit residual.scale
+1 0.2500000 0.9995633 0.0006258162              1
+2 0.2506281 0.9995318 0.0006652159              1
+3 0.2512563 0.9994980 0.0007070408              1
+```
+
+&lt;img src="Lecture_Smoothers_files/figure-html/logistic2_user_5_output-1.png" width="100%" /&gt;
+]]
+
+---
 
 class: inverse, center, middle
 
 # Next Time
 
-&lt;font size="7"&gt;XXX.&lt;/font&gt;
+&lt;font size="7"&gt;We will discuss how to add titles, labels, and annotations to your graphs.&lt;/font&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
