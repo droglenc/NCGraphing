@@ -35,7 +35,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Means/Lecture_GreatLakesIce.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/Lecture_GreatLakesIce_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
+  <li><a href="Means/Lecture_GreatLakesIce.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/Lecture_GreatLakesIce_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/3b3b1d5377720a092fc0ca18e41e6329a6525d365cd5bc63c3cfc0b7a7ce5b86" target="_blank">VIDEO</a></button></li>
   <li><a href="Means/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li><a href="Means/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_DeerHarvest.R">Key</a></button></li>
   <li>Exercise 2 (pick <b>one</b> of the following)</li>
