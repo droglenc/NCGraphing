@@ -1,0 +1,322 @@
+---
+title: "Faceting"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: zlibs
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r purler, eval=FALSE, echo=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_Facets"
+FSA::purl2(file.path(here::here(),"modules/Smoothers",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache","head",
+                       "include_graphics","options","splitPerc","leftAssign"))
+```
+
+
+```{r setup, include = FALSE}
+source("../zzzflipbook_settings.R")
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
+library(gghighlight)
+```
+
+class: inverse, center, middle
+
+# Today's Goal
+
+<font size="7">Highlight differences in subgroups by efficiently placing subgroups into separate panels.</font>
+
+---
+
+# Background
+
+- Historical temperature data from Ashland's airport.
+  - From NOAA's [Climate Data Online app](https://www.ncdc.noaa.gov/cdo-web/) and [saved here](https://raw.githubusercontent.com/droglenc/NCData/master/Ashland_Temps_2001_20.csv).
+
+--
+- Loaded data into the `ash` object.
+  - Made all variables lower case (`tolower` in `rename_all()`).
+  - Made a proper date (with `as.Date`)
+  - Extracted year and month (with `year()` and `month()`).
+  - Created a "season" variable.
+  - Restricted variables (with `select()`) and to only 2010-2019 (with `filter()`).
+  
+```{r echo=FALSE}
+#!# Load and Prep Data
+```
+```{r load1, eval=-1}
+#!# Set to your own working directory and have just your filename below.
+ash <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Ashland_Temps_2001_20.csv",
+                stringsAsFactors=FALSE) %>%
+  rename_all(tolower) %>%
+  mutate(date=as.Date(date,format="%m/%d/%Y"),year=lubridate::year(date),mon=lubridate::month(date,label=TRUE),
+         season=case_when(
+           mon %in% c("Jan","Feb","Mar") ~ "Winter",mon %in% c("Apr","May","Jun") ~ "Spring",
+           mon %in% c("Jul","Aug","Sep") ~ "Summer",mon %in% c("Oct","Nov","Dec") ~ "Fall"),
+         season=factor(season,levels=c("Winter","Spring","Summer","Fall"))) %>%
+  select(-(station:elevation)) %>%
+  filter(date>=as.Date("1/1/2010",format="%m/%d/%Y"),date<=as.Date("12/31/2019",format="%m/%d/%Y"))
+```
+
+---
+
+- Examine the resulting data.frame.
+
+```{r load1a}
+head(ash)
+```
+
+&nbsp;
+
+--
+- Create a named color palette.
+```{r echo=FALSE}
+#!# An overall color palette
+```
+```{r colors}
+clrs <- c("Winter"="dodgerblue2","Spring"="springgreen3","Summer"="darkgoldenrod3","Fall"="sienna3")
+```
+
+---
+
+```{r echo=FALSE}
+#!# Exploratory Scatter Plot
+```
+```{r ash_scat1, include=FALSE}
+tp <- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) +
+  geom_smooth(size=0.5,color="black") +
+  scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",
+                     breaks=seq(-20,100,10)) +
+  scale_x_date( #BREAK2
+    name="Date",expand=expansion(mult=0.02),#BREAK2
+    date_breaks="1 year",date_labels="%Y", #BREAK3
+    date_minor_breaks="3 months" #BREAK4
+  ) + #BREAK2
+  theme_bw() +
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")
+```
+
+`r chunk_reveal("ash_scat1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r echo=FALSE}
+#!# Exploratory Violin Plot
+```
+```{r ash_viol1, include=FALSE}
+vp <- ggplot(data=ash,mapping=aes(y=tmax,x=as.factor(year),
+                                  color=season,fill=season)) +
+  geom_violin(alpha=0.5,color="gray30",size=0.25,
+              position=position_dodge(width=0.8) #BREAK2
+              ) +
+  stat_summary(fun=mean,geom="point",size=0.7,
+               position=position_dodge(width=0.8) #BREAK2
+               ) +
+  scale_fill_manual(values=clrs) +
+  scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",
+                     breaks=seq(-20,100,10)) +
+  scale_x_discrete(name="Year",expand=expansion(mult=0.05)) +
+  theme_bw() +
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")
+```
+
+`r chunk_reveal("ash_viol1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+### Faceting to Highlight Subgroups
+
+---
+
+# Faceting
+
+- Creates a separate panel for each subgroup.
+
+&nbsp;
+
+--
+- Use `facet_wrap()` if subgroups defined by one variable.
+
+--
+- Use `facet_grid()` if subgroups defined by two (or more) variables.
+
+&nbsp;
+
+--
+- Faceting variable must be wrapped in `vars()` in both `facet_XXX()`s.
+
+---
+
+```{r echo=FALSE}
+#!# Facet-wrapped Scatter Plot
+```
+```{r ash_scat2a, eval=FALSE}
+tp + 
+  facet_wrap(vars(year))
+```
+
+--
+
+```{r echo=FALSE,fig.width=5.33,fig.height=4,out.width="80%"}
+#!# Derek ... delete this for the script
+tp + 
+  facet_wrap(vars(year))
+```
+
+---
+
+# Modifications to `facet_wrap()`
+
+- Use `nrow=` and `ncol=` to control number of rows and columns for the panels.
+  - Can supply just one and the other will be calculated.
+
+&nbsp;
+
+--
+- Use `scales=` to identify whether axis scales are `fixed` (default) or "free".
+
+--
+  - `scales="free"`: Both x- and y-axes will vary by panel.
+  - `scales="free_x`: Only the x-axes will vary by panel.
+  - `scales="free_y`: Only the y-axes will vary by panel
+
+---
+
+```{r echo=FALSE}
+#!# Facet-wrapped Scatter Plot ... adjusting scales and rows
+```
+```{r ash_scat2b, eval=FALSE}
+tp + 
+  facet_wrap(vars(year),scales="free_x",nrow=2)
+```
+```{r echo=FALSE,fig.width=5,fig.height=2.5,out.height="60%"}
+#!# Derek ... delete this for the script
+tp + 
+  facet_wrap(vars(year),scales="free_x",nrow=2)
+```
+
+---
+
+class: inverse, center, middle
+
+### May need to think ahead to what faceting will look like when making other design choices (i.e., you can't always automatically add facet_XXX() and have the graph look the way you want it to)
+
+---
+
+```{r echo=FALSE}
+#!# Facet-wrapped Scatter Plot ... final adjustments
+```
+```{r ash_scat3, fig.width=5,fig.height=2.5,out.height="60%"}
+ggplot(data=ash,mapping=aes(y=tmax,x=date)) +
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) + geom_smooth(size=0.5,color="black") +
+  scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",breaks=seq(-20,100,20)) +
+  scale_x_date(name=element_blank(),expand=expansion(mult=0.02),
+               date_breaks="3 months",date_labels="%b",date_minor_breaks="1 months") +
+  theme_bw() + theme(panel.grid.minor.y=element_blank(),legend.position="none") + 
+  facet_wrap(vars(year),scales="free_x",nrow=2)
+```
+
+---
+
+```{r echo=FALSE}
+#!# Facet-wrapped Violin Plot
+```
+```{r ash_viol2a, fig.width=5,fig.height=2.5,out.height="60%"}
+ggplot(data=ash,mapping=aes(y=tmax,x=season,color=season,fill=season)) +
+  geom_violin(alpha=0.5,color="gray30",size=0.25) +
+  stat_summary(fun=mean,geom="point",size=0.7) +
+  scale_fill_manual(values=clrs) + scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",breaks=seq(-20,100,20)) +
+  scale_x_discrete(name=element_blank(),expand=expansion(mult=0.05)) +
+  theme_bw() + theme(panel.grid.minor.y=element_blank(),legend.position="none") + 
+  facet_wrap(vars(year),scale="free_x",nrow=2)
+```
+
+---
+
+class: inverse, center, middle
+
+# Using facet_grid() with two grouping variables
+
+---
+
+# Background
+
+- Examine the relationship between the total volume of *organic* avocados sold and the average price of an avocado, by years and region (Great Lakes or West).
+
+--
+- Loaded the data into the `avoc` object.
+
+```{r echo=FALSE}
+#!# Load and Prep Data
+```
+```{r load2, eval=-1}
+#!# Set to your own working directory and have just your filename below.
+avoc <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv",
+                stringsAsFactors=FALSE,quote="") %>%
+  filter(region %in% c("GreatLakes","West"),type=="organic") %>%
+  mutate(region=factor(region),year=factor(year)) %>%
+  select(year,region,type,Total.Volume,AveragePrice)
+head(avoc)
+```
+
+---
+
+```{r echo=FALSE}
+#!# Facet-gridded Scatter Plot
+```
+```{r avoc1, fig.width=5,fig.height=2.5,out.height="60%"}
+ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
+  geom_point(size=0.7,alpha=0.5) +
+  geom_smooth(color="red",size=0.5,se=FALSE) +
+  facet_grid(rows=vars(region),cols=vars(year)) +
+  scale_x_continuous(name="Average Price ($)",labels=scales::dollar) +
+  scale_y_continuous(name="Thousands of Bags Sold",limits=c(0,NA),expand=expansion(mult=c(0,0.02)),
+                     labels=scales::unit_format(unit="",scale=1/1000)) +
+  theme_bw() + theme(panel.grid.minor=element_blank())
+```
+
+---
+
+class: inverse, center, middle
+
+# Demo of a Useful Add-on Package
+
+---
+
+```{r echo=FALSE}
+#!# Facet-gridded Scatter Plot with gghighlight
+```
+```{r avoc2, fig.width=5,fig.height=2.5,out.height="60%"}
+ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,color=year:region)) +
+  geom_point(size=0.7,alpha=0.5) + 
+  scale_color_manual(values=rep("black",8)) + gghighlight() +
+  facet_grid(rows=vars(region),cols=vars(year)) +
+  scale_x_continuous(name="Average Price ($)",labels=scales::dollar) +
+  scale_y_continuous(name="Thousands of Bags Sold",limits=c(0,NA),expand=expansion(mult=c(0,0.02)),
+                     labels=scales::unit_format(unit="",scale=1e-3)) +
+  theme_bw() + theme(panel.grid.minor=element_blank(),legend.position="none")
+```
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will review some case studies.</font>

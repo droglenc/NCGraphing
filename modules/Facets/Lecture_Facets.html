@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Faceting</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Derek Ogle, May 2020" />
+    <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Faceting
+### Derek Ogle, May 2020
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Today's Goal
+
+&lt;font size="7"&gt;Highlight differences in subgroups by efficiently placing subgroups into separate panels.&lt;/font&gt;
+
+---
+
+# Background
+
+- Historical temperature data from Ashland's airport.
+  - From NOAA's [Climate Data Online app](https://www.ncdc.noaa.gov/cdo-web/) and [saved here](https://raw.githubusercontent.com/droglenc/NCData/master/Ashland_Temps_2001_20.csv).
+
+--
+- Loaded data into the `ash` object.
+  - Made all variables lower case (`tolower` in `rename_all()`).
+  - Made a proper date (with `as.Date`)
+  - Extracted year and month (with `year()` and `month()`).
+  - Created a "season" variable.
+  - Restricted variables (with `select()`) and to only 2010-2019 (with `filter()`).
+  
+
+
+```r
+## #!# Set to your own working directory and have just your filename below.
+ash &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Ashland_Temps_2001_20.csv",
+                stringsAsFactors=FALSE) %&gt;%
+  rename_all(tolower) %&gt;%
+  mutate(date=as.Date(date,format="%m/%d/%Y"),year=lubridate::year(date),mon=lubridate::month(date,label=TRUE),
+         season=case_when(
+           mon %in% c("Jan","Feb","Mar") ~ "Winter",mon %in% c("Apr","May","Jun") ~ "Spring",
+           mon %in% c("Jul","Aug","Sep") ~ "Summer",mon %in% c("Oct","Nov","Dec") ~ "Fall"),
+         season=factor(season,levels=c("Winter","Spring","Summer","Fall"))) %&gt;%
+  select(-(station:elevation)) %&gt;%
+  filter(date&gt;=as.Date("1/1/2010",format="%m/%d/%Y"),date&lt;=as.Date("12/31/2019",format="%m/%d/%Y"))
+```
+
+---
+
+- Examine the resulting data.frame.
+
+
+```r
+head(ash)
+```
+
+```
+        date prcp tavg tmax tmin year mon season
+1 2010-01-01    0   NA   12  -10 2010 Jan Winter
+2 2010-01-02    0   NA    4  -16 2010 Jan Winter
+3 2010-01-03    0   NA   10    1 2010 Jan Winter
+4 2010-01-04    0   NA   17    0 2010 Jan Winter
+5 2010-01-05    0   NA   21   -1 2010 Jan Winter
+6 2010-01-06    0   NA   22    2 2010 Jan Winter
+```
+
+&amp;nbsp;
+
+--
+- Create a named color palette.
+
+
+```r
+clrs &lt;- c("Winter"="dodgerblue2","Spring"="springgreen3","Summer"="darkgoldenrod3","Fall"="sienna3")
+```
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+tp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +  
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) +  
+  geom_smooth(size=0.5,color="black") +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+  theme_bw() +  
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")  
+ 
+tp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_scat1_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+tp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +  
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) +  
+  geom_smooth(size=0.5,color="black") +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+* scale_x_date(
+*   name="Date",expand=expansion(mult=0.02),
+  ) +  
+  theme_bw() +  
+* theme(panel.grid.minor.y=element_blank(),legend.position="none")
+ 
+tp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_scat1_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+tp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +  
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) +  
+  geom_smooth(size=0.5,color="black") +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+  scale_x_date(  
+    name="Date",expand=expansion(mult=0.02),  
+*   date_breaks="1 year",date_labels="%Y",
+  ) +  
+  theme_bw() +  
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")  
+ 
+tp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_scat1_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+tp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +  
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) +  
+  geom_smooth(size=0.5,color="black") +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+  scale_x_date(  
+    name="Date",expand=expansion(mult=0.02),  
+    date_breaks="1 year",date_labels="%Y",  
+*   date_minor_breaks="3 months"
+  ) +  
+  theme_bw() +  
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")  
+ 
+tp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_scat1_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+vp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=as.factor(year),  
+                                  color=season,fill=season)) +  
+  geom_violin(alpha=0.5,color="gray30",size=0.25,  
+              ) +  
+  stat_summary(fun=mean,geom="point",size=0.7,  
+               ) +  
+  scale_fill_manual(values=clrs) +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+  scale_x_discrete(name="Year",expand=expansion(mult=0.05)) +  
+  theme_bw() +  
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")  
+ 
+vp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_viol1_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+vp &lt;- ggplot(data=ash,mapping=aes(y=tmax,x=as.factor(year),  
+                                  color=season,fill=season)) +  
+  geom_violin(alpha=0.5,color="gray30",size=0.25,  
+*             position=position_dodge(width=0.8)
+              ) +  
+  stat_summary(fun=mean,geom="point",size=0.7,  
+*              position=position_dodge(width=0.8)
+               ) +  
+  scale_fill_manual(values=clrs) +  
+  scale_color_manual(values=clrs) +  
+  scale_y_continuous(name="Maximum Temperature (F)",  
+                     breaks=seq(-20,100,10)) +  
+  scale_x_discrete(name="Year",expand=expansion(mult=0.05)) +  
+  theme_bw() +  
+  theme(panel.grid.minor.y=element_blank(),legend.position="none")  
+ 
+vp
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Facets_files/figure-html/ash_viol1_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+### Faceting to Highlight Subgroups
+
+---
+
+# Faceting
+
+- Creates a separate panel for each subgroup.
+
+&amp;nbsp;
+
+--
+- Use `facet_wrap()` if subgroups defined by one variable.
+
+--
+- Use `facet_grid()` if subgroups defined by two (or more) variables.
+
+&amp;nbsp;
+
+--
+- Faceting variable must be wrapped in `vars()` in both `facet_XXX()`s.
+
+---
+
+
+
+```r
+tp + 
+  facet_wrap(vars(year))
+```
+
+--
+
+&lt;img src="Lecture_Facets_files/figure-html/unnamed-chunk-6-1.png" width="80%" /&gt;
+
+---
+
+# Modifications to `facet_wrap()`
+
+- Use `nrow=` and `ncol=` to control number of rows and columns for the panels.
+  - Can supply just one and the other will be calculated.
+
+&amp;nbsp;
+
+--
+- Use `scales=` to identify whether axis scales are `fixed` (default) or "free".
+
+--
+  - `scales="free"`: Both x- and y-axes will vary by panel.
+  - `scales="free_x`: Only the x-axes will vary by panel.
+  - `scales="free_y`: Only the y-axes will vary by panel
+
+---
+
+
+
+```r
+tp + 
+  facet_wrap(vars(year),scales="free_x",nrow=2)
+```
+&lt;img src="Lecture_Facets_files/figure-html/unnamed-chunk-8-1.png" width="100%" height="60%" /&gt;
+
+---
+
+class: inverse, center, middle
+
+### May need to think ahead to what faceting will look like when making other design choices (i.e., you can't always automatically add facet_XXX() and have the graph look the way you want it to)
+
+---
+
+
+
+```r
+ggplot(data=ash,mapping=aes(y=tmax,x=date)) +
+  geom_point(mapping=aes(color=season),size=0.3,alpha=0.5) + geom_smooth(size=0.5,color="black") +
+  scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",breaks=seq(-20,100,20)) +
+  scale_x_date(name=element_blank(),expand=expansion(mult=0.02),
+               date_breaks="3 months",date_labels="%b",date_minor_breaks="1 months") +
+  theme_bw() + theme(panel.grid.minor.y=element_blank(),legend.position="none") + 
+  facet_wrap(vars(year),scales="free_x",nrow=2)
+```
+
+&lt;img src="Lecture_Facets_files/figure-html/ash_scat3-1.png" width="100%" height="60%" /&gt;
+
+---
+
+
+
+```r
+ggplot(data=ash,mapping=aes(y=tmax,x=season,color=season,fill=season)) +
+  geom_violin(alpha=0.5,color="gray30",size=0.25) +
+  stat_summary(fun=mean,geom="point",size=0.7) +
+  scale_fill_manual(values=clrs) + scale_color_manual(values=clrs) +
+  scale_y_continuous(name="Maximum Temperature (F)",breaks=seq(-20,100,20)) +
+  scale_x_discrete(name=element_blank(),expand=expansion(mult=0.05)) +
+  theme_bw() + theme(panel.grid.minor.y=element_blank(),legend.position="none") + 
+  facet_wrap(vars(year),scale="free_x",nrow=2)
+```
+
+&lt;img src="Lecture_Facets_files/figure-html/ash_viol2a-1.png" width="100%" height="60%" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Using facet_grid() with two grouping variables
+
+---
+
+# Background
+
+- Examine the relationship between the total volume of *organic* avocados sold and the average price of an avocado, by years and region (Great Lakes or West).
+
+--
+- Loaded the data into the `avoc` object.
+
+
+
+```r
+## #!# Set to your own working directory and have just your filename below.
+avoc &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv",
+                stringsAsFactors=FALSE,quote="") %&gt;%
+  filter(region %in% c("GreatLakes","West"),type=="organic") %&gt;%
+  mutate(region=factor(region),year=factor(year)) %&gt;%
+  select(year,region,type,Total.Volume,AveragePrice)
+head(avoc)
+```
+
+```
+  year     region    type Total.Volume AveragePrice
+1 2015 GreatLakes organic     66775.85         1.49
+2 2015 GreatLakes organic     62669.16         1.55
+3 2015 GreatLakes organic     65341.66         1.53
+4 2015 GreatLakes organic     71502.74         1.60
+5 2015 GreatLakes organic     59169.17         1.61
+6 2015 GreatLakes organic     67773.07         1.57
+```
+
+---
+
+
+
+```r
+ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
+  geom_point(size=0.7,alpha=0.5) +
+  geom_smooth(color="red",size=0.5,se=FALSE) +
+  facet_grid(rows=vars(region),cols=vars(year)) +
+  scale_x_continuous(name="Average Price ($)",labels=scales::dollar) +
+  scale_y_continuous(name="Thousands of Bags Sold",limits=c(0,NA),expand=expansion(mult=c(0,0.02)),
+                     labels=scales::unit_format(unit="",scale=1/1000)) +
+  theme_bw() + theme(panel.grid.minor=element_blank())
+```
+
+&lt;img src="Lecture_Facets_files/figure-html/avoc1-1.png" width="100%" height="60%" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Demo of a Useful Add-on Package
+
+---
+
+
+
+```r
+ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,color=year:region)) +
+  geom_point(size=0.7,alpha=0.5) + 
+  scale_color_manual(values=rep("black",8)) + gghighlight() +
+  facet_grid(rows=vars(region),cols=vars(year)) +
+  scale_x_continuous(name="Average Price ($)",labels=scales::dollar) +
+  scale_y_continuous(name="Thousands of Bags Sold",limits=c(0,NA),expand=expansion(mult=c(0,0.02)),
+                     labels=scales::unit_format(unit="",scale=1e-3)) +
+  theme_bw() + theme(panel.grid.minor=element_blank(),legend.position="none")
+```
+
+&lt;img src="Lecture_Facets_files/figure-html/avoc2-1.png" width="100%" height="60%" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will review some case studies.&lt;/font&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

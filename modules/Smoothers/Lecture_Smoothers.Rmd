@@ -32,7 +32,7 @@ class: inverse, center, middle
 
 # Today's Goal
 
-<font size="7">Highligh trends in data with "smoothers" and models (e.g., lines) of best-fit.</font>
+<font size="7">Highlight trends in data with "smoothers" and models (e.g., lines) of best-fit.</font>
 
 ---
 
