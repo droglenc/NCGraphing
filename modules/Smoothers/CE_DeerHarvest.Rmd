@@ -33,8 +33,7 @@ This exercise uses the same harvest data for Whitetail Deer (*Odocoileus virgini
 #!# Set to your own working directory and have just your filename below.
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
 str(dh)
-cbbPalette <- c("#000000","#E69F00","#56B4E9","#009E73",
-                "#F0E442","#0072B2","#D55E00","#CC79A7")
+clrs <- c("Ashland"="#000000","Bayfield"="#E69F00","Douglas"="#56B4E9","Iron"="#009E73")
 ```
 
 &nbsp;
@@ -45,7 +44,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 ```{r GunBow_1}
  bgHarv1 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless)) +
   geom_smooth(method="lm",color="blue",fill="blue",alpha=0.15) +
-  geom_point(pch=21,color="black",fill="gray70",size=2) +
+  geom_point(pch=21,color="black",fill="gray70",size=2.5) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
@@ -65,7 +64,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
  bgHarv2 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless)) +
   geom_smooth(method="lm",color="blue",fill="blue",alpha=0.15) +
   geom_smooth(method="loess",color="red",fill="red",alpha=0.15) +
-  geom_point(pch=21,color="black",fill="gray70",size=2) +
+  geom_point(pch=21,color="black",fill="gray70",size=2.5) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
@@ -86,12 +85,13 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
  bgHarv3 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless,
                                        color=County,fill=County)) +
   geom_smooth(method="lm",alpha=0.15,se=FALSE) +
-  geom_point(pch=21,size=2,alpha=0.5) +
+  geom_point(pch=21,size=2.5,alpha=0.5) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
                      expand=expansion(mult=0.01)) +
-  scale_color_manual(values=cbbPalette) +
+  scale_color_manual(values=clrs) +
+  scale_fill_manual(values=clrs) +
   theme_bw() +
   theme(panel.grid=element_blank())
 bgHarv3
@@ -107,13 +107,13 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 ```{r Harvest_1, fig.width=6.5, out.width="75%"}
 harv1 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
   geom_smooth(method="loess",size=1,se=FALSE) +
-  geom_point(size=2) +
+  geom_point(size=2.5) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
   scale_y_continuous(name="Total Annual Deer Harvest",
                      expand=expansion(mult=c(0,0.05)),
                      limits=c(0,8000)) +
-  scale_fill_manual(values=cbbPalette) +
-  scale_color_manual(values=cbbPalette) +
+  scale_fill_manual(values=clrs) +
+  scale_color_manual(values=clrs) +
   theme_bw()
 harv1
 ```
