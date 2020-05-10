@@ -19,7 +19,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%",message=FALSE)
 library(tidyverse)
 ```
 
@@ -45,7 +45,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 ```{r GunBow_1}
  bgHarv1 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless)) +
   geom_smooth(method="lm",color="blue",fill="blue",alpha=0.15) +
-  geom_point(pch=21,color="black",fill="gray70",size=1.5) +
+  geom_point(pch=21,color="black",fill="gray70",size=2) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
@@ -65,7 +65,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
  bgHarv2 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless)) +
   geom_smooth(method="lm",color="blue",fill="blue",alpha=0.15) +
   geom_smooth(method="loess",color="red",fill="red",alpha=0.15) +
-  geom_point(pch=21,color="black",fill="gray70",size=1.5) +
+  geom_point(pch=21,color="black",fill="gray70",size=2) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
@@ -82,11 +82,11 @@ A regression model is much simpler to interpret than a LOESS model. Does it seem
 ## Bow vs Gun Harvest by County 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
-```{r GunBow_3}
+```{r GunBow_3, fig.width=6.5, out.width="75%"}
  bgHarv3 <- ggplot(data=dh,mapping=aes(x=Gun.Antlerless,y=Bow.Antlerless,
                                        color=County,fill=County)) +
   geom_smooth(method="lm",alpha=0.15,se=FALSE) +
-  geom_point(pch=21,size=1.5,alpha=0.5) +
+  geom_point(pch=21,size=2,alpha=0.5) +
   scale_x_continuous(name="Harvest of Antlerless Deer by Gun",
                      expand=expansion(mult=0.02)) +
   scale_y_continuous(name="Harvest of Antlerless Deer by Bow",
