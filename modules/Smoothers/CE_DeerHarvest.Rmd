@@ -38,7 +38,7 @@ clrs <- c("Ashland"="#000000","Bayfield"="#E69F00","Douglas"="#56B4E9","Iron"="#
 
 &nbsp;
 
-## Bow vs Gun Harvest 1
+## Antlerless Bow vs Gun Harvest 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r GunBow_1}
@@ -57,7 +57,7 @@ bgHarv1
 &nbsp;
 
 
-## Bow vs Gun Harvest 2
+## Anlerless Bow vs Gun Harvest 2
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r GunBow_2}
@@ -78,7 +78,7 @@ A regression model is much simpler to interpret than a LOESS model. Does it seem
 
 &nbsp;
 
-## Bow vs Gun Harvest by County 1
+## Antlerless Bow vs Gun Harvest by County 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r GunBow_3, fig.width=6.5, out.width="75%"}
@@ -114,8 +114,29 @@ harv1 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
                      limits=c(0,8000)) +
   scale_fill_manual(values=clrs) +
   scale_color_manual(values=clrs) +
-  theme_bw()
+  theme_bw() +
+  theme(panel.grid.minor=element_blank())
 harv1
 ```
 
 Make two observations from this graph.
+
+&nbsp;
+
+## Total Harvest of Antlered vs Antlerless
+Construct `ggplot2` code to match the graph below (as closely as you can).
+
+```{r AA_1, fig.width=6.5, out.width="75%"}
+ aaHarv1 <- ggplot(data=dh,mapping=aes(x=Ttl.Antlered,y=Ttl.Antlerless)) +
+  geom_smooth(method="loess",color="red",fill="red3",alpha=0.1) +
+  geom_point(aes(color=County,fill=County),pch=21,size=2.5,alpha=0.5) +
+  scale_x_continuous(name="Total Harvest of Antlered Deer",
+                     expand=expansion(mult=0.02)) +
+  scale_y_continuous(name="Total Harvest of Antlerless Deer",
+                     expand=expansion(mult=0.01)) +
+  scale_color_manual(values=clrs) +
+  scale_fill_manual(values=clrs) +
+  theme_bw() +
+  theme(panel.grid=element_blank())
+aaHarv1
+```

@@ -39,13 +39,7 @@ XXX
 
 <ul>
   <li><a href="Smoothers/Lecture_Smoothers.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/Lecture_Smoothers_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
-  <li><a href="Smoothers/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_DeerHarvest.R">Key</a></button></li>
-  <li>Exercise 2 (pick <b>one</b> of the following)</li>
-  <ul>
-    <li><a href="Smoothers/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_Loons.R">Key</a></button></li>
-    <li><a href="Smoothers/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_Walleye.R">Key</a></button></li>
-    <li><a href="Smoothers/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_Quarterbacks.R">Key</a></button></li>
-  </ul>
+  <li><a href="Smoothers/CE_DeerHarvest.html">Exercise - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_DeerHarvest.R">Key</a></button></li>
 </ul>
 
 ----
