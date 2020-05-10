@@ -34,13 +34,13 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Means/Lecture_GreatLakesIce.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/Lecture_GreatLakesIce_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/3b3b1d5377720a092fc0ca18e41e6329a6525d365cd5bc63c3cfc0b7a7ce5b86" target="_blank">VIDEO</a></button></li>
-  <li><a href="Means/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_DeerHarvest.R">Key</a></button></li>
+  <li><a href="Facets/Lecture_Facets.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/Lecture_Facets_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
+  <li><a href="Facets/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_DeerHarvest.R">Key</a></button></li>
   <li>Exercise 2 (pick <b>one</b> of the following)</li>
   <ul>
-    <li><a href="Means/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_Loons.R">Key</a></button></li>
-    <li><a href="Means/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_Walleye.R">Key</a></button></li>
-    <li><a href="Means/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Means/CE_Quarterbacks.R">Key</a></button></li>
+    <li><a href="Facets/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Loons.R">Key</a></button></li>
+    <li><a href="Facets/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Walleye.R">Key</a></button></li>
+    <li><a href="Facets/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Quarterbacks.R">Key</a></button></li>
   </ul>
 </ul>
 
