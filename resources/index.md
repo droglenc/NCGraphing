@@ -17,7 +17,8 @@ title: Resources
 1. [Anonymous Message to Dr. Ogle](https://www.surveymonkey.com/r/KC87PJW){:target="_blank"}
 
 
-## General Resources
+## General 
+* [ggplot2 Book v3](https://ggplot2-book.org/index.html): The ggplot2 book (version 3).
 * [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/index.html): Comprehensive documentation with a related [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
 * [Color Resources](colors): Resources for choosing colors in R.
 * Books
