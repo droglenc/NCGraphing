@@ -13,7 +13,7 @@ head(avoc)
 #!# Exploratory Scatter Plot
 p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +
-  scale_x_continuous(name="Average Price ($)") +
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +
   scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
@@ -33,7 +33,7 @@ scales::show_col(cbPalette)
 p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
                                   color=year,fill=year)) +
   geom_point(size=1.25,pch=21) +
-  scale_x_continuous(name="Average Price ($)") +
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +
   scale_y_continuous(name="Thousands of Bags Sold",
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) + 
@@ -91,7 +91,7 @@ ggplot() +
   geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
              size=1.25,pch=21,color="black",fill="gray70") + #BREAK
   geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") + #BREAK
-  scale_x_continuous(name="Average Price ($)") +
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +
   scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
@@ -103,7 +103,7 @@ ggplot() +
   geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
              size=1.25,pch=21,color="black",fill="gray70") + #BREAK
   geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") + #BREAK
-  scale_x_continuous(name="Average Price ($)") +
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +
   scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +

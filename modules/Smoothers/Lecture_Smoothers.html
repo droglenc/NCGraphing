@@ -62,8 +62,10 @@ class: inverse, center, middle
   - "Best-fit line" has smallest sum of squared residuals.
 
 --
-&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-1-1.png" width="45%" /&gt;
 
+.center[
+&lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-1-1.png" width="45%" /&gt;
+]
 
 ---
 
@@ -82,7 +84,10 @@ class: inverse, center, middle
   - `span=` controls size of windows and, thus, smoothing.
 
 --
+
+.center[
 &lt;img src="Lecture_Smoothers_files/figure-html/unnamed-chunk-2-1.png" width="55%" /&gt;
+]
 
 ---
 
@@ -161,7 +166,9 @@ count: false
 ```r
 p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +  
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(  
+    name="Average Price",  
+  ) +  
   scale_y_continuous(  
     breaks=seq(50000,350000,50000),  
   ) +  
@@ -185,10 +192,12 @@ count: false
 ```r
 p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +  
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(  
+    name="Average Price",  
+*   labels=scales::dollar
+  ) +  
   scale_y_continuous(  
     breaks=seq(50000,350000,50000),  
-*   labels=scales::unit_format(unit="",scale=1e-3),
   ) +  
   theme_bw() +  
   theme(panel.grid.minor=element_blank())  
@@ -210,11 +219,13 @@ count: false
 ```r
 p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +  
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(  
+    name="Average Price",  
+    labels=scales::dollar  
+  ) +  
   scale_y_continuous(  
     breaks=seq(50000,350000,50000),  
-    labels=scales::unit_format(unit="",scale=1e-3),  
-*   name="Thousands of Bags Sold"
+*   labels=scales::unit_format(unit="",scale=1/1000),
   ) +  
   theme_bw() +  
   theme(panel.grid.minor=element_blank())  
@@ -224,6 +235,35 @@ p
 ]]
 .column[.content[
 &lt;img src="Lecture_Smoothers_files/figure-html/avoc_scat_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +  
+  geom_point(size=1.25,pch=21,color="black",fill="gray70") +  
+  scale_x_continuous(  
+    name="Average Price",  
+    labels=scales::dollar  
+  ) +  
+  scale_y_continuous(  
+    breaks=seq(50000,350000,50000),  
+    labels=scales::unit_format(unit="",scale=1/1000),  
+*   name="Thousands of Bags Sold"
+  ) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank())  
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Smoothers_files/figure-html/avoc_scat_non_seq_4_output-1.png" width="100%" /&gt;
 ]]
 
 ---
@@ -372,10 +412,10 @@ count: false
 p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,  
                                   )) +  
   geom_point(size=1.25,pch=21) +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +  
   scale_y_continuous(name="Thousands of Bags Sold",  
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),  
-                     labels=scales::unit_format(unit="",scale=1e-3)) +  
+                     labels=scales::unit_format(unit="",scale=1/1000)) +  
   geom_smooth(method="lm") +  
   theme_bw() +  
   theme(panel.grid.minor=element_blank())  
@@ -399,10 +439,10 @@ p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
 *                                 color=year,fill=year
                                   )) +  
   geom_point(size=1.25,pch=21) +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +  
   scale_y_continuous(name="Thousands of Bags Sold",  
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),  
-                     labels=scales::unit_format(unit="",scale=1e-3)) +  
+                     labels=scales::unit_format(unit="",scale=1/1000)) +  
   geom_smooth(method="lm") +  
   theme_bw() +  
   theme(panel.grid.minor=element_blank())  
@@ -426,10 +466,10 @@ p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
                                   color=year,fill=year  
                                   )) +  
   geom_point(size=1.25,pch=21) +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +  
   scale_y_continuous(name="Thousands of Bags Sold",  
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),  
-                     labels=scales::unit_format(unit="",scale=1e-3)) +  
+                     labels=scales::unit_format(unit="",scale=1/1000)) +  
   geom_smooth(method="lm") +  
 * scale_color_manual(name="Year",values=cbPalette) +
   theme_bw() +  
@@ -454,10 +494,10 @@ p &lt;- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
                                   color=year,fill=year  
                                   )) +  
   geom_point(size=1.25,pch=21) +  
-  scale_x_continuous(name="Average Price ($)") +  
+  scale_x_continuous(name="Average Price",labels=scales::dollar) +  
   scale_y_continuous(name="Thousands of Bags Sold",  
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),  
-                     labels=scales::unit_format(unit="",scale=1e-3)) +  
+                     labels=scales::unit_format(unit="",scale=1/1000)) +  
   geom_smooth(method="lm") +  
   scale_color_manual(name="Year",values=cbPalette) +  
 * scale_fill_manual(name="Year",values=cbPalette) +
@@ -947,10 +987,10 @@ ggplot() +
              size=1.25,pch=21,color="black",fill="gray70") +  
   geom_line(data=preds,mapping=aes(y=fit,x=x),  
             size=1,color="blue") +  
-* scale_x_continuous(name="Average Price ($)") +
+* scale_x_continuous(name="Average Price",labels=scales::dollar) +
 * scale_y_continuous(name="Thousands of Bags Sold",
 *                    breaks=seq(50000,350000,50000),
-*                    labels=scales::unit_format(unit="",scale=1e-3)) +
+*                    labels=scales::unit_format(unit="",scale=1/1000)) +
 * theme_bw() +
 * theme(panel.grid.minor=element_blank())
 ```
@@ -973,6 +1013,12 @@ ggplot() +
 
 &lt;img src="Lecture_Smoothers_files/figure-html/avoc3_user_4_output-1.png" width="100%" /&gt;
 ]]
+
+---
+
+class: inverse, center, middle
+
+### Showing the Confidence Band
 
 ---
 
@@ -1137,10 +1183,10 @@ ggplot() +
              size=1.25,pch=21,color="black",fill="gray70") +  
   geom_line(data=preds,mapping=aes(y=fit,x=x),  
             size=1,color="blue") +  
-* scale_x_continuous(name="Average Price ($)") +
+* scale_x_continuous(name="Average Price",labels=scales::dollar) +
 * scale_y_continuous(name="Thousands of Bags Sold",
 *                    breaks=seq(50000,350000,50000),
-*                    labels=scales::unit_format(unit="",scale=1e-3)) +
+*                    labels=scales::unit_format(unit="",scale=1/1000)) +
 * theme_bw() +
 * theme(panel.grid.minor=element_blank())
 ```
