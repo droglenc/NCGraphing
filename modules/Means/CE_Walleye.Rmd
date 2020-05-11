@@ -92,7 +92,7 @@ tl3
 
 &nbsp;
 
-## Total Length by Location 2
+## BONUS -- Total Length by Location 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Walleye_tl4}

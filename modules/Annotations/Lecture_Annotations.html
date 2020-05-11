@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Labels and Annotations</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Derek Ogle, May 2020" />
+    <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Labels and Annotations
+### Derek Ogle, May 2020
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Today's Goal
+
+&lt;font size="7"&gt;Describe how to modify labels (geoms and scales) and add annotations.&lt;/font&gt;
+
+
+---
+
+class: inverse, center, middle
+
+# Labels
+
+---
+
+# Titles, Subtitles, and Captions
+
+- Added with `labs()`.
+
+--
+  - `title=` adds a main title at the top (stats above y-axis).
+  - `subtitle=` adds a subtitle below the main title.
+  - `caption=` adds a "caption" to the bottom-right.
+  - `tag=` adds tag label to the very top-left.
+
+--
+
+.center[
+&lt;img src="Lecture_Annotations_files/figure-html/labs-1.png" width="45%" /&gt;
+]
+
+---
+
+class: inverse, center, middle
+
+# Example
+
+---
+
+# Background
+
+- Isle Royale Moose and Wolves.
+  - Note an outbreak of parvovirus occurred in 1980.
+
+--
+
+
+
+```r
+## #!# Set to your own working directory and have just your filename below.
+irmw &lt;- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
+                 na.strings=c("NA","N/A"))  %&gt;%
+  select(year,wolves,moose) %&gt;%
+  mutate(parvo=ifelse(year&gt;1980,"Post-parvo","Pre-parvo"),
+         parvo=factor(parvo,levels=c("Pre-parvo","Post-parvo")))
+head(irmw)
+```
+
+```
+  year wolves moose     parvo
+1 1959     20   538 Pre-parvo
+2 1960     22   564 Pre-parvo
+3 1961     22   572 Pre-parvo
+4 1962     23   579 Pre-parvo
+5 1963     20   596 Pre-parvo
+6 1964     26   620 Pre-parvo
+```
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
+* geom_line(color="gray70") +
+* geom_point(aes(fill=parvo),size=1.25,pch=21) +
+* scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+* scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +
+* scale_x_continuous(expand=expansion(mult=0.04)) +
+* theme_bw() +
+* theme(panel.grid.minor=element_blank())
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw1_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank()) +  
+* labs(title="Number of Wolves on Isle Royale, 1959-2019",
+*      subtitle="Estimated from aerial counts",
+*      caption="Source: https://isleroyalewolf.org")
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw1_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank()) +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org") +  
+* labs(x=element_blank(),
+*      y=element_blank(),
+*      fill="Relative to Parvo")
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw1_user_3_output-1.png" width="100%" /&gt;
+]]
+
+
+---
+
+class: inverse, center, middle
+
+# Annotations
+
+---
+
+# Annotation Layers
+
+- Add a `geom_` to a plot, but aesthetics are not mapped from variables in a data.frame.
+
+--
+  - Aesthetics passed in as single values or vectors.
+  - Useful for adding small annotations (such as text labels).
+
+&amp;nbsp;
+
+--
+- Use `annotate()`.
+
+--
+  - `geom=` (first argument) the `geom_` to use.
+
+--
+  - Remaining arguments are position aesthetics (e.g., `x=`, `y=`, `xmin=`, `xmax=`, `ymin=`, `ymax=`, `xend=`, `yend=`) ...
+  
+--
+  - ... other aesthetics (e.g., `color=`, `fill=`, `size=`).
+
+---
+
+class: inverse, center, middle
+
+# Example
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
+* geom_line(color="gray70") +
+* geom_point(aes(fill=parvo),size=1.25,pch=21) +
+* scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+* scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +
+* scale_x_continuous(expand=expansion(mult=0.04)) +
+* theme_bw() +
+* theme(panel.grid.minor=element_blank(),legend.position="none") +
+* labs(title="Number of Wolves on Isle Royale, 1959-2019",
+*      subtitle="Estimated from aerial counts",
+*      caption="Source: https://isleroyalewolf.org",
+*      x=element_blank(),y=element_blank())
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+* annotate(geom="label",x=1990,y=48,hjust="left",
+*          label="Outbreak of parvovirus in 1980")
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+  annotate(geom="label",x=1990,y=48,hjust="left",  
+           label="Outbreak of parvovirus in 1980") +  
+* annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,
+*          arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+  annotate(geom="label",x=1990,y=48,hjust="left",  
+           label="Outbreak of parvovirus in 1980") +  
+  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+* annotate(geom="label",x=2014,y=37,hjust="right",
+*          label="Wolves introduced from mainland")
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+  annotate(geom="label",x=1990,y=48,hjust="left",  
+           label="Outbreak of parvovirus in 1980") +  
+  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+  annotate(geom="label",x=2014,y=37,hjust="right",  
+           label="Wolves introduced from mainland") +  
+* annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,
+*          arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),
+*          curvature=-0.25)
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_5_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+  annotate(geom="label",x=1990,y=48,hjust="left",  
+           label="Outbreak of parvovirus in 1980") +  
+  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+  annotate(geom="label",x=2014,y=37,hjust="right",  
+           label="Wolves introduced from mainland") +  
+  annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),  
+           curvature=-0.25) +  
+* annotate(geom="segment",x=2008,xend=2013.5,y=18.5,yend=1,
+*          color="steelblue") +
+* annotate(geom="text",x=2003,y=8,color="steelblue",
+*          label=str_wrap("Concerned about inbreeding suppression",width=25))
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_6_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+---
+
+
+```r
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text(aes(label=year),vjust="top") +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1-1.png" width="55%" /&gt;
+
+---
+
+
+```r
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(aes(label=year)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw-1.png" width="55%" /&gt;
+
+---
+
+
+```r
+irmw &lt;- irmw %&gt;%
+  mutate(decade=ifelse(year %in% seq(1950,2020,5),year,""))
+head(irmw, n=15)
+```
+
+```
+   year wolves moose     parvo decade
+1  1959     20   538 Pre-parvo       
+2  1960     22   564 Pre-parvo   1960
+3  1961     22   572 Pre-parvo       
+4  1962     23   579 Pre-parvo       
+5  1963     20   596 Pre-parvo       
+6  1964     26   620 Pre-parvo       
+7  1965     28   634 Pre-parvo   1965
+8  1966     26   661 Pre-parvo       
+9  1967     22   766 Pre-parvo       
+10 1968     22   848 Pre-parvo       
+11 1969     17  1041 Pre-parvo       
+12 1970     18  1045 Pre-parvo   1970
+13 1971     20  1183 Pre-parvo       
+14 1972     23  1243 Pre-parvo       
+15 1973     24  1215 Pre-parvo       
+```
+
+---
+
+
+```r
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(mapping=aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(mapping=aes(label=decade)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw3-1.png" width="55%" /&gt;
+
+---
+
+
+```r
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_segment(mapping=aes(xend=c(moose[-1],NA),yend=c(wolves[-1],NA),color=year),
+               size=0.3,arrow=arrow(length=unit(2,"mm"))) +
+  geom_point(mapping=aes(fill=parvo),pch=21,size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(mapping=aes(label=decade)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw4-1.png" width="55%" /&gt;
+
+---
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw5-1.png" width="100%" /&gt;
+
+
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will review some case studies.&lt;/font&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

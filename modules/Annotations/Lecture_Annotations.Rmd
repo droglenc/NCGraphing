@@ -1,0 +1,369 @@
+---
+title: "Labels and Annotations"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: zlibs
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r purler, eval=FALSE, echo=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_Annotations"
+FSA::purl2(file.path(here::here(),"modules/Anotations",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache","head",
+                       "include_graphics","options","splitPerc","leftAssign"))
+```
+
+
+```{r setup, include = FALSE}
+source("../zzzflipbook_settings.R")
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
+library(gghighlight)
+library(ggrepel)
+```
+
+class: inverse, center, middle
+
+# Today's Goal
+
+<font size="7">Describe how to modify labels (geoms and scales) and add annotations.</font>
+
+
+---
+
+class: inverse, center, middle
+
+# Labels
+
+---
+
+# Titles, Subtitles, and Captions
+
+- Added with `labs()`.
+
+--
+  - `title=` adds a main title at the top (stats above y-axis).
+  - `subtitle=` adds a subtitle below the main title.
+  - `caption=` adds a "caption" to the bottom-right.
+  - `tag=` adds tag label to the very top-left.
+
+--
+
+.center[
+```{r echo=FALSE}
+#!# DEREK ... delete this from the script.
+```
+```{r labs, echo=FALSE,fig.width=2,fig.height=2,out.width="45%"}
+ggplot(data=data.frame(x=1,y=1),mapping=aes(x=x,y=y)) +
+  geom_point(color="white") +
+  theme_bw() + theme(panel.grid=element_blank()) +
+  scale_x_continuous(limits=c(0,2),breaks=0:2,expand=expansion(mult=0)) +
+  scale_y_continuous(limits=c(0,2),breaks=0:2,expand=expansion(mult=0)) +
+  labs(title="This is the MAIN title.",
+       subtitle="and this is the SUBtitle.",
+       caption="You can put a CAPTION here.",
+       tag="TAG",
+       x="X-axis label goes here",
+       y="Y-xxis label goes here") +
+  theme(plot.title=element_text(color="red"),
+        plot.subtitle=element_text(color="red"),
+        axis.title=element_text(color="red"),
+        plot.caption=element_text(color="red"),
+        plot.tag=element_text(color="red"))
+```
+]
+
+---
+
+class: inverse, center, middle
+
+# Example
+
+---
+
+# Background
+
+- Isle Royale Moose and Wolves.
+  - Note an outbreak of parvovirus occurred in 1980.
+
+--
+
+```{r echo=FALSE}
+#!# Load and Prep Data
+```
+```{r load1, eval=-1}
+#!# Set to your own working directory and have just your filename below.
+irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
+                 na.strings=c("NA","N/A"))  %>%
+  select(year,wolves,moose) %>%
+  mutate(parvo=ifelse(year>1980,"Post-parvo","Pre-parvo"),
+         parvo=factor(parvo,levels=c("Pre-parvo","Post-parvo")))
+head(irmw)
+```
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating labs() with IR wolf plot
+```
+```{r irw1, include=FALSE}
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
+  geom_line(color="gray70") +
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +
+  scale_x_continuous(expand=expansion(mult=0.04)) +
+  theme_bw() +
+  theme(panel.grid.minor=element_blank()) + #BREAK
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",
+       subtitle="Estimated from aerial counts",
+       caption="Source: https://isleroyalewolf.org") + #BREAK
+  labs(x=element_blank(),
+       y=element_blank(),
+       fill="Relative to Parvo")
+```
+
+`r chunk_reveal("irw1",break_type="user",split=splitPerc)`
+
+
+---
+
+class: inverse, center, middle
+
+# Annotations
+
+---
+
+# Annotation Layers
+
+- Add a `geom_` to a plot, but aesthetics are not mapped from variables in a data.frame.
+
+--
+  - Aesthetics passed in as single values or vectors.
+  - Useful for adding small annotations (such as text labels).
+
+&nbsp;
+
+--
+- Use `annotate()`.
+
+--
+  - `geom=` (first argument) the `geom_` to use.
+
+--
+  - Remaining arguments are position aesthetics (e.g., `x=`, `y=`, `xmin=`, `xmax=`, `ymin=`, `ymax=`, `xend=`, `yend=`) ...
+  
+--
+  - ... other aesthetics (e.g., `color=`, `fill=`, `size=`).
+
+---
+
+class: inverse, center, middle
+
+# Example
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating annotate() with IR wolf plot
+```
+```{r irw2, include=FALSE}
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
+  geom_line(color="gray70") +
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +
+  scale_x_continuous(expand=expansion(mult=0.04)) +
+  theme_bw() +
+  theme(panel.grid.minor=element_blank(),legend.position="none") +
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",
+       subtitle="Estimated from aerial counts",
+       caption="Source: https://isleroyalewolf.org",
+       x=element_blank(),y=element_blank()) + #BREAK
+  annotate(geom="label",x=1990,y=48,hjust="left",
+           label="Outbreak of parvovirus in 1980") + #BREAK
+  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) + #BREAK
+  annotate(geom="label",x=2014,y=37,hjust="right",
+           label="Wolves introduced from mainland") + #BREAK
+  annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),
+           curvature=-0.25) + #BREAK
+  annotate(geom="segment",x=2008,xend=2013.5,y=18.5,yend=1,
+           color="steelblue") + #BREAK
+  annotate(geom="text",x=2003,y=8,color="steelblue",
+           label="Concerned about\ninbreeding suppression")
+```
+
+`r chunk_reveal("irw2",break_type="user",split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Labeling Individual Points
+
+---
+
+# Labeling Individual Points
+
+- Provide specific details about the data.
+
+--
+  - e.g., the actual mean.
+  - e.g., letters that identify significant differences.
+  - e.g., the sample size.
+
+&nbsp;
+
+--
+- Highlight individual points.
+
+&nbsp;
+
+--
+- Can use `geom_text()`, `geom_label()`, or `annotate()`
+
+---
+
+class: inverse, center, middle
+
+# Example ... showing means
+
+---
+
+```{r load 2, echo=FALSE}
+#!# Load Great Lakes ice data and compute means by lake
+gli <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GreatLakesIce.csv") %>%
+  mutate(lake=factor(lake,levels=c("Superior","Michigan","Huron","Erie","Ontario")),
+         decade=floor(year/10)*10,
+         decade=factor(paste0(decade,"s"),levels=c("1970s","1980s","1990s","2000s","2010s")))
+
+sum1 <- gli %>%
+  group_by(lake) %>%
+  summarize(n=n(),
+            mean=mean(max.cover,na.rm=TRUE))
+```
+
+```{r echo=FALSE}
+#!# Plot means by lake ... bars from summarized data
+```
+```{r gli_mnsbar, include=FALSE}
+sum1
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mean)) +
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) + #BREAK
+  scale_x_discrete(name="Great Lake") +
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+                     limits=c(0,100),expand=expansion(mult=c(0,0.01))) +
+  theme_bw() +
+  theme(panel.grid.major.x=element_blank()) + #BREAK
+  geom_text(aes(label=round(mean,1)),vjust=-0.5)
+```
+
+`r chunk_reveal("mnsbar3",break_type="user",split=splitPerc)`
+
+
+---
+
+class: inverse, center, middle
+
+# Example ... showing significance letters
+
+
+
+---
+
+class: inverse, center, middle
+
+# Example ... showing sample size
+
+
+
+---
+
+class: inverse, center, middle
+
+# Example ... highlighting individual points
+
+
+
+
+```{r irmw1, fig.width=2.5, fig.height=2.5, out.width="55%"}
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text(aes(label=year),vjust="top") +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+---
+
+```{r irmw, fig.width=2.5, fig.height=2.5, out.width="55%"}
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(aes(label=year)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+---
+
+```{r}
+irmw <- irmw %>%
+  mutate(decade=ifelse(year %in% seq(1950,2020,5),year,""))
+head(irmw, n=15)
+```
+
+---
+
+```{r irmw3, fig.width=2.5, fig.height=2.5, out.width="55%"}
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_point(mapping=aes(fill=parvo),pch=21,color="black",size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(mapping=aes(label=decade)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+---
+
+```{r irmw4, fig.width=2.5, fig.height=2.5, out.width="55%"}
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_segment(mapping=aes(xend=c(moose[-1],NA),yend=c(wolves[-1],NA),color=year),
+               size=0.3,arrow=arrow(length=unit(2,"mm"))) +
+  geom_point(mapping=aes(fill=parvo),pch=21,size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(mapping=aes(label=decade)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+```
+
+---
+
+```{r irmw5, fig.width=5, fig.height=2.5, out.width="100%", echo=FALSE}
+ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
+  geom_segment(mapping=aes(xend=c(moose[-1],NA),yend=c(wolves[-1],NA),color=year),
+               size=0.3,arrow=arrow(length=unit(2,"mm"))) +
+  geom_point(mapping=aes(fill=parvo),pch=21,size=1.2) +
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
+  geom_text_repel(mapping=aes(label=decade)) +
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none") +
+  facet_wrap(vars(parvo))
+```
+
+
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will review some case studies.</font>
