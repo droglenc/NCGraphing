@@ -33,7 +33,10 @@ XXX
 
 ## Demonstration and Exercises
 
-* [Demonstration](Univariate_Density/Demo_FL_BlackBears.html)
+<ul>
+  <li><a href="Annotations/Lecture_Annotations.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Annotations/Lecture_Annotations_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
+  <li><a href="Annotations/CE_Annotations.html">Exercise</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Annotations/CE_Annotations.R">Key</a></button></li>
+</ul>
 
 ----
 
