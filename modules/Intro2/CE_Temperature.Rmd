@@ -37,7 +37,7 @@ str(gt)
 
 &nbsp;
 
-## Annual Temperatue Anomaly 1
+## Annual Temperature Anomaly 1
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_1}
@@ -52,7 +52,7 @@ ft1
 
 &nbsp;
 
-## Annual Temperatue Anomaly 2
+## Annual Temperature Anomaly 2
 Construct `ggplot2` code to match the graph below (as closely as you can). [*HINT: Copy and then modify the code you constructed from above.*]
 
 ```{r Temperature_2}
@@ -67,7 +67,7 @@ ft2
 
 &nbsp;
 
-## Annual Temperatue Anomaly 3
+## Annual Temperature Anomaly 3
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_3}
@@ -81,12 +81,12 @@ ft3
 
 &nbsp;
 
-## BONUS -- Annual Temperatue Anomaly 4
+## BONUS -- Annual Temperature Anomaly 4
 Perform an internet search to determine how to add a solid black horizontal line at 0 to each of the graphs above (see the line in the graph in the next section).
 
 &nbsp;
 
-## BONUS -- Annual Temperatue Anomaly 5
+## BONUS -- Annual Temperature Anomaly 5
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_5}
@@ -103,7 +103,7 @@ ft3
 
 &nbsp;
 
-## BONUS -- Annual Temperatue Anomaly 6
+## BONUS -- Annual Temperature Anomaly 6
 Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_6}
