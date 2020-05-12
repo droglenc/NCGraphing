@@ -51,6 +51,7 @@ class: inverse, center, middle
 --
 
 .center[
+
 &lt;img src="Lecture_Annotations_files/figure-html/labs-1.png" width="45%" /&gt;
 ]
 
@@ -92,6 +93,7 @@ head(irmw)
 ```
 
 ---
+
 
 
 
@@ -181,11 +183,11 @@ class: inverse, center, middle
 
 # Annotation Layers
 
-- Add a `geom_` to a plot, but aesthetics are not mapped from variables in a data.frame.
+- Add `geom_` ... but aesthetics not mapped from variables in a data.frame.
 
 --
   - Aesthetics passed in as single values or vectors.
-  - Useful for adding small annotations (such as text labels).
+  - Useful for adding small annotations (such as text labels or segments).
 
 &amp;nbsp;
 
@@ -193,13 +195,13 @@ class: inverse, center, middle
 - Use `annotate()`.
 
 --
-  - `geom=` (first argument) the `geom_` to use.
+  - `geom=` (first argument) is the `geom_` to use.
 
 --
   - Remaining arguments are position aesthetics (e.g., `x=`, `y=`, `xmin=`, `xmax=`, `ymin=`, `ymax=`, `xend=`, `yend=`) ...
   
 --
-  - ... other aesthetics (e.g., `color=`, `fill=`, `size=`).
+  - ... and other aesthetics (e.g., `color=`, `fill=`, `size=`).
 
 ---
 
@@ -208,6 +210,7 @@ class: inverse, center, middle
 # Example
 
 ---
+
 
 
 
@@ -392,106 +395,617 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
            arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),  
            curvature=-0.25) +  
 * annotate(geom="segment",x=2008,xend=2013.5,y=18.5,yend=1,
-*          color="steelblue") +
-* annotate(geom="text",x=2003,y=8,color="steelblue",
-*          label=str_wrap("Concerned about inbreeding suppression",width=25))
+*          color="steelblue")
 ```
 ]]
 .column[.content[
 &lt;img src="Lecture_Annotations_files/figure-html/irw2_user_6_output-1.png" width="100%" /&gt;
 ]]
-
 ---
+class: split-50
+count: false
+ 
 
-
-
----
-
+ 
+.column[.content[
 
 ```r
-ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
-  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
-  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
-  geom_text(aes(label=year),vjust="top") +
-  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +  
+  geom_line(color="gray70") +  
+  geom_point(aes(fill=parvo),size=1.25,pch=21) +  
+  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +  
+  scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +  
+  scale_x_continuous(expand=expansion(mult=0.04)) +  
+  theme_bw() +  
+  theme(panel.grid.minor=element_blank(),legend.position="none") +  
+  labs(title="Number of Wolves on Isle Royale, 1959-2019",  
+       subtitle="Estimated from aerial counts",  
+       caption="Source: https://isleroyalewolf.org",  
+       x=element_blank(),y=element_blank()) +  
+  annotate(geom="label",x=1990,y=48,hjust="left",  
+           label="Outbreak of parvovirus in 1980") +  
+  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+  annotate(geom="label",x=2014,y=37,hjust="right",  
+           label="Wolves introduced from mainland") +  
+  annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,  
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),  
+           curvature=-0.25) +  
+  annotate(geom="segment",x=2008,xend=2013.5,y=18.5,yend=1,  
+           color="steelblue") +  
+* annotate(geom="text",x=2003,y=8,color="steelblue",
+*          label="Concerned about\ninbreeding suppression")
 ```
-
-&lt;img src="Lecture_Annotations_files/figure-html/irmw1-1.png" width="55%" /&gt;
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irw2_user_7_output-1.png" width="100%" /&gt;
+]]
 
 ---
 
+class: inverse, center, middle
+
+# Labeling Individual Points
+
+---
+
+# Labeling Individual Points
+
+- Provide specific details about the data.
+
+--
+  - e.g., the actual mean.
+  - e.g., letters that identify significant differences.
+  - e.g., the sample size.
+
+&amp;nbsp;
+
+--
+- Highlight individual points.
+
+&amp;nbsp;
+
+--
+- Can use `geom_text()`, `geom_label()`, or `annotate()`
+
+---
+
+class: inverse, center, middle
+
+# Example ... showing means
+
+---
+
+
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
 
 ```r
-ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
-  geom_point(aes(fill=parvo),pch=21,color="black",size=1.2) +
-  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
-  geom_text_repel(aes(label=year)) +
-  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+*sum1
+
+*ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
+* geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
 ```
 
-&lt;img src="Lecture_Annotations_files/figure-html/irmw-1.png" width="55%" /&gt;
-
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar_user_1_output-1.png" width="100%" /&gt;
+]]
 ---
+class: split-50
+count: false
+ 
 
+ 
+.column[.content[
 
 ```r
-irmw &lt;- irmw %&gt;%
-  mutate(decade=ifelse(year %in% seq(1950,2020,5),year,""))
-head(irmw, n=15)
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
+                     limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_text(aes(label=round(mn,1)),vjust="bottom",nudge_y=1)
 ```
+]]
+.column[.content[
 
 ```
-   year wolves moose     parvo decade
-1  1959     20   538 Pre-parvo       
-2  1960     22   564 Pre-parvo   1960
-3  1961     22   572 Pre-parvo       
-4  1962     23   579 Pre-parvo       
-5  1963     20   596 Pre-parvo       
-6  1964     26   620 Pre-parvo       
-7  1965     28   634 Pre-parvo   1965
-8  1966     26   661 Pre-parvo       
-9  1967     22   766 Pre-parvo       
-10 1968     22   848 Pre-parvo       
-11 1969     17  1041 Pre-parvo       
-12 1970     18  1045 Pre-parvo   1970
-13 1971     20  1183 Pre-parvo       
-14 1972     23  1243 Pre-parvo       
-15 1973     24  1215 Pre-parvo       
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
 ```
+
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar_user_2_output-1.png" width="100%" /&gt;
+]]
 
 ---
 
+class: inverse, center, middle
+
+# Example ... showing significance letters
+
+---
+
+
+
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
 
 ```r
-ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
-  geom_point(mapping=aes(fill=parvo),pch=21,color="black",size=1.2) +
-  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
-  geom_text_repel(mapping=aes(label=decade)) +
-  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+*sum1
+
+*ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
+* geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+* geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank())
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
 ```
 
-&lt;img src="Lecture_Annotations_files/figure-html/irmw3-1.png" width="55%" /&gt;
-
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar2_user_1_output-1.png" width="100%" /&gt;
+]]
 ---
+class: split-50
+count: false
+ 
 
+ 
+.column[.content[
 
 ```r
-ggplot(data=irmw,mapping=aes(x=moose,y=wolves)) +
-  geom_segment(mapping=aes(xend=c(moose[-1],NA),yend=c(wolves[-1],NA),color=year),
-               size=0.3,arrow=arrow(length=unit(2,"mm"))) +
-  geom_point(mapping=aes(fill=parvo),pch=21,size=1.2) +
-  scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
-  geom_text_repel(mapping=aes(label=decade)) +
-  theme_bw() + theme(panel.grid=element_blank(),legend.position="none")
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+  geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
+                     limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+* geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),
+*           vjust="bottom",nudge_y=1.5)
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
 ```
 
-&lt;img src="Lecture_Annotations_files/figure-html/irmw4-1.png" width="55%" /&gt;
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar2_user_2_output-1.png" width="100%" /&gt;
+]]
+
 
 ---
 
-&lt;img src="Lecture_Annotations_files/figure-html/irmw5-1.png" width="100%" /&gt;
+class: inverse, center, middle
+
+# Example ... showing sample size
+
+---
 
 
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*sum1
+
+*ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
+* geom_bar(stat="identity",fill="gray30",alpha=0.75) +
+* geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +
+* scale_x_discrete(name="Great Lake") +
+* scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
+*                    limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +
+* theme_bw() +
+* theme(panel.grid.major.x=element_blank()) +
+* geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),
+*           vjust="bottom",nudge_y=1.5)
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar3_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+sum1  
+
+ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +  
+  geom_bar(stat="identity",fill="gray30",alpha=0.75) +  
+  geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +  
+  scale_x_discrete(name="Great Lake") +  
+  scale_y_continuous(name="Mean Maximum Ice Coverage (%)",  
+                     limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +  
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank()) +  
+  geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),  
+            vjust="bottom",nudge_y=1.5) +  
+* geom_text(mapping=aes(y=0,label=paste("n =",n)),
+*           vjust="bottom",nudge_y=1.5)
+```
+]]
+.column[.content[
+
+```
+# A tibble: 5 x 6
+  lake         n    mn     s   lci   uci
+  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Superior    47  62.3  30.3  53.4  71.2
+2 Michigan    47  40.5  21.7  34.1  46.8
+3 Huron       47  65.3  23.3  58.5  72.1
+4 Erie        47  82.6  26.0  75.0  90.3
+5 Ontario     47  30.2  19.7  24.4  36.0
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/gli_mnsbar3_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Example ... highlighting individual points
+
+---
+
+# Background
+
+- Examine dynamics of Moose and Wolf abundance from 1970 to 1990.
+  - Make variable with label for only every fifth year.
+  - Make variables with "next year's" wolf and moose abundances.
+
+--
+
+```r
+irmw2 &lt;- irmw %&gt;%
+  filter(year&gt;=1970,year&lt;=1990) %&gt;%
+  mutate(year5=ifelse(year %in% seq(1970,1990,5),year,""),moose.next=c(moose[-1],NA),wolves.next=c(wolves[-1],NA))
+FSA::headtail(irmw2, n=6)
+```
+
+```
+   year wolves moose      parvo year5 moose.next wolves.next
+1  1970     18  1045  Pre-parvo  1970       1183          20
+2  1971     20  1183  Pre-parvo             1243          23
+3  1972     23  1243  Pre-parvo             1215          24
+4  1973     24  1215  Pre-parvo             1203          31
+5  1974     31  1203  Pre-parvo             1139          41
+6  1975     41  1139  Pre-parvo  1975       1070          44
+16 1985     22   976 Post-parvo  1985       1014          20
+17 1986     20  1014 Post-parvo             1046          16
+18 1987     16  1046 Post-parvo             1116          12
+19 1988     12  1116 Post-parvo             1260          12
+20 1989     12  1260 Post-parvo             1315          15
+21 1990     15  1315 Post-parvo  1990         NA          NA
+```
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*head(irmw2)
+
+*ggplot(data=irmw2,mapping=aes(x=moose,y=wolves))
+```
+]]
+.column[.content[
+
+```
+  year wolves moose     parvo year5 moose.next wolves.next
+1 1970     18  1045 Pre-parvo  1970       1183          20
+2 1971     20  1183 Pre-parvo             1243          23
+3 1972     23  1243 Pre-parvo             1215          24
+4 1973     24  1215 Pre-parvo             1203          31
+5 1974     31  1203 Pre-parvo             1139          41
+6 1975     41  1139 Pre-parvo  1975       1070          44
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+head(irmw2)  
+
+ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +  
+* geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),
+*              size=0.4,
+*              arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
+```
+]]
+.column[.content[
+
+```
+  year wolves moose     parvo year5 moose.next wolves.next
+1 1970     18  1045 Pre-parvo  1970       1183          20
+2 1971     20  1183 Pre-parvo             1243          23
+3 1972     23  1243 Pre-parvo             1215          24
+4 1973     24  1215 Pre-parvo             1203          31
+5 1974     31  1203 Pre-parvo             1139          41
+6 1975     41  1139 Pre-parvo  1975       1070          44
+```
+
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1_user_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p &lt;- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +
+* geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),
+*              size=0.4,
+*              arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1a_user_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +  
+  geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),  
+               size=0.4,  
+               arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+* geom_point(size=1.2) +
+* labs(title="Isle Royale Wolf and Moose Abundance, 1970-1990",
+*      subtitle="Parvovirus outbreak in 1980",
+*      x="Moose Abundance",y="Wolf Abundance",
+*      caption="Source: https://isleroyalewolf.org") +
+* theme_bw() + theme(panel.grid=element_blank(),legend.position="none",
+*                    aspect.ratio=1)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1a_user_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p &lt;- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +  
+  geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),  
+               size=0.4,  
+               arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +  
+  geom_point(size=1.2) +  
+  labs(title="Isle Royale Wolf and Moose Abundance, 1970-1990",  
+       subtitle="Parvovirus outbreak in 1980",  
+       x="Moose Abundance",y="Wolf Abundance",  
+       caption="Source: https://isleroyalewolf.org") +  
+  theme_bw() + theme(panel.grid=element_blank(),legend.position="none",  
+                     aspect.ratio=1) +  
+* geom_point(data=filter(irmw,year==1980),color="red",size=1.2)
+ 
+p
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw1a_user_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*p 
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw2_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+* geom_text(mapping=aes(label=year))
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw2_auto_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_text(  
+    mapping=aes(label=year5),  
+    )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw3_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_text(  
+    mapping=aes(label=year5),  
+*   vjust="bottom",
+    )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw3_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  geom_text(  
+    mapping=aes(label=year5),  
+    vjust="bottom",  
+*   nudge_y=1
+    )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Annotations_files/figure-html/irmw3_non_seq_3_output-1.png" width="100%" /&gt;
+]]
 
 ---
 
@@ -499,7 +1013,7 @@ class: inverse, center, middle
 
 # Next Time
 
-&lt;font size="7"&gt;We will review some case studies.&lt;/font&gt;
+&lt;font size="7"&gt;We will review themes.&lt;/font&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

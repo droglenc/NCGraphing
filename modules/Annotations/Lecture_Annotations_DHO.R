@@ -1,120 +1,18 @@
----
-title: "Labels and Annotations"
-author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
-output:
-  xaringan::moon_reader:
-    lib_dir: zlibs
-    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
-    nature:
-      ratio: 16:10
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
----
-
-```{r purler, eval=FALSE, echo=FALSE}
-## Use Knit button to make actual slides.
-## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
-fnm <- "Lecture_Annotations"
-FSA::purl2(file.path(here::here(),"modules/Annotations",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr","cache","head",
-                       "include_graphics","options","splitPerc","leftAssign"))
-```
-
-
-```{r setup, include = FALSE}
-source("../zzzflipbook_settings.R")
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
 library(gghighlight)
 library(ggrepel)
-```
-
-class: inverse, center, middle
-
-# Today's Goal
-
-<font size="7">Describe how to modify labels (geoms and scales) and add annotations.</font>
 
 
----
-
-class: inverse, center, middle
-
-# Labels
-
----
-
-# Titles, Subtitles, and Captions
-
-- Added with `labs()`.
-
---
-  - `title=` adds a main title at the top (stats above y-axis).
-  - `subtitle=` adds a subtitle below the main title.
-  - `caption=` adds a "caption" to the bottom-right.
-  - `tag=` adds tag label to the very top-left.
-
---
-
-.center[
-```{r echo=FALSE}
-#!# DEREK ... delete this from the script.
-```
-```{r labs, echo=FALSE,fig.width=2,fig.height=2,out.width="45%"}
-ggplot(data=data.frame(x=1,y=1),mapping=aes(x=x,y=y)) +
-  geom_point(color="white") +
-  theme_bw() + theme(panel.grid=element_blank()) +
-  scale_x_continuous(limits=c(0,2),breaks=0:2,expand=expansion(mult=0)) +
-  scale_y_continuous(limits=c(0,2),breaks=0:2,expand=expansion(mult=0)) +
-  labs(title="This is the MAIN title.",
-       subtitle="and this is the SUBtitle.",
-       caption="You can put a CAPTION here.",
-       tag="TAG",
-       x="X-axis label goes here",
-       y="Y-xxis label goes here") +
-  theme(plot.title=element_text(color="red"),
-        plot.subtitle=element_text(color="red"),
-        axis.title=element_text(color="red"),
-        plot.caption=element_text(color="red"),
-        plot.tag=element_text(color="red"))
-```
-]
-
----
-
-class: inverse, center, middle
-
-# Example
-
----
-
-# Background
-
-- Isle Royale Moose and Wolves.
-  - Note an outbreak of parvovirus occurred in 1980.
-
---
-
-```{r echo=FALSE}
 #!# Load and Prep Data
-```
-```{r load1, eval=-1}
 #!# Set to your own working directory and have just your filename below.
 irmw <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/WolvesMoose_IsleRoyale_June2019.csv",
                  na.strings=c("NA","N/A"))  %>%
   select(year,wolves,moose) %>%
   mutate(parvo=ifelse(year>1980,"Post-parvo","Pre-parvo"),
          parvo=factor(parvo,levels=c("Pre-parvo","Post-parvo")))
-head(irmw)
-```
 
----
-
-```{r echo=FALSE}
 #!# Demonstrating labs() with IR wolf plot
-```
-```{r irw1, include=FALSE}
 ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line(color="gray70") +
   geom_point(aes(fill=parvo),size=1.25,pch=21) +
@@ -129,53 +27,8 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   labs(x=element_blank(),
        y=element_blank(),
        fill="Relative to Parvo")
-```
 
-`r chunk_reveal("irw1",break_type="user",split=splitPerc)`
-
-
----
-
-class: inverse, center, middle
-
-# Annotations
-
----
-
-# Annotation Layers
-
-- Add `geom_` ... but aesthetics not mapped from variables in a data.frame.
-
---
-  - Aesthetics passed in as single values or vectors.
-  - Useful for adding small annotations (such as text labels or segments).
-
-&nbsp;
-
---
-- Use `annotate()`.
-
---
-  - `geom=` (first argument) is the `geom_` to use.
-
---
-  - Remaining arguments are position aesthetics (e.g., `x=`, `y=`, `xmin=`, `xmax=`, `ymin=`, `ymax=`, `xend=`, `yend=`) ...
-  
---
-  - ... and other aesthetics (e.g., `color=`, `fill=`, `size=`).
-
----
-
-class: inverse, center, middle
-
-# Example
-
----
-
-```{r echo=FALSE}
 #!# Demonstrating annotate() with IR wolf plot
-```
-```{r irw2, include=FALSE}
 ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line(color="gray70") +
   geom_point(aes(fill=parvo),size=1.25,pch=21) +
@@ -201,46 +54,8 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
            color="steelblue") + #BREAK
   annotate(geom="text",x=2003,y=8,color="steelblue",
            label="Concerned about\ninbreeding suppression")
-```
 
-`r chunk_reveal("irw2",break_type="user",split=splitPerc)`
 
----
-
-class: inverse, center, middle
-
-# Labeling Individual Points
-
----
-
-# Labeling Individual Points
-
-- Provide specific details about the data.
-
---
-  - e.g., the actual mean.
-  - e.g., letters that identify significant differences.
-  - e.g., the sample size.
-
-&nbsp;
-
---
-- Highlight individual points.
-
-&nbsp;
-
---
-- Can use `geom_text()`, `geom_label()`, or `annotate()`
-
----
-
-class: inverse, center, middle
-
-# Example ... showing means
-
----
-
-```{r load 2, echo=FALSE}
 #!# Load Great Lakes ice data and compute means by lake
 gli <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/GreatLakesIce.csv") %>%
   mutate(lake=factor(lake,levels=c("Superior","Michigan","Huron","Erie","Ontario")),
@@ -252,14 +67,8 @@ sum1 <- gli %>%
   summarize(n=n(),mn=mean(max.cover,na.rm=TRUE),
             s=sd(max.cover,na.rm=TRUE)) %>%
   mutate(lci=mn-qt(0.975,df=n-1)*s/sqrt(n),uci=mn+qt(0.975,df=n-1)*s/sqrt(n))
-```
 
-```{r echo=FALSE}
 #!# Plot means by lake ... with means displayed
-```
-```{r gli_mnsbar, include=FALSE}
-sum1
-
 ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +
   scale_x_discrete(name="Great Lake") +
@@ -268,34 +77,14 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank()) + #BREAK
   geom_text(aes(label=round(mn,1)),vjust="bottom",nudge_y=1)
-```
 
-`r chunk_reveal("gli_mnsbar",break_type="user",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Example ... showing significance letters
-
----
-
-```{r echo=FALSE}
 #!# Find significance letters
-```
-```{r echo=FALSE, results='hide'}
 aov <- lm(max.cover~lake,data=gli)
 anova(aov)
 mc1 <- multcomp::glht(aov,multcomp::mcp(lake="Tukey"))
 multcomp::cld(mc1)
-```
 
-```{r echo=FALSE}
 #!# Plot means by lake ... with CIs and confidence letters displayed
-```
-```{r gli_mnsbar2, include=FALSE}
-sum1
-
 ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +
   geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +
@@ -306,24 +95,8 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   theme(panel.grid.major.x=element_blank()) + #BREAK
   geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),
             vjust="bottom",nudge_y=1.5)
-```
 
-`r chunk_reveal("gli_mnsbar2",break_type="user",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Example ... showing sample size
-
----
-
-```{r echo=FALSE}
 #!# Plot means by lake ... with sample size displayed
-```
-```{r gli_mnsbar3, include=FALSE}
-sum1
-
 ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   geom_bar(stat="identity",fill="gray30",alpha=0.75) +
   geom_errorbar(mapping=aes(ymin=lci,ymax=uci),width=0.1) +
@@ -336,57 +109,14 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
             vjust="bottom",nudge_y=1.5) + #BREAK
   geom_text(mapping=aes(y=0,label=paste("n =",n)),
             vjust="bottom",nudge_y=1.5)
-```
 
-`r chunk_reveal("gli_mnsbar3",break_type="user",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Example ... highlighting individual points
-
----
-
-# Background
-
-- Examine dynamics of Moose and Wolf abundance from 1970 to 1990.
-  - Make variable with label for only every fifth year.
-  - Make variables with "next year's" wolf and moose abundances.
-
---
-```{r echo=FALSE}
 #!# Prepare IR wolf-moose data
-```
-```{r}
 irmw2 <- irmw %>%
   filter(year>=1970,year<=1990) %>%
   mutate(year5=ifelse(year %in% seq(1970,1990,5),year,""),moose.next=c(moose[-1],NA),wolves.next=c(wolves[-1],NA))
-FSA::headtail(irmw2, n=6)
-```
 
----
 
-```{r echo=FALSE}
-#!# DEREK ... delete this in the script
-```
-```{r irmw1, include=FALSE}
-head(irmw2)
-
-ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) + #BREAK
-  geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),
-               size=0.4,
-               arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
-```
-
-`r chunk_reveal("irmw1",break_type="user",split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Create base IR moose-wolf plot
-```
-```{r irmw1a, include=FALSE}
 p <- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +
   geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),
                size=0.4,
@@ -399,42 +129,17 @@ p <- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +
   theme_bw() + theme(panel.grid=element_blank(),legend.position="none",
                      aspect.ratio=1) + #BREAK
   geom_point(data=filter(irmw,year==1980),color="red",size=1.2)
-```
 
-`r chunk_reveal("irmw1a",break_type="user",left_assign=leftAssign,split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# DEREK ... delete this in the script
-```
-```{r irmw2, include=FALSE}
 p +
   geom_text(mapping=aes(label=year))
-```
 
-`r chunk_reveal("irmw2",break_type="auto",split=splitPerc)`
-
----
-
-```{r echo=FALSE}
 #!# Base IR moose-wolf plot with good labels added
-```
-```{r irmw3, include=FALSE}
 p +
   geom_text(
     mapping=aes(label=year5),
     vjust="bottom", #BREAK2
     nudge_y=1 #BREAK3
     )
-```
 
-`r chunk_reveal("irmw3",break_type="non_seq",split=splitPerc)`
-
----
-
-class: inverse, center, middle
-
-# Next Time
-
-<font size="7">We will review themes.</font>
+# Script created at 2020-05-12 11:32:14
