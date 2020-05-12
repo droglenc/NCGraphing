@@ -59,3 +59,31 @@ harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
 harv5
 ```
 
+&nbsp;
+
+---
+
+```{r echo=FALSE}
+tuit <- read.csv("https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv")
+nc <- filter(tuit,College=="Northland C")
+
+ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
+  geom_point(size=1.2,pch=21) +
+  geom_point(data=nc,color="red") +
+  theme_bw() + theme(legend.position="none") +
+  geom_abline(slope=1,intercept=0,linetype="dashed") +
+  labs(title="On- versus Off-Campus Room and Board Costs",
+      subtitle="Wisconsin 4-Year Private Colleges",
+      caption="source:") +
+  scale_x_continuous(name="On-Campus",labels=scales::dollar) +
+  scale_y_continuous(name="Off-Campus",labels=scales::dollar) +
+  annotate(geom="label",x=8500,y=12500,label="Cheaper On-Campus",size=4,
+           label.padding = unit(0.35, "lines")) +
+  annotate(geom="label",x=12500,y=5000,label="Cheaper Off-Campus",size=4,
+           label.padding = unit(0.35, "lines")) +
+  annotate(geom="text",x=11000,y=9000,label="Northland C",color="red",hjust="left") +
+  annotate(geom="segment",x=11000,y=9000,xend=9406,yend=9406,color="red",size=0.4,
+               arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
+
+```
+
