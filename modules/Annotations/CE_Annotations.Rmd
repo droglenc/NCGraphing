@@ -62,7 +62,7 @@ harv5
 &nbsp;
 
 ## Costs of College I
-Costs of attending college can be compared across colleges at [www.collegetuitioncompare.com](https://www.collegetuitioncompare.com/). The data in [this CSV file](https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv) contains cost information for four-year private colleges and universities in Wisconsin. Construct `ggplot2` code to emulated the plot below (*as closely as you can*). Note that the dashed line is the line where on-campus and off-campus costs are equal and, by definition, has a slope of 1 and an intercep to of zero. This line can be added to the plot with `geom_abline()` (you may need to perform an internet search for how to use this function). Also note that I widened the "padding" around the text in the in the two "cheaper" labels by including `label.padding=unit(0.35,"lines")` in the appropriate function.
+Costs of attending college can be compared across colleges at [www.collegetuitioncompare.com](https://www.collegetuitioncompare.com/). The data in [this CSV file](https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv) contains cost information for four-year private colleges and universities in Wisconsin. Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that the dashed line is the line where on-campus and off-campus costs are equal and, by definition, has a slope of 1 and an intercep to of zero. This line can be added to the plot with `geom_abline()` (you may need to perform an internet search for how to use this function). Also note that I widened the "padding" around the text in the in the two "cheaper" labels by including `label.padding=unit(0.35,"lines")` in the appropriate function.
 
 ```{r echo=FALSE}
 tuit <- read.csv("https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv")
@@ -92,7 +92,8 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
 
 ## BONUS - Costs of College II
 
-
+Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that this uses code from a package other than `ggplot2` that is used to place text in locations that minimize overlap of other text (i.e., text labels are **repel**led from each other).
+ 
 ```{r echo=FALSE}
 ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   geom_point(size=1.2) +
@@ -110,4 +111,3 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   annotate(geom="label",x=12000,y=5000,label="Cheaper Off-Campus",size=4,
            label.padding = unit(0.35, "lines"))
 ```
-
