@@ -42,7 +42,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_1}
 ft1 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
-  geom_point(size=1.5) +
+  geom_point(size=1.25) +
   geom_line() +
   scale_x_continuous(name="Year") +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
@@ -58,7 +58,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can). [*HIN
 ```{r Temperature_2}
 ft2 <- ggplot(data=gt,mapping=aes(x=Year,y=Value)) +
   geom_line(size=0.75) +
-  geom_point(size=1.5,color="red",alpha=0.5) +
+  geom_point(size=1.25,color="red",alpha=0.5) +
   scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
   theme_bw()
@@ -91,7 +91,7 @@ Construct `ggplot2` code to match the graph below (as closely as you can).
 
 ```{r Temperature_5}
 ft3 <- ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value>0)) +
-  geom_bar(stat="identity",color="black",size=1) +
+  geom_bar(stat="identity",color="black",size=0.25) +
   geom_hline(yintercept=0) +
   scale_x_continuous(name="Year",breaks=seq(1880,2020,20)) +
   scale_y_continuous(name="February Temperature Anomaly (C)") +
