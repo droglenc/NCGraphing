@@ -19,7 +19,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=3, fig.height=3,out.width="60%")
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 library(tidyverse)
 ```
 
@@ -52,7 +52,7 @@ lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree
 
 #!# Set to your own working directory and have just your filename below.
 sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
-  select(state,hunt_deer,seen_wolf,part_deer,
+  dplyr::select(state,hunt_deer,seen_wolf,part_deer,
          ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
   filter(complete.cases(.)) %>%
   mutate(part_deer=factor(part_deer,
