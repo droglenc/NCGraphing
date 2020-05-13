@@ -176,7 +176,7 @@ class: inverse, center, middle
 #!# Demonstrating annotate() with IR wolf plot
 ```
 ```{r irw2, include=FALSE}
-ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
+p <- ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   geom_line(color="gray70") +
   geom_point(aes(fill=parvo),size=1.25,pch=21) +
   scale_fill_manual(values=c("Pre-parvo"="white","Post-parvo"="black")) +
@@ -187,11 +187,34 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   labs(title="Number of Wolves on Isle Royale, 1959-2019",
        subtitle="Estimated from aerial counts",
        caption="Source: https://isleroyalewolf.org",
-       x=element_blank(),y=element_blank()) + #BREAK
-  annotate(geom="label",x=1990,y=48,hjust="left",
-           label="Outbreak of parvovirus in 1980") + #BREAK
-  annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,
-           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) + #BREAK
+       x=element_blank(),y=element_blank())
+```
+
+`r chunk_reveal("irw2",break_type=1,left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r irw2a, include=FALSE}
+p1 <- p + 
+  annotate(geom="label",x=1990,y=48,hjust="left", #BREAK2
+           label="Outbreak of parvovirus in 1980") + #BREAK2
+  annotate( #BREAK3
+    geom="segment",x=1990,y=48,xend=1980.5,yend=50, #BREAK3
+    size=0.25, #BREAK4
+    arrow=arrow( #BREAK5
+      length=unit(2,"mm"), #BREAK5
+      angle=15, #BREAK6
+      type="closed" #BREAK7
+    ) #BREAK5
+  ) #BREAK3
+```
+
+`r chunk_reveal("irw2a",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+```{r irw2b, include=FALSE}
+p1 + 
   annotate(geom="label",x=2014,y=37,hjust="right",
            label="Wolves introduced from mainland") + #BREAK
   annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,
@@ -203,7 +226,7 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
            label="Concerned about\ninbreeding suppression")
 ```
 
-`r chunk_reveal("irw2",break_type="user",split=splitPerc)`
+`r chunk_reveal("irw2b",break_type="user",split=splitPerc)`
 
 ---
 
@@ -437,4 +460,4 @@ class: inverse, center, middle
 
 # Next Time
 
-<font size="7">We will review themes.</font>
+<font size="7">We will show how to efficiently create separate panels for plots with subgroups.</font>
