@@ -61,7 +61,7 @@ class: inverse, center, middle
 ```{r echo=FALSE}
 #!# DEREK ... delete this from the script.
 ```
-```{r labs, echo=FALSE,fig.width=2,fig.height=2,out.width="45%"}
+```{r labs, echo=FALSE,fig.width=2,fig.height=2,out.width="40%"}
 ggplot(data=data.frame(x=1,y=1),mapping=aes(x=x,y=y)) +
   geom_point(color="white") +
   theme_bw() + theme(panel.grid=element_blank()) +
@@ -147,7 +147,7 @@ class: inverse, center, middle
 - Add `geom_` ... but aesthetics not mapped from variables in a data.frame.
 
 --
-  - Aesthetics passed in as single values or vectors.
+  - Aesthetics passed in as single values or small vectors.
   - Useful for adding small annotations (such as text labels or segments).
 
 &nbsp;
