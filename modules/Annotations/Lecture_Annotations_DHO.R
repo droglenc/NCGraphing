@@ -1,8 +1,5 @@
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
-library(gghighlight)
-library(ggrepel)
-
 
 #!# Load and Prep Data
 #!# Set to your own working directory and have just your filename below.
@@ -20,11 +17,11 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   scale_y_continuous(limits=c(0,NA),expand=expansion(mult=c(0,0.04))) +
   scale_x_continuous(expand=expansion(mult=0.04)) +
   theme_bw() +
-  theme(panel.grid.minor=element_blank()) + #BREAK
+  theme(panel.grid.minor=element_blank()) +
   labs(title="Number of Wolves on Isle Royale, 1959-2019",
        subtitle="Estimated from aerial counts",
-       caption="Source: https://isleroyalewolf.org") + #BREAK
-  labs(x=element_blank(),
+       caption="Source: https://isleroyalewolf.org",
+       x=element_blank(),
        y=element_blank(),
        fill="Relative to Parvo")
 
@@ -40,18 +37,18 @@ ggplot(data=irmw,mapping=aes(x=year,y=wolves)) +
   labs(title="Number of Wolves on Isle Royale, 1959-2019",
        subtitle="Estimated from aerial counts",
        caption="Source: https://isleroyalewolf.org",
-       x=element_blank(),y=element_blank()) + #BREAK
+       x=element_blank(),y=element_blank()) +
   annotate(geom="label",x=1990,y=48,hjust="left",
-           label="Outbreak of parvovirus in 1980") + #BREAK
+           label="Outbreak of parvovirus in 1980") +
   annotate(geom="segment",x=1990,y=48,xend=1980.5,yend=50,size=0.25,
-           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) + #BREAK
+           arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +
   annotate(geom="label",x=2014,y=37,hjust="right",
-           label="Wolves introduced from mainland") + #BREAK
+           label="Wolves introduced from mainland") +
   annotate(geom="curve",x=2014,y=37,xend=2019,yend=15.5,size=0.25,
            arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"),
-           curvature=-0.25) + #BREAK
+           curvature=-0.25) +
   annotate(geom="segment",x=2008,xend=2013.5,y=18.5,yend=1,
-           color="steelblue") + #BREAK
+           color="steelblue") +
   annotate(geom="text",x=2003,y=8,color="steelblue",
            label="Concerned about\ninbreeding suppression")
 
@@ -75,7 +72,7 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
                      limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
+  theme(panel.grid.major.x=element_blank()) +
   geom_text(aes(label=round(mn,1)),vjust="bottom",nudge_y=1)
 
 #!# Find significance letters
@@ -92,7 +89,7 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   scale_y_continuous(name="Mean Maximum Ice Coverage (%)",
                      limits=c(0,NA),expand=expansion(mult=c(0,0.05))) +
   theme_bw() +
-  theme(panel.grid.major.x=element_blank()) + #BREAK
+  theme(panel.grid.major.x=element_blank()) +
   geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),
             vjust="bottom",nudge_y=1.5)
 
@@ -106,7 +103,7 @@ ggplot(data=sum1,mapping=aes(x=lake,y=mn)) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank()) +
   geom_text(mapping=aes(y=uci,label=c("b","a","b","c","a")),
-            vjust="bottom",nudge_y=1.5) + #BREAK
+            vjust="bottom",nudge_y=1.5) +
   geom_text(mapping=aes(y=0,label=paste("n =",n)),
             vjust="bottom",nudge_y=1.5)
 
@@ -119,27 +116,18 @@ irmw2 <- irmw %>%
 #!# Create base IR moose-wolf plot
 p <- ggplot(data=irmw2,mapping=aes(x=moose,y=wolves)) +
   geom_segment(mapping=aes(xend=moose.next,yend=wolves.next,color=year),
-               size=0.4,
-               arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) + #BREAK
+               size=0.4,arrow=arrow(length=unit(2,"mm"),angle=15,type="closed")) +
   geom_point(size=1.2) +
   labs(title="Isle Royale Wolf and Moose Abundance, 1970-1990",
        subtitle="Parvovirus outbreak in 1980",
        x="Moose Abundance",y="Wolf Abundance",
        caption="Source: https://isleroyalewolf.org") +
   theme_bw() + theme(panel.grid=element_blank(),legend.position="none",
-                     aspect.ratio=1) + #BREAK
+                     aspect.ratio=1) +
   geom_point(data=filter(irmw,year==1980),color="red",size=1.2)
-
-#!# DEREK ... delete this in the script
-p +
-  geom_text(mapping=aes(label=year))
 
 #!# Base IR moose-wolf plot with good labels added
 p +
-  geom_text(
-    mapping=aes(label=year5),
-    vjust="bottom", #BREAK2
-    nudge_y=1 #BREAK3
-    )
+  geom_text(mapping=aes(label=year5),vjust="bottom",nudge_y=1)
 
 # Script created at 2020-05-12 11:32:14
