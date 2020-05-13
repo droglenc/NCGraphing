@@ -28,10 +28,54 @@ library(tidyverse)
 ## Annual Temperature Anomaly
 Make the plot shown under ["BONUS - Annual Temperature Anomaly 5" on this page](https://derekogle.com/NCGraphing/modules/Intro2/CE_Temperature.html#bonus-annual-temperature-anomaly-5), but add an appropriate title, subtitle, and caption (and decide if it is worth keeping the x- and y-axis labels).
 
+```{r echo=FALSE, fig.show="hide"}
+gt <- read.csv("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv",skip=4)
+ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value>0)) +
+  geom_bar(stat="identity",color="black",size=0.25) +
+  geom_hline(yintercept=0) +
+  scale_x_continuous(breaks=seq(1880,2020,20)) +
+  scale_fill_manual(values=c("blue4","red4")) +
+  theme_bw() + theme(legend.position="none") +
+  labs(title="February Global Temperature Anomaly (C)",
+       subtitle="with respect to the 1910-2000 average",
+       caption="source: https://www.ncdc.noaa.gov/cag/global/time-series",
+       x=element_blank(),y=element_blank())
+```
+
 &nbsp;
 
 ## State and No Good Deer Hunting
 Make the plot shown under ["State and No Good Deer Hunting 1" on this page](https://derekogle.com/NCGraphing/modules/Univariate_Groups/CE_Wolves.html#state-and-no-good-deer-hunting-1). I have since learned that these data were preliminary and that results from Minnesota had largely not been entered into the database. Add a note on the **inside** of the plot that explains this. You should include an arrow that appropriately points to the low bar for Minnesota.
+
+```{r echo=FALSE, fig.show="hide"}
+lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
+
+#!# Set to your own working directory and have just your filename below.
+sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
+  select(state,hunt_deer,seen_wolf,part_deer,
+         ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
+  filter(complete.cases(.)) %>%
+  mutate(part_deer=factor(part_deer,
+          levels=c("Stop Participating","Participate Less Frequently",
+                   "Participate More Frequently","No Changes")),
+         ad_healthy_deer=factor(ad_healthy_deer,levels=lvls_agree),
+         ad_nowolves_deer=factor(ad_nowolves_deer,levels=lvls_agree),
+         ad_threaten_deer=factor(ad_threaten_deer,levels=lvls_agree),
+         ad_deer_hunting=factor(ad_deer_hunting,levels=lvls_agree)) %>%
+  filter(hunt_deer=="Yes")
+
+clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
+ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
+  geom_bar(color="gray30",alpha=0.7) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Frequency of Respondents",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",values=clrs) +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank()) +
+  annotate(geom="label",x=2.5,y=400,label="MN data not\n yet recorded",hjust="left") +
+  annotate(geom="curve",x=2.5,y=400,xend=2,yend=7,curvature=0.1,size=0.25,
+           arrow=arrow(length=unit(3,"mm"),angle=15,type="closed"))
+```
 
 &nbsp;
 
@@ -42,7 +86,7 @@ Legends for very simple plot scan sometimes waste space and be distracting. Such
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
 cbbPalette <- c("#000000","#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7")
 
-harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
+ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
   geom_line(size=1) +
   geom_point(shape=21,fill="white",size=2) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
@@ -56,7 +100,6 @@ harv5 <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
            color=cbbPalette[3]) +
   annotate(geom="label",x=2010.8,y=900,label="Iron",hjust="left",
            color=cbbPalette[4])
-harv5
 ```
 
 &nbsp;
@@ -91,8 +134,7 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
 &nbsp;
 
 ## BONUS - Costs of College II
-
-Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that this uses code from a package other than `ggplot2` that is used to place text in locations that minimize overlap of other text (i.e., text labels are **repel**led from each other).
+Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that this uses code from a package other than `ggplot2` (*you may need to search for this package*) that is used to place text in locations that minimize overlap of other text (i.e., text labels are **repel**led from each other).
  
 ```{r echo=FALSE}
 ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
