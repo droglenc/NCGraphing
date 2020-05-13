@@ -31,7 +31,7 @@ Make the plot shown under ["BONUS - Annual Temperature Anomaly 5" on this page](
 &nbsp;
 
 ## State and No Good Deer Hunting
-Make the plot shown under ["State and No Good Deer Hunting 1 on this page](https://derekogle.com/NCGraphing/modules/Univariate_Groups/CE_Wolves.html#state-and-no-good-deer-hunting-1). I have since learned that these data were preliminary and that results from Minnesota hard largely not been entered into the database. Add a note on the **inside** of the plot that explains this. You should include an arrow that appropriately points to the low bar for Minnesota.
+Make the plot shown under ["State and No Good Deer Hunting 1" on this page](https://derekogle.com/NCGraphing/modules/Univariate_Groups/CE_Wolves.html#state-and-no-good-deer-hunting-1). I have since learned that these data were preliminary and that results from Minnesota had largely not been entered into the database. Add a note on the **inside** of the plot that explains this. You should include an arrow that appropriately points to the low bar for Minnesota.
 
 &nbsp;
 
@@ -62,7 +62,7 @@ harv5
 &nbsp;
 
 ## Costs of College I
-Costs of attending college can be compared across colleges at [www.collegetuitioncompare.com](https://www.collegetuitioncompare.com/). The data in [this CSV file](https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv) contains cost information for four-year private colleges and universities in Wisconsin. Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that the dashed line is the line where on-campus and off-campus costs are equal and, by definition, has a slope of 1 and an intercep to of zero. This line can be added to the plot with `geom_abline()` (you may need to perform an internet search for how to use this function). Also note that I widened the "padding" around the text in the in the two "cheaper" labels by including `label.padding=unit(0.35,"lines")` in the appropriate function.
+Costs of attending college can be compared across colleges at [www.collegetuitioncompare.com](https://www.collegetuitioncompare.com/). The data in [this CSV file](https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv) contains cost information for four-year private colleges and universities in Wisconsin. Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that the dashed line is the line where on-campus and off-campus costs are equal and, by definition, has a slope of 1 and an intercept of zero. This line can be added to the plot with `geom_abline()` (you may need to perform an internet search for how to use this function). Also note that I widened the "padding" around the text in the two "cheaper" labels by including `label.padding=unit(0.35,"lines")` in the appropriate function.
 
 ```{r echo=FALSE}
 tuit <- read.csv("https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv")
@@ -107,7 +107,7 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   scale_y_continuous(name="Off-Campus",labels=scales::dollar) +
   ggrepel::geom_text_repel(mapping=aes(label=College)) +
   annotate(geom="label",x=8500,y=12500,label="Cheaper On-Campus",size=4,
-           label.padding = unit(0.35, "lines")) +
-  annotate(geom="label",x=12000,y=5000,label="Cheaper Off-Campus",size=4,
-           label.padding = unit(0.35, "lines"))
+           label.padding=unit(0.35,"lines")) +
+  annotate(geom="label",x=12250,y=5500,label="Cheaper Off-Campus",size=4,
+           label.padding=unit(0.35,"lines"))
 ```
