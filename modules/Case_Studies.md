@@ -33,10 +33,11 @@ XXX
 
 ## Demonstration and Exercises
 
-* XXX
-* XXX
-* XXX
-* xxx
+* Taylor Pichler
+* Elyse Mallinger
+* Jessica Mohlman
+* Jennifer Olker
+* Dray Carl
 
 
 ----
