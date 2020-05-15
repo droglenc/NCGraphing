@@ -1,0 +1,115 @@
+---
+layout: page
+title: Exercise - Facets
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+fnm <- "CE_Facets"
+dnm <- "modules/Facets"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
+```
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
+```
+
+----
+
+## Avocado Prices
+In ["Example 1" of this demonstration](http://derekogle.com/NCGraphing/modules/Univariate_Density/Demo_Avocados.html#example-1) we made a histogram of the prices of avocados sold in the Great Lakes region. Create a faceted version of this histogram that will allow the viewer to easily compare the price of avocados by both type of avocado ("conventional" or organic) and year.
+
+```{r echo=FALSE, fig.show="hide"}
+avoc <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv",
+                stringsAsFactors=FALSE,quote="") %>%
+  filter(region=="GreatLakes") %>%
+  mutate(type=factor(type),
+         year=factor(year))
+
+ggplot(data=avoc,mapping=aes(x=AveragePrice)) +
+  geom_histogram(col="black",fill="beige",binwidth=0.1,boundary=0,closed="left") +
+  scale_x_continuous(name="Average Price of An Avocado ($)",
+                     breaks=seq(0.5,2,0.25),limits=c(0.5,2),
+                     expand=expansion(mult=c(0.02,0.02))) +
+  scale_y_continuous(name="Frequency of Reports",
+                     expand=expansion(mult=c(0,0.05))) +
+  theme_bw() +
+  facet_grid(rows=vars(year),cols=vars(type))
+
+```
+
+&nbsp;
+
+## State and No Good Deer Hunting
+In [the "State and No Good Deer Hunting 4" exercise on this page](https://derekogle.com/NCGraphing/modules/Univariate_Groups/CE_Wolves.html#state-and-no-good-deer-hunting-4) you created a stacked percentages plot of the respondent's agreement with the statement ‘There is no way sportsmen can have good deer hunting if wolves live in the same area’” separated by state. Rather than that plot, create a set of side-by-side bar charts of the percentage agreement separated (faceted) by state.
+
+```{r echo=FALSE, fig.show="hide"}
+lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
+
+#!# Set to your own working directory and have just your filename below.
+sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
+  dplyr::select(state,hunt_deer,seen_wolf,part_deer,
+         ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
+  filter(complete.cases(.)) %>%
+  mutate(part_deer=factor(part_deer,
+          levels=c("Stop Participating","Participate Less Frequently",
+                   "Participate More Frequently","No Changes")),
+         ad_healthy_deer=factor(ad_healthy_deer,levels=lvls_agree),
+         ad_nowolves_deer=factor(ad_nowolves_deer,levels=lvls_agree),
+         ad_threaten_deer=factor(ad_threaten_deer,levels=lvls_agree),
+         ad_deer_hunting=factor(ad_deer_hunting,levels=lvls_agree)) %>%
+  filter(hunt_deer=="Yes")
+
+sum2 <- sow %>%
+  group_by(state,ad_deer_hunting) %>%
+  summarize(freq=n()) %>%
+  mutate(perc=freq/sum(freq)*100) %>%
+  ungroup()
+
+clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
+ggplot(data=sum2,mapping=aes(y=perc,x=ad_deer_hunting,fill=ad_deer_hunting)) +
+  geom_bar(stat="identity",color="gray30",alpha=0.7) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Percent of Respondents",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",values=clrs) +
+  coord_flip() +
+  theme_bw() +  
+  theme(panel.grid.major.x=element_blank(),panel.grid.minor.x=element_blank(),
+        legend.position="none") +
+  facet_wrap(vars(state))
+```
+
+&nbsp;
+
+## Total Annual Harvest by County and Year 1
+In ["Total Annual Harvest by County and Year" on this page](https://derekogle.com/NCGraphing/modules/Means/CE_DeerHarvest.html#total-annual-harvest-by-county-and-year) you constructed a line plot of the total number of all deer harested per year for four counties in Wiscnosin. Use those same data to construct the plot below.
+
+```{r echo=FALSE}
+dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
+cbbPalette <- c("#000000","#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7")
+
+deer <- ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,fill=County)) +
+  geom_bar(stat="identity",color="black") +
+  scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
+  scale_y_continuous(name="Total Annual Deer Harvest",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(values=cbbPalette) +
+  theme_bw() + theme(legend.position="none")
+
+deer + facet_grid(vars(County))
+```
+
+&nbsp;
+
+## Total Annual Harvest by County and Year 2
+Repeat the plot from the previous question by allowing the y-axis scale to vary among facets.
+
+Whether you use this plot or the plot in the previous section depends on what you want your viewer to focus on. Explain why (i.e., what do you want your audience to focus on) you would use each of these plots.

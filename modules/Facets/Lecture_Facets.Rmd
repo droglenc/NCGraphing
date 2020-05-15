@@ -88,6 +88,12 @@ clrs <- c("Winter"="dodgerblue2","Spring"="springgreen3","Summer"="darkgoldenrod
 
 ---
 
+class: inverse, center, middle
+
+### Exploratory Plot 1
+
+---
+
 ```{r echo=FALSE}
 #!# Exploratory Scatter Plot
 ```
@@ -108,6 +114,12 @@ tp <- ggplot(data=ash,mapping=aes(y=tmax,x=date)) +
 ```
 
 `r chunk_reveal("ash_scat1",break_type="non_seq",left_assign=leftAssign,split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+### Exploratory Plot 2
 
 ---
 

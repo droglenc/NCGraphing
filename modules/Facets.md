@@ -35,13 +35,7 @@ XXX
 
 <ul>
   <li><a href="Facets/Lecture_Facets.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/Lecture_Facets_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
-  <li><a href="Facets/CE_DeerHarvest.html">Exercise 1 - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_DeerHarvest.R">Key</a></button></li>
-  <li>Exercise 2 (pick <b>one</b> of the following)</li>
-  <ul>
-    <li><a href="Facets/CE_Loons.html">Loons</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Loons.R">Key</a></button></li>
-    <li><a href="Facets/CE_Walleye">Walleye</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Walleye.R">Key</a></button></li>
-    <li><a href="Facets/CE_Quarterbacks">Quartebacks</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Quarterbacks.R">Key</a></button></li>
-  </ul>
+  <li><a href="Facets/CE_Facets.html">Exercises</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Facets/CE_Facets.R">Key</a></button></li>
 </ul>
 
 ----
