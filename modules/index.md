@@ -13,7 +13,7 @@ title: Learning Modules
 1. [Means and Intervals](Means)
 1. [Smoothers and Best-Fit Lines](Smoothers)
 1. [Titles, Text, and Annotations](Annotations)
-1. [Facets & Compositions](Facets)
+1. [Facets](Facets)
 1. [Themes (Colors and Typography)](Themes)
 1. [Case Studies](Case_Studies)
 1. Presentations
