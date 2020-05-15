@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Facets & Compositions
+title: Facets
 css: /css/modules.css
 ---
 
@@ -42,4 +42,3 @@ XXX
 
 ## Resources
 
-* 
