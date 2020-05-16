@@ -14,7 +14,8 @@ head(avoc)
 p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice)) +
   geom_point(size=1.25,pch=21,color="black",fill="gray70") +
   scale_x_continuous(name="Average Price",labels=scales::dollar) +
-  scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
+  scale_y_continuous(name="Thousands of Bags Sold",
+                     breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
@@ -38,8 +39,8 @@ p <- ggplot(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice,
                      limits=c(50000,NA),breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) + 
   geom_smooth(method="lm") +
-  scale_color_manual(name="Year",values=cbPalette) + #BREAK3
-  scale_fill_manual(name="Year",values=cbPalette) + #BREAK4
+  scale_color_manual(name="Year",values=cbPalette) +
+  scale_fill_manual(name="Year",values=cbPalette) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
 
@@ -69,7 +70,7 @@ mw +
 #!# Adding loess lines separated by the ice_bridges factor variable
 mw2 <- ggplot(data=irmw,mapping=aes(y=moose,x=wolves,color=ice_bridges,fill=ice_bridges)) +
   geom_point(size=1.25,pch=21) +
-  geom_smooth(method="loess",span=0.6) + #BREAK2
+  geom_smooth(method="loess",span=0.6) +
   scale_x_continuous(name="Number of Wolves") +
   scale_y_continuous(name="Number of Moose",limits=c(0,NA)) +
   scale_color_manual(name="Ice Bridge?",values=cbPalette) +
@@ -89,22 +90,24 @@ preds <- data.frame(x,y)
 #!# Scatterplot with the predicted values overlaid
 ggplot() +
   geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
-             size=1.25,pch=21,color="black",fill="gray70") + #BREAK
-  geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") + #BREAK
+             size=1.25,pch=21,color="black",fill="gray70") +
+  geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") +
   scale_x_continuous(name="Average Price",labels=scales::dollar) +
-  scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
+  scale_y_continuous(name="Thousands of Bags Sold",
+                     breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
 
 #!# Scatterplot with the fitted values and confidence band overlaid
 ggplot() +
-  geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),fill="blue",alpha=0.25) + #BREAK
+  geom_ribbon(data=preds,mapping=aes(x=x,ymin=lwr,ymax=upr),fill="blue",alpha=0.25) +
   geom_point(data=avoc,mapping=aes(y=Total.Volume,x=AveragePrice),
-             size=1.25,pch=21,color="black",fill="gray70") + #BREAK
-  geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") + #BREAK
+             size=1.25,pch=21,color="black",fill="gray70") +
+  geom_line(data=preds,mapping=aes(y=fit,x=x),size=1,color="blue") +
   scale_x_continuous(name="Average Price",labels=scales::dollar) +
-  scale_y_continuous(name="Thousands of Bags Sold",breaks=seq(50000,350000,50000),
+  scale_y_continuous(name="Thousands of Bags Sold",
+                     breaks=seq(50000,350000,50000),
                      labels=scales::unit_format(unit="",scale=1e-3)) +
   theme_bw() +
   theme(panel.grid.minor=element_blank())
@@ -121,9 +124,9 @@ preds <- data.frame(x,y)
 
 ggplot() +
   geom_ribbon(data=preds,mapping=aes(x=x,ymin=fit-2*se.fit,ymax=fit+2*se.fit),
-              fill="blue",alpha=0.25) + #BREAK
-  geom_line(data=preds,mapping=aes(x=x,y=fit),color="blue",size=1) + #BREAK
-  geom_point(data=bm,mapping=aes(x=canine,y=as.numeric(subsp)-1),size=1.5,alpha=0.25) + #BREAK
+              fill="blue",alpha=0.25) +
+  geom_line(data=preds,mapping=aes(x=x,y=fit),color="blue",size=1) +
+  geom_point(data=bm,mapping=aes(x=canine,y=as.numeric(subsp)-1),size=1.5,alpha=0.25) +
   scale_x_continuous(name="Canine Tooth Height (cm)",expand=expansion(mult=0)) +
   scale_y_continuous(name="Probability of Semotus",expand=expansion(mult=0.01)) +
   theme_bw() +
