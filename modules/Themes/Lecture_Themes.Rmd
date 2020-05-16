@@ -1,0 +1,98 @@
+---
+title: "Themes"
+author: "`r paste('Derek Ogle,',format(Sys.time(),'%B %Y'),sep=' ')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: zlibs
+    css: ["zlibs/xaringan-themer.css", "hygge", "ninjutsu"]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r purler, eval=FALSE, echo=FALSE}
+## Use Knit button to make actual slides.
+## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
+fnm <- "Lecture_Themes"
+FSA::purl2(file.path(here::here(),"modules/Themes",paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
+                       "cache","head","include_graphics","options",
+                       "splitPerc","leftAssign"))
+```
+
+
+```{r setup, include = FALSE}
+source("../zzzflipbook_settings.R")
+#!# Loading the tidyverse package (must do every time)
+library(tidyverse)
+```
+
+class: inverse, center, middle
+
+# Today's Goal
+
+<font size="7">Learn how to provide specific control over all elements of a plot.</font>
+
+---
+
+# Today's Goal
+
+- Demonstrate built-in themes.
+
+--
+- Demonstrate how to modify aspects of a plot with `theme()`.
+
+--
+- Show how to create your own theme.
+
+--
+- Demonstrate how to set a default theme for each plot.
+
+---
+
+class: inverse, center, middle
+
+# What is a Theme?
+
+---
+
+# What is a theme?
+
+- XXX
+
+---
+
+class: inverse, center, middle
+
+# Built-in Themes
+
+---
+
+class: inverse, center, middle
+
+# Controlling Specific Aspects of a Theme
+
+---
+
+class: inverse, center, middle
+
+# Creating Your Own Theme
+
+---
+
+class: inverse, center, middle
+
+# Setting a Theme for all Plots
+
+---
+
+
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+<font size="7">We will have guest speakers demonstrate case studies.</font>

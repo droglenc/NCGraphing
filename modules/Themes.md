@@ -27,7 +27,8 @@ XXX
 ----
 
 ## Preparation for Class
-
+*
+* [Themes](https://ggplot2-book.org/polishing.html) ... from ggplot2 book.
 * [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 * [Friendly Guide to Colors](https://blog.datawrapper.de/colorguide/)
 
@@ -35,7 +36,10 @@ XXX
 
 ## Demonstration and Exercises
 
-* [Demonstration](Univariate_Density/Demo_FL_BlackBears.html)
+<ul>
+  <li><a href="Themes/Lecture_Themes.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Themes/Lecture_Themes_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="" target="_blank">VIDEO</a></button></li>
+  <li><a href="Themes/CE_Themes.html">Exercises</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Themes/CE_Themes.R">Key</a></button></li>
+</ul>
 
 ----
 
