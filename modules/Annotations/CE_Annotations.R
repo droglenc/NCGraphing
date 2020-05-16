@@ -1,34 +1,5 @@
----
-layout: page
-title: Exercise - Annotations
-author: Derek H. Ogle
-css: "/css/modules.css"
-output:
-  html_document:
-    self_contained: false
-    lib_dir: zlibs
----
-
-```{r echo=FALSE, eval=FALSE}
-# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
-source(file.path(here::here(),"rhelpers/rhelpers.R"))
-fnm <- "CE_Annotations"
-dnm <- "modules/Annotations"
-modHTML(file.path(here::here(),dnm,fnm))
-FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
-```
-```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 library(tidyverse)
-```
 
-----
-
-## Annual Temperature Anomaly
-Make the plot shown under ["BONUS - Annual Temperature Anomaly 5" on this page](https://derekogle.com/NCGraphing/modules/Intro2/CE_Temperature.html#bonus-annual-temperature-anomaly-5), but add an appropriate title, subtitle, and caption (and decide if it is worth keeping the x- and y-axis labels).
-
-```{r echo=FALSE, fig.show="hide"}
 gt <- read.csv("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/2/1880-2020/data.csv",skip=4)
 ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value>0)) +
   geom_bar(stat="identity",color="black",size=0.25) +
@@ -38,16 +9,8 @@ ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value>0)) +
   theme_bw() + theme(legend.position="none") +
   labs(title="February Global Temperature Anomaly (C)",
        subtitle="with respect to the 1910-2000 average",
-       caption="source: https://www.ncdc.noaa.gov/cag/global/time-series",
        x=element_blank(),y=element_blank())
-```
 
-&nbsp;
-
-## State and No Good Deer Hunting
-Make the plot shown under ["State and No Good Deer Hunting 1" on this page](https://derekogle.com/NCGraphing/modules/Univariate_Groups/CE_Wolves.html#state-and-no-good-deer-hunting-1). I have since learned that these data were preliminary and that results from Minnesota had largely not been entered into the database. Add a note on the **inside** of the plot that explains this. You should include an arrow that appropriately points to the low bar for Minnesota.
-
-```{r echo=FALSE, fig.show="hide"}
 lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
 
 #!# Set to your own working directory and have just your filename below.
@@ -75,14 +38,7 @@ ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
   annotate(geom="label",x=2.5,y=400,label="MN data not\n yet recorded",hjust="left") +
   annotate(geom="curve",x=2.5,y=400,xend=2,yend=7,curvature=0.1,size=0.25,
            arrow=arrow(length=unit(3,"mm"),angle=15,type="closed"))
-```
 
-&nbsp;
-
-## Total Annual Harvest by County and Year
-Legends for very simple plot scan sometimes waste space and be distracting. Such an example may be the legend for the plot shown under ["Total Annual Harvest by County and Year" on this page](https://derekogle.com/NCGraphing/modules/Means/CE_DeerHarvest.html#total-annual-harvest-by-county-and-year). One alternative is to place a small label near the lines in the plot, as shown below. Construct `ggplot2` code to match this graph.
-
-```{r echo=FALSE}
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
 clrs <- c("#000000","#E69F00","#56B4E9","#009E73")
 
@@ -96,14 +52,7 @@ ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
   annotate(geom="label",label=c("Ashland","Bayfield","Douglas","Iron"),
                          x=c(2010,2010,2010.8,2010.8),
                          y=c(2950,4600,7000,900),color=clrs,hjust="inward")
-```
 
-&nbsp;
-
-## Costs of College I
-Costs of attending college can be compared across colleges at [www.collegetuitioncompare.com](https://www.collegetuitioncompare.com/). The data in [this CSV file](https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv) contains cost information for four-year private colleges and universities in Wisconsin. Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that the dashed line is the line where on-campus and off-campus costs are equal and, by definition, has a slope of 1 and an intercept of zero. This line can be added to the plot with `geom_abline()` (you may need to perform an internet search for how to use this function). Also note that I widened the "padding" around the text in the two "cheaper" labels by including `label.padding=unit(0.35,"lines")` in the appropriate function.
-
-```{r echo=FALSE}
 tuit <- read.csv("https://derekogle.com/NCGraphing/modules/Annotations/WI_College_Costs.csv")
 nc <- filter(tuit,College=="Northland C")
 
@@ -114,7 +63,6 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   geom_abline(slope=1,intercept=0,linetype="dashed") +
   labs(title="On- versus Off-Campus Room and Board Costs",
       subtitle="Wisconsin 4-Year Private Colleges",
-      caption="source: https://www.collegetuitioncompare.com/") +
   scale_x_continuous(name="On-Campus",labels=scales::dollar) +
   scale_y_continuous(name="Off-Campus",labels=scales::dollar) +
   annotate(geom="label",x=8500,y=12500,label="Cheaper On-Campus",size=4,
@@ -125,14 +73,6 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   annotate(geom="segment",x=11000,y=9000,xend=9406,yend=9406,color="red",size=0.4,
                arrow=arrow(length=unit(2,"mm"),angle=15,type="closed"))
 
-```
-
-&nbsp;
-
-## BONUS - Costs of College II
-Construct `ggplot2` code to emulate the plot below (*as closely as you can*). Note that this uses code from a package other than `ggplot2` (*you may need to search for this package*) that is used to place text in locations that minimize overlap of other text (i.e., text labels are **repel**led from each other).
- 
-```{r echo=FALSE}
 ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   geom_point(size=1.2) +
   geom_point(data=nc,color="red",size=1.3) +
@@ -140,7 +80,6 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
   geom_abline(slope=1,intercept=0,linetype="dashed") +
   labs(title="On- versus Off-Campus Room and Board Costs",
       subtitle="Wisconsin 4-Year Private Colleges",
-      caption="source: https://www.collegetuitioncompare.com/") +
   scale_x_continuous(name="On-Campus",labels=scales::dollar) +
   scale_y_continuous(name="Off-Campus",labels=scales::dollar) +
   ggrepel::geom_text_repel(mapping=aes(label=College)) +
@@ -148,4 +87,6 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
            label.padding=unit(0.35,"lines")) +
   annotate(geom="label",x=12250,y=5500,label="Cheaper Off-Campus",size=4,
            label.padding=unit(0.35,"lines"))
-```
+
+
+# Script created at 2020-05-16 10:07:02
