@@ -331,4 +331,4 @@ class: inverse, center, middle
 
 # Next Time
 
-<font size="7">We will review some case studies.</font>
+<font size="7">We will examine how to control all aspects of a plot.</font>
