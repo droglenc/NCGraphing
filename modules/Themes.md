@@ -27,7 +27,7 @@ XXX
 ----
 
 ## Preparation for Class
-*
+
 * [Themes](https://ggplot2-book.org/polishing.html) ... from ggplot2 book.
 * [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 * [Friendly Guide to Colors](https://blog.datawrapper.de/colorguide/)
@@ -45,6 +45,7 @@ XXX
 
 ## Resources
 
+* [Theme Elements Demonstration](https://henrywang.nl/ggplot2-theme-elements-demonstration/): nice graphic of theme elements and names.
 * [Colors in R](../resources/colors): Resources for choosing colors in R.
 * [Butterick's Practical Typography](https://practicaltypography.com/): The classic book.
   
