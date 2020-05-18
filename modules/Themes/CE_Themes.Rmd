@@ -87,7 +87,7 @@ ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
 &nbsp;
 
 ## Create New Theme
-Create a new ggplot theme called `theme_excel_dark` that reflects my friend's preferences (start with `theme_bw()`).
+Create a new ggplot theme called `theme_excel_dark` that reflects my friend's preferences (start with `theme_bw()`). *Hint: don't include the parts that control the legend position ... that will be specific to each plot and should not be part of this new theme.*
 
 ```{r echo=FALSE}
 theme_excel_dark <- theme_bw() +
