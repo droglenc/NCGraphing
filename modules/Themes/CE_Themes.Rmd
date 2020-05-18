@@ -31,8 +31,8 @@ I have a colleague/friend who prefers Excel over ggplot graphs (yes, this has st
 * A dark, but not black, background.
 * Light, but not white, text.
 * More "muted" and dashed gridlines.
-* Axis labels that are Slightly larger.
-* Axis titles that are slighlyy larger than the axis labels and bold-faced.
+* Axis labels that are slightly larger.
+* Axis titles that are slighly larger than the axis labels and bold-faced.
 * The ability to put the legend inside the plot (if it will fit).
 * The ability to add notes (if appropriate).
 
@@ -83,6 +83,8 @@ ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
         legend.position=c(0.99,0.99),
         legend.justification=c(1,1))
 ```
+
+&nbsp;
 
 ## Create New Theme
 Create a new ggplot theme called `theme_excel_dark` that reflects my friend's preferences (start with `theme_bw()`).
