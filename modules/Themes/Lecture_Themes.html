@@ -20,9 +20,6 @@ class: center, middle, inverse, title-slide
 
 
 
-
-
-
 class: inverse, center, middle
 
 # Today's Goal
@@ -233,7 +230,7 @@ class: inverse, center, middle
 &amp;nbsp;
 
 --
-- Set elements using "element functions" or "setter functions."
+- Elements are set using "element" or "setter" functions.
 
 ---
 
@@ -258,14 +255,13 @@ class: inverse, center, middle
 - `element_rect()`: Draws rectangles (mostly used for backgrounds).
 
 --
-  - Can control line `fill=`, `color=`, `size=`, and `linetype=`.
+  - Can control `fill=`, `color=`, `size=`, and `linetype=`.
 
 ---
 
 # Element (or Setter) Functions
 
-- `element_blank()`: Draws nothing.
-  - Use this to draw nothing AND to allocate no space to that object.
+- `element_blank()`: Draws nothing AND allocates no space to that object.
 
 &amp;nbsp;
 
@@ -282,8 +278,8 @@ class: inverse, center, middle
 - `unit()`: Sets spacing or size.
 
 --
-  - Value in first argument and type of units in `units=` or second argument.
-  - Types of units can be `"in"`, `"mm"`, `"cm"`, `"points"`, etc.
+  - Value in first argument.
+  - Type of units in `units=` or second argument ... can be `"in"`, `"mm"`, `"cm"`, `"points"`, etc.
 
 &amp;nbsp;
 
@@ -382,7 +378,7 @@ pb +
 
 Element              | Setter           | Notes               
 ---------------------|------------------|---------------------------
-`axis.line=`         | `element_line()` | line parallel to axis (hidden in default themes)
+`axis.line=`         | `element_line()` | line parallel to axis (may be hidden by `panel.border=`)
 `axis.text=`         | `element_text()` | tick labels (all)
 `axis.text.x=`       | `element_text()` | tick labels (x-axis)
 `axis.text.y=`       | `element_text()` | tick labels (y-axis)
@@ -794,24 +790,22 @@ pb +
 
 # Legend Elements (Positioning)
 
-- Legend can be positioned with `legend.position=`.
+- Legend positioned with `legend.position=`.
 
 --
-  - Use `right` (default), `top`, `left`, or `bottom`.
+  - Outside of panel region ... use `right` (default), `top`, `left`, or `bottom`.
 
 --
-  - Use `c(#,#)` to position within the panel region.
-  - Lower-left is `c(0,0)` and upper-right is `c(1,1)`.
+  - Inside of panel region ... use `c(#,#)` ... with lower-left being `c(0,0)` and upper-right being `c(1,1)`.
 
 &amp;nbsp;
 
 --
-- "Justify" legend with `legend.justification=` (in conjunction with `legend.position=c(#,#)`).
+- Set "anchor point" of legend with `legend.justification=c(#,#)`.
 
 --
-  - Use `c(#,#)` for horizontal and vertical "justification", respectively.
-  - Use `0` for right and bottom.
-  - Use `1` for left and top.
+  - Use in conjunction with `legend.position=c(#,#)`.
+  - Values have same meaning ... lower-left is `c(0,0)`, upper-right is `c(1,1)`.
 
 ---
 
@@ -899,7 +893,7 @@ pb +
   facet_wrap(vars(grp)) +  
   theme(  
     legend.position="none",  
-*   strip.background=element_rect(fill="black",color="black"),
+*   strip.background=element_rect(fill="black",color="gray50"),
   )  
 ```
 ]]
@@ -919,7 +913,7 @@ pb +
   facet_wrap(vars(grp)) +  
   theme(  
     legend.position="none",  
-    strip.background=element_rect(fill="black",color="black"),  
+    strip.background=element_rect(fill="black",color="gray50"),  
 *   strip.text=element_text(
 *     color="white",face="italic",size=18,
     ),  
@@ -942,7 +936,7 @@ pb +
   facet_wrap(vars(grp)) +  
   theme(  
     legend.position="none",  
-    strip.background=element_rect(fill="black",color="black"),  
+    strip.background=element_rect(fill="black",color="gray50"),  
     strip.text=element_text(  
       color="white",face="italic",size=18,  
 *     margin=margin(t=2,b=2,r=2,l=2)
@@ -966,7 +960,7 @@ pb +
   facet_wrap(vars(grp)) +  
   theme(  
     legend.position="none",  
-    strip.background=element_rect(fill="black",color="black"),  
+    strip.background=element_rect(fill="black",color="gray50"),  
     strip.text=element_text(  
       color="white",face="italic",size=18,  
       margin=margin(t=2,b=2,r=2,l=2)  
@@ -1017,7 +1011,7 @@ class: inverse, center, middle
 &amp;nbsp;
 
 --
-- Add this to a plot when you want to use it.
+- Add this object to a plot when you want to use it.
 
 ---
 
@@ -1034,8 +1028,8 @@ theme(
   legend.margin=margin(t=1,r=1,b=1,l=1,unit="mm"),
   legend.key.size=unit(2,units="mm"),
   panel.spacing=unit(1,unit="mm"),
-  strip.text=element_text(color="white",face="bold",size=rel(1.5),margin=margin(t=1,b=1,r=1,l=1,unit="mm")),
   strip.background=element_rect(fill="black",color="black"),
+  strip.text=element_text(color="white",face="bold",size=rel(1.5),margin=margin(t=1,b=1,r=1,l=1,unit="mm"))
 )
 ```
 
