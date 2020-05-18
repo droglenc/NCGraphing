@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Themes</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Derek Ogle, May 2020" />
+    <link href="zlibs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="zlibs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="zlibs\xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Themes
+### Derek Ogle, May 2020
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Today's Goal
+
+&lt;font size="7"&gt;Learn how to provide specific control over all elements of a plot.&lt;/font&gt;
+
+---
+
+# Today's Goal
+
+- Demonstrate built-in themes.
+
+&amp;nbsp;
+
+--
+- Demonstrate how to modify aspects of a plot with `theme()`.
+
+&amp;nbsp;
+
+--
+- Show how to create your own theme.
+
+&amp;nbsp;
+
+--
+- Demonstrate how to set a default theme for each plot.
+
+---
+
+class: inverse, center, middle
+
+# What is a Theme?
+
+---
+
+# What is a theme?
+
+- Aspects of the graph not directly related to data.
+
+--
+  - Background color.
+  - Grid line color and type.
+  - Label font size, type, and margin.
+  - Legend position, orientation, and margin.
+  - Facet label, position, and margin.
+  - etc.
+
+---
+
+class: inverse, center, middle
+
+# Built-in Themes
+
+---
+
+# Built-in Themes
+
+- ggplot2 has 9 built-in themes.
+  - `theme_gray()` (default)
+  - `theme_bw()`
+  - `theme_classic()`
+  - `theme_minimal()`
+  - `theme_dark()`
+  - etc.
+
+&amp;nbsp;
+
+--
+- Other full themes are available in other packages; e.g., 
+  - `theme_half_open()` from `cowplot` package.
+  - `theme_tufte()` from `ggthemes` package.
+  - `theme_excel()` from `ggthemes` package.
+  - `theme_gdocs()` from `ggthemes` package.
+
+---
+
+&lt;img src="Lecture_Themes_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
+
+---
+
+# Built-in Themes
+
+- All built-in themes have four arguments.
+
+--
+  - `base_size=`: "base size" of fonts (default is 11).
+  - `base_family=`: "base family" of fonts (default depends on OS).
+  - `base_line_size=`: "base size" of lines (default is 1/22nd of `base_size=`).
+  - `base_rect_size=`: "base size" of rectangles (default is 1/22nd of `base_size=`).
+
+&amp;nbsp;
+
+--
+- Probably only ever change `base_size=` and `base_family=`.
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/bases_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+* theme_bw(
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/bases_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  theme_bw(  
+*   base_size=18,
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/bases_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  theme_bw(  
+    base_size=18,  
+*   base_family="serif",
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/bases_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+p +  
+  theme_bw(  
+    base_size=18,  
+    base_family="serif",  
+*   base_rect_size=18/11
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/bases_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Controlling Specific Aspects of a Theme
+
+---
+
+# Theme Elements
+
+- Each theme is made up of many *elements*, organized into groups.
+
+--
+  - **Plot Elements**: effect the whole plot (e.g., title).
+  - **Axis Elements**: effect the plot axes (e.g., ticks).
+  - **Legend Elements**: effect legends (e.g., margin).
+  - **Panel Elements**: effect plotting panels (e.g., gridlines).
+  - **Facet Elements**: effect facets (e.g., "strip" color).
+
+&amp;nbsp;
+
+--
+- Set elements using "element functions" or "setter functions."
+
+---
+
+# Element (or Setter) Functions
+
+- `element_text()`: Draws labels and headings.
+
+--
+  - Can control font `family=`, `face=` (e.g., bold and italic), `color=`, and `size=`; `hjust=`, `vjust=`, `angle=` (in degrees), `lineheight=`, and `margin=`.
+
+&amp;nbsp;
+
+--
+- `element_line()`: Draws lines.
+
+--
+  - Can control line `color=`, `size=`, and `linetype=`.
+
+&amp;nbsp;
+
+--
+- `element_rect()`: Draws rectangles (mostly used for backgrounds).
+
+--
+  - Can control line `fill=`, `color=`, `size=`, and `linetype=`.
+
+---
+
+# Element (or Setter) Functions
+
+- `element_blank()`: Draws nothing.
+  - Use this to draw nothing AND to allocate no space to that object.
+
+&amp;nbsp;
+
+--
+- `margin()`: Sets margins around items.
+
+--
+  - Uses `t=` (top), `r=` (right), `b=` (bottom), `l=` (left).
+  - Can set units with `unit=` (defaults to `pt`).
+
+&lt;br&gt;
+
+--
+- `unit()`: Sets spacing or size.
+
+--
+  - Value in first argument and type of units in `units=` or second argument.
+  - Types of units can be `"in"`, `"mm"`, `"cm"`, `"points"`, etc.
+
+&amp;nbsp;
+
+--
+- Which element/setter function to use depends on the theme element.
+
+---
+
+# Plot Elements
+
+Element            | Setter           | Notes               
+-------------------|------------------|------------
+`plot.background=` | `element_rect()` | background of entire plot area
+`plot.title=`      | `element_text()` | 
+`plot.margin=`     | `margin()`       | margins around plot
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_plots_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* theme(
+*   plot.background=element_rect(fill="linen",color="blue"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_plots_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    plot.background=element_rect(fill="linen",color="blue"),  
+*   plot.title=element_text(color="red",face="bold",size=24),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_plots_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    plot.background=element_rect(fill="linen",color="blue"),  
+    plot.title=element_text(color="red",face="bold",size=24),  
+*   plot.margin=margin(b=1.5,r=1,unit="cm")
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_plots_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Axis Elements
+
+Element              | Setter           | Notes               
+---------------------|------------------|---------------------------
+`axis.line=`         | `element_line()` | line parallel to axis (hidden in default themes)
+`axis.text=`         | `element_text()` | tick labels (all)
+`axis.text.x=`       | `element_text()` | tick labels (x-axis)
+`axis.text.y=`       | `element_text()` | tick labels (y-axis)
+`axis.title=`        | `element_text()` | label for axis (all)
+`axis.title.x=`      | `element_text()` | label for axis (x-axis)
+`axis.title.y=`      | `element_text()` | label for axis (y-axis)            
+`axis.ticks=`        | `element_line()` | axis tick marks
+`axis.ticks.length=` | `unit()`         | axis tick mark lengths
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_axis_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* theme(
+*   axis.text=element_text(color="blue",size=14),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_axis_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    axis.text=element_text(color="blue",size=14),  
+*   axis.title.x=element_text(color="red",face="bold",size=24),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_axis_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    axis.text=element_text(color="blue",size=14),  
+    axis.title.x=element_text(color="red",face="bold",size=24),  
+*   axis.title.y=element_text(color="green3",face="bold",size=36),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_axis_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    axis.text=element_text(color="blue",size=14),  
+    axis.title.x=element_text(color="red",face="bold",size=24),  
+    axis.title.y=element_text(color="green3",face="bold",size=36),  
+*   axis.ticks.length=unit(5,unit="mm")
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_axis_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Panel Elements
+
+Element               | Setter           | Description
+----------------------|------------------|-------------------------------
+`panel.background=`   | `element_rect()` | panel background (under data)
+`panel.border=`       | `element_rect()` | panel border (over data)
+`panel.grid.major=`   | `element_line()` | major grid lines
+`panel.grid.major.x=` | `element_line()` | major grid lines (x-axis; vertical)
+`panel.grid.major.y=` | `element_line()` | major grid lines (y-axis; horizontal)
+`panel.grid.minor=`   | `element_line()` | minor grid lines
+`panel.grid.minor.x=` | `element_line()` | minor grid lines (x-axis; vertical)
+`panel.grid.minor.y=` | `element_line()` | minor grid lines (y-axis; horizontal)
+`aspect.ratio=`       | numeric          | width:height ratio (of panel only)
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* theme(
+*   panel.background=element_rect(fill="orange"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    panel.background=element_rect(fill="orange"),  
+*   panel.grid.major=element_line(color="gray30",linetype="dashed"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    panel.background=element_rect(fill="orange"),  
+    panel.grid.major=element_line(color="gray30",linetype="dashed"),  
+*   panel.grid.minor.x=element_line(color="gray70",size=0.5),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    panel.background=element_rect(fill="orange"),  
+    panel.grid.major=element_line(color="gray30",linetype="dashed"),  
+    panel.grid.minor.x=element_line(color="gray70",size=0.5),  
+*   panel.grid.minor.y=element_line(color="steelblue",size=0.5),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    panel.background=element_rect(fill="orange"),  
+    panel.grid.major=element_line(color="gray30",linetype="dashed"),  
+    panel.grid.minor.x=element_line(color="gray70",size=0.5),  
+    panel.grid.minor.y=element_line(color="steelblue",size=0.5),  
+*   panel.border=element_rect(
+*     color="red",size=2,
+    )  
+* )
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_6_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    panel.background=element_rect(fill="orange"),  
+    panel.grid.major=element_line(color="gray30",linetype="dashed"),  
+    panel.grid.minor.x=element_line(color="gray70",size=0.5),  
+    panel.grid.minor.y=element_line(color="steelblue",size=0.5),  
+    panel.border=element_rect(  
+      color="red",size=2,  
+*     fill="black"
+    )  
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_panels_non_seq_7_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Legend Elements
+
+Element               | Setter           | Description
+----------------------|------------------|-------------------------------
+`legend.background=`  | `element_rect()` | background of entire legend
+`legend.key=`         | `element_rect()` | background of legend keys
+`legend.key.size=`    | `unit()`         |
+`legend.key.height=`  | `unit()`         |
+`legend.key.width=`   | `unit()`         |
+`legend.margin=`      | `unit()`         | margin within legend
+`legend.text=`        | `element_text()` | labels within legend
+`legend.text.align=`  | 0-1              | 0=right, 1=left
+`legend.title=`       | `element_text()` | legend name
+`legend.title.align=` | 0-1              | 0=right, 1=left
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* theme(
+*   legend.background=element_rect(fill="orange"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    legend.background=element_rect(fill="orange"),  
+*   legend.text=element_text(color="blue",size=18),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    legend.background=element_rect(fill="orange"),  
+    legend.text=element_text(color="blue",size=18),  
+*   legend.title=element_text(color="red",size=24),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    legend.background=element_rect(fill="orange"),  
+    legend.text=element_text(color="blue",size=18),  
+    legend.title=element_text(color="red",size=24),  
+*   legend.key=element_rect(fill="yellow",color="black"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  theme(  
+    legend.background=element_rect(fill="orange"),  
+    legend.text=element_text(color="blue",size=18),  
+    legend.title=element_text(color="red",size=24),  
+    legend.key=element_rect(fill="yellow",color="black"),  
+*   legend.key.size=unit(2,"mm")
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends1_non_seq_6_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+# Legend Elements (Positioning)
+
+- Legend can be positioned with `legend.position=`.
+
+--
+  - Use `right` (default), `top`, `left`, or `bottom`.
+
+--
+  - Use `c(#,#)` to position within the panel region.
+  - Lower-left is `c(0,0)` and upper-right is `c(1,1)`.
+
+&amp;nbsp;
+
+--
+- "Justify" legend with `legend.justification=` (in conjunction with `legend.position=c(#,#)`).
+
+--
+  - Use `c(#,#)` for horizontal and vertical "justification", respectively.
+  - Use `0` for right and bottom.
+  - Use `1` for left and top.
+
+---
+
+
+&lt;img src="Lecture_Themes_files/figure-html/demo_legends2-1.png" width="95%" /&gt;
+
+---
+
+# Facet Elements
+
+Element             | Setter           | Notes
+--------------------|------------------|------------------------------------
+`strip.background=` | `element_rect()` |
+`strip.text=`       | `element_text()` |
+`strip.text.x=`     | `element_text()` | horizontal strip text
+`strip.text.y=`     | `element_text()` | vertical strip text (only w/ `facet_grid()`)
+`panel.spacing=`    | `unit()`         | all margins between panels
+`panel.spacing.x=`  | `unit()`         | vertical margin between panels
+`panel.spacing.y=`  | `unit()`         | horizontal margin between panels
+
+---
+
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb   
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* facet_wrap(vars(grp))
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+* theme(
+*   legend.position="none",
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_3_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+  theme(  
+    legend.position="none",  
+*   strip.background=element_rect(fill="black",color="black"),
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_4_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+  theme(  
+    legend.position="none",  
+    strip.background=element_rect(fill="black",color="black"),  
+*   strip.text=element_text(
+*     color="white",face="italic",size=18,
+    ),  
+* )
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_5_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+  theme(  
+    legend.position="none",  
+    strip.background=element_rect(fill="black",color="black"),  
+    strip.text=element_text(  
+      color="white",face="italic",size=18,  
+*     margin=margin(t=2,b=2,r=2,l=2)
+    ),  
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_6_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+  theme(  
+    legend.position="none",  
+    strip.background=element_rect(fill="black",color="black"),  
+    strip.text=element_text(  
+      color="white",face="italic",size=18,  
+      margin=margin(t=2,b=2,r=2,l=2)  
+    ),  
+*   panel.spacing=unit(0,unit="mm")
+  )  
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/demo_facets_non_seq_7_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Some Help for Remembering All of This
+
+---
+
+.center[
+&lt;img src="https://derekogle.com/NCGraphing/modules/zimgs/theme_elements.png" width="99%" /&gt;
+]
+
+---
+
+class: inverse, center, middle
+
+# Creating Your Own Theme
+
+---
+
+# Creating Your Own Theme
+
+- Start with an existing theme.
+  - i.e., it has most of what you want.
+
+&amp;nbsp;
+
+--
+- Add `theme()` to it with the modifications that you want.
+
+&amp;nbsp;
+
+--
+- Assign to an object.
+
+&amp;nbsp;
+
+--
+- Add this to a plot when you want to use it.
+
+---
+
+# Creating Your Own Theme
+
+
+```r
+theme_DHO &lt;- theme_bw() +
+theme(
+  plot.title=element_text(face="bold",size=rel(1.5)),
+  axis.title=element_text(face="bold",size=rel(1.25)),
+  panel.grid.major=element_line(color="gray90",linetype="dashed",size=rel(0.25)),
+  panel.grid.minor=element_blank(),
+  legend.margin=margin(t=1,r=1,b=1,l=1,unit="mm"),
+  legend.key.size=unit(2,units="mm"),
+  panel.spacing=unit(1,unit="mm"),
+  strip.text=element_text(color="white",face="bold",size=rel(1.5),margin=margin(t=1,b=1,r=1,l=1,unit="mm")),
+  strip.background=element_rect(fill="black",color="black"),
+)
+```
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*pb
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/DHO1_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* theme_DHO
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/DHO1_auto_2_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+
+
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*pb
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/DHO2_auto_1_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+* facet_wrap(vars(grp))
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/DHO2_auto_2_output-1.png" width="100%" /&gt;
+]]
+---
+class: split-50
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+pb +  
+  facet_wrap(vars(grp)) +  
+* theme_DHO
+```
+]]
+.column[.content[
+&lt;img src="Lecture_Themes_files/figure-html/DHO2_auto_3_output-1.png" width="100%" /&gt;
+]]
+
+---
+
+class: inverse, center, middle
+
+# Setting a Theme for all Plots
+
+---
+
+# Setting a Theme for all Plots
+
+- It is irritating to always do `theme_bw()` or `theme_DHO`.
+
+&amp;nbsp;
+
+--
+- You can set a default theme at the beginning of your session with `theme_set()`, with the name of the theme as the first argument.
+
+--
+  - e.g., `theme_set(theme_BW())`
+  - e.g., `theme_set(theme_DHO)`
+  
+---
+
+class: inverse, center, middle
+
+# Next Time
+
+&lt;font size="7"&gt;We will have guest speakers demonstrate case studies.&lt;/font&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

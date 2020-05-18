@@ -12,21 +12,11 @@ output:
       countIncrementalSlides: false
 ---
 
-```{r purler, eval=FALSE, echo=FALSE}
-## Use Knit button to make actual slides.
-## Makes (Ctrl-S & Ctrl-Alt-C) a script ... will need to edit.
-fnm <- "Lecture_Themes"
-FSA::purl2(file.path(here::here(),"modules/Themes",paste0(fnm,".Rmd")),
-           moreItems=c("source","setwd","fnm","opts_chunk","flipbookr",
-                       "cache","head","include_graphics","options",
-                       "splitPerc","leftAssign"))
-```
-
-
 ```{r setup, include = FALSE}
 source("../zzzflipbook_settings.R")
 #!# Loading the tidyverse package (must do every time)
 library(tidyverse)
+library(patchwork)
 ```
 
 class: inverse, center, middle
@@ -41,11 +31,17 @@ class: inverse, center, middle
 
 - Demonstrate built-in themes.
 
+&nbsp;
+
 --
 - Demonstrate how to modify aspects of a plot with `theme()`.
 
+&nbsp;
+
 --
 - Show how to create your own theme.
+
+&nbsp;
 
 --
 - Demonstrate how to set a default theme for each plot.
@@ -60,7 +56,15 @@ class: inverse, center, middle
 
 # What is a theme?
 
-- XXX
+- Aspects of the graph not directly related to data.
+
+--
+  - Background color.
+  - Grid line color and type.
+  - Label font size, type, and margin.
+  - Legend position, orientation, and margin.
+  - Facet label, position, and margin.
+  - etc.
 
 ---
 
@@ -70,9 +74,388 @@ class: inverse, center, middle
 
 ---
 
+# Built-in Themes
+
+- ggplot2 has 9 built-in themes.
+  - `theme_gray()` (default)
+  - `theme_bw()`
+  - `theme_classic()`
+  - `theme_minimal()`
+  - `theme_dark()`
+  - etc.
+
+&nbsp;
+
+--
+- Other full themes are available in other packages; e.g., 
+  - `theme_half_open()` from `cowplot` package.
+  - `theme_tufte()` from `ggthemes` package.
+  - `theme_excel()` from `ggthemes` package.
+  - `theme_gdocs()` from `ggthemes` package.
+
+---
+
+```{r echo=FALSE, results="hide", fig.width=6, fig.height=4, out.width="100%"}
+#!# DEREK ... delete this from the script
+df <- tibble(x=rnorm(100,mean=10,sd=3),
+             y=x^2-20+rnorm(100,sd=20),
+             grp=sample(LETTERS[1:3],100,replace=TRUE))
+p <- ggplot(data=df,mapping=aes(x=x,y=y,color=grp)) +
+  geom_point(alpha=0.7)
+pgr <- p + labs(title="theme_gray()")
+pbw <- p + labs(title="theme_bw()") + theme_bw()
+pcl <- p + labs(title="theme_classic()") + theme_classic()
+pmn <- p + labs(title="theme_minimal()") + theme_minimal()
+pdk <- p + labs(title="theme_dark()") + theme_dark()
+pho <- p + labs(title="cowplot::theme_half_open()") + cowplot::theme_half_open()
+ptf <- p + labs(title="ggthemes::theme_tufte()") + ggthemes::theme_tufte()
+pex <- p + labs(title="ggthemes::theme_excel()") + ggthemes::theme_excel()
+pgd <- p + labs(title="ggthemes::theme_gdocs()") + ggthemes::theme_gdocs()
+pgr + pbw + pcl + pmn + pdk + pho + ptf + pex + pgd + plot_layout(nrow=3)
+```
+
+---
+
+# Built-in Themes
+
+- All built-in themes have four arguments.
+
+--
+  - `base_size=`: "base size" of fonts (default is 11).
+  - `base_family=`: "base family" of fonts (default depends on OS).
+  - `base_line_size=`: "base size" of lines (default is 1/22nd of `base_size=`).
+  - `base_rect_size=`: "base size" of rectangles (default is 1/22nd of `base_size=`).
+
+&nbsp;
+
+--
+- Probably only ever change `base_size=` and `base_family=`.
+
+---
+
+```{r echo=FALSE}
+#!# Demo of base_size() and base_family()
+```
+```{r bases, include=FALSE}
+p +
+  theme_bw( #BREAK2
+    base_size=18, #BREAK3
+    base_family="serif", #BREAK4
+    base_rect_size=18/11 #BREAK5
+  ) #BREAK2
+```
+`r chunk_reveal("bases",break_type="non_seq",split=splitPerc)`
+
+---
+
 class: inverse, center, middle
 
 # Controlling Specific Aspects of a Theme
+
+---
+
+# Theme Elements
+
+- Each theme is made up of many *elements*, organized into groups.
+
+--
+  - **Plot Elements**: effect the whole plot (e.g., title).
+  - **Axis Elements**: effect the plot axes (e.g., ticks).
+  - **Legend Elements**: effect legends (e.g., margin).
+  - **Panel Elements**: effect plotting panels (e.g., gridlines).
+  - **Facet Elements**: effect facets (e.g., "strip" color).
+
+&nbsp;
+
+--
+- Set elements using "element functions" or "setter functions."
+
+---
+
+# Element (or Setter) Functions
+
+- `element_text()`: Draws labels and headings.
+
+--
+  - Can control font `family=`, `face=` (e.g., bold and italic), `color=`, and `size=`; `hjust=`, `vjust=`, `angle=` (in degrees), `lineheight=`, and `margin=`.
+
+&nbsp;
+
+--
+- `element_line()`: Draws lines.
+
+--
+  - Can control line `color=`, `size=`, and `linetype=`.
+
+&nbsp;
+
+--
+- `element_rect()`: Draws rectangles (mostly used for backgrounds).
+
+--
+  - Can control line `fill=`, `color=`, `size=`, and `linetype=`.
+
+---
+
+# Element (or Setter) Functions
+
+- `element_blank()`: Draws nothing.
+  - Use this to draw nothing AND to allocate no space to that object.
+
+&nbsp;
+
+--
+- `margin()`: Sets margins around items.
+
+--
+  - Uses `t=` (top), `r=` (right), `b=` (bottom), `l=` (left).
+  - Can set units with `unit=` (defaults to `pt`).
+
+<br>
+
+--
+- `unit()`: Sets spacing or size.
+
+--
+  - Value in first argument and type of units in `units=` or second argument.
+  - Types of units can be `"in"`, `"mm"`, `"cm"`, `"points"`, etc.
+
+&nbsp;
+
+--
+- Which element/setter function to use depends on the theme element.
+
+---
+
+# Plot Elements
+
+Element            | Setter           | Notes               
+-------------------|------------------|------------
+`plot.background=` | `element_rect()` | background of entire plot area
+`plot.title=`      | `element_text()` | 
+`plot.margin=`     | `margin()`       | margins around plot
+
+---
+```{r echo=FALSE}
+#!# Demonstrating Plot Elements
+pb <- pbw + labs(title="Demo Plot",x="X-Axis Label",
+                 y="Y-Axis Label",color="Group")
+```
+```{r demo_plots, include=FALSE}
+pb +
+  theme( #BREAK2
+    plot.background=element_rect(fill="linen",color="blue"), #BREAK2
+    plot.title=element_text(color="red",face="bold",size=24), #BREAK3
+    plot.margin=margin(b=1.5,r=1,unit="cm") #BREAK4
+  ) #BREAK2
+```
+
+`r chunk_reveal("demo_plots",break_type="non_seq",split=splitPerc)`
+
+---
+
+# Axis Elements
+
+Element              | Setter           | Notes               
+---------------------|------------------|---------------------------
+`axis.line=`         | `element_line()` | line parallel to axis (hidden in default themes)
+`axis.text=`         | `element_text()` | tick labels (all)
+`axis.text.x=`       | `element_text()` | tick labels (x-axis)
+`axis.text.y=`       | `element_text()` | tick labels (y-axis)
+`axis.title=`        | `element_text()` | label for axis (all)
+`axis.title.x=`      | `element_text()` | label for axis (x-axis)
+`axis.title.y=`      | `element_text()` | label for axis (y-axis)            
+`axis.ticks=`        | `element_line()` | axis tick marks
+`axis.ticks.length=` | `unit()`         | axis tick mark lengths
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating Axis Elements
+```
+```{r demo_axis, include=FALSE}
+pb +
+  theme( #BREAK2
+    axis.text=element_text(color="blue",size=14), #BREAK2
+    axis.title.x=element_text(color="red",face="bold",size=24), #BREAK3
+    axis.title.y=element_text(color="green3",face="bold",size=36), #BREAK4
+    axis.ticks.length=unit(5,unit="mm") #BREAK5
+  ) #BREAK2
+```
+
+`r chunk_reveal("demo_axis",break_type="non_seq",split=splitPerc)`
+
+---
+
+# Panel Elements
+
+Element               | Setter           | Description
+----------------------|------------------|-------------------------------
+`panel.background=`   | `element_rect()` | panel background (under data)
+`panel.border=`       | `element_rect()` | panel border (over data)
+`panel.grid.major=`   | `element_line()` | major grid lines
+`panel.grid.major.x=` | `element_line()` | major grid lines (x-axis; vertical)
+`panel.grid.major.y=` | `element_line()` | major grid lines (y-axis; horizontal)
+`panel.grid.minor=`   | `element_line()` | minor grid lines
+`panel.grid.minor.x=` | `element_line()` | minor grid lines (x-axis; vertical)
+`panel.grid.minor.y=` | `element_line()` | minor grid lines (y-axis; horizontal)
+`aspect.ratio=`       | numeric          | width:height ratio (of panel only)
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating Panel Elements
+```
+```{r demo_panels, include=FALSE}
+pb +
+  theme( #BREAK2
+    panel.background=element_rect(fill="orange"), #BREAK2
+    panel.grid.major=element_line(color="gray30",linetype="dashed"), #BREAK3
+    panel.grid.minor.x=element_line(color="gray70",size=0.5), #BREAK4
+    panel.grid.minor.y=element_line(color="steelblue",size=0.5), #BREAK5
+    panel.border=element_rect( #BREAK6
+      color="red",size=2, #BREAK6
+      fill="black" #BREAK7
+    ) #BREAK6
+  ) #BREAK2
+```
+
+`r chunk_reveal("demo_panels",break_type="non_seq",split=splitPerc)`
+
+---
+
+# Legend Elements
+
+Element               | Setter           | Description
+----------------------|------------------|-------------------------------
+`legend.background=`  | `element_rect()` | background of entire legend
+`legend.key=`         | `element_rect()` | background of legend keys
+`legend.key.size=`    | `unit()`         |
+`legend.key.height=`  | `unit()`         |
+`legend.key.width=`   | `unit()`         |
+`legend.margin=`      | `unit()`         | margin within legend
+`legend.text=`        | `element_text()` | labels within legend
+`legend.text.align=`  | 0-1              | 0=right, 1=left
+`legend.title=`       | `element_text()` | legend name
+`legend.title.align=` | 0-1              | 0=right, 1=left
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating Legend Elements
+```
+```{r demo_legends1, include=FALSE}
+pb +
+  theme( #BREAK2
+    legend.background=element_rect(fill="orange"), #BREAK2
+    legend.text=element_text(color="blue",size=18), #BREAK3
+    legend.title=element_text(color="red",size=24), #BREAK4
+    legend.key=element_rect(fill="yellow",color="black"), #BREAK5
+    legend.key.size=unit(2,"mm") #BREAK6
+  ) #BREAK2
+```
+
+`r chunk_reveal("demo_legends1",break_type="non_seq",split=splitPerc)`
+
+---
+
+# Legend Elements (Positioning)
+
+- Legend can be positioned with `legend.position=`.
+
+--
+  - Use `right` (default), `top`, `left`, or `bottom`.
+
+--
+  - Use `c(#,#)` to position within the panel region.
+  - Lower-left is `c(0,0)` and upper-right is `c(1,1)`.
+
+&nbsp;
+
+--
+- "Justify" legend with `legend.justification=` (in conjunction with `legend.position=c(#,#)`).
+
+--
+  - Use `c(#,#)` for horizontal and vertical "justification", respectively.
+  - Use `0` for right and bottom.
+  - Use `1` for left and top.
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating Legend Position
+```
+```{r demo_legends2, echo=FALSE,fig.width=6,fig.height=4,out.width="95%"}
+pb2 <- pb + theme(legend.margin=margin(t=1,r=1,b=1,l=1,unit="mm"),
+                  legend.key.size=unit(2,units="mm"))
+lr <- pb2 + labs(title='legend.position="right"') + 
+  theme(legend.position="right")
+lt <- pb2 + labs(title='legend.position="top"') + 
+  theme(legend.position="top")
+lb <- pb2 + labs(title='legend.position="bottom"')+ 
+  theme(legend.position="bottom")
+
+llr <- pb2 + 
+  labs(title='legend.position=c(1,0)\nlegend.justification=c(1,0)') + 
+  theme(legend.position=c(1,0),legend.justification=c(1,0))
+lul <- pb2 + 
+  labs(title='legend.position=c(0,1)\nlegend.justification=c(0,1)') + 
+  theme(legend.position=c(0,1),legend.justification=c(0,1))
+lcu <- pb2 + 
+  labs(title='legend.position=c(0.1,0.95)\nlegend.justification=c(0,1)') + 
+  theme(legend.position=c(0.02,0.98),legend.justification=c(0,1))
+
+lr + lt + lb + llr + lul + lcu + plot_layout(nrow=2)
+```
+
+---
+
+# Facet Elements
+
+Element             | Setter           | Notes
+--------------------|------------------|------------------------------------
+`strip.background=` | `element_rect()` |
+`strip.text=`       | `element_text()` |
+`strip.text.x=`     | `element_text()` | horizontal strip text
+`strip.text.y=`     | `element_text()` | vertical strip text (only w/ `facet_grid()`)
+`panel.spacing=`    | `unit()`         | all margins between panels
+`panel.spacing.x=`  | `unit()`         | vertical margin between panels
+`panel.spacing.y=`  | `unit()`         | horizontal margin between panels
+
+---
+
+```{r echo=FALSE}
+#!# Demonstrating Facet Elements
+```
+```{r demo_facets, include=FALSE}
+pb +
+  facet_wrap(vars(grp)) + #BREAK2
+  theme( #BREAK3
+    legend.position="none", #BREAK3
+    strip.background=element_rect(fill="black",color="black"), #BREAK4
+    strip.text=element_text( #BREAK5
+      color="white",face="italic",size=18, #BREAK5
+      margin=margin(t=2,b=2,r=2,l=2) #BREAK6
+    ), #BREAK5
+    panel.spacing=unit(0,unit="mm") #BREAK7
+  ) #BREAK3
+```
+
+`r chunk_reveal("demo_facets",break_type="non_seq",split=splitPerc)`
+
+---
+
+class: inverse, center, middle
+
+# Some Help for Remembering All of This
+
+---
+
+.center[
+```{r, echo=FALSE, out.width="99%"}
+knitr::include_graphics("https://derekogle.com/NCGraphing/modules/zimgs/theme_elements.png")
+```
+]
 
 ---
 
@@ -82,13 +465,85 @@ class: inverse, center, middle
 
 ---
 
+# Creating Your Own Theme
+
+- Start with an existing theme.
+  - i.e., it has most of what you want.
+
+&nbsp;
+
+--
+- Add `theme()` to it with the modifications that you want.
+
+&nbsp;
+
+--
+- Assign to an object.
+
+&nbsp;
+
+--
+- Add this to a plot when you want to use it.
+
+---
+
+# Creating Your Own Theme
+
+```{r}
+theme_DHO <- theme_bw() +
+theme(
+  plot.title=element_text(face="bold",size=rel(1.5)),
+  axis.title=element_text(face="bold",size=rel(1.25)),
+  panel.grid.major=element_line(color="gray90",linetype="dashed",size=rel(0.25)),
+  panel.grid.minor=element_blank(),
+  legend.margin=margin(t=1,r=1,b=1,l=1,unit="mm"),
+  legend.key.size=unit(2,units="mm"),
+  panel.spacing=unit(1,unit="mm"),
+  strip.text=element_text(color="white",face="bold",size=rel(1.5),margin=margin(t=1,b=1,r=1,l=1,unit="mm")),
+  strip.background=element_rect(fill="black",color="black"),
+)
+```
+
+---
+
+```{r DHO1, include=FALSE}
+pb +
+  theme_DHO 
+```
+
+`r chunk_reveal("DHO1",break_type="auto",split=splitPerc)`
+
+---
+
+```{r DHO2, include=FALSE}
+pb +
+  facet_wrap(vars(grp)) +
+  theme_DHO 
+```
+
+`r chunk_reveal("DHO2",break_type="auto",split=splitPerc)`
+
+---
+
 class: inverse, center, middle
 
 # Setting a Theme for all Plots
 
 ---
 
+# Setting a Theme for all Plots
 
+- It is irritating to always do `theme_bw()` or `theme_DHO`.
+
+&nbsp;
+
+--
+- You can set a default theme at the beginning of your session with `theme_set()`, with the name of the theme as the first argument.
+
+--
+  - e.g., `theme_set(theme_BW())`
+  - e.g., `theme_set(theme_DHO)`
+  
 ---
 
 class: inverse, center, middle
