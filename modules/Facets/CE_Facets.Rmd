@@ -91,7 +91,7 @@ ggplot(data=sum2,mapping=aes(y=perc,x=ad_deer_hunting,fill=ad_deer_hunting)) +
 &nbsp;
 
 ## Total Annual Harvest by County and Year 1
-In ["Total Annual Harvest by County and Year" on this page](https://derekogle.com/NCGraphing/modules/Means/CE_DeerHarvest.html#total-annual-harvest-by-county-and-year) you constructed a line plot of the total number of all deer harested per year for four counties in Wiscnosin. Use those same data to construct the plot below.
+In ["Total Annual Harvest by County and Year" on this page](https://derekogle.com/NCGraphing/modules/Means/CE_DeerHarvest.html#total-annual-harvest-by-county-and-year) you constructed a line plot of the total number of all deer harvested per year for four counties in Wisconsin. Use those same data to construct the plot below.
 
 ```{r echo=FALSE}
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
