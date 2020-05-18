@@ -40,14 +40,15 @@ ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
            arrow=arrow(length=unit(3,"mm"),angle=15,type="closed"))
 
 dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
-clrs <- c("#000000","#E69F00","#56B4E9","#009E73")
+clrs <- c("Ashland"="#000000","Bayfield"="#E69F00",
+          "Douglas"="#56B4E9","Iron"="#009E73")
 
 ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
   geom_line(size=1) +
   geom_point(shape=21,fill="white",size=2) +
   scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
   scale_y_continuous(name="Total Annual Deer Harvest",expand=expansion(mult=0),limits=c(0,8000)) +
-  scale_color_manual(values=cbbPalette) +
+  scale_color_manual(values=clrs) +
   theme_bw() + theme(legend.position="none") +
   annotate(geom="label",label=c("Ashland","Bayfield","Douglas","Iron"),
                          x=c(2010,2010,2010.8,2010.8),
@@ -89,4 +90,4 @@ ggplot(data=tuit,mapping=aes(x=RoomBoardOn,y=RoomBoardOff)) +
            label.padding=unit(0.35,"lines"))
 
 
-# Script created at 2020-05-16 10:07:02
+# Script created at 2020-05-18 09:38:10
