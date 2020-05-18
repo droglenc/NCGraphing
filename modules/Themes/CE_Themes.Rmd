@@ -1,0 +1,128 @@
+---
+layout: page
+title: Exercise - Themes
+author: Derek H. Ogle
+css: "/css/modules.css"
+output:
+  html_document:
+    self_contained: false
+    lib_dir: zlibs
+---
+
+```{r echo=FALSE, eval=FALSE}
+# Renders an appropriate HTML file for the webpage (CTRL-S and CTRL-ALT-C)
+source(file.path(here::here(),"rhelpers/rhelpers.R"))
+fnm <- "CE_Themes"
+dnm <- "modules/Themes"
+modHTML(file.path(here::here(),dnm,fnm))
+FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
+           moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
+```
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
+library(tidyverse)
+```
+
+----
+
+## State and No Good Deer Hunting
+I have a colleague/friend who prefers Excel over ggplot graphs (yes, this has strained our friendship). His main issues are that he wants the following:
+
+* A dark, but not black, background.
+* Light, but not white, text.
+* More "muted" and dashed gridlines.
+* Axis labels that are Slightly larger.
+* Axis titles that are slighlyy larger than the axis labels and bold-faced.
+* The ability to put the legend inside the plot (if it will fit).
+* The ability to add notes (if appropriate).
+
+To demonstrate that this is all possible in ggplot2, I created the plot below (similar to what you did [here](https://derekogle.com/NCGraphing/modules/Annotations/CE_Annotations.html#state-and-no-good-deer-hunting)). Construct `ggplot2` code to recreate this plot.
+
+```{r echo=FALSE}
+lvls_agree <- c("Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree")
+
+#!# Set to your own working directory and have just your filename below.
+sow <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv") %>%
+  dplyr::select(state,hunt_deer,seen_wolf,part_deer,
+         ad_healthy_deer,ad_nowolves_deer,ad_threaten_deer,ad_deer_hunting) %>%
+  filter(complete.cases(.)) %>%
+  mutate(part_deer=factor(part_deer,
+          levels=c("Stop Participating","Participate Less Frequently",
+                   "Participate More Frequently","No Changes")),
+         ad_healthy_deer=factor(ad_healthy_deer,levels=lvls_agree),
+         ad_nowolves_deer=factor(ad_nowolves_deer,levels=lvls_agree),
+         ad_threaten_deer=factor(ad_threaten_deer,levels=lvls_agree),
+         ad_deer_hunting=factor(ad_deer_hunting,levels=lvls_agree)) %>%
+  filter(hunt_deer=="Yes")
+
+fill_clrs <- c("#E69F00","#56B4E9","#009E73","#F0E442","#0072B2")
+
+ggplot(data=sow,mapping=aes(x=state,fill=ad_deer_hunting)) +
+  geom_bar(color="gray50",alpha=0.9) +
+  scale_x_discrete(name="State") +
+  scale_y_continuous(name="Frequency of Respondents",expand=expansion(mult=c(0,0.05))) +
+  scale_fill_manual(name="Agreement",values=fill_clrs) +
+  annotate(geom="label",x=2,y=200,label="MN data not\n yet recorded",vjust="bottom",fill="gray20",color="gray95") +
+  annotate(geom="segment",x=2,y=200,xend=2,yend=7,size=0.25,
+           arrow=arrow(length=unit(3,"mm"),angle=15,type="closed"),
+           color="gray95") +
+  theme_bw() + 
+  theme(plot.background=element_rect(fill="gray5"),
+        panel.border=element_rect(color="gray50"),
+        panel.background=element_rect(fill="gray5"),
+        panel.grid=element_line(color="gray20",linetype="dashed"),
+        panel.grid.major.x=element_blank(),
+        panel.grid.minor.x=element_blank(),
+        axis.title=element_text(color="gray95",face="bold",size=14),
+        axis.title.y=element_text(margin=margin(r=5,unit="mm")),
+        axis.title.x=element_text(margin=margin(t=5,unit="mm")),
+        axis.text=element_text(color="gray95",size=12),
+        legend.background=element_rect(fill="gray5"),
+        legend.text=element_text(color="gray95"),
+        legend.title=element_text(color="gray95"),
+        legend.position=c(0.99,0.99),
+        legend.justification=c(1,1))
+```
+
+## Create New Theme
+Create a new ggplot theme called `theme_excel_dark` that reflects my friend's preferences (start with `theme_bw()`).
+
+```{r echo=FALSE}
+theme_excel_dark <- theme_bw() +
+    theme(plot.background=element_rect(fill="gray5"),
+        panel.border=element_rect(color="gray50"),
+        panel.background=element_rect(fill="gray5"),
+        panel.grid=element_line(color="gray20",linetype="dashed"),
+        panel.grid.major.x=element_blank(),
+        panel.grid.minor.x=element_blank(),
+        axis.title=element_text(color="gray95",face="bold",size=14),
+        axis.title.y=element_text(margin=margin(r=5,unit="mm")),
+        axis.title.x=element_text(margin=margin(t=5,unit="mm")),
+        axis.text=element_text(color="gray95",size=12),
+        legend.background=element_rect(fill="gray5"),
+        legend.text=element_text(color="gray95"),
+        legend.title=element_text(color="gray95"))
+```
+
+&nbsp;
+
+## Total Annual Harvest by County and Year
+Apply the theme you just created to the plot you made in ["Total Annual Harvest by County and Year" on this page](https://derekogle.com/NCGraphing/modules/Annotations/CE_Annotations.html#total-annual-harvest-by-county-and-year). Note that you may want to tweak your colors from the plot you made on the previous homework.
+
+```{r echo=FALSE}
+dh <- read.csv("https://raw.githubusercontent.com/droglenc/NCData/master/DeerHarvest.csv")
+clrs <- c("Ashland"="#D55E00","Bayfield"="#56B4E9",
+          "Douglas"="#009E73","Iron"="#CC79A7")
+
+ggplot(data=dh,mapping=aes(x=Year,y=Ttl.All,color=County)) +
+  geom_line(size=1) +
+  geom_point(shape=21,fill="white",size=2) +
+  scale_x_continuous(name="Year",breaks=seq(2010,2018,2)) +
+  scale_y_continuous(name="Total Annual Deer Harvest",expand=expansion(mult=0),limits=c(0,8000)) +
+  scale_color_manual(values=clrs) +
+  annotate(geom="label",label=c("Ashland","Bayfield","Douglas","Iron"),
+                         x=c(2010,2010,2010.8,2010.8),
+                         y=c(2950,4600,7000,900),hjust="inward",
+           color=clrs,fill="gray20") +
+  theme_excel_dark + theme(legend.position="none")
+```

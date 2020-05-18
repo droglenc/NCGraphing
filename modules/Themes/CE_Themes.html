@@ -1,0 +1,82 @@
+---
+layout: page
+title: Exercise - Themes
+author: Derek H. Ogle
+css: "/css/modules.css"
+---
+
+
+<hr />
+<div id="state-and-no-good-deer-hunting" class="section level2">
+<h2>State and No Good Deer Hunting</h2>
+<p>I have a colleague/friend who prefers Excel over ggplot graphs (yes, this has strained our friendship). His main issues are that he wants the following:</p>
+<ul>
+<li>A dark, but not black, background.</li>
+<li>Light, but not white, text.</li>
+<li>More “muted” and dashed gridlines.</li>
+<li>Axis labels that are Slightly larger.</li>
+<li>Axis titles that are slighlyy larger than the axis labels and bold-faced.</li>
+<li>The ability to put the legend inside the plot (if it will fit).</li>
+<li>The ability to add notes (if appropriate).</li>
+</ul>
+<p>To demonstrate that this is all possible in ggplot2, I created the plot below (similar to what you did <a href="https://derekogle.com/NCGraphing/modules/Annotations/CE_Annotations.html#state-and-no-good-deer-hunting">here</a>). Construct <code>ggplot2</code> code to recreate this plot.</p>
+<p><img src="CE_Themes_files/figure-html/unnamed-chunk-3-1.png" width="60%" /></p>
+</div>
+<div id="create-new-theme" class="section level2">
+<h2>Create New Theme</h2>
+<p>Create a new ggplot theme called <code>theme_excel_dark</code> that reflects my friend’s preferences (start with <code>theme_bw()</code>).</p>
+<p> </p>
+</div>
+<div id="total-annual-harvest-by-county-and-year" class="section level2">
+<h2>Total Annual Harvest by County and Year</h2>
+<p>Apply the theme you just created to the plot you made in <a href="https://derekogle.com/NCGraphing/modules/Annotations/CE_Annotations.html#total-annual-harvest-by-county-and-year">“Total Annual Harvest by County and Year” on this page</a>. Note that you may want to tweak your colors from the plot you made on the previous homework.</p>
+<p><img src="CE_Themes_files/figure-html/unnamed-chunk-5-1.png" width="60%" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
