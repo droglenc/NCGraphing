@@ -28,7 +28,7 @@ XXX
 
 ## Demonstration and Exercises
 
-* [Taylor Pichler](Case_Studies/Pichler_GuestCaseStudy_2.html){:target="_blank"}
+* [Taylor Pichler](Case_Studies/Pichler_Apostle_Islands_Mammal_Barplots.html){:target="_blank"}
 * [Elyse Mallinger](Case_Studies/Mallinger_Smammals.html){:target="_blank"}
 * [Jessica Mohlman](Case_Studies/MohlmanJessica_MTH250_GGplot_Demo.html){:target="_blank"}
 * [Dray Carl](Case_Studies/Dray_Commercial_Harvest.html){:target="_blank"}
