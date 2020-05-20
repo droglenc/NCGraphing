@@ -28,9 +28,9 @@ XXX
 
 ## Demonstration and Exercises
 
-* Taylor Pichler
-* Elyse Mallinger
-* Jessica Mohlman
-* Dray Carl
-* [Jennifer Olker](Case_Studies/Olker_ECOTOX-PFASdata_19May2020.html){:target="_blank"}
+* [Taylor Pichler](Case_Studies/Pichler_GuestCaseStudy_2.html){:target="_blank"}
+* [Elyse Mallinger](Case_Studies/Mallinger_Smammals.html){:target="_blank"}
+* [Jessica Mohlman](Case_Studies/MohlmanJessica_MTH250_GGplot_Demo.html){:target="_blank"}
+* [Dray Carl](Case_Studies/Dray_Commercial_Harvest.html){:target="_blank"}
+* [Jennifer Olker](Case_Studies/Olker_ECOTOX-PFASdata_20May2020.html){:target="_blank"}
 
