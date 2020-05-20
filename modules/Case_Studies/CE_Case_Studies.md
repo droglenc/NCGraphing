@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Exercise -- Case Studies
+title: Exercise - Case Studies
 css: /css/modules.css
 ---
 
