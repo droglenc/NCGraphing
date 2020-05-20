@@ -19,7 +19,7 @@ css: /css/modules.css
 * Mykala Repati
 * Josey Schanen
 * Luke Slekar
-* [Taylor Wittmann](Student_Projects/Wittmann_FinalProject.html)
+* [Taylor Wittmann](Student_Projects/Wittmann_FinalProject.html){:target="_blank"}
 
 ### 2:30 - 3:30 pm
 * Natalie Erler

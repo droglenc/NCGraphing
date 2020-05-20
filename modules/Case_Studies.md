@@ -26,22 +26,11 @@ XXX
 
 ----
 
-## Preparation for Class
-
-
-----
-
 ## Demonstration and Exercises
 
 * Taylor Pichler
 * Elyse Mallinger
 * Jessica Mohlman
 * Dray Carl
-* [Jennifer Olker](Case_Studies/Olker_ECOTOX_PFASdata_19May2020.html)
+* [Jennifer Olker](Case_Studies/Olker_ECOTOX-PFASdata_19May2020.html){:target="_blank"}
 
-
-----
-
-## Resources
-
-* 
