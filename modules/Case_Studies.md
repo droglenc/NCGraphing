@@ -33,8 +33,8 @@ XXX
 * [Jessica Mohlman](Case_Studies/MohlmanJessica_MTH250_GGplot_Demo.html){:target="_blank"}
 * [Dray Carl](Case_Studies/Dray_Commercial_Harvest.html){:target="_blank"}
 * [Jennifer Olker](Case_Studies/Olker_ECOTOX-PFASdata_20May2020.html){:target="_blank"}
+* [Video of Speakers](https://transcripts.gotomeeting.com/#/s/7d5bba732a04026bc16a6f052fb33b3770237f45c522b4e978613284c819dcb6){:target="_blank"}
 
 <br>
 
 * [Exercise](Case_Studies/CE_Case_Studies)
-
