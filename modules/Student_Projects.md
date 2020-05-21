@@ -10,7 +10,7 @@ css: /css/modules.css
 * Tori Chevalier
 * Destiney Elder-Hall
 * Emily Hutler
-* [Josh Kolasch](Student_Projects/Wittmann_FinalProject.html){:target="_blank"}
+* [Josh Kolasch](Student_Projects/Kolasch-Final-Project.html){:target="_blank"}
 
 ### 1:15 - 2:15 pm
 * Maria Lefevre
@@ -19,7 +19,7 @@ css: /css/modules.css
 * Mykala Repati
 * Josey Schanen
 * Luke Slekar
-* [Taylor Wittmann](Student_Projects/Kolasch-Final-Project.html){:target="_blank"}
+* [Taylor Wittmann](Student_Projects/Wittmann_FinalProject.html){:target="_blank"}
 
 ### 2:30 - 3:30 pm
 * Natalie Erler
