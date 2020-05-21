@@ -538,7 +538,7 @@ summary {
 
 <h1 class="title toc-ignore">Kolasch Final Project</h1>
 <h4 class="author">Josh Kolasch</h4>
-<h4 class="date">20 May, 2020</h4>
+<h4 class="date">21 May, 2020</h4>
 
 </div>
 
@@ -572,6 +572,8 @@ summary {
 </div>
 <div id="population-growth-rate" class="section level1">
 <h1>Population Growth Rate</h1>
+<p>The following plot shows the population growth rate estimates for A la Peche Woodland Caribou Population in AB, Canada from 1998-2017. The researchers in this study wanted to test a new Web based application using a Bayesian estimation approach, since Boreal Woodland Caribou have a very low detection rate and are listed as threatened or endangered across Canada. The plot below shows the population staying right above or below the stable population growth line during the first few years, then consistently staying below the stable population growth line except for 2004 and 2009, with most recently rising above the stable population line after expanding the wolf cull program to take place in both the summer and winter ranges of the Caribou Population. The points on the graph represent the mean estimate for the population growth, with the black error bars being the Confidence Intervals. The CI varies due to the fact that this population, along with most Woodland caribou populations, live in remote, boreal ecosystems where the traditional survey technique of fly over estimates is not practical.</p>
+<p>I decided to use points and error-bars to represent the data here because you can get a better and more detailed look at how the population growth rate was each individual year, with the colors representing if there was a complete wolf cull on just the winter range or both summer and winter ranges.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">C &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ff,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>X.)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">   </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>Low.P.BCI,<span class="dt">max=</span>Up.P.BCI,<span class="dt">width=</span>.<span class="dv">15</span>),<span class="dt">size=</span>.<span class="dv">7</span>,<span class="dt">width=</span>.<span class="dv">001</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">fill=</span>EX.wolf.cull),<span class="dt">size=</span><span class="dv">5</span>,<span class="dt">pch=</span><span class="dv">21</span>) <span class="op">+</span></a>
@@ -607,6 +609,8 @@ summary {
 </div>
 <div id="woodland-caribou-diet" class="section level1">
 <h1>Woodland Caribou Diet</h1>
+<p>The following plot comes from a research study in Ontario, Canada where researches wanted to see what factors influenced diet selection for Woodland Caribou. It is impossible to observe foraging woodland caribou in the wild, due to them occurring at very low densities, being extremely wary of humans, and avoiding open areas and areas with roads, so researchers placed video collars on 23 individuals over a 2 year period. Researchers knew lichen would be a major part of the diet, but expected lichen consumption to decrease during the summer when higher protein greens were more available. As shown in the plot, researchers were surprised that while diet variety increased in the Summer, Reindeer lichen remained the largest percentage of diet, suggesting factors other than nutrition inﬂuenced diet choice.</p>
+<p>When creating the plot, I used a bar plot to represent woodland caribou diet, using the facet function to show how the diet changes during the season. A lot of the species do not have a bar on the graph, which represents less than 1 percent of the diet or not available during that season. Using the facet, you can better compare how diet changes between seasons. The plot also shows how Reindeer lichen remains the most consumed species of forage from the study.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">Season_l &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Early.Spring&quot;</span> =<span class="st"> &quot;Early Spring&quot;</span>, <span class="st">&quot;Late.Spring&quot;</span> =<span class="st"> &quot;Late Spring&quot;</span>,</a>
 <a class="sourceLine" id="cb4-2" title="2">              <span class="st">&quot;Winter&quot;</span>=<span class="st">&quot;Winter&quot;</span>,<span class="st">&quot;Fall&quot;</span>=<span class="st">&quot;Fall&quot;</span>,<span class="st">&quot;Summer&quot;</span>=<span class="st">&quot;Summer&quot;</span>)</a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
