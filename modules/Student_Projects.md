@@ -7,7 +7,7 @@ css: /css/modules.css
 ### 12:00 - 1:00 pm
 * [George Butvilas](Student_Projects/Butvilas_FinalProject.html){:target="_blank"}
 * Anna Buzzard - [#1](Student_Projects/BuzzardA_FinalProject_Presentation.html){:target="_blank"}, [#2](Student_Projects/BuzzardA_FinalProject.html){:target="_blank"}
-* Tori Chevalier - [#1](Student_Projects/Chevalier_SexandFoodSource1.html){:target="_blank"}, [#2](Student_Projects/Chevalier_SizebySex1.html){:target="_blank"}
+* Tori Chevalier - [#1](Student_Projects/Chevalier_SizebySex1.html){:target="_blank"}, [#2](Student_Projects/Chevalier_SexandFoodSource1.html){:target="_blank"}
 * [Destiney Elder-Hall](Student_Projects/Elder-Hall_FinalProject.html){:target="_blank"}
 * [Emily Hutler](Student_Projects/Hutler_Project_1.html){:target="_blank"}
 * [Josh Kolasch](Student_Projects/Kolasch-Final-Project.html){:target="_blank"}
@@ -31,7 +31,7 @@ css: /css/modules.css
 * [*Shelby Winchell](Student_Projects/.html){:target="_blank"}
 
 ### 3:45 - 4:45 pm
-* [Mary Johnson](JohnsonMary_FinalProjectPlastics.html){:target="_blank"}
+* [Mary Johnson](Student_Projects/JohnsonMary_FinalProjectPlastics.html){:target="_blank"}
 * [Sjana Schanning](Student_Projects/Schanning_FinalProject.html){:target="_blank"}
 * [April Shipley-Mellon](Student_Projects/S-M_FinalProject.html){:target="_blank"}
 * [Abby Stasko](Student_Projects/Stasko_FinalProj.html){:target="_blank"}
@@ -39,9 +39,9 @@ css: /css/modules.css
 * [Bridget Thornburg](Student_Projects/Thornburg.Bridget_Final.Project.html){:target="_blank"}
 
 ### 5:00 - 6:00 pm
-* [Frank Bajenske](Student_Projects/.html){:target="_blank"}
+* [Frank Bajenske](Student_Projects/BajenskeFinal.html){:target="_blank"}
 * [Michael Johnson](Student_Projects/JohnsonM_Reef_project.html){:target="_blank"}
 * [Michael Lant](Student_Projects/Lant_PresentationGraphs.html){:target="_blank"}
 * [Justine Litherland](Student_Projects/Litherland_Bleaching.html){:target="_blank"}
-* Reane Loiselle - [#1](Student_Projects/Loiselle_Final-Project.html){:target="_blank"}, [#2](Student_Projects/Loiselle_Final-Project2.html){:target="_blank"}
-* [Khousheng Moua](Student_Projects/.html){:target="_blank"}
+* Reane Loiselle - [#1](Student_Projects/Loiselle_Final-Project.html){:target="_blank"}, [#2](Student_Projects/Loiselle_Final_Project2.html){:target="_blank"}
+* [*Khousheng Moua](Student_Projects/.html){:target="_blank"}
