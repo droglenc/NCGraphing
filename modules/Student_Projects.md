@@ -16,7 +16,7 @@ css: /css/modules.css
 * [Maria Lefevre](Student_Projects/Lefevre Final Project.html){:target="_blank"}
 * [Erick Marchessault](Student_Projects/Marchessault_final.html){:target="_blank"}
 * [Shelly Ray](Student_Projects/Ray_FinalProject.html){:target="_blank"}
-* [*Mykala Repati](Student_Projects/.html){:target="_blank"}
+* [Mykala Repati](Student_Projects/RepatiProjectSnap.html){:target="_blank"}
 * [Josey Schanen](Student_Projects/Schanen_FinalProject.html){:target="_blank"}
 * [Luke Slekar](Student_Projects/Slekar_FINALPROJECT.html){:target="_blank"}
 * [Taylor Wittmann](Student_Projects/Wittmann_FinalProject.html){:target="_blank"}
@@ -24,11 +24,11 @@ css: /css/modules.css
 ### 2:30 - 3:30 pm
 * [Natalie Erler](Student_Projects/Erler_FinalProject.html){:target="_blank"}
 * [Ellie Frank](Student_Projects/Frank Phytoplankton in Northern Michigan Lakes.html){:target="_blank"}
-* [*Cameron Kadlubowski](Student_Projects/.html){:target="_blank"}
+* [Cameron Kadlubowski](Student_Projects/Kadlubowski_FinalProject.html){:target="_blank"}
 * [Hunter Moe](Student_Projects/MoeFinal2.html){:target="_blank"}
 * [Asha Ritchie](Student_Projects/Ritchie_FinalProject.html){:target="_blank"}
 * [Markia Smith](Student_Projects/Smith_FinalProject.html){:target="_blank"}
-* [*Shelby Winchell](Student_Projects/.html){:target="_blank"}
+* [Shelby Winchell](Student_Projects/Winchell_Final-Project.html){:target="_blank"}
 
 ### 3:45 - 4:45 pm
 * [Mary Johnson](Student_Projects/JohnsonMary_FinalProjectPlastics.html){:target="_blank"}
