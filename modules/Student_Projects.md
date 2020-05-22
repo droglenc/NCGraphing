@@ -42,6 +42,6 @@ css: /css/modules.css
 * [Frank Bajenske](Student_Projects/.html){:target="_blank"}
 * [Michael Johnson](Student_Projects/JohnsonM_Reef_project.html){:target="_blank"}
 * [Michael Lant](Student_Projects/Lant_PresentationGraphs.html){:target="_blank"}
-* [Justine Litherland](Student_Projects/.html){:target="_blank"}
+* [Justine Litherland](Student_Projects/Litherland_Bleaching.html){:target="_blank"}
 * Reane Loiselle - [#1](Student_Projects/Loiselle_Final-Project.html){:target="_blank"}, [#2](Student_Projects/Loiselle_Final-Project2.html){:target="_blank"}
 * [Khousheng Moua](Student_Projects/.html){:target="_blank"}
