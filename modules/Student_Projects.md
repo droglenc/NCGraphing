@@ -32,7 +32,7 @@ css: /css/modules.css
 
 ### 3:45 - 4:45 pm
 * [Mary Johnson](Student_Projects/JohnsonMary_FinalProjectPlastics.html){:target="_blank"}
-* [Sjana Schanning](Student_Projects/Schanning_FinalProject.html){:target="_blank"}
+* Sjana Schanning
 * [April Shipley-Mellon](Student_Projects/S-M_FinalProject.html){:target="_blank"}
 * [Abby Stasko](Student_Projects/Stasko_FinalProj.html){:target="_blank"}
 * [Bridget Stroede](Student_Projects/Stroede-mth-250-Final.html){:target="_blank"}
