@@ -35,7 +35,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Intro2/Lecture_MooseWolves.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/Lecture_MooseWolves_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/b837aa4552c68c2274a4ecbe7dda1b7f0b221c8337774909efb72e6cbdea5933" target="_blank">VIDEO</a></button></li>
+  <li><a href="Intro2/Lecture_MooseWolves.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/Lecture_MooseWolves_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://youtu.be/qmAg741kyss" target="_blank">VIDEO</a></button></li>
   <li><a href="Intro2/Demo_Avocados.html">Demonstration - Avocado Sales</a></li>
   <li><a href="Intro2/CE_Temperature.html">Exercise 1 - Global Temperatures</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Intro2/CE_Temperature.R">Key</a></button></li>
   <li>Exercise 2 (pick <b>one</b> of the following)</li>
