@@ -38,7 +38,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Smoothers/Lecture_Smoothers.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/Lecture_Smoothers_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/59437a9570d7d978fe2f5d9a9d3b419cc414d33f5e6cd49bec64de9ab76c3974" target="_blank">VIDEO</a></button></li>
+  <li><a href="Smoothers/Lecture_Smoothers.html">Lecture</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/Lecture_Smoothers_DHO.R">Script</a></button> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://youtu.be/5Ml0pgs9yl0" target="_blank">VIDEO</a></button></li>
   <li><a href="Smoothers/CE_DeerHarvest.html">Exercise - Deer Harvest</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Smoothers/CE_DeerHarvest.R">Key</a></button></li>
 </ul>
 

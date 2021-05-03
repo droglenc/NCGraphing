@@ -37,7 +37,7 @@ XXX
 ## Demonstration and Exercises
 
 <ul>
-  <li><a href="Themes/Lecture_Themes.html">Lecture</a> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://transcripts.gotomeeting.com/#/s/d4afb14a3ea98670e1fe5a0dee69248954950ed5a31b3b2d88303a950de86754" target="_blank">VIDEO</a></button></li>
+  <li><a href="Themes/Lecture_Themes.html">Lecture</a> <button type="button" class="btn btn-secondary btn-sm btn-space"><a href="https://youtu.be/re_8V3sTjQU" target="_blank">VIDEO</a></button></li>
   <li><a href="Themes/CE_Themes.html">Exercises</a> <button type="button" class="btn btn-light btn-sm btn-space"><a href="Themes/CE_Themes.R">Key</a></button></li>
 </ul>
 
