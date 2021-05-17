@@ -26,7 +26,6 @@ library(tidyverse)
 ----
 
 ## Background
-<img src="../zimgs/Walleye.jpg" alt="Walleye" class="img-right">
 Lake Erie is world-renowned for its Walleye [*Sander vitreus*] population and fishing. The Ohio Department of Natural Resources samples Walleye with gillnets from three regions of Lake Erie every fall. Their results from 2003-2014 are stored in [this file](https://raw.githubusercontent.com/droglenc/FSAdata/master/data-raw/WalleyeErie2.csv) from the fishR webpage. [Metadata for this file is here](http://derekogle.com/fishR/data/data-html/WalleyeErie2.html). The data are loaded below[^loaddata] and, for this exercise, reduced to only those fish captured in 2003 (i.e., `filter()`), the `loc`ation codes are changed from numbers to words (i.e., `mapvalues()` within `mutate()`), and `loc`ation is converted groupings (i.e., `factor()` within `mutate()`).[^copycode]
 
 ```{r echo=TRUE, results='hide'}

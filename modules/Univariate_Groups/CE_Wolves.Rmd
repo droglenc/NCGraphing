@@ -25,7 +25,6 @@ knitr::opts_chunk$set(echo=FALSE,fig.width=5,fig.height=5,out.width="60%")
 ----
 
 ## Background
-<img src="../zimgs/WiWolf.jpg" alt="Wisconsin Wolf" class="img-right">
 Dr. Kevin Schanning used a mail survey designed to measure Michigan, Minnesota, and Wisconsin residents’ feelings, attitudes, experiences with, concerns about management techniques, and knowledge of wolves specific to their state. The survey was 13 pages long, in booklet form, and consisted of 220 questions divided among eight sections: experience with wolves, activities, safety concerns, attitudes, knowledge of wolves in their state, management issues, background (demographics), and how they get their information about wolves. Schanning's data was recorded in [StateOfWolf.csv](https://raw.githubusercontent.com/droglenc/NCData/master/StateOfWolf.csv).
 
 These data are loaded below and reduced to many fewer variables (use of `select()`) and only those respondents that answered all of those questions (use of `complete.cases()` within `filter()`) to reduce the overall size of the data.frame in R. In addition, for the purposes of this exercise, the data.frame was reduced to only those respondents that deer hunted the previous year (i.e., the last `filter()`). Several variables were converted to groupings with the levels controlled to a proper order (i.e., `levels=` within `factor()` within `mutate()`).[^copycode]

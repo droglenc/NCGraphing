@@ -26,7 +26,6 @@ library(tidyverse)
 ----
 
 ## Background
-<img src="../zimgs/Deer.jpg" alt="Deer" class="img-right">
 This exercise uses the same harvest data for Whitetail Deer (*Odocoileus virginianus*) populations in Douglas, Bayfield, Ashland, and Iron Counties, the northern-most tier of couties in Wisconsin, from 2010-2019 used [in this exercise](../Means/CE_DeerHarvest.html). Load the data and create the same color palette used there.
 
 ```{r data-prep, echo=FALSE, results="hide"}

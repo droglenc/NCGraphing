@@ -9,7 +9,7 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/avocado.jpg" alt="Walleye" class="img-right"> Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv">data is here</a> (with <a href="https://www.kaggle.com/neuromusic/avocado-prices">metadata under “columns” at this site</a>).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Kaggle has a database of the price and sales of avocados from many areas around the United States from 2015-2018. The <a href="https://raw.githubusercontent.com/droglenc/NCData/master/Avocados.csv">data is here</a> (with <a href="https://www.kaggle.com/neuromusic/avocado-prices">metadata under “columns” at this site</a>).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Make sure (as always) to load <code>tidyverse</code>.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>Their data are loaded below<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and, for this exercise, reduced to only results for the “GreatLakes” region (i.e., <code>filter()</code>), and <code>type</code> and <code>year</code> are converted to groupings (i.e., <code>factor()</code> within <code>mutate()</code>).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
@@ -30,7 +30,7 @@ str(avoc)</code></pre>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>This CSV file is freely available from Kaggle at <a href="">this page</a>. However, you must sign-in to download the data file. I did this and made it available from my website at the link above.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>This CSV file is freely available from Kaggle at <a href="https://www.kaggle.com/neuromusic/avocado-prices">this page</a>. However, you must sign-in to download the data file. I did this and made it available from my website at the link above.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>These data were read directly from the webpage. However, the data can be downloaded to your computer and loaded from there into R, which would be similar to how you would load your own data into R. How to load a CSV file into RStudio is <a href="https://vimeo.com/144035138">described in this video</a>, for which the password is “NCStats” (without the quotes).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p>These code can be copied as is, but make sure to set your working directory with <code>setwd()</code> and to put just the filename inside <code>read.csv()</code>.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
@@ -45,7 +45,7 @@ str(avoc)</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

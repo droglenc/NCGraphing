@@ -9,7 +9,6 @@ css: "/css/modules.css"
 <hr />
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p><img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right"></p>
 <p><a href="https://www.sports-reference.com/">sports-reference.com</a> has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into <a href="https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv">NCAAF19_QBS.csv</a>, will be explored in this exercise.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Perform the following steps to load the data for all quarterbacks from the 2019-20 season,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> restrict the data to only those in the so-called “power 5 conferences” (i.e., <code>filter()</code>), and make sure that the <code>Conf</code>erence variable is a grouping variable (i.e., <code>factor()</code>).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <pre class="r"><code>#!# Set to your own working directory and have just your filename below.
@@ -82,7 +81,7 @@ str(qbs)</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -100,7 +99,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

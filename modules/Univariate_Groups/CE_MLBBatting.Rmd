@@ -25,8 +25,6 @@ knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=5,out.width="60%")
 ----
 
 ## Background
-<img src="../zimgs/BattingAverage.jpg" alt="Batting Average" class="img-right">
-
 [sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for Major League Baseball (MLB) players during the 2019 season, which are [in this file](https://raw.githubusercontent.com/droglenc/NCData/master/MLB19_Batting.csv), will be explored in this exercise.[^getdata] 
 
 These data are loaded below and were restricted to only a few variables (use of `select()`), those players that had at least 200 at-bats in one league (use of `filter()`), and were in the top 100 with respect to batting "average" (use of `top_n()`). In addition, an age-group variable was created (use of `case_when()` within `mutate()`) and the `Lg` and `Age_grp` variables were converted to groupings (use of `factor()` within `mutate()`).[^copycode]

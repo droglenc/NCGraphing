@@ -26,8 +26,6 @@ library(tidyverse)
 ----
 
 ## Background
-<img src="../zimgs/qb.jpg" alt="Quarterback" class="img-right">
-
 [sports-reference.com](https://www.sports-reference.com/) has a wealth of information on major American sports. Statistics for college quarterbacks from the 2019-20 season, which were saved into [NCAAF19_QBS.csv](https://raw.githubusercontent.com/droglenc/NCData/master/NCAAF19_QBS.csv), will be explored in this exercise.[^getdata]
 
 Perform the following steps to load the data for all quarterbacks from the 2019-20 season,[^loaddata] restrict the data to only those in the so-called "power 5 conferences" (i.e., `filter()`), and make sure that the `Conf`erence variable is a grouping variable (i.e., `factor()`).[^copycode]
