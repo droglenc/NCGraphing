@@ -42,7 +42,7 @@ b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
                      expand=expansion(mult=c(0,0.05))) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 b
 
 #!# Bar Chart with Typical Modifications
@@ -54,7 +54,7 @@ b <- ggplot(data=gss, mapping=aes(x=GRNSOL)) +
                      expand=expansion(mult=c(0,0.05))) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Stacked Bar Chart (by Groups)
 
@@ -69,7 +69,7 @@ b <- ggplot(data=gss, mapping=aes(
   scale_fill_manual(name="Willingness?",values=clrs) + #BREAK3
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Stacked Bar Chart 2
 
@@ -84,7 +84,7 @@ b <- ggplot(data=gss, mapping=aes(
   scale_fill_manual(name="Willingness?",values=clrs) + #BREAK3
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Side-by-Side Bar Chart
 
@@ -100,7 +100,7 @@ b <- ggplot(data=gss, mapping=aes(x=DEGREE,fill=GRNSOL)) +
   scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Flipping the Axes on the Side-by-Side Bar Chart
 
@@ -120,7 +120,7 @@ b <- ggplot(data=gss_sum1, mapping=aes(x=GRNSOL,y=freq)) + #BREAK
                      expand=expansion(mult=c(0,0.05))) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Bar Chart from Summarized Counts (two variables)
 
@@ -138,7 +138,7 @@ b <- ggplot(data=gss_sum2,
   scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Stacked Bar Chart of Percentages
 
@@ -153,11 +153,12 @@ b <- ggplot(data=gss_sum3,
   geom_bar(stat="identity",color="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Sex of Respondent") +
   scale_y_continuous(name="Percentage of Respondents",
-                     expand=expansion(mult=c(0,0.05))) +
+                     expand=expansion(mult=0),
+                     labels=scales::label_percent(scale=1,accuracy=1)) + #BREAK
   scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank())
+        panel.grid.minor=element_blank())
 
 #!# Stacked Bar Chart of Percentages 2
 
@@ -172,12 +173,25 @@ b <- ggplot(data=gss_sum3,
   geom_bar(stat="identity",color="gray30",alpha=0.75) + #BREAK
   scale_x_discrete(name="Highest Degree Completed") +
   scale_y_continuous(name="Percentage of Respondents",
-                     expand=expansion(mult=c(0,0.05))) +
+                     expand=expansion(mult=0),
+                     labels=scales::label_percent(scale=1,accuracy=1)) +
   scale_fill_manual(name="Willingness?",values=clrs) +
   theme_bw() +
   theme(panel.grid.major.x=element_blank(),
-        panel.grid.minor.x=element_blank()) + #BREAK
+        panel.grid.minor=element_blank()) + #BREAK
   coord_flip()
 
+t <- ggplot(data=gss_sum3,mapping=aes(x=GRNSOL,y=DEGREE,fill=perc)) +
+  geom_tile() +
+  scale_fill_gradient2(low="aquamarine",high="aquamarine4") +
+  geom_text(aes(label=paste0(round(perc,0),"%"))) +
+  scale_y_discrete(name=NULL,expand=expansion(mult=0)) +
+  scale_x_discrete(name=NULL,expand=expansion(mult=0)) +
+  theme_minimal() +
+  theme(legend.position="none",
+        aspect.ratio=1) +
+  labs(title="Willingness to Change Standard of Living",
+       subtitle="by highest educational degree")
 
-# Script created at 2020-04-26 10:34:11
+
+# Script created at 2021-05-18 18:49:06

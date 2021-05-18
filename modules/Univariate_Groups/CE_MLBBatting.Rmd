@@ -126,7 +126,7 @@ age1a
 ## League and Age Group 3
 Recreate the plot in "League and Age Group 2" using summarized data. [*Hint: you will be asked to use percentages in the next section, so you should prepare your summaries here for that*.]
 
-```{r MLB_LgAge3, fig.show='hide'}
+```{r MLB_LgAge3, fig.show='hide', warning=FALSE}
 sum2 <- mlb %>%
   group_by(Lg,Age_grp) %>%
   summarize(freq=n()) %>%

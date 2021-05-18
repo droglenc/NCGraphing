@@ -94,4 +94,4 @@ lgage5 <- ggplot(data=sum2,mapping=aes(x=Age_grp,y=Lg,fill=perc)) +
 lgage5
 
 
-# Script created at 2021-05-17 08:49:06
+# Script created at 2021-05-18 18:47:40

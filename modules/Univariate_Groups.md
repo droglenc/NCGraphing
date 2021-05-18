@@ -32,7 +32,7 @@ Develop (or recall) a *basic* understanding of bar charts/plots/graphs (use any 
 
 
 * [Barplots](https://www.data-to-viz.com/graph/barplot.html){:target="_blank"} ... *very short read*
-* [What are Bar Graphs?](https://youtu.be/FYFYrjMLG7E){:target="_blank"} ... *very short simple video*.
+* [What are Bar Graphs?](https://youtu.be/0ZVna90H188){:target="_blank"} ... *very short simple video*.
 
 ----
 
