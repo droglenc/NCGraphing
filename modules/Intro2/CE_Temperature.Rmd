@@ -19,7 +19,7 @@ FSA::purl2(file.path(here::here(),dnm,paste0(fnm,".Rmd")),
            moreItems=c("source","setwd","fnm","dnm","opts_chunk","CTRL-S"))
 ```
 ```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo=FALSE, fig.width=2.5, fig.height=2.5,out.width="60%")
+knitr::opts_chunk$set(echo=FALSE, fig.width=3.5, fig.height=3.5,out.width="60%")
 library(tidyverse)
 ```
 
