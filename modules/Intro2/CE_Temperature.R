@@ -48,4 +48,4 @@ ft4 <- ggplot(data=gt,mapping=aes(x=Year,y=Value,fill=Value,color=Value)) +
 ft4
 
 
-# Script created at 2021-07-19 07:56:08
+# Script created at 2021-07-19 07:59:42
